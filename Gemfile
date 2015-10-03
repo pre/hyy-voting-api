@@ -14,8 +14,8 @@ gem 'grape'
 gem 'hashie-forbidden_attributes'
 
 gem 'pg'
-
 gem 'rack-cors'
+gem 'jwt'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -39,5 +39,5 @@ group :development do
   gem 'spring'
 
   gem 'rubocop', require: false
-  gem 'dotenv'
+  gem 'dotenv-rails'
 end
