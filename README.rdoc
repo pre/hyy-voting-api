@@ -1,0 +1,8 @@
+# HYY Voting API (Rails / Grape)
+
+## Setup
+
+`bundle install`
+`rails s`
+
+
