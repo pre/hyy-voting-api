@@ -8,6 +8,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'grape'
+
+# Disable the security feature of strong_params at the model layer,
+# use Grape's own params validation instead.
+gem 'hashie-forbidden_attributes'
+
 gem 'pg'
 
 gem 'rack-cors'
