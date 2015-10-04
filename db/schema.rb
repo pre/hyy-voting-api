@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20151004044449) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "voter_id"
-    t.integer  "candidate_id"
+    t.integer  "voter_id",     null: false
+    t.integer  "candidate_id", null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

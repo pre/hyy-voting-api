@@ -5,7 +5,12 @@ class Token
 
   def initialize(token)
     self.token = token
-    self.user = { id: 100, email: "moi@hei.com" } # TODO
+
+    voter = Voter.first # TODO
+    self.user = {
+      voter_id: voter.id,
+      email: voter.email
+    }
   end
 
   def valid?
@@ -16,6 +21,21 @@ class Token
     return false if token.blank? or user.blank?
 
     true
+  end
+
+  def details
+    {
+      goodToken: "from rails",
+      faculty: {
+        name: "Humanistinen Railskunta"
+      },
+      candidates: {
+        url: "/mock_api/hum_tdk-candidates.json"
+      },
+      alliances: {
+        url: "/mock_api/hum_tdk-alliances.json"
+      }
+    }
   end
 
 end
