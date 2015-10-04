@@ -6,15 +6,20 @@ module HYY
                  'HS256'
     end
 
-    def verify_jwt(headers)
+    def decode_jwt(headers)
       header = headers['Authorization']
-      return false unless header
+      return nil unless header
 
       jwt = header.split(' ').last
 
-      return true if jwt == "jep"
+      begin
+        token = JWT.decode jwt, Rails.application.secrets.jwt_secret
+      rescue JWT::DecodeError
+        return nil
+      end
 
-      # JWT.decode token, Rails.application.secrets.jwt_secret
+      # Token is in array [payload, header]
+      token[0]
     end
   end
 end
