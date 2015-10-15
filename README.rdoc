@@ -3,6 +3,9 @@
 ## Setup
 
 `bundle install`
+
+Configure `.env` (see `.env.example`)
+
+## Run
+
 `rails s`
-
-
