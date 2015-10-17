@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'grape'
+gem 'nokogiri'
 
 # Disable the security feature of strong_params at the model layer,
 # use Grape's own params validation instead.
@@ -32,6 +33,7 @@ gem 'jwt'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
