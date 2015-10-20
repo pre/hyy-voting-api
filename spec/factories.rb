@@ -15,4 +15,9 @@ FactoryGirl.define do
     sequence(:abbr) {|n| "#{n}"}
   end
 
+  factory :department do
+    name "Test Department"
+    code "D1"
+    faculty_id 1
+  end
 end

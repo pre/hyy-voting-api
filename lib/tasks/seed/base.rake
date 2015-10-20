@@ -1,8 +1,9 @@
 namespace :db do
 
+  desc 'Seed data'
   namespace :seed do
 
-    desc 'Seed data for faculties'
+    desc 'for faculties'
     task :faculties => :environment do
       puts 'Seeding faculties ...'
       Faculty.create! :abbr => 'B', :code => "H57", :name => 'Biotieteellinen'
@@ -22,5 +23,16 @@ namespace :db do
       Faculty.create! :abbr => 'XXX', :code => "Y01", :name => 'Unknown faculty 2'
     end
 
+    desc 'for departments'
+    task :departments => :environment do
+      puts "Seeding departments ..."
+      Department.create! :code => "AB", :name => "Testilaitos", :faculty_id => 1
+    end
+
+    desc 'all base data'
+    task :base => :environment do
+      Rake::Task['db:seed:faculties'].invoke()
+      Rake::Task['db:seed:departments'].invoke()
+    end
   end
 end
