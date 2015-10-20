@@ -6,6 +6,8 @@
 
 Configure `.env` (see `.env.example`)
 
+rake db:seed:faculties
+
 ## Run
 
 `rails s`

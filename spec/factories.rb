@@ -12,6 +12,7 @@ FactoryGirl.define do
   factory :faculty do
     sequence(:name) {|n| "Faculty #{n}"}
     sequence(:code) {|n| "F#{n}"}
+    sequence(:abbr) {|n| "#{n}"}
   end
 
 end
