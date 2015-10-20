@@ -6,6 +6,8 @@ class Voter < ActiveRecord::Base
 
   validates_uniqueness_of :ssn, :student_number
 
+  validates_uniqueness_of :email, allow_nil: true
+
   validates_length_of :name, :minimum => 4
   validates_length_of :ssn, :minimum => 6
   validates_length_of :student_number, :minimum => 6

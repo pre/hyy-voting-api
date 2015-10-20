@@ -21,7 +21,7 @@ namespace :voters do
           count = count + 1
 
           imported_voter = ImportedVoter.build_from xml_voter
-          puts "Number #{count} - #{imported_voter.faculty_code} - #{imported_voter.student_number} - #{imported_voter.name}"
+          puts "Number #{count} - #{imported_voter.faculty_code} - #{imported_voter.student_number} - #{imported_voter.name} - #{imported_voter.email}"
 
           Voter.create_from! imported_voter
         end

@@ -1,7 +1,8 @@
 class ImportedVoter
   include ExtendedPoroBehaviour
 
-  attr_accessor :email,
+  attr_accessor :xml,
+                :email,
                 :name,
                 :ssn,
                 :student_number,
@@ -13,19 +14,33 @@ class ImportedVoter
   def self.build_from(xml_voter)
     imported = new
 
-    imported.init_from xml_voter
+    imported.convert(xml_voter)
 
     imported
   end
 
-  def init_from(xml_voter)
-    @email = xml_voter.xpath('SAHKPOSTOSOI/text()').to_s.strip
-    @name = xml_voter.xpath('NIMI/text()').to_s.strip
-    @ssn = xml_voter.xpath('HTUNNUS/text()').to_s.strip
-    @student_number = xml_voter.xpath('ONUMERO/text()').to_s.strip
-    @faculty_code = xml_voter.xpath('TIEDEK/text()').to_s.strip
-    @phone = xml_voter.xpath('MATKPUH/text()').to_s.strip
-    @extent_of_studies = xml_voter.xpath('OKATTAV/text()').to_s.strip
-    @start_year = xml_voter.xpath('ALOITUSV/text()').to_s.strip
+  def convert(xml_voter)
+    @xml = xml_voter
+
+    @email             = value 'SAHKPOSTOSOI'
+    @name              = value 'NIMI'
+    @ssn               = value 'HTUNNUS'
+    @student_number    = value 'ONUMERO'
+    @faculty_code      = value 'TIEDEK'
+    @phone             = value 'MATKPUH'
+    @extent_of_studies = value 'OKATTAV'
+    @start_year        = value 'ALOITUSV'
+  end
+
+  private
+
+  def value(path)
+    value = @xml.xpath("#{path}/text()").to_s.strip
+
+    if value.blank?
+      nil
+    else
+      value
+    end
   end
 end

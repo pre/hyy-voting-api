@@ -20,6 +20,20 @@ RSpec.describe ImportedVoter, type: :model do
           <SAHKPOSTOSOI>laura.riippala@example.com</SAHKPOSTOSOI>
           <MATKPUH>0500 123123</MATKPUH>
         </ROW>
+
+        <ROW>
+          <HTUNNUS>123456789A</HTUNNUS>
+          <ONUMERO>987654321</ONUMERO>
+          <NIMI>Toinen Kaura P              </NIMI>
+          <ALOITUSV>2002</ALOITUSV>
+          <OKATTAV>5 </OKATTAV>
+          <lisa>    </lisa>
+          <TIEDEK>H40</TIEDEK>
+          <HLO>1234555</HLO>
+          <OPINOIK>12345666</OPINOIK>
+          <SAHKPOSTOSOI></SAHKPOSTOSOI>
+          <MATKPUH>0400121212</MATKPUH>
+        </ROW>
       </ROWDATA>
       '
 
@@ -43,6 +57,13 @@ RSpec.describe ImportedVoter, type: :model do
 
     end
 
+    it "sets sane default values when source value is blank" do
 
+      xml_voter = @doc.xpath("//ROW")[1]
+
+      imported_voter = ImportedVoter.build_from(xml_voter)
+
+      expect(imported_voter.email).to be_nil
+    end
   end
 end
