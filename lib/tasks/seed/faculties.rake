@@ -17,6 +17,9 @@ namespace :db do
       Faculty.create! :abbr => 'T', :code => "H10", :name => 'Teologinen'
       Faculty.create! :abbr => 'V', :code => "H70", :name => 'Valtiotieteellinen'
       Faculty.create! :abbr => 'S', :code => "H74", :name => 'Svenska social- och kommunalhögskolan'
+
+      Faculty.create! :abbr => 'XYZ', :code => "930", :name => 'Unknown faculty'
+      Faculty.create! :abbr => 'XXX', :code => "Y01", :name => 'Unknown faculty 2'
     end
 
   end
