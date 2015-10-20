@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe ImportedVoter, type: :model do
   describe "Creation" do
 
-    it "builds from xml" do
-      row = Nokogiri::XML "
+    before(:all) do
+      xml_text = '
+      <?xml version="1.0" encoding="utf-8" ?>
+      <ROWDATA>
         <ROW>
           <HTUNNUS>123456789A</HTUNNUS>
           <ONUMERO>987654321</ONUMERO>
@@ -17,9 +19,18 @@ RSpec.describe ImportedVoter, type: :model do
           <OPINOIK>12345678</OPINOIK>
           <SAHKPOSTOSOI>laura.riippala@example.com</SAHKPOSTOSOI>
           <MATKPUH>0500 123123</MATKPUH>
-        </ROW>"
+        </ROW>
+      </ROWDATA>
+      '
 
-      imported_voter = ImportedVoter.build_from(row)
+      @doc = Nokogiri::XML(xml_text)
+    end
+
+    it "builds from xml" do
+
+      xml_voter = @doc.xpath("//ROW").first
+
+      imported_voter = ImportedVoter.build_from(xml_voter)
 
       expect(imported_voter.email).to eq("laura.riippala@example.com")
       expect(imported_voter.name).to eq("Riippala Laura R")
