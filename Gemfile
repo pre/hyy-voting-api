@@ -20,6 +20,7 @@ gem 'hashie-forbidden_attributes'
 gem 'pg'
 gem 'rack-cors'
 gem 'jwt'
+gem 'pry-rails'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
