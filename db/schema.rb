@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020182722) do
+ActiveRecord::Schema.define(version: 20151020184037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(version: 20151020182722) do
   end
 
   create_table "elections", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "faculty_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",          null: false
+    t.integer  "faculty_id",    null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "department_id"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 20151020182722) do
     t.integer  "start_year"
     t.integer  "extent_of_studies"
     t.string   "phone"
+    t.integer  "department_id"
   end
 
   add_index "voters", ["email"], name: "index_voters_on_email", using: :btree
@@ -84,7 +86,9 @@ ActiveRecord::Schema.define(version: 20151020182722) do
   add_foreign_key "alliances", "elections"
   add_foreign_key "candidates", "alliances"
   add_foreign_key "departments", "faculties"
+  add_foreign_key "elections", "departments"
   add_foreign_key "elections", "faculties"
+  add_foreign_key "voters", "departments"
   add_foreign_key "voters", "faculties"
   add_foreign_key "votes", "candidates"
   add_foreign_key "votes", "voters"

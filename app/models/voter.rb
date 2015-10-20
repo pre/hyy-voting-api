@@ -1,11 +1,14 @@
 class Voter < ActiveRecord::Base
   has_many :votes
+
   belongs_to :faculty
+  belongs_to :department
 
   validates_presence_of :name,
                         :ssn,
                         :student_number,
-                        :faculty
+                        :faculty,
+                        :department
 
   validates_uniqueness_of :ssn,
                           :student_number
