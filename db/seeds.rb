@@ -5,3 +5,26 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+faculty = Faculty.create! :name => "Testien Tiedekunta", :code => "H20"
+
+
+Voter.create!(
+  :name => "Testi Pekkanen",
+  :email => "testi.pekkanen@example.com",
+  :ssn => "123456789A",
+  :student_number => "987654321",
+  :start_year => "2001",
+  :extent_of_studies => "4",
+  :faculty => faculty
+)
+
+Voter.create!(
+  :name => "Kesti Rekkanen",
+  :email => "kesti.rekkanen@example.com",
+  :ssn => "112233123A",
+  :student_number => "998877665",
+  :start_year => "2005",
+  :extent_of_studies => "3",
+  :faculty => faculty
+)

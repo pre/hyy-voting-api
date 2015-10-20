@@ -1,4 +1,5 @@
 class ImportedVoter
+  include ExtendedPoroBehaviour
 
   attr_accessor :email,
                 :name,

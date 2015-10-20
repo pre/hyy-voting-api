@@ -69,6 +69,11 @@ GEM
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     ffi (1.9.10)
     formatador (0.2.5)
     globalid (0.3.6)
@@ -247,6 +252,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   dotenv-rails
+  factory_girl_rails
   grape
   guard-rspec
   hashie-forbidden_attributes
@@ -257,6 +263,7 @@ DEPENDENCIES
   puma
   rack-cors
   rails (= 4.2.4)
+  rspec
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
