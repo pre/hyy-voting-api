@@ -13,7 +13,7 @@ module HYY
       if token.valid?
         response = {
           jwt: create_jwt(token.user),
-          details: token.details.as_json
+          elections: token.elections.as_json
         }
       else
         status :forbidden
