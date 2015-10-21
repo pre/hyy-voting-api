@@ -26,7 +26,7 @@ namespace :db do
     desc 'for departments'
     task :departments => :environment do
       puts "Seeding departments ..."
-      Department.create! :code => "AB", :name => "Testilaitos", :faculty_id => 1
+      Department.create! :code => "AB", :name => "Testilaitos", :faculty => Faculty.first
     end
 
     desc 'all base data'

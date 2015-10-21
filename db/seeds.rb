@@ -6,8 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-faculty = Faculty.create! :name => "Testien Tiedekunta", :code => "H20"
-
 
 Voter.create!(
   :name => "Testi Pekkanen",
@@ -16,7 +14,8 @@ Voter.create!(
   :student_number => "987654321",
   :start_year => "2001",
   :extent_of_studies => "4",
-  :faculty => faculty
+  :faculty => Faculty.first,
+  :department => Department.first
 )
 
 Voter.create!(
@@ -26,5 +25,6 @@ Voter.create!(
   :student_number => "998877665",
   :start_year => "2005",
   :extent_of_studies => "3",
-  :faculty => faculty
+  :faculty => Faculty.last,
+  :department => Department.last
 )
