@@ -28,7 +28,8 @@ class Voter < ActiveRecord::Base
         :phone             => imported_voter.phone,
         :start_year        => imported_voter.start_year,
         :extent_of_studies => imported_voter.extent_of_studies,
-        :faculty           => Faculty.find_by_code!(imported_voter.faculty_code)
+        :faculty           => Faculty.find_by_code!(imported_voter.faculty_code),
+        :department        => Department.first # TODO: Get actual departments
     )
   end
 end
