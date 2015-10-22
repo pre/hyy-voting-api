@@ -11,25 +11,72 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004044449) do
+ActiveRecord::Schema.define(version: 20151021164108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "alliances", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.integer  "election_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "candidates", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "name_spare", null: false
+    t.string   "name",        null: false
+    t.string   "name_spare",  null: false
     t.integer  "number"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "alliance_id", null: false
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "code",       null: false
+    t.integer  "faculty_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "voters", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "email"
+  add_index "departments", ["code"], name: "index_departments_on_code", unique: true, using: :btree
+
+  create_table "elections", force: :cascade do |t|
+    t.string   "name",          null: false
+    t.integer  "faculty_id",    null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "department_id"
+  end
+
+  create_table "faculties", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "abbr",       null: false
   end
+
+  add_index "faculties", ["code"], name: "index_faculties_on_code", unique: true, using: :btree
+
+  create_table "voters", force: :cascade do |t|
+    t.string   "name",              null: false
+    t.string   "email"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "faculty_id",        null: false
+    t.string   "ssn",               null: false
+    t.string   "student_number",    null: false
+    t.integer  "start_year"
+    t.integer  "extent_of_studies"
+    t.string   "phone"
+    t.integer  "department_id"
+  end
+
+  add_index "voters", ["email"], name: "index_voters_on_email", using: :btree
+  add_index "voters", ["ssn"], name: "index_voters_on_ssn", unique: true, using: :btree
+  add_index "voters", ["student_number"], name: "index_voters_on_student_number", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "voter_id",     null: false
@@ -40,6 +87,13 @@ ActiveRecord::Schema.define(version: 20151004044449) do
 
   add_index "votes", ["voter_id"], name: "index_votes_on_voter_id", unique: true, using: :btree
 
+  add_foreign_key "alliances", "elections"
+  add_foreign_key "candidates", "alliances"
+  add_foreign_key "departments", "faculties"
+  add_foreign_key "elections", "departments"
+  add_foreign_key "elections", "faculties"
+  add_foreign_key "voters", "departments"
+  add_foreign_key "voters", "faculties"
   add_foreign_key "votes", "candidates"
   add_foreign_key "votes", "voters"
 end

@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'grape'
+gem 'nokogiri'
 
 # Disable the security feature of strong_params at the model layer,
 # use Grape's own params validation instead.
@@ -19,6 +20,7 @@ gem 'hashie-forbidden_attributes'
 gem 'pg'
 gem 'rack-cors'
 gem 'jwt'
+gem 'pry-rails'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -32,6 +34,11 @@ gem 'jwt'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'guard-rspec', require: false
+  gem 'dotenv-rails'
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -42,5 +49,4 @@ group :development do
   gem 'spring'
 
   gem 'rubocop', require: false
-  gem 'dotenv-rails'
 end
