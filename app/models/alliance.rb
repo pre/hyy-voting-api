@@ -1,6 +1,10 @@
 class Alliance < ActiveRecord::Base
-  belongs_to :election
+  include RankedModel
+  ranks :numbering_order
 
+  has_many :candidates
+
+  belongs_to :election
   belongs_to :faculty
   belongs_to :department
 
