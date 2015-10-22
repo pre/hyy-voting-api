@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :admin_user do
+    
+  end
+
 
   factory :imported_voter do
     name 'Armas Aappa'

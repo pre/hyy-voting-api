@@ -28,3 +28,5 @@ Voter.create!(
   :faculty => Faculty.last,
   :department => Department.last
 )
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
