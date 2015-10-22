@@ -234,6 +234,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.0.0)
     rake (10.4.2)
+    ranked-model (0.4.0)
+      activerecord (>= 3.1.12)
     ransack (1.7.0)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
@@ -339,6 +341,7 @@ DEPENDENCIES
   pundit
   rack-cors
   rails (= 4.2.4)
+  ranked-model
   rspec
   rspec-rails
   rubocop

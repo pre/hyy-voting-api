@@ -1,4 +1,7 @@
 class Candidate < ActiveRecord::Base
+  include RankedModel
+  ranks :numbering_order
+
   has_many :votes
 
   belongs_to :alliance
