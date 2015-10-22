@@ -13,6 +13,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'grape'
 gem 'nokogiri'
 
+# Active Admin
+gem 'activeadmin', '~> 1.0.0.pre2' # N.B. pre-release! needed for Rails 4
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
+
 # Disable the security feature of strong_params at the model layer,
 # use Grape's own params validation instead.
 gem 'hashie-forbidden_attributes'
