@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022030833) do
+ActiveRecord::Schema.define(version: 20151022040131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,19 +50,25 @@ ActiveRecord::Schema.define(version: 20151022030833) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "alliances", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.integer  "election_id", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",          null: false
+    t.integer  "election_id",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "faculty_id"
+    t.integer  "department_id"
   end
 
   create_table "candidates", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.string   "name_spare",  null: false
-    t.integer  "number"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "alliance_id", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "alliance_id",      null: false
+    t.string   "firstname",        null: false
+    t.string   "lastname",         null: false
+    t.string   "spare_firstname",  null: false
+    t.string   "spare_lastname",   null: false
+    t.string   "ssn"
+    t.integer  "candidate_number"
+    t.integer  "numbering_order"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -120,7 +126,9 @@ ActiveRecord::Schema.define(version: 20151022030833) do
 
   add_index "votes", ["voter_id"], name: "index_votes_on_voter_id", unique: true, using: :btree
 
+  add_foreign_key "alliances", "departments"
   add_foreign_key "alliances", "elections"
+  add_foreign_key "alliances", "faculties"
   add_foreign_key "candidates", "alliances"
   add_foreign_key "departments", "faculties"
   add_foreign_key "elections", "departments"
