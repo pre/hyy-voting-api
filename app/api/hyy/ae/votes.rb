@@ -3,7 +3,7 @@ module HYY
     desc 'Register your vote.'
     post :votes do
       vote = Vote.new voter_id: @current_user.id,
-                      candidate_id: params['candidate']['id']
+                      candidate_id: params['candidate']['id'] # TODO: verify that @current_user is allowed to vote this id
 
       if vote.save
         { response: 'ok' }

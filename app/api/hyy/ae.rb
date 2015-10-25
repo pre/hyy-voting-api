@@ -2,8 +2,7 @@ module HYY
   class AE < Grape::API
 
     before do
-      # TODO: Extract class and handle expired token
-      @current_user = Voter.find decode_jwt(headers)["voter_id"]
+      @current_user = get_current_user headers
 
       error!('Unauthorized', 401) unless @current_user
     end
