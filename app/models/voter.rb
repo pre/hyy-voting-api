@@ -1,5 +1,7 @@
 class Voter < ActiveRecord::Base
   has_many :votes
+  has_many :faculty_elections, through: :faculty, source: :elections
+  has_many :department_elections, through: :department, source: :elections
 
   belongs_to :faculty
   belongs_to :department

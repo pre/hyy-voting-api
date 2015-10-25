@@ -30,10 +30,10 @@ class Token
         type: "faculty",
         name: "Humanistinen tiedekunta",
         candidates: {
-          url: "/mock_api/hum_tdk-candidates.json"
+          url: "http://localhost:3000/api/candidates"
         },
         alliances: {
-          url: "/mock_api/hum_tdk-alliances.json"
+          url: "http://localhost:3000/api/alliances?election_id=3"
         },
         voted_at: "2015-10-21"
       },

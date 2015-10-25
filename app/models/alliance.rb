@@ -20,4 +20,6 @@ class Alliance < ActiveRecord::Base
     message: 'Either faculty or department is required.'
   }
 
+  scope :by_election, -> (id) { where(election_id: id ) }
+
 end
