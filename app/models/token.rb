@@ -23,6 +23,13 @@ class Token
     true
   end
 
+  # TODO: Add token expiry
+  def jwt
+    JWT.encode user,
+               Rails.application.secrets.jwt_secret,
+               'HS256'
+  end
+
   def elections
     [
       {

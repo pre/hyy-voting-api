@@ -1,13 +1,6 @@
 module HYY
   module JwtHelpers
 
-    # TODO: Add token expiry
-    def create_jwt(user)
-      JWT.encode user,
-                 Rails.application.secrets.jwt_secret,
-                 'HS256'
-    end
-
     def decode_jwt(headers)
       header = headers['Authorization']
       return nil unless header
