@@ -34,4 +34,8 @@ class Voter < ActiveRecord::Base
         :department        => Department.first # TODO: Get actual departments
     )
   end
+
+  def elections
+    faculty_elections + department_elections
+  end
 end

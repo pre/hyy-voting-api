@@ -1,9 +1,35 @@
 module HYY
 
   module Entities
+    class Election < Grape::Entity
+      expose :id
+      expose :type
+      expose :name
+      expose :faculty_id
+      expose :department_id
+
+      expose :alliances
+      expose :candidates
+
+      private
+        def alliances
+          {
+            url: "http://localhost:3000/api/alliances?election_id=3"
+          }
+        end
+
+        def candidates
+          {
+            url: "http://localhost:3000/api/candidates?election_id=3"
+          }
+        end
+    end
+  end
+
+  module Entities
     class Token < Grape::Entity
       expose :jwt
-      expose :elections
+      expose :elections, using: HYY::Entities::Election
     end
   end
 
