@@ -1,6 +1,8 @@
 module HYY
   module JwtHelpers
 
+    # Header is in format
+    #   Authorization: "Bearer JWT_TOKEN"
     def decode_jwt(headers)
       header = headers['Authorization']
       return nil unless header
