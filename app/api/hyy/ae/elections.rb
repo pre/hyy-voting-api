@@ -66,6 +66,7 @@ module HYY
             desc 'Cast a vote for a candidate'
             post :vote do
               vote = Vote.new voter_id: @current_user.id,
+                              election_id: params[:election_id],
                               candidate_id: params[:candidate_id]
 
               if vote.save
