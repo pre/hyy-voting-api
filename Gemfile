@@ -34,6 +34,9 @@ gem 'rack-cors'
 gem 'jwt'
 gem 'pry-rails'
 
+gem 'rollbar', '~> 2.5.1'
+gem 'oj', '~> 2.12.14' # Rollbar suggestion for JSON serialization if not using JRuby
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
