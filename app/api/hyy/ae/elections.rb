@@ -45,12 +45,12 @@ module HYY
 
     namespace :elections do
 
-      route_param :id do
+      route_param :election_id do
 
         namespace :alliances do
           desc 'Get alliances for an election'
           get do
-            present Alliance.by_election(params[:id]),
+            present Alliance.by_election(params[:election_id]),
                     with: HYY::AE::Entities::Alliance
           end
         end
@@ -58,8 +58,27 @@ module HYY
         namespace :candidates do
           desc 'Get all candidates for an election'
           get do
-            present Election.find(params[:id]).candidates,
+            present Election.find(params[:election_id]).candidates,
                     with: HYY::AE::Entities::Candidate
+          end
+
+          route_param :candidate_id do
+            desc 'Cast a vote for a candidate'
+            post :vote do
+              vote = Vote.new voter_id: @current_user.id,
+                              candidate_id: params[:candidate_id]
+
+              if vote.save
+                { response: 'ok' }
+              else
+                error!(
+                  {
+                    message: 'Vote failed',
+                    errors: vote.errors.as_json
+                  }, 422)
+              end
+            end
+
           end
         end
       end

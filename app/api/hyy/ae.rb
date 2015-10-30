@@ -8,7 +8,6 @@ module HYY
     end
 
     mount HYY::AE::Ping
-    mount HYY::AE::Votes
     mount HYY::AE::Elections
 
   end
