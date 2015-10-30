@@ -36,6 +36,7 @@ gem 'pry-rails'
 
 gem 'rollbar', '~> 2.5.1'
 gem 'oj', '~> 2.12.14' # Rollbar suggestion for JSON serialization if not using JRuby
+gem 'rails_12factor'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
