@@ -9,8 +9,7 @@ module HYY
 
     mount HYY::AE::Ping
     mount HYY::AE::Votes
-    mount HYY::AE::Candidates
-    mount HYY::AE::Alliances
+    mount HYY::AE::Elections
 
   end
 end
