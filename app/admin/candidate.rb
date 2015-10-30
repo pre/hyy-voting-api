@@ -5,7 +5,7 @@ ActiveAdmin.register Candidate do
     Candidate.new.attributes.keys
   end
 
-  action_item :only => [ :index ] do
+  action_item :index do
     link_to 'Jaa ehdokasnumerot',
             give_numbers_admin_candidates_path,
             :confirm => 'Jaetaanko ehdokasnumerot?'
