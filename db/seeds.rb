@@ -34,6 +34,16 @@ Election.create!(
   faculty: Faculty.first
 )
 
+Election.create!(
+  name: "Paremmat vaalit",
+  faculty: Faculty.first
+)
+
+Election.create!(
+  name: "Sivukampuksen tiedekuntavaalit",
+  faculty: Faculty.first
+)
+
 Alliance.create!(
   name: "Ruotsalaiset",
   election: Election.first,
