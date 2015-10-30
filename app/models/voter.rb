@@ -1,5 +1,7 @@
 class Voter < ActiveRecord::Base
   has_many :votes
+  has_many :faculty_elections, through: :faculty, source: :elections
+  has_many :department_elections, through: :department, source: :elections
 
   belongs_to :faculty
   belongs_to :department
@@ -31,5 +33,9 @@ class Voter < ActiveRecord::Base
         :faculty           => Faculty.find_by_code!(imported_voter.faculty_code),
         :department        => Department.first # TODO: Get actual departments
     )
+  end
+
+  def elections
+    faculty_elections + department_elections
   end
 end

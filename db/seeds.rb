@@ -28,3 +28,29 @@ Voter.create!(
   :faculty => Faculty.last,
   :department => Department.last
 )
+
+Election.create!(
+  name: "Liittovaltiovaalit",
+  faculty: Faculty.first
+)
+
+Alliance.create!(
+  name: "Ruotsalaiset",
+  election: Election.first,
+  faculty: Faculty.first,
+  numbering_order: 1
+)
+
+Candidate.create!(
+  alliance: Alliance.first,
+  firstname: "Ikea",
+  lastname: "Kassi",
+  spare_firstname: "Vahva",
+  spare_lastname: "Kangas",
+  ssn: "123456789A",
+  candidate_number: 1,
+  numbering_order: 1
+)
+
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

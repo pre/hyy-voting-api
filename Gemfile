@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
+
 gem 'rails', '4.2.4'
 
 gem 'puma'
@@ -11,7 +13,17 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'grape'
+gem 'grape-entity'
 gem 'nokogiri'
+
+# Active Admin
+gem 'activeadmin', '~> 1.0.0.pre2' # N.B. pre-release! needed for Rails 4
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
+
+gem 'ranked-model'
 
 # Disable the security feature of strong_params at the model layer,
 # use Grape's own params validation instead.
@@ -21,6 +33,10 @@ gem 'pg'
 gem 'rack-cors'
 gem 'jwt'
 gem 'pry-rails'
+
+gem 'rollbar', '~> 2.5.1'
+gem 'oj', '~> 2.12.14' # Rollbar suggestion for JSON serialization if not using JRuby
+gem 'rails_12factor'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

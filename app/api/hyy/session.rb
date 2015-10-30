@@ -1,4 +1,12 @@
 module HYY
+
+  module Entities
+    class Token < Grape::Entity
+      expose :jwt
+      expose :elections, using: HYY::AE::Entities::Election
+    end
+  end
+
   class Session < Grape::API
 
     desc 'Send a sign-in link for the voter.'
@@ -11,10 +19,7 @@ module HYY
       token = Token.new params[:token]
 
       if token.valid?
-        response = {
-          jwt: create_jwt(token.user),
-          elections: token.elections.as_json
-        }
+        present token, with: Entities::Token
       else
         status :forbidden
         response = { error: "invalid token" }

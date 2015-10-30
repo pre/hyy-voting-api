@@ -1,12 +1,14 @@
 class Token
 
   attr_accessor :token
+
+  # { voter_id: id }
   attr_accessor :user
 
   def initialize(token)
     self.token = token
 
-    voter = Voter.first # TODO
+    voter = Voter.first # TODO get according to token and do not crash if inexistant
     self.user = {
       voter_id: voter.id,
       email: voter.email
@@ -23,46 +25,15 @@ class Token
     true
   end
 
-  def elections
-    [
-      {
-        id: 1,
-        type: "faculty",
-        name: "Humanistinen tiedekunta",
-        candidates: {
-          url: "/mock_api/hum_tdk-candidates.json"
-        },
-        alliances: {
-          url: "/mock_api/hum_tdk-alliances.json"
-        },
-        voted_at: "2015-10-21"
-      },
-      {
-        id: 2,
-        type: "department",
-        name: "Filosofian laitos",
-        candidates: {
-          url: "/mock_api/hum_tdk-candidates.json"
-        },
-        alliances: {
-          url: "/mock_api/hum_tdk-alliances.json"
-        },
-        voted_at: nil
-      },
-      {
-        id: 3,
-        type: "college",
-        name: "Kollegio (Humanistit)",
-        candidates: {
-          url: "/mock_api/hum_tdk-candidates.json"
-        },
-        alliances: {
-          url: "/mock_api/hum_tdk-alliances.json"
-        },
-        voted_at: "2015-10-20"
-      },
-    ]
+  # TODO: Add token expiry
+  def jwt
+    JWT.encode user,
+               Rails.application.secrets.jwt_secret,
+               'HS256'
+  end
 
+  def elections
+    Voter.find(user[:voter_id]).elections
   end
 
 end
