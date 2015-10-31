@@ -48,6 +48,7 @@ module HYY
       route_param :election_id do
 
         namespace :vote do
+          desc 'Get previously cast vote in election'
           get do
             present @current_user.votes.by_election(params[:election_id]),
                     with: HYY::AE::Entities::Vote
@@ -70,14 +71,15 @@ module HYY
           end
 
           route_param :candidate_id do
-            desc 'Cast a vote for a candidate'
+            desc 'Cast a vote for a candidate or update previous vote (idempotent action)'
             post :vote do
-              vote = Vote.new voter_id: @current_user.id,
-                              election_id: params[:election_id],
-                              candidate_id: params[:candidate_id]
+              vote = Vote.update_or_create_by voter_id: @current_user.id,
+                                              election_id: params[:election_id],
+                                              candidate_id: params[:candidate_id]
 
-              if vote.save
-                { response: 'ok' }
+              if vote.valid?
+                present vote,
+                        with: HYY::AE::Entities::Vote
               else
                 error!(
                   {

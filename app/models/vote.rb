@@ -10,4 +10,22 @@ class Vote < ActiveRecord::Base
 
   scope :by_election, -> (id) { where(election_id: id ).first }
 
+  def self.update_or_create_by(opts)
+    voter_id = opts[:voter_id]
+    election_id = opts[:election_id]
+    candidate_id = opts[:candidate_id]
+
+    existing = self.find_by_voter_id voter_id
+
+    if existing.present?
+      existing.candidate_id = candidate_id
+      existing.save
+
+      return existing
+    else
+      return self.create voter_id: voter_id,
+                         election_id: election_id,
+                         candidate_id: candidate_id
+    end
+  end
 end
