@@ -32,10 +32,10 @@ module HYY
       post :link do
         session_link = SessionLink.new email: params[:email]
 
-        if session_link.deliver
+        if session_link.valid? && session_link.deliver
           { response: "Link has been sent" }
         else
-          error!("Could not generate sign-in link", :unprocessable_entity)
+          error!("Could not generate sign-in link: #{session_link.errors[:email]}", :unprocessable_entity)
         end
       end
 

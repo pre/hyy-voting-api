@@ -13,6 +13,8 @@ module ExtendedPoroBehaviour
   extend ActiveModel::Translation
   include ActiveModel::Validations
 
+  include ActiveRecord::Callbacks
+
   included do
     def initialize(attributes = {})
       @errors = ActiveModel::Errors.new(self)
