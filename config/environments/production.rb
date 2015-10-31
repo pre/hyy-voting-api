@@ -81,9 +81,9 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV.fetch('SITE_DOMAIN'), port: 443 }
 
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV.fetch 'SENDGRID_USERNAME',
-    :password => ENV.fetch 'SENDGRID_PASSWORD',
-    :domain => ENV.fetch 'SENDGRID_DOMAIN',
+    :user_name => ENV.fetch('SENDGRID_USERNAME'),
+    :password => ENV.fetch('SENDGRID_PASSWORD'),
+    :domain => ENV.fetch('SENDGRID_DOMAIN'),
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
