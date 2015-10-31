@@ -4,12 +4,15 @@ module HYY
     # Header is in format
     #   Authorization: "Bearer JWT_TOKEN"
     def decode_jwt(headers)
+      return nil unless headers['Authorization'].present?
+
       header = headers['Authorization']
       return nil unless header
 
       jwt = header.split(' ').last
 
       token = Token.decode jwt
+      return nil unless token.present?
 
       # Token is in array [payload, header]
       token[0]
