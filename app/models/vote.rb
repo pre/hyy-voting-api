@@ -7,4 +7,7 @@ class Vote < ActiveRecord::Base
   validates_presence_of :candidate_id,
                         :election_id,
                         :voter_id
+
+  scope :by_election, -> (id) { where(election_id: id ).first }
+
 end

@@ -47,6 +47,13 @@ module HYY
 
       route_param :election_id do
 
+        namespace :vote do
+          get do
+            present @current_user.votes.by_election(params[:election_id]),
+                    with: HYY::AE::Entities::Vote
+          end
+        end
+
         namespace :alliances do
           desc 'Get alliances for an election'
           get do
