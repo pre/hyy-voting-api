@@ -1,0 +1,11 @@
+module Vaalit
+
+  module Public
+    SITE_ADDRESS        = ENV.fetch('SITE_ADDRESS')
+    EMAIL_FROM_ADDRESS  = ENV.fetch('EMAIL_FROM_ADDRESS')
+    EMAIL_FROM_NAME     = ENV.fetch('EMAIL_FROM_NAME')
+    EXTERNAL_INFO_SITE  = ENV.fetch('EXTERNAL_INFO_SITE')
+    EXTERNAL_INFO_PHONE = ENV.fetch('EXTERNAL_INFO_PHONE')
+  end
+
+end

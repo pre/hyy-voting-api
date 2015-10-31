@@ -9,11 +9,7 @@ module HYY
 
       jwt = header.split(' ').last
 
-      begin
-        token = JWT.decode jwt, Rails.application.secrets.jwt_secret
-      rescue JWT::DecodeError
-        return nil
-      end
+      token = Token.decode jwt
 
       # Token is in array [payload, header]
       token[0]
