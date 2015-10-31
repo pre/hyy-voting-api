@@ -65,4 +65,6 @@ group :development do
   gem 'spring'
 
   gem 'rubocop', require: false
+
+  gem "letter_opener", :group => :development
 end

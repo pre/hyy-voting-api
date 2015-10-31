@@ -8,7 +8,7 @@ class SessionLink
   def deliver
     return false unless valid?
 
-    voter = Vote.find_by_email email
+    voter = Voter.find_by_email email
     return false unless voter.present?
 
     SessionLinkMailer.signup_link(voter.email, url).deliver_now
@@ -24,6 +24,6 @@ class SessionLink
   end
 
   def url
-    "#{Vaalit::Public::SITE_ADDRESS}/#/sign-in?token=#{jwt}"
+    "#{Vaalit::Public::SITE_ADDRESS}/#/sign-in?token=#{URI.encode(jwt)}"
   end
 end

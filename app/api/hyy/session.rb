@@ -16,7 +16,7 @@ module HYY
       end
       desc 'Grant a JWT by verifying a sign-in link'
       post do
-        token = Token.new params[:token]
+        token = Token.new URI.decode(params[:token])
 
         if token.valid?
           present token, with: Entities::Token
