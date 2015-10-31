@@ -8,7 +8,7 @@ class Vote < ActiveRecord::Base
                         :election_id,
                         :voter_id
 
-  scope :by_election, -> (id) { where(election_id: id ).first }
+  scope :by_election, -> (id) { where(election_id: id ) }
 
   def self.update_or_create_by(opts)
     voter_id = opts[:voter_id]

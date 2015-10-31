@@ -50,7 +50,7 @@ module HYY
         namespace :vote do
           desc 'Get previously cast vote in election'
           get do
-            present @current_user.votes.by_election(params[:election_id]),
+            present @current_user.votes.by_election(params[:election_id]).first,
                     with: HYY::AE::Entities::Vote
           end
         end
