@@ -9,24 +9,37 @@ module HYY
 
   class Session < Grape::API
 
-    desc 'Send a sign-in link for the voter.'
-    post :token do
-      { response: "Link has been sent" }
-    end
+    namespace :sessions do
 
-    desc 'Grant a JWT by verifying a sign-in link'
-    post :sessions do
-      token = Token.new params[:token]
+      params do
+        requires :token, type: String, desc: 'JWT token from session link'
+      end
+      desc 'Grant a JWT by verifying a sign-in link'
+      post do
+        token = Token.new params[:token]
 
-      if token.valid?
-        present token, with: Entities::Token
-      else
-        status :forbidden
-        response = { error: "invalid token" }
+        if token.valid?
+          present token, with: Entities::Token
+        else
+          error!("Invalid sign-in token", :forbidden)
+        end
       end
 
-      status :created
-      response
+      params do
+        requires :email, type: String, desc: 'Email where the sign-in link will be sent'
+      end
+      desc 'Send a sign-in link for the voter.'
+      post :link do
+        session_link = SessionLink.new email: params[:email]
+
+        if session_link.deliver
+          { response: "Link has been sent" }
+        else
+          error!("Could not generate sign-in link", :unprocessable_entity)
+        end
+      end
+
     end
+
   end
 end
