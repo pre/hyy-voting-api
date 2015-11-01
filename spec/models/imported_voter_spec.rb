@@ -8,31 +8,23 @@ RSpec.describe ImportedVoter, type: :model do
       <?xml version="1.0" encoding="utf-8" ?>
       <ROWDATA>
         <ROW>
-          <HTUNNUS>123456789A</HTUNNUS>
-          <ONUMERO>987654321</ONUMERO>
-          <NIMI>Riippala Laura R              </NIMI>
-          <ALOITUSV>2001</ALOITUSV>
-          <OKATTAV>4 </OKATTAV>
-          <lisa>    </lisa>
-          <TIEDEK>H30</TIEDEK>
-          <HLO>1234567</HLO>
-          <OPINOIK>12345678</OPINOIK>
-          <SAHKPOSTOSOI>laura.riippala@example.com</SAHKPOSTOSOI>
-          <MATKPUH>0500 123123</MATKPUH>
+          <hetu>123456789A</hetu>
+          <opiskelijanro>987654321</opiskelijanro>
+          <nimi>Riippala Laura R              </nimi>
+          <tiedekunta>H30</tiedekunta>
+          <laitos>H523</laitos>
+          <s_posti>laura.riippala@example.com</s_posti>
+          <puhelin>0500 123123</puhelin>
         </ROW>
 
         <ROW>
-          <HTUNNUS>123456789A</HTUNNUS>
-          <ONUMERO>987654321</ONUMERO>
-          <NIMI>Toinen Kaura P              </NIMI>
-          <ALOITUSV>2002</ALOITUSV>
-          <OKATTAV>5 </OKATTAV>
-          <lisa>    </lisa>
-          <TIEDEK>H40</TIEDEK>
-          <HLO>1234555</HLO>
-          <OPINOIK>12345666</OPINOIK>
-          <SAHKPOSTOSOI></SAHKPOSTOSOI>
-          <MATKPUH>0400121212</MATKPUH>
+          <hetu>987654321B</hetu>
+          <opiskelijanro>987654321</opiskelijanro>
+          <nimi>Toinen Kaura P</nimi>
+          <tiedekunta>H40</tiedekunta>
+          <laitos>H432</laitos>
+          <s_posti></s_posti>
+          <puhelin>0400121212</puhelin>
         </ROW>
       </ROWDATA>
       '
@@ -51,9 +43,8 @@ RSpec.describe ImportedVoter, type: :model do
       expect(imported_voter.ssn).to eq("123456789A")
       expect(imported_voter.student_number).to eq("987654321")
       expect(imported_voter.faculty_code).to eq("H30")
+      expect(imported_voter.department_code).to eq("H523")
       expect(imported_voter.phone).to eq("0500 123123")
-      expect(imported_voter.extent_of_studies).to eq("4")
-      expect(imported_voter.start_year).to eq("2001")
 
     end
 

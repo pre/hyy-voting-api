@@ -7,9 +7,8 @@ class ImportedVoter
                 :ssn,
                 :student_number,
                 :faculty_code,
-                :phone,
-                :extent_of_studies,
-                :start_year
+                :department_code,
+                :phone
 
   def self.build_from(xml_voter)
     imported = new
@@ -22,14 +21,13 @@ class ImportedVoter
   def convert(xml_voter)
     @xml = xml_voter
 
-    @email             = value 'SAHKPOSTOSOI'
-    @name              = value 'NIMI'
-    @ssn               = value 'HTUNNUS'
-    @student_number    = value 'ONUMERO'
-    @faculty_code      = value 'TIEDEK'
-    @phone             = value 'MATKPUH'
-    @extent_of_studies = value 'OKATTAV'
-    @start_year        = value 'ALOITUSV'
+    @email             = value 's_posti'
+    @name              = value 'nimi'
+    @ssn               = value 'hetu'
+    @student_number    = value 'opiskelijanro'
+    @faculty_code      = value 'tiedekunta'
+    @department_code   = value 'laitos'
+    @phone             = value 'puhelin'
   end
 
   private
