@@ -1,9 +1,17 @@
 module HYY
 
   module Entities
+    class User < Grape::Entity
+      expose :voter_id
+      expose :email
+    end
+  end
+
+  module Entities
     class Token < Grape::Entity
       expose :jwt
       expose :elections, using: HYY::AE::Entities::Election
+      expose :user, using: HYY::Entities::User
     end
   end
 
