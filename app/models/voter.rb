@@ -8,18 +8,17 @@ class Voter < ActiveRecord::Base
 
   validates_presence_of :name,
                         :ssn,
-                        :student_number,
                         :faculty,
                         :department
 
-  validates_uniqueness_of :ssn,
-                          :student_number
+  validates_uniqueness_of :ssn
+  validates_uniqueness_of :student_number, allow_nil: true
 
   validates_uniqueness_of :email, allow_nil: true
 
   validates_length_of :name, :minimum => 4
   validates_length_of :ssn, :minimum => 6
-  validates_length_of :student_number, :minimum => 6
+  validates_length_of :student_number, :minimum => 6, allow_nil: true
 
   def self.create_from!(imported_voter)
     create!(
@@ -28,8 +27,6 @@ class Voter < ActiveRecord::Base
         :name              => imported_voter.name,
         :email             => imported_voter.email,
         :phone             => imported_voter.phone,
-        :start_year        => imported_voter.start_year,
-        :extent_of_studies => imported_voter.extent_of_studies,
         :faculty           => Faculty.find_by_code!(imported_voter.faculty_code),
         :department        => Department.first # TODO: Get actual departments
     )

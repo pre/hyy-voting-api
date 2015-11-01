@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101093726) do
+ActiveRecord::Schema.define(version: 20151101094909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20151101093726) do
     t.datetime "updated_at",        null: false
     t.integer  "faculty_id",        null: false
     t.string   "ssn",               null: false
-    t.string   "student_number",    null: false
+    t.string   "student_number"
     t.integer  "start_year"
     t.integer  "extent_of_studies"
     t.string   "phone"
@@ -115,7 +115,6 @@ ActiveRecord::Schema.define(version: 20151101093726) do
 
   add_index "voters", ["email"], name: "index_voters_on_email", using: :btree
   add_index "voters", ["ssn"], name: "index_voters_on_ssn", unique: true, using: :btree
-  add_index "voters", ["student_number"], name: "index_voters_on_student_number", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "voter_id",     null: false
