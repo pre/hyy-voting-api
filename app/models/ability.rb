@@ -22,6 +22,10 @@ class Ability
     if voting_active?
       can :access, :votes
     end
+
+    can :access, Election do |election|
+      user.elections.any? { |e| e.id == election.id }
+    end
   end
 
   def signin_active?

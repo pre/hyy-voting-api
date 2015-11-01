@@ -32,6 +32,8 @@ class Voter < ActiveRecord::Base
     )
   end
 
+  # This is a plain array. An SQL union would require a Gem since
+  # ActiveRecord does not support combining scopes with OR by default.
   def elections
     faculty_elections + department_elections
   end

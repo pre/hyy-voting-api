@@ -47,6 +47,16 @@ module HYY
 
       route_param :election_id do
 
+        before do
+          @election = Election.find params[:election_id]
+
+          if cannot? :access, @election
+            error!(
+              "User #{@current_user.id} does not have access to election #{params[:election_id]}",
+              :unauthorized)
+          end
+        end
+
         namespace :vote do
           desc 'Get previously cast vote in election'
           get do
