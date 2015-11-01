@@ -28,7 +28,7 @@ class Voter < ActiveRecord::Base
         :email             => imported_voter.email,
         :phone             => imported_voter.phone,
         :faculty           => Faculty.find_by_code!(imported_voter.faculty_code),
-        :department        => Department.first # TODO: Get actual departments
+        :department        => Department.find_by_code!(imported_voter.department_code)
     )
   end
 
