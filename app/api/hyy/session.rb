@@ -9,6 +9,14 @@ module HYY
 
   class Session < Grape::API
 
+    before do
+      begin
+        authorize! :access, :sessions
+      rescue CanCan::AccessDenied => exception
+        error!("Unauthorized: #{exception.message}", :unauthorized)
+      end
+    end
+
     namespace :sessions do
 
       params do

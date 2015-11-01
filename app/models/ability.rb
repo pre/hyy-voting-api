@@ -11,7 +11,26 @@ class Ability
   end
 
   def voter(user)
-    can :access, :elections
+    if signin_active? || voting_active?
+      can :access, :elections
+    end
+
+    if signin_active?
+      can :access, :sessions
+    end
+
+    if voting_active?
+      can :access, :votes
+    end
+  end
+
+  def signin_active?
+    Vaalit::Config::SIGNIN_STARTS_AT <= Time.now &&
+      Time.now <= Vaalit::Config::SIGNIN_ENDS_AT
+  end
+
+  def voting_active?
+    Time.now < Vaalit::Config::SIGNIN_ENDS_AT + Vaalit::Config::VOTING_GRACE_PERIOD_MINUTES
   end
 
   private

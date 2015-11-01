@@ -73,6 +73,10 @@ module HYY
           route_param :candidate_id do
             desc 'Cast a vote for a candidate or update previous vote (idempotent action)'
             post :vote do
+              if cannot? :access, :votes
+                error!({ message: 'Voting has ended' }, :unauthorized)
+              end
+
               vote = Vote.update_or_create_by voter_id: @current_user.id,
                                               election_id: params[:election_id],
                                               candidate_id: params[:candidate_id]
