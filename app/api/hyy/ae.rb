@@ -4,7 +4,14 @@ module HYY
     before do
       @current_user = get_current_user headers
 
-      error!('Unauthorized', 401) unless @current_user
+      error!('Unauthorized', :unauthorized) unless @current_user
+
+      begin
+        authorize! :access, :elections
+      rescue CanCan::AccessDenied => exception
+        error!("Unauthorized: #{exception.message}", :unauthorized)
+      end
+
     end
 
     mount HYY::AE::Ping
