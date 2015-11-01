@@ -19,7 +19,7 @@ gem 'nokogiri'
 # Active Admin
 gem 'activeadmin', '~> 1.0.0.pre2' # N.B. pre-release! needed for Rails 4
 gem 'devise'
-gem 'cancancan'
+gem 'cancancan', '~> 1.10'
 gem 'draper'
 gem 'pundit'
 

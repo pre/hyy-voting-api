@@ -8,4 +8,10 @@ module Vaalit
     EXTERNAL_INFO_PHONE = ENV.fetch('EXTERNAL_INFO_PHONE')
   end
 
+  module Config
+    SIGNIN_STARTS_AT             = Time.parse ENV.fetch('SIGNIN_STARTS_AT')
+    SIGNIN_ENDS_AT               = Time.parse ENV.fetch('SIGNIN_ENDS_AT')
+    VOTING_GRACE_PERIOD_MINUTES  = ENV.fetch('VOTING_GRACE_PERIOD_MINUTES').to_i.minutes
+  end
+
 end
