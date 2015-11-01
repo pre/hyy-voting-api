@@ -1,5 +1,5 @@
 FactoryGirl.define do  factory :admin_user do
-    
+
   end
 
 
@@ -15,7 +15,6 @@ FactoryGirl.define do  factory :admin_user do
   factory :faculty do
     sequence(:name) {|n| "Faculty #{n}"}
     sequence(:code) {|n| "F#{n}"}
-    sequence(:abbr) {|n| "#{n}"}
   end
 
   factory :department do

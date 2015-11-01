@@ -4,4 +4,5 @@ class Department < ActiveRecord::Base
   belongs_to :faculty
 
   validates_uniqueness_of :code
+  validates_presence_of :faculty
 end
