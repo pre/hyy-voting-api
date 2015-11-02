@@ -2,6 +2,8 @@
 
 ## Setup
 
+`git submodule update --init`
+
 `bundle install`
 
 Configure `.env` (see `.env.example`)
