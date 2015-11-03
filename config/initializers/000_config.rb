@@ -12,6 +12,7 @@ module Vaalit
     SIGNIN_STARTS_AT             = Time.parse ENV.fetch('SIGNIN_STARTS_AT')
     SIGNIN_ENDS_AT               = Time.parse ENV.fetch('SIGNIN_ENDS_AT')
     VOTING_GRACE_PERIOD_MINUTES  = ENV.fetch('VOTING_GRACE_PERIOD_MINUTES').to_i.minutes
+    MAIL_BCC_ADDRESS             = ENV.fetch('MAIL_BCC_ADDRESS')
   end
 
 end
