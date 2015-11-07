@@ -1,19 +1,6 @@
 module HYY
 
   module AE::Entities
-    class Election < Grape::Entity
-      expose :id
-      expose :type
-      expose :name
-      expose :faculty_id
-      expose :department_id
-
-      expose :alliances
-      expose :candidates
-    end
-  end
-
-  module AE::Entities
     class Candidate < Grape::Entity
       expose :id
       expose :alliance_id
@@ -41,7 +28,28 @@ module HYY
     end
   end
 
+  module AE::Entities
+    class Election < Grape::Entity
+      expose :id
+      expose :type
+      expose :name
+      expose :faculty_id
+      expose :department_id
+
+      expose :alliances, using: AE::Entities::Alliance
+      expose :candidates, using: AE::Entities::Candidate
+    end
+  end
+
   class AE::Elections < Grape::API
+
+    before do
+      begin
+        authorize! :access, :elections
+      rescue CanCan::AccessDenied => exception
+        error!({ message: "Unauthorized: #{exception.message}" }, :unauthorized)
+      end
+    end
 
     namespace :elections do
 
@@ -52,7 +60,7 @@ module HYY
 
           if cannot? :access, @election
             error!(
-              "User #{@current_user.id} does not have access to election #{params[:election_id]}",
+              { message: "User #{@current_user.id} does not have access to election #{params[:election_id]}" },
               :unauthorized)
           end
         end

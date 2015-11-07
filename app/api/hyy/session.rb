@@ -5,12 +5,33 @@ module HYY
       expose :voter_id
       expose :email
     end
+
+    class Faculty < Grape::Entity
+      expose :name
+      expose :code
+    end
+
+    class Department < Grape::Entity
+      expose :name
+      expose :code
+    end
+
+    class Voter < Grape::Entity
+      expose :name
+      expose :email
+      expose :phone
+      expose :faculty, using: Entities::Faculty
+      expose :department, using: Entities::Department
+    end
   end
 
   module Entities
     class Token < Grape::Entity
       expose :jwt
-      expose :elections, using: HYY::AE::Entities::Election
+      expose :elections,
+        using: HYY::AE::Entities::Election,
+        if: lambda { |token, opts| RuntimeConfig.voting_active? }
+      expose :voter, using: HYY::Entities::Voter
       expose :user, using: HYY::Entities::User
     end
   end

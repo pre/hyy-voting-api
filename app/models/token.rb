@@ -10,6 +10,8 @@ class Token
   # { voter_id: id, email: email@example.com }
   attr_accessor :user
 
+  attr_accessor :voter
+
   validates_presence_of :payload
 
   # Decodes a JWT Token
@@ -32,7 +34,8 @@ class Token
       return
     end
 
-    voter = Voter.find_by_email payload # TODO get according to token and do not crash if inexistant
+    self.voter = Voter.find_by_email! payload
+
     self.user = {
       voter_id: voter.id,
       email: voter.email

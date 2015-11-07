@@ -13,7 +13,9 @@ class API < Grape::API
     end
   end
 
+  # Public endpoints
   mount HYY::Session
 
+  # Everything is protected under Administration Election
   mount HYY::AE
 end
