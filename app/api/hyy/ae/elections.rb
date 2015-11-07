@@ -1,19 +1,6 @@
 module HYY
 
   module AE::Entities
-    class Election < Grape::Entity
-      expose :id
-      expose :type
-      expose :name
-      expose :faculty_id
-      expose :department_id
-
-      expose :alliances
-      expose :candidates
-    end
-  end
-
-  module AE::Entities
     class Candidate < Grape::Entity
       expose :id
       expose :alliance_id
@@ -37,6 +24,19 @@ module HYY
       expose :name
       expose :faculty_id
       expose :department_id
+      expose :candidates, using: AE::Entities::Candidate
+    end
+  end
+
+  module AE::Entities
+    class Election < Grape::Entity
+      expose :id
+      expose :type
+      expose :name
+      expose :faculty_id
+      expose :department_id
+
+      expose :alliances, using: AE::Entities::Alliance
       expose :candidates, using: AE::Entities::Candidate
     end
   end
