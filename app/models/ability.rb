@@ -29,12 +29,12 @@ class Ability
   end
 
   def signin_active?
-    Vaalit::Config::SIGNIN_STARTS_AT <= Time.now &&
-      Time.now <= Vaalit::Config::SIGNIN_ENDS_AT
+    Vaalit::Config::VOTE_SIGNIN_STARTS_AT <= Time.now &&
+      Time.now <= Vaalit::Config::VOTE_SIGNIN_ENDS_AT
   end
 
   def voting_active?
-    Time.now < Vaalit::Config::SIGNIN_ENDS_AT + Vaalit::Config::VOTING_GRACE_PERIOD_MINUTES
+    Time.now < Vaalit::Config::VOTE_SIGNIN_ENDS_AT + Vaalit::Config::VOTING_GRACE_PERIOD_MINUTES
   end
 
   private
