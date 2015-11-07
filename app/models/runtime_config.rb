@@ -14,8 +14,13 @@ class RuntimeConfig
       now <= Vaalit::Config::VOTE_SIGNIN_ENDS_AT
   end
 
+  # Allow a grace period to submit votes.
+  # Only for users who have signed in before the sign in ended.
   def self.voting_active?
-    Time.now < Vaalit::Config::VOTE_SIGNIN_ENDS_AT + Vaalit::Config::VOTING_GRACE_PERIOD_MINUTES
+    now = Time.now
+
+    Vaalit::Config::VOTE_SIGNIN_STARTS_AT <= now &&
+      Time.now <= Vaalit::Config::VOTE_SIGNIN_ENDS_AT + Vaalit::Config::VOTING_GRACE_PERIOD_MINUTES
   end
 
 end
