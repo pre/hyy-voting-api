@@ -43,6 +43,14 @@ module HYY
 
   class AE::Elections < Grape::API
 
+    before do
+      begin
+        authorize! :access, :elections
+      rescue CanCan::AccessDenied => exception
+        error!({ message: "Unauthorized: #{exception.message}" }, :unauthorized)
+      end
+    end
+
     namespace :elections do
 
       route_param :election_id do
@@ -52,7 +60,7 @@ module HYY
 
           if cannot? :access, @election
             error!(
-              "User #{@current_user.id} does not have access to election #{params[:election_id]}",
+              { message: "User #{@current_user.id} does not have access to election #{params[:election_id]}" },
               :unauthorized)
           end
         end

@@ -11,30 +11,23 @@ class Ability
   end
 
   def voter(user)
-    if signin_active? || voting_active?
+    can :access, :ae_namespace
+
+    if RuntimeConfig.vote_signin_active? || RuntimeConfig.voting_active?
       can :access, :elections
     end
 
-    if signin_active?
+    if RuntimeConfig.vote_signin_active? || RuntimeConfig.eligibility_signin_active?
       can :access, :sessions
     end
 
-    if voting_active?
+    if RuntimeConfig.voting_active?
       can :access, :votes
     end
 
     can :access, Election do |election|
       user.elections.any? { |e| e.id == election.id }
     end
-  end
-
-  def signin_active?
-    Vaalit::Config::VOTE_SIGNIN_STARTS_AT <= Time.now &&
-      Time.now <= Vaalit::Config::VOTE_SIGNIN_ENDS_AT
-  end
-
-  def voting_active?
-    Time.now < Vaalit::Config::VOTE_SIGNIN_ENDS_AT + Vaalit::Config::VOTING_GRACE_PERIOD_MINUTES
   end
 
   private
