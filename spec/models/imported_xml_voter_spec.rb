@@ -24,7 +24,7 @@ RSpec.describe ImportedXmlVoter, type: :model do
           <tiedekunta>H40</tiedekunta>
           <laitos>H432</laitos>
           <s_posti></s_posti>
-          <puhelin>0400121212</puhelin>
+          <puhelin></puhelin>
         </ROW>
       </ROWDATA>
       '
@@ -55,6 +55,7 @@ RSpec.describe ImportedXmlVoter, type: :model do
       imported_voter = ImportedXmlVoter.build_from(xml_voter)
 
       expect(imported_voter.email).to be_nil
+      expect(imported_voter.phone).to be_nil
     end
   end
 end
