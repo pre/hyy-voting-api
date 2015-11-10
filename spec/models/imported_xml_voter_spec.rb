@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ImportedVoter, type: :model do
+RSpec.describe ImportedXmlVoter, type: :model do
   describe "Creation" do
 
     before(:all) do
@@ -24,7 +24,7 @@ RSpec.describe ImportedVoter, type: :model do
           <tiedekunta>H40</tiedekunta>
           <laitos>H432</laitos>
           <s_posti></s_posti>
-          <puhelin>0400121212</puhelin>
+          <puhelin></puhelin>
         </ROW>
       </ROWDATA>
       '
@@ -36,7 +36,7 @@ RSpec.describe ImportedVoter, type: :model do
 
       xml_voter = @doc.xpath("//ROW").first
 
-      imported_voter = ImportedVoter.build_from(xml_voter)
+      imported_voter = ImportedXmlVoter.build_from(xml_voter)
 
       expect(imported_voter.email).to eq("laura.riippala@example.com")
       expect(imported_voter.name).to eq("Riippala Laura R")
@@ -52,9 +52,10 @@ RSpec.describe ImportedVoter, type: :model do
 
       xml_voter = @doc.xpath("//ROW")[1]
 
-      imported_voter = ImportedVoter.build_from(xml_voter)
+      imported_voter = ImportedXmlVoter.build_from(xml_voter)
 
       expect(imported_voter.email).to be_nil
+      expect(imported_voter.phone).to be_nil
     end
   end
 end
