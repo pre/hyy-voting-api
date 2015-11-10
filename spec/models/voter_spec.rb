@@ -3,7 +3,7 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe Voter, type: :model do
-  describe "from an Imported Voter" do
+  describe "from an Imported Voter (any type)" do
 
     before(:each) do
       faculty_code = "H523"
@@ -33,8 +33,8 @@ RSpec.describe Voter, type: :model do
       expect(voter.name).to eq("Purhonen Pekka J P")
       expect(voter.ssn).to eq("010283-1234")
       expect(voter.student_number).to eq("0123456789")
-      expect(voter.faculty.code).to eq("fail")
-      expect(voter.department.code).to eq("fail")
+      expect(voter.faculty.code).to eq("H523")
+      expect(voter.department.code).to eq("H50")
       expect(voter.phone).to eq("0500 123123")
     end
   end
