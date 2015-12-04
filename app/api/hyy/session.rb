@@ -72,7 +72,12 @@ module HYY
         if session_link.valid? && session_link.deliver
           { response: "Link has been sent" }
         else
-          error!("Could not generate sign-in link: #{session_link.errors[:email]}", :unprocessable_entity)
+          error!(
+            {
+              message: "Could not generate sign-in link: #{session_link.errors[:email].first}",
+              key: session_link.errors[:email_error_key].first
+            },
+            :unprocessable_entity)
         end
       end
 

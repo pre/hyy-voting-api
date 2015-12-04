@@ -20,6 +20,7 @@ class SessionLink
   def voter_exists?
     if voter.blank?
       errors.add(:email, "Given email doesn't have any elections")
+      errors.add(:email_error_key, ".not_eligible_in_any_election")
       return false
     end
 
