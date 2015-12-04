@@ -36,6 +36,8 @@ class Candidate < ActiveRecord::Base
       .all
   end
 
+  # FIXME: Scope by election. Currently treats all candidates as members
+  #        of the same election.
   def self.give_numbers!
     self.transaction do
       self.update_all :candidate_number => 0

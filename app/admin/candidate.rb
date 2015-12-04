@@ -5,11 +5,12 @@ ActiveAdmin.register Candidate do
     Candidate.new.attributes.keys
   end
 
-  action_item :index do
-    link_to 'Jaa ehdokasnumerot',
-            give_numbers_admin_candidates_path,
-            :confirm => 'Jaetaanko ehdokasnumerot?'
-  end
+  # TODO: Scope by election (currently treats all candidates as members of one election)
+  # action_item :index do
+  #   link_to 'Jaa ehdokasnumerot',
+  #           give_numbers_admin_candidates_path,
+  #           :confirm => 'Jaetaanko ehdokasnumerot?'
+  # end
 
   collection_action :give_numbers do
     if Candidate.give_numbers!
