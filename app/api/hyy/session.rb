@@ -42,7 +42,12 @@ module HYY
       begin
         authorize! :access, :sessions
       rescue CanCan::AccessDenied => exception
-        error!("Unauthorized: #{exception.message}", :unauthorized)
+        error!(
+          {
+            message: "Unauthorized: #{exception.message}",
+            key: ".session_creation_not_permitted"
+          },
+          :unauthorized)
       end
     end
 
