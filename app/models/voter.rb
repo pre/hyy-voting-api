@@ -32,6 +32,20 @@ class Voter < ActiveRecord::Base
     )
   end
 
+  def self.find_by_email(email)
+    where("lower(email) = ?", email.downcase).first
+  end
+
+  def self.find_by_email!(email)
+    voter = find_by_email(email)
+
+    if voter.nil?
+      raise ActiveRecord::RecordNotFound.new "Couldn't find Voter by email '#{email}' (incasesensitive)"
+    end
+
+    voter
+  end
+
   # This is a plain array. An SQL union would require a Gem since
   # ActiveRecord does not support combining scopes with OR by default.
   def elections

@@ -5,6 +5,8 @@ class Token
   attr_accessor :token
 
   # Payload of the JWT token from sign-in link
+  # Format:
+  # ["email@example.com", {"typ"=>"JWT", "alg"=>"HS256"}]
   attr_accessor :payload
 
   # { voter_id: id, email: email@example.com }
@@ -26,15 +28,14 @@ class Token
 
   def initialize(token)
     self.token = token
-
-    payload = Token.decode(token)
+    self.payload = Token.decode(token)
 
     if payload.nil?
       errors.add(:token, "Invalid token")
       return
     end
 
-    self.voter = Voter.find_by_email! payload
+    self.voter = Voter.find_by_email! payload.first
 
     self.user = {
       voter_id: voter.id,
