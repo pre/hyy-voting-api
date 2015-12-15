@@ -13,3 +13,10 @@ rake db:seed:faculties
 ## Run
 
 `rails s`
+
+## Heroku
+
+### Dump database
+
+pg_dump -d $(heroku config:get DATABASE_URL --app hyy-vaalit) -c -O -f dump.sql
+psql -d hyy_api_development -f dump.sql
