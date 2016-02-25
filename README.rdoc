@@ -8,7 +8,12 @@
 
 Configure `.env` (see `.env.example`)
 
-rake db:seed:faculties
+~~~
+rake db:create
+rake db:schema:load
+rake db:seed:base
+rake db:seed
+~~~
 
 ## Run
 
