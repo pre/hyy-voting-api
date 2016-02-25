@@ -2,7 +2,7 @@ class Alliance < ActiveRecord::Base
   include RankedModel
   ranks :numbering_order
 
-  has_many :candidates
+  has_many :candidates, -> { order(candidate_number: :asc) }
 
   belongs_to :election
   belongs_to :faculty
@@ -20,6 +20,9 @@ class Alliance < ActiveRecord::Base
     message: 'Either faculty or department is required.'
   }
 
-  scope :by_election, -> (id) { where(election_id: id ) }
+  scope :by_election, -> (id) {
+    where(election_id: id)
+      .reorder(:numbering_order)
+  }
 
 end

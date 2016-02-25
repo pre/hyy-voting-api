@@ -1,6 +1,8 @@
 class Election < ActiveRecord::Base
   has_many :votes
-  has_many :alliances
+
+  has_many :alliances, -> { order(numbering_order: :asc) }
+
   has_many :candidates, through: :alliances
 
   belongs_to :faculty
