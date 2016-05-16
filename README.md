@@ -19,6 +19,10 @@ rake db:seed
 
 `rails s`
 
+## List API endpoints:
+
+`rake routes`
+
 ## Heroku
 
 ### Dump database
