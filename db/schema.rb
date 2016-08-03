@@ -78,9 +78,8 @@ ActiveRecord::Schema.define(version: 20151102102733) do
     t.integer  "faculty_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_departments_on_code", unique: true, using: :btree
   end
-
-  add_index "departments", ["code"], name: "index_departments_on_code", unique: true, using: :btree
 
   create_table "elections", force: :cascade do |t|
     t.string   "name",          null: false
@@ -95,9 +94,8 @@ ActiveRecord::Schema.define(version: 20151102102733) do
     t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_faculties_on_code", unique: true, using: :btree
   end
-
-  add_index "faculties", ["code"], name: "index_faculties_on_code", unique: true, using: :btree
 
   create_table "voters", force: :cascade do |t|
     t.string   "name",              null: false
@@ -111,10 +109,9 @@ ActiveRecord::Schema.define(version: 20151102102733) do
     t.integer  "extent_of_studies"
     t.string   "phone"
     t.integer  "department_id"
+    t.index ["email"], name: "index_voters_on_email", using: :btree
+    t.index ["ssn"], name: "index_voters_on_ssn", unique: true, using: :btree
   end
-
-  add_index "voters", ["email"], name: "index_voters_on_email", using: :btree
-  add_index "voters", ["ssn"], name: "index_voters_on_ssn", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "voter_id",     null: false
@@ -122,9 +119,8 @@ ActiveRecord::Schema.define(version: 20151102102733) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "election_id",  null: false
+    t.index ["voter_id", "election_id"], name: "index_votes_on_voter_id_and_election_id", unique: true, using: :btree
   end
-
-  add_index "votes", ["voter_id", "election_id"], name: "index_votes_on_voter_id_and_election_id", unique: true, using: :btree
 
   add_foreign_key "alliances", "departments"
   add_foreign_key "alliances", "elections"
