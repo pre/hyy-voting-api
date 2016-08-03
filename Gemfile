@@ -15,14 +15,9 @@ gem 'puma', '~> 3.0' # application server
 gem 'grape'
 gem 'grape-entity'
 gem 'nokogiri'
-#
-# # Active Admin
-# gem 'activeadmin' #, '~> 1.0.0.pre2' # N.B. pre-release! needed for Rails 4
-# gem 'devise'
+
 gem 'cancancan' #, '~> 1.10'
-# gem 'draper'
-# gem 'pundit'
-#
+
 gem 'ranked-model'
 #
 # # Disable the security feature of strong_params at the model layer,
