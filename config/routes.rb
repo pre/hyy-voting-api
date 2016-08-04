@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   # Grape API in app/api/
   mount API => '/'
 
+  mount Haka::Engine, at: "/haka"
+
 end

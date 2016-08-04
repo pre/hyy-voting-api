@@ -6,12 +6,6 @@ gem 'rails', '~> 5.0'
 
 gem 'puma', '~> 3.0' # application server
 
-# gem 'sass-rails', '~> 5.0'
-# gem 'uglifier', '>= 1.3.0'
-# gem 'coffee-rails', '~> 4.1.0'
-# gem 'jbuilder', '~> 2.0'
-# gem 'sdoc', '~> 0.4.0', group: :doc
-
 gem 'grape'
 gem 'grape-entity'
 gem 'nokogiri'
@@ -19,7 +13,7 @@ gem 'nokogiri'
 gem 'cancancan' #, '~> 1.10'
 
 gem 'ranked-model'
-#
+
 # # Disable the security feature of strong_params at the model layer,
 # # use Grape's own params validation instead.
 # gem 'hashie-forbidden_attributes'
@@ -32,6 +26,8 @@ gem 'pry-rails'
 gem 'rollbar'
 gem 'oj' # Rollbar suggestion for JSON serialization if not using JRuby
 gem 'rails_12factor'
+
+gem 'haka', path: 'engines/haka' # CSC Haka sign in
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -66,3 +66,6 @@ Run tests once (provide filename to run an individual test):
   `curl -X POST -H "Content-Type: application/json" http://localhost:3000/api/sessions/link -d '{"email": "testi.pekkanen@example.com" }'`
 
 * There's a test helper Requests::JsonHelpers which will automatically `JSON.parse(response.body)`
+
+* Create a new Rails Engine:
+`rails plugin new engines/ENGINE_NAME --mountable --api --dummy-path=spec/dummy --skip-test-unit`
