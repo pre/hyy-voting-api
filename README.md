@@ -19,6 +19,11 @@ Configure `.env`
 * `cp .env.example .env`
 
 Setup dev database:
+
+Quick:
+`rake db:runts`
+
+Manual:
 ~~~
 rake db:create
 rake db:schema:load
