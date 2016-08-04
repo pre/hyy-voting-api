@@ -6,9 +6,10 @@ class Token
 
   # Payload of the JWT token from sign-in link
   # Format:
-  # ["email@example.com", {"typ"=>"JWT", "alg"=>"HS256"}]
+  # [{"email"=>"testi.pekkanen@example.com"}, {"typ"=>"JWT", "alg"=>"HS256"}]
   attr_accessor :payload
 
+  # Format:
   # { voter_id: id, email: email@example.com }
   attr_accessor :user
 
@@ -35,7 +36,7 @@ class Token
       return
     end
 
-    self.voter = Voter.find_by_email! payload.first
+    self.voter = Voter.find_by_email! payload.first["email"]
 
     self.user = {
       voter_id: voter.id,
