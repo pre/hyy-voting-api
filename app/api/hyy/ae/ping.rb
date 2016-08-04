@@ -1,7 +1,7 @@
 module HYY
 
     class AE::Ping < Grape::API
-      desc 'Returns pong.'
+      desc 'Returns authorized pong.'
       get :ping do
         {
           ping: params[:pong] || 'pong',

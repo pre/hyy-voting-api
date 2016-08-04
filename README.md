@@ -51,7 +51,18 @@ pg_dump -d $(heroku config:get DATABASE_URL --app hyy-vaalit) -c -O -f dump.sql
 psql -d hyy_api_development -f dump.sql
 
 
+## Testing
+
+Run tests and Watch changes:
+`guard`
+
+Run tests once (provide filename to run an individual test):
+`rspec`
+
+
 ## Tips
 
 * Get a JWT token:
   `curl -X POST -H "Content-Type: application/json" http://localhost:3000/api/sessions/link -d '{"email": "testi.pekkanen@example.com" }'`
+
+* There's a test helper Requests::JsonHelpers which will automatically `JSON.parse(response.body)`

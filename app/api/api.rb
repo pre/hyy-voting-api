@@ -18,4 +18,6 @@ class API < Grape::API
 
   # Everything is protected under Administration Election
   mount HYY::AE
+
+  mount Edari::Public
 end
