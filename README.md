@@ -40,7 +40,8 @@ testi.pekkanen@example.com
 
 ## List API endpoints:
 
-`rake routes`
+Rails routes: `rake routes`
+API Routes: `rake grape:routes`
 
 ## Heroku
 

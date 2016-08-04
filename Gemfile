@@ -52,6 +52,9 @@ group :development do
   gem 'rubocop', require: false
 
   gem "letter_opener", :group => :development # open a sent email browser
+
+  gem 'grape_on_rails_routes' # display grape routes: `rake grape:routes`
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
