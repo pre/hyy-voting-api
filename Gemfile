@@ -30,7 +30,7 @@ gem 'jwt'
 gem 'pry-rails'
 
 gem 'rollbar'
-gem 'oj', '~> 2.12.14' # Rollbar suggestion for JSON serialization if not using JRuby
+gem 'oj' # Rollbar suggestion for JSON serialization if not using JRuby
 gem 'rails_12factor'
 
 group :development, :test do
