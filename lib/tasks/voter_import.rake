@@ -1,3 +1,5 @@
+require 'csv'
+
 namespace :voters do
 
   namespace :import do
