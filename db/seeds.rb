@@ -116,6 +116,3 @@ Candidate.create!(
   candidate_number: 7,
   numbering_order: 7
 )
-
-
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
