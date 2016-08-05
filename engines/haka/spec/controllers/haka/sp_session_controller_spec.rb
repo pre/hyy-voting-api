@@ -10,16 +10,11 @@ module Haka
         get :new
 
         expect(response).to be_redirect
-        expect(response).to redirect_to(Haka::Config::SAML_IDP_SSO_TARGET_URL)
+
+        match_site_address = Regexp.new(Regexp.escape(Haka::Config::SAML_IDP_SSO_TARGET_URL))
+        expect(response).to redirect_to(match_site_address)
       end
     end
 
-    describe "GET consume" do
-      it "gets consume" do
-        get :consume
-
-        expect(response).to redirect_to("http://SUCCESS.URL.HERE")
-      end
-    end
   end
 end
