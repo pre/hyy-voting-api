@@ -15,6 +15,7 @@ module Vaalit
     ELIGIBILITY_SIGNIN_ENDS_AT   = Time.parse ENV.fetch('ELIGIBILITY_SIGNIN_ENDS_AT')
     VOTING_GRACE_PERIOD_MINUTES  = ENV.fetch('VOTING_GRACE_PERIOD_MINUTES').to_i.minutes
     MAIL_BCC_ADDRESS             = ENV.fetch('MAIL_BCC_ADDRESS')
+    SESSION_JWT_EXPIRY_MINUTES   = ENV.fetch('SESSION_JWT_EXPIRY_MINUTES').to_i.minutes
   end
 
 end

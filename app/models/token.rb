@@ -1,3 +1,7 @@
+
+# TODO: This class is more like a "client session" instead of "token".
+# - Session API returns Entity `Token` having attrs elections, jwt, user, voter
+# based on this class.
 class Token
   include ExtendedPoroBehaviour
 
@@ -17,19 +21,9 @@ class Token
 
   validates_presence_of :payload
 
-  # Decodes a JWT Token
-  # Returns a token in array [payload, header]
-  def self.decode(jwt)
-    begin
-      return JWT.decode jwt, Rails.application.secrets.jwt_secret
-    rescue JWT::DecodeError
-      return nil
-    end
-  end
-
   def initialize(token)
     self.token = token
-    self.payload = Token.decode(token)
+    self.payload = JsonWebToken.decode(token)
 
     if payload.nil?
       errors.add(:token, "Invalid token")
@@ -54,11 +48,8 @@ class Token
     true
   end
 
-  # TODO: Add token expiry
   def jwt
-    JWT.encode user,
-               Rails.application.secrets.jwt_secret,
-               'HS256'
+    JsonWebToken.encode user
   end
 
   def elections

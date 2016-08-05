@@ -33,15 +33,10 @@ class SessionLink
 
   private
 
-  # TODO: Add token expiry
-  # TODO: Extract JWT class to lib/json_web_token.rb
   def jwt
     payload = { email: email }
 
-    JWT.encode payload,
-               Rails.application.secrets.jwt_secret,
-               'HS256'
-
+    JsonWebToken.encode payload
   end
 
   def url

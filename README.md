@@ -69,3 +69,6 @@ Run tests once (provide filename to run an individual test):
 
 * Create a new Rails Engine:
 `rails plugin new engines/ENGINE_NAME --mountable --api --dummy-path=spec/dummy --skip-test-unit`
+
+* SessionLink#deliver() will send email during HTTP request.
+  This could be made to happend in the background.
