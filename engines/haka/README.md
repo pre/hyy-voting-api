@@ -1,28 +1,15 @@
 # Haka
 Short description and motivation.
 
-## Usage
-How to use my plugin.
+## Testing
 
-## Installation
-Add this line to your application's Gemfile:
+* Install Firefox
+* Install [Geckodriver](https://github.com/mozilla/geckodriver/releases)
 
-```ruby
-gem 'haka'
-```
 
-And then execute:
-```bash
-$ bundle
-```
+## Tips
 
-Or install it yourself as:
-```bash
-$ gem install haka
-```
+* All Gemfile dependencies must be explicitly required in `lib/haka/engine.rb`.
 
-## Contributing
-Contribution directions go here.
-
-## License
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+* Error with Capybara tests: "unable to obtain stable firefox connection in 60 seconds (127.0.0.1:7055)"
+  * Update Selenium, Firefox or Geckodriver so that the combination of their versions works.

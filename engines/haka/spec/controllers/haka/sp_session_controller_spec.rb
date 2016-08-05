@@ -10,7 +10,7 @@ module Haka
         get :new
 
         expect(response).to be_redirect
-        expect(response).to redirect_to("http://IDP.URL.HERE")
+        expect(response).to redirect_to(Haka::Config::SAML_IDP_SSO_TARGET_URL)
       end
     end
 

@@ -10,6 +10,15 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-# To use a debugger
-gem 'byebug', group: [:development, :test]
-gem 'guard-rspec', group: [:development, :test]
+
+group :development, :test do
+  gem 'byebug'
+  gem 'guard-rspec'
+  gem 'capybara'
+  gem 'selenium-webdriver', '3.0.0.beta2.1'
+  gem 'dotenv-rails'
+
+  gem "rspec-rails"
+  gem 'factory_girl_rails'
+  gem 'sqlite3'
+end
