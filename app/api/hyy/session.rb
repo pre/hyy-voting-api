@@ -26,7 +26,7 @@ module HYY
   end
 
   module Entities
-    class Token < Grape::Entity
+    class SessionToken < Grape::Entity
       expose :jwt
       expose :elections,
         using: HYY::AE::Entities::Election,
@@ -58,10 +58,12 @@ module HYY
       end
       desc 'Grant a JWT by verifying a sign-in link'
       post do
-        token = Token.new URI.decode(params[:token])
+        session_token = EmailTokenProcessor
+                          .new(URI.decode(params[:token]))
+                          .session_token
 
-        if token.valid?
-          present token, with: Entities::Token
+        if session_token.valid?
+          present session_token, with: Entities::SessionToken
         else
           error!("Invalid sign-in token", :forbidden)
         end
