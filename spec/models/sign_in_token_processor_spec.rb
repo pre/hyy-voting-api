@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe EmailTokenProcessor, type: :model do
-  context "sign in from an email link" do
+RSpec.describe SignInTokenProcessor, type: :model do
+  context "sign in from an existing JWT (from email link or after Haka auth)" do
 
     before do
       @example_email = "email@example.com"
@@ -17,7 +17,7 @@ RSpec.describe EmailTokenProcessor, type: :model do
     end
 
     it "creates a valid session token" do
-      token = EmailTokenProcessor.new @jwt
+      token = SignInTokenProcessor.new @jwt
 
       expect(token).to be_valid
       expect(token.session_token.user.voter.email).to eq(@example_email)

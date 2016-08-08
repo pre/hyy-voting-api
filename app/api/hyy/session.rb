@@ -56,9 +56,9 @@ module HYY
       params do
         requires :token, type: String, desc: 'JWT token from session link'
       end
-      desc 'Grant a JWT by verifying a sign-in link'
+      desc 'Grant a new session JWT by verifying a sign-in link'
       post do
-        session_token = EmailTokenProcessor
+        session_token = SignInTokenProcessor
                           .new(URI.decode(params[:token]))
                           .session_token
 

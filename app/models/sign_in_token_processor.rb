@@ -1,20 +1,22 @@
-# Processses the JWT token which is emailed to the user in the sign in link.
+# Processses the JWT token which is
+# a) emailed to the user in the sign in link, or
+# b) created when the user completes the Haka authentication.
+#
 # Provides the JWT token for API calls in @session_token.
 #
-# Future work:
-# JWT token in the sign in link could use a different secret than the actual API
-# access token. Currently the JWT token in the sign in link can be also used to
-# access the API.
-class EmailTokenProcessor
+# Sign in token is separate from the SessionToken. This allows independent
+# expiry time for session JWT (stored in browser's SessionStorage) and
+# sign in JWT (emailed to user or created after Haka auth).
+class SignInTokenProcessor
 
   # SessionToken provides the JWT token to be used for API access by the user.
   attr_reader :session_token
 
-  # Create a new Session Token according to the JWT which was delivered
-  # to the user in the email link.
+  # Create a new Session Token to be used by the user to access the API.
+  # A new JWT is generated in order to get a fresh expiry time.
   #
   # Params:
-  # jwt => JWT Token from the emailed link
+  # jwt => JWT Token from the emailed link or Haka authentication
   def initialize(jwt)
     @session_token = SessionToken.new Voter.find_by_email! get_email(jwt)
   end
@@ -30,7 +32,7 @@ class EmailTokenProcessor
       @session_token && @session_token.valid?
     end
 
-    # Retrieve email fro mthe payload of the JWT token which was given in
+    # Retrieve email from the payload of the JWT token which was given in
     # the emailed sign-in link.
     #
     # Format:

@@ -1,10 +1,9 @@
 module Haka
-  class VoterUser
-    attr_reader :voter,
-                :student_number
+  class Person
+    attr_reader :voter
 
     def initialize(raw_student_number)
-      @student_number = parse_student_number raw_student_number
+      student_number = parse_student_number raw_student_number
 
       @voter = find_voter student_number
     end
