@@ -11,12 +11,25 @@ FactoryGirl.define do
 
   factory :faculty do
     sequence(:name) {|n| "Faculty #{n}"}
-    sequence(:code) {|n| "F#{n}"}
+    sequence(:code) {|n| "#{Faker::Code.imei}#{n}"}
   end
 
   factory :department do
-    name "Test Department"
-    code "D1"
-    faculty_id 1
+    sequence(:name) {|n| "Test Department #{n}"}
+    sequence(:code) {|n| "#{Faker::Code.imei}#{n}"}
+
+    faculty
   end
+
+  factory :voter do
+    sequence(:name) {|n| "Testi Voter #{n}"}
+    sequence(:email) {|n| "testi.voter#{n}@example.com"}
+    sequence(:student_number, 123456700) {|n| n}
+    sequence(:ssn, 1000) {|n| "121280-#{n}"}
+
+    faculty
+    department
+  end
+
+
 end

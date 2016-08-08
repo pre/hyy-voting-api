@@ -28,6 +28,13 @@ module Haka
 
         session_token = SessionToken.new person.voter
 
+        # FIXME: This Blocks Capybara tests!
+        # This must redirect_to the current environment's frontend.
+        # Development: localhost:3000
+        # Tests: localhost:3999
+        # Prod: whatever
+        # + Angular needs to know which environment is wanted.
+        #
         redirect_to "http://localhost:9000/#/sign-in?token=#{session_token.jwt}"
         #render text: "GREAT SUCCESS! VoterUser: #{h voter_user.inspect} - raw_student_number: #{h raw_student_number} <br> attrs: '#{h response.attributes.inspect}'"
       else

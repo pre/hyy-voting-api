@@ -37,6 +37,10 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'selenium-webdriver', '3.0.0.beta2.1'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development do
