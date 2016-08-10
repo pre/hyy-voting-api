@@ -32,10 +32,12 @@ class Voter < ActiveRecord::Base
     )
   end
 
+  # In-case-sensitive search
   def self.find_by_email(email)
     where("lower(email) = ?", email.downcase).first
   end
 
+  # In-case-sensitive search
   def self.find_by_email!(email)
     voter = find_by_email(email)
 

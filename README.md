@@ -53,6 +53,9 @@ psql -d hyy_api_development -f dump.sql
 
 ## Testing
 
+* Install Firefox
+* Install [Geckodriver](https://github.com/mozilla/geckodriver/releases)
+
 Run tests and Watch changes:
 `guard`
 
@@ -66,3 +69,12 @@ Run tests once (provide filename to run an individual test):
   `curl -X POST -H "Content-Type: application/json" http://localhost:3000/api/sessions/link -d '{"email": "testi.pekkanen@example.com" }'`
 
 * There's a test helper Requests::JsonHelpers which will automatically `JSON.parse(response.body)`
+
+* Create a new Rails Engine:
+`rails plugin new engines/ENGINE_NAME --mountable --api --dummy-path=spec/dummy --skip-test-unit`
+
+* SessionLink#deliver() will send email during HTTP request.
+  This could be made to happend in the background.
+
+* Error with Capybara tests: "unable to obtain stable firefox connection in 60 seconds (127.0.0.1:7055)"
+  - Update Selenium, Firefox or Geckodriver so that the combination of their versions works.
