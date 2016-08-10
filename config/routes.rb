@@ -1,9 +1,17 @@
+# List routes:
+#   rake routes
+#   rake grape:routes
+#
 Rails.application.routes.draw do
-  # See how all your routes lay out with "rake routes".
 
   # Grape API in app/api/
   mount API => '/'
 
-  mount Haka::Engine, at: "/haka"
+  # SAML Authentication from the Haka federation
+  namespace :haka do
+    get 'auth/new'
+    get 'auth/consume'
+    post 'auth/consume'
+  end
 
 end

@@ -27,7 +27,7 @@ gem 'rollbar'
 gem 'oj' # Rollbar suggestion for JSON serialization if not using JRuby
 gem 'rails_12factor'
 
-gem 'haka', path: 'engines/haka' # CSC Haka sign in
+gem 'ruby-saml' # Haka authentication
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

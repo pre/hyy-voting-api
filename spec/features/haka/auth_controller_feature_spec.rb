@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 module Haka
-  describe "SpSessionController", :type => :feature do
+  describe "AuthController", :type => :feature do
     context "sign in process" do
       before :each do
         @voter = FactoryGirl.create :voter
       end
 
       it "signs me in" do
-        visit '/haka/sp_session/new'
+        visit '/haka/auth/new'
 
         within("form") do
           fill_in 'Email', :with => "#{@voter.student_number}@example.com"
@@ -17,7 +17,7 @@ module Haka
 
         click_button 'Sign in'
 
-        expect(page).to have_content 'GREAT SUCCESS!'
+        expect(page).to have_content 'Sinulla ei ole äänioikeutta yhteenkään vaaliin.' # TODO
       end
     end
   end

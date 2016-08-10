@@ -53,6 +53,9 @@ psql -d hyy_api_development -f dump.sql
 
 ## Testing
 
+* Install Firefox
+* Install [Geckodriver](https://github.com/mozilla/geckodriver/releases)
+
 Run tests and Watch changes:
 `guard`
 
@@ -72,3 +75,6 @@ Run tests once (provide filename to run an individual test):
 
 * SessionLink#deliver() will send email during HTTP request.
   This could be made to happend in the background.
+
+* Error with Capybara tests: "unable to obtain stable firefox connection in 60 seconds (127.0.0.1:7055)"
+  - Update Selenium, Firefox or Geckodriver so that the combination of their versions works.
