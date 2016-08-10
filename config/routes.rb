@@ -4,6 +4,9 @@
 #
 Rails.application.routes.draw do
 
+  # Frontend's environment, see also: `config/frontend_environment.js.erb`
+  get '/_environment.js', to: 'public#environment'
+
   # Grape API in app/api/
   mount API => '/'
 

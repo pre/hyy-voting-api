@@ -1,0 +1,42 @@
+<%# Provide the runtime configuration for the Frontend.
+  # Settings in this file will be used in production and in any environment
+  # where Frontend is loaded from the compiled `dist/` folder.
+  #
+  # This file is referred by `/_environment.js` in Frontend, so Frontend
+  # doesn't in fact even know who provides it.
+  #
+  # Whenever you make changes to the structure of this file, make sure you
+  # reflect the changes in Frontend `app/scripts/_environment.js`.
+%>
+
+var _VAALIT = {
+  api: {
+    baseUrl: '<%= Vaalit::Frontend::API_BASE_URL %>',
+  },
+
+  rollbar: {
+    accessToken: '<%= Vaalit::Frontend::ROLLBAR_ACCESS_TOKEN %>',
+    environment: '<%= Vaalit::Frontend::ROLLBAR_ENVIRONMENT %>',
+  },
+
+  google: {
+    analytics: {
+      id: '<%= Vaalit::Frontend::GOOGLE_ANALYTICS_ID %>',
+    },
+  },
+
+  voting: {
+    signIn: {
+      startsAt: '<%= Vaalit::Config::VOTE_SIGNIN_STARTS_AT %>',
+      endsAt: '<%= Vaalit::Config::VOTE_SIGNIN_ENDS_AT %>',
+    },
+  },
+
+  eligibility: {
+    signIn: {
+      startsAt: '<%= Vaalit::Config::ELIGIBILITY_SIGNIN_STARTS_AT %>',
+      endsAt: '<%= Vaalit::Config::ELIGIBILITY_SIGNIN_ENDS_AT %>',
+    },
+  },
+
+};
