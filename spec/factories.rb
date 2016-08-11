@@ -1,5 +1,11 @@
 FactoryGirl.define do
 
+  factory :coalition do
+    sequence(:name) {|n| "Coalition #{n}"}
+    sequence(:short_name) {|n| "C#{n}"}
+    sequence(:numbering_order) {|n| n }
+  end
+
   factory :election do
     sequence(:name) {|n| "Vaali #{n}"}
 
