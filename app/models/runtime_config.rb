@@ -1,3 +1,5 @@
+# Dynamic configuration which changes during the runtime.
+# For static configuration, see `config/initializers/000_config.rb`
 class RuntimeConfig
 
   def self.eligibility_signin_active?

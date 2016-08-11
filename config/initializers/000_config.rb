@@ -1,3 +1,5 @@
+# Start-time configuration which does not change during the runtime.
+# For dynamic configuration, see `app/models/runtime_config.rb`
 module Vaalit
 
   module Public
