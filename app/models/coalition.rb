@@ -7,6 +7,4 @@ class Coalition < ApplicationRecord
   validates_presence_of :name,
                         :short_name
 
-  # scope :by_numbering_order, order("#{table_name}.numbering_order")
-
 end

@@ -2,10 +2,6 @@
 namespace :db do
 
   namespace :seed do
-    desc 'groups (coalitions and alliances)'
-    task :edari => :environment do
-      Rake::Task['db:seed:edari:coalitions_and_alliances'].invoke()
-    end
 
     namespace :edari do
 
