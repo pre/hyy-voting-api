@@ -56,11 +56,14 @@ psql -d hyy_api_development -f dump.sql
 * Install Firefox
 * Install [Geckodriver](https://github.com/mozilla/geckodriver/releases)
 
-Run tests and Watch changes:
+* Run tests and Watch changes:
 `guard`
 
-Run tests once (provide filename to run an individual test):
+* Run tests once (provide filename to run an individual test):
 `rspec`
+
+* You may run a specific test using `focus: true` in the test description.
+  - You can also use aliases `fit`, `fcontext` and `fdescribe` respectively.
 
 
 ## Tips
