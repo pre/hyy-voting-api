@@ -34,6 +34,8 @@ class Voter < ActiveRecord::Base
 
   # In-case-sensitive search
   def self.find_by_email(email)
+    return nil if email.blank?
+
     where("lower(email) = ?", email.downcase).first
   end
 

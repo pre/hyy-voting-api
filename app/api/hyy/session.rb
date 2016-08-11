@@ -58,12 +58,10 @@ module HYY
       end
       desc 'Grant a new session JWT by verifying a sign-in link'
       post do
-        session_token = SignInTokenProcessor
-                          .new(URI.decode(params[:token]))
-                          .session_token
+        processor = SignInTokenProcessor.new URI.decode(params[:token])
 
-        if session_token.valid?
-          present session_token, with: Entities::SessionToken
+        if processor.valid? && processor.session_token.valid?
+          present processor.session_token, with: Entities::SessionToken
         else
           error!("Invalid sign-in token", :forbidden)
         end

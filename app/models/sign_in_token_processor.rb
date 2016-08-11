@@ -9,8 +9,7 @@
 # sign in JWT (emailed to user or created after Haka auth).
 class SignInTokenProcessor
 
-  # SessionToken provides the JWT token to be used for API access by the user.
-  attr_reader :session_token
+  include ExtendedPoroBehaviour
 
   # Create a new Session Token to be used by the user to access the API.
   # A new JWT is generated in order to get a fresh expiry time.
@@ -18,18 +17,27 @@ class SignInTokenProcessor
   # Params:
   # jwt => JWT Token from the emailed link or Haka authentication
   def initialize(jwt)
-    @session_token = SessionToken.new Voter.find_by_email! get_email(jwt)
+    @email = get_email(jwt)
+    @session_token = nil
   end
 
   def valid?
     validate()
   end
 
+  # SessionToken provides the JWT token to be used for API access by the user.
+  def session_token
+    @session_token ||= SessionToken.new Voter.find_by_email! @email
+  rescue ActiveRecord::RecordNotFound => e
+    errors.add(:session_token, e.message)
+    nil
+  end
+
   protected
   begin
 
     def validate
-      @session_token && @session_token.valid?
+      @errors.blank? && session_token() && session_token().valid?
     end
 
     # Retrieve email from the payload of the JWT token which was given in
@@ -41,7 +49,7 @@ class SignInTokenProcessor
       payload = JsonWebToken.decode jwt_from_email
 
       if payload.nil?
-        errors.add(:session_token, "Invalid source JWT token in the email link")
+        errors.add(:source_token, "Invalid source JWT token in the email link")
         return
       end
 

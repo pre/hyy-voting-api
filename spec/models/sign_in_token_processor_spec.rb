@@ -17,11 +17,21 @@ RSpec.describe SignInTokenProcessor, type: :model do
     end
 
     it "creates a valid session token" do
-      token = SignInTokenProcessor.new @jwt
+      processor = SignInTokenProcessor.new @jwt
 
-      expect(token).to be_valid
-      expect(token.session_token.user.voter.email).to eq(@example_email)
-      expect(token.session_token.user.voter.id).to eq(@voter_id)
+      expect(processor).to be_valid
+      expect(processor.session_token.user.voter.email).to eq(@example_email)
+      expect(processor.session_token.user.voter.id).to eq(@voter_id)
+    end
+
+  end
+
+  context "invalid source token" do
+    it "will fail validations" do
+      processor = SignInTokenProcessor.new "invalid_jwt"
+
+      expect(processor).not_to be_valid
+      expect(processor.errors[:source_token].first).to eq "Invalid source JWT token in the email link"
     end
 
   end

@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe Edari::Public do
 
   context 'get /api/pling' do
