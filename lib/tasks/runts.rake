@@ -5,7 +5,10 @@ namespace :db do
     Rake::Task['db:drop'].invoke()
     Rake::Task['db:create'].invoke()
     Rake::Task['db:schema:load'].invoke()
-    Rake::Task['db:seed:base'].invoke()
+    Rake::Task['db:seed:common'].invoke()
     Rake::Task['db:seed'].invoke()
+
+    puts "Database has been re-created with common seed data."
+    puts "Next: Seed Edari or Halloped data."
   end
 end
