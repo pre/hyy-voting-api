@@ -14,7 +14,7 @@ class Candidate < ActiveRecord::Base
                         :candidate_number
 
   validates_uniqueness_of :candidate_number,
-                          if: Proc.new { Vaalit::Config::IS_SINGLE_ELECTION }
+                          if: Proc.new { Vaalit::Config::IS_EDARI_ELECTION }
 
 
 end

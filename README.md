@@ -42,6 +42,12 @@ testi.pekkanen@example.com
 Rails routes: `rake routes`
 API Routes: `rake grape:routes`
 
+
+## Authorization
+
+Permissions to API endpoints is defined in `app/models/ability.rb`.
+
+
 ## Heroku
 
 ### Dump database

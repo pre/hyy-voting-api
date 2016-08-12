@@ -1,6 +1,6 @@
-module Edari
+module Vaalit
 
-  class Public < Grape::API
+  class Pling < Grape::API
     desc 'Returns public plong.'
     get :pling do
       {

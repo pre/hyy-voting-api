@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Edari::Public do
+describe Vaalit::Pling do
 
   context 'get /api/pling' do
     it 'returns plong' do

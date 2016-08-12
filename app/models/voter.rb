@@ -50,9 +50,15 @@ class Voter < ActiveRecord::Base
     voter
   end
 
-  # This is a plain array. An SQL union would require a Gem since
-  # ActiveRecord does not support combining scopes with OR by default.
+  # List of elections which current user can access
   def elections
-    faculty_elections + department_elections
+    if Vaalit::Config::IS_EDARI_ELECTION
+      [Election.first]
+    else
+      # This is a plain array. An SQL union would require a Gem since
+      # ActiveRecord does not support combining scopes with OR by default.
+      faculty_elections + department_elections
+    end
   end
+
 end

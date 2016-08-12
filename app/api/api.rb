@@ -2,22 +2,27 @@ class API < Grape::API
   prefix 'api'
   format :json
 
-  helpers HYY::JwtHelpers
+  helpers Vaalit::JwtHelpers
 
   helpers do
     include CanCan::ControllerAdditions
 
-    # Monkey patch: use @current_user
+    # Monkey patch to use @current_user
     def current_ability
       @current_ability ||= ::Ability.new(@current_user)
     end
   end
 
-  # Public endpoints
-  mount HYY::Session
+  if Vaalit::Config::IS_HALLOPED_ELECTION
+    mount HYY::AE # Authorized
+  end
 
-  # Everything is protected under Administration Election
-  mount HYY::AE
+  if Vaalit::Config::IS_EDARI_ELECTION
+    mount Vaalit::Edari # Authorized
+  end
 
-  mount Edari::Public
+  # Shared between Edari and Halloped
+  mount Vaalit::Pling   # Public
+  mount Vaalit::Session # Public
+
 end

@@ -62,6 +62,10 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(rails.view_dirs)     { |m| rspec.spec.call("features/#{m[1]}") }
   watch(rails.layouts)       { |m| rspec.spec.call("features/#{m[1]}") }
 
+  # Grape API
+  # Test could be matched with { |m| "spec/requests/#{m[1]}_spec.rb"}
+  watch(%r{^app/api/(.+).rb$}) { 'spec/requests'}
+
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
