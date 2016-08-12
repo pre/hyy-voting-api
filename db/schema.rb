@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811131957) do
+ActiveRecord::Schema.define(version: 20160812111316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 20160811131957) do
     t.integer  "alliance_id",      null: false
     t.string   "firstname",        null: false
     t.string   "lastname",         null: false
-    t.string   "spare_firstname"
-    t.string   "spare_lastname"
     t.string   "ssn"
     t.integer  "candidate_number"
     t.string   "candidate_name"

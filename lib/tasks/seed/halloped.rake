@@ -26,6 +26,7 @@ namespace :db do
           name: "Kauppiaat",
           election: Election.first,
           faculty: Faculty.first,
+          short_name: "kauppi",
           numbering_order: 1
         )
 
@@ -33,8 +34,7 @@ namespace :db do
           alliance: Alliance.first,
           firstname: "Ikea",
           lastname: "Kassi",
-          spare_firstname: "Vahva",
-          spare_lastname: "Kangas",
+          candidate_name: "Ikea Kassi (Vahva Kangas)",
           ssn: "123456789A",
           candidate_number: 2,
           numbering_order: 2
@@ -44,8 +44,7 @@ namespace :db do
           alliance: Alliance.first,
           firstname: "S-Market",
           lastname: "Etukortti",
-          spare_firstname: "Vihreä",
-          spare_lastname: "Muovi",
+          candidate_name: "S-Market Etukortti (Vihreä Muovi)",
           ssn: "123456710A",
           candidate_number: 3,
           numbering_order: 3
@@ -55,8 +54,7 @@ namespace :db do
           alliance: Alliance.first,
           firstname: "Kesko",
           lastname: "Plussa",
-          spare_firstname: "Etu",
-          spare_lastname: "Seteli",
+          candidate_name: "Kesko Plussa (Etu Seteli)",
           ssn: "123456711A",
           candidate_number: 4,
           numbering_order: 4
@@ -64,6 +62,7 @@ namespace :db do
 
         Alliance.create!(
           name: "Asiakkaat",
+          short_name: "asiak",
           election: Election.first,
           faculty: Faculty.first,
           numbering_order: 2
@@ -73,8 +72,7 @@ namespace :db do
           alliance: Alliance.last,
           firstname: "Seppo",
           lastname: "Suomalainen",
-          spare_firstname: "Sami",
-          spare_lastname: "Salaperäinen",
+          candidate_name: "Seppo Suomalainen (Sami Salaperäinen)",
           ssn: "223456789A",
           candidate_number: 5,
           numbering_order: 5
@@ -84,8 +82,7 @@ namespace :db do
           alliance: Alliance.last,
           firstname: "Marja",
           lastname: "Puuro",
-          spare_firstname: "Puolukka",
-          spare_lastname: "Rahka",
+          candidate_name: "Marja Puuro (Puolukka Rahka)",
           ssn: "323456789A",
           candidate_number: 6,
           numbering_order: 6
@@ -95,8 +92,7 @@ namespace :db do
           alliance: Alliance.last,
           firstname: "Smultron",
           lastname: "Robotten",
-          spare_firstname: "Great",
-          spare_lastname: "Balance",
+          candidate_name: "Smultron Robotten (Great Balance)",
           ssn: "423456789A",
           candidate_number: 7,
           numbering_order: 7

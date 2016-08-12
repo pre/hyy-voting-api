@@ -6,8 +6,6 @@ module Vaalit
       expose :alliance_id
       expose :firstname
       expose :lastname
-      expose :spare_firstname
-      expose :spare_lastname
       expose :candidate_name,   :as => :name
       expose :candidate_number, :as => :number
     end
