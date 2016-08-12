@@ -1,0 +1,909 @@
+NRO,sukunimi,etunimet,ehdokasnimi,liitto
+2,Apajalahti,Ahto Aleksis,"Apajalahti, Ahto",Akateemiset piraatit
+3,Hanski,Joni Petteri,"Hanski, Joni",Akateemiset piraatit
+4,Mäkinen,Joonas Mikael,"Mäkinen, Joonas",Akateemiset piraatit
+5,Söderholm,Charlotta Mari,"Söderholm, Lotta",Akateemiset piraatit
+6,Toivanen,Anni Julia,"Toivanen, Julia",Tsemppi Group
+7,Liu,Tianyan,"Liu, Tianyan",Tsemppi Group
+8,Long,Feiran,"Long, Feiran",Tsemppi Group
+9,Bessonova,Anna,"Bessonova, Anna",Tsemppi Group
+10,Rasmussen,Søren Berg,"Rasmussen, Søren",Tsemppi Group
+11,Leinius,Johanna,"Leinius, Johanna",Tsemppi Group
+12,Gagné,Stéphanie,"Gagné, Stéphanie",Tsemppi Group
+13,Franchin,Alessandro,"Franchin, Alessandro",Tsemppi Group
+14,Helenius,Marja-Liisa,"Helenius, Marja-Liisa",Tsemppi Group
+15,Chenna,Naveen Kumay,"Chenna, Naveen",Tsemppi Group
+16,Arohi,Anupam,"Arohi, Anupam",Tsemppi Group
+17,Laster,Zachary Howell,"Laster, Zach",Tsemppi Group
+18,Diatlova,Anastasia,"Diatlova, Nastia",Tsemppi Group
+19,Hossain,Shakhawat,"Hossain, Shakhawat",Tsemppi Group
+20,Strickman,Rachel Jean,"Strickman, Rachel",Tsemppi Group
+21,Boldt,Hildur Merja Johanna,"Boldt, Hildur",Opiskelijademarit
+22,Eriksson-Bique,Sylvester Daniel,"Eriksson-Bique, Sylvester",Opiskelijademarit
+23,Erra,Martti Kaipia Johannes,"Erra, Johannes",Opiskelijademarit
+24,Iso-Lotila,Joona Risti Mikael,"Iso-Lotila, Joona",Opiskelijademarit
+25,Heinäluoma,Ida Anniina,"Heinäluoma, Ida",Opiskelijademarit
+26,Häkkinen,Anssi Ilari,"Häkkinen, Anssi",Opiskelijademarit
+27,Häkkinen,Juha Petteri,"Häkkinen, Juha",Opiskelijademarit
+28,Häkkinen,Satu-Maria,"Häkkinen, Satu-Maria",Opiskelijademarit
+29,Hytti,Simo Antti Juhani,"Hytti, Antti",Opiskelijademarit
+30,Jalava,Tuomas Joonatan,"Jalava, Tuomas",Opiskelijademarit
+31,Juntumaa,Inari Julia,"Juntumaa, Inari",Opiskelijademarit
+32,Kammonen,Veli Viljami Matias,"Kammonen, Viljami",Opiskelijademarit
+33,Korkeela,Tiina Tytti Unelma,"Korkeela, Tiina",Opiskelijademarit
+34,Kuisma,Jukka Kusti,"Kuisma, Jukka",Opiskelijademarit
+35,Laukia,Joonas Patrik Antero,"Laukia, Joonas",Opiskelijademarit
+36,Lehmijoki,Anna Marja,"Lehmijoki, Marja",Opiskelijademarit
+37,Lipponen,Päivi Elisa,"Lipponen, Elisa",Opiskelijademarit
+38,Lähdesmäki,Sini Pauliina,"Lähdesmäki, Sini",Opiskelijademarit
+39,Meltti,Sonia Margot,"Meltti, Sonia",Opiskelijademarit
+40,Muona,Marianne Kristiina,"Muona, Marianne",Opiskelijademarit
+41,Niemi,Matti Nestori,"Niemi, Matti",Opiskelijademarit
+42,Ortiz-Nieminen,Oscar Antonio,"Ortiz-Nieminen, Oscar",Opiskelijademarit
+43,Papunen,Erkki Tapani,"Papunen, Erkki",Opiskelijademarit
+44,Penny,Kaisa Emilia,"Penny, Kaisa",Opiskelijademarit
+45,Sauli,Mikko Juhani,"Sauli, Mikko",Opiskelijademarit
+46,Selinummi,Elisa Josefiina,"Selinummi, Elisa",Opiskelijademarit
+47,Sihto,Ville Matti Hjalmat,"Sihto, Ville",Opiskelijademarit
+48,Tuominen,Pekka Kalervo Johannes,"Tuominen, Pekka",Opiskelijademarit
+49,Vaara,Piia Liisa Marianne,"Vaara, Piia",Opiskelijademarit
+50,Välimäki,Heta Misteli,"Välimäki, Heta",Opiskelijademarit
+51,Wäänänen,Matti Lauri Oskari,"Wäänänen, Oskari",Opiskelijademarit
+52,Ylianttila,Anu Pauliina,"Ylianttila, Anu",Opiskelijademarit
+53,Aalto,Maria Josefina,"Aalto, Maria",Kokoomusopiskelijat 1
+54,Ahlman,Lotta Emilia,"Ahlman, Lotta",Kokoomusopiskelijat 1
+55,Ahonen,Antti Juhani,"Ahonen, Antti Juhani",Kokoomusopiskelijat 1
+56,Artjoki,Kaarlo Emil Artturi,"Artjoki, Emil ",Kokoomusopiskelijat 1
+57,Auvinen,Tuomas Aleksanteri Villenpoika,"Auvinen, Tuomas",Kokoomusopiskelijat 1
+58,Brand,Thomas Leo,"Brand, Thomas",Kokoomusopiskelijat 1
+59,Erämaja,Kari Markku Elias,"Erämaja, Elias",Kokoomusopiskelijat 1
+60,Fils,Helen Henrika,"Fils, Helen",Kokoomusopiskelijat 1
+61,Freyberg,Carl Henrik Ferdinand,"Freyberg, Carl",Kokoomusopiskelijat 1
+62,Haapala,Johanna Elisa,"Haapala, Johanna",Kokoomusopiskelijat 1
+63,Haapalehto,Eero Samuli,"Haapalehto, Eero",Kokoomusopiskelijat 1
+64,Hietanen,Ville Ilmari,"Hietanen, Ville I.",Kokoomusopiskelijat 1
+65,Holopainen,Lasse,"Holopainen, Lasse",Kokoomusopiskelijat 1
+66,Häkkänen,Antti Edvard,"Häkkänen, Antti",Kokoomusopiskelijat 1
+67,Hämäläinen,Harri Veikko Tapani,"Hämäläinen, Harri",Kokoomusopiskelijat 1
+68,Hämäläinen,Jani Antero,"Hämäläinen, Jani",Kokoomusopiskelijat 1
+69,Hämäläinen,Maisa-Leena Maria,"Hämäläinen, Maisa",Kokoomusopiskelijat 1
+70,Hämäläinen,Tuukka Santeri,"Hämäläinen, Tuukka",Kokoomusopiskelijat 1
+71,Härkönen,Miika Juhani,"Härkönen, Miika 'Härkönen'",Kokoomusopiskelijat 1
+72,Josefsson,Kim Henrik,"Josefsson, Kim",Kokoomusopiskelijat 1
+73,Juurinen,Paula-Maria Päivikki,"Juurinen, Paula",Kokoomusopiskelijat 1
+74,Jäntti,Maija Elina,"Jäntti, Maija",Kokoomusopiskelijat 1
+75,Kainulainen,Toni Juhani,"Kainulainen, Toni",Kokoomusopiskelijat 1
+76,Kaksonen,Kai-Verneri,"Kaksonen, Kai",Kokoomusopiskelijat 1
+77,Kangas,Tanja Marita,"Kangas, Tanja",Kokoomusopiskelijat 1
+78,Karppinen,Henriikka Vilhelmiina,"Karppinen, Henriikka",Kokoomusopiskelijat 1
+79,Keriö,Annika Emilia,"Keriö, Annika",Kokoomusopiskelijat 1
+80,Koivunen,Anna Emilia,"Koivunen, Anna",Kokoomusopiskelijat 1
+81,Kostamo,Lassi Juhani,"Kostamo, Lassi",Kokoomusopiskelijat 1
+82,Kozlov,Margarita,"Kozlov, Margarita",Kokoomusopiskelijat 1
+83,Kransman,Alex Peter,"Kransman, Alex",Kokoomusopiskelijat 1
+84,Kuitunen,Anita Birgitta,"Kuitunen, Anita",Kokoomusopiskelijat 1
+85,Kuusivuori,Jenni Ilona,"Kuusivuori, Jenni",Kokoomusopiskelijat 1
+86,Kymäläinen,Seppo Johannes,"Kymäläinen, Seppo",Kokoomusopiskelijat 1
+87,Lahtinen,Marika Pauliina,"Lahtinen, Marika",Kokoomusopiskelijat 1
+88,Lehtiniemi,Tero Juhani Henrik,"Lehtiniemi, Tero",Kokoomusopiskelijat 1
+89,Lehtola,Jussi Samuli,"Lehtola, Jussi",Kokoomusopiskelijat 1
+90,Leinonen,Pekka Sakari,"Leinonen, Pekka",Kokoomusopiskelijat 1
+91,Lindgren,Sampo Erkki Ilmari,"Lindgren, Sampo",Kokoomusopiskelijat 1
+92,Linnanvirta,Reima Jysky Petteri,"Linnanvirta, Reima",Kokoomusopiskelijat 1
+93,Lähdemäki,Irene Maria Eleonoora,"Lähdemäki, Irene",Kokoomusopiskelijat 1
+94,Majaniemi,Milla Maria,"Majaniemi, Milla",Kokoomusopiskelijat 1
+95,Matilainen,Pirkko Helena,"Matilainen, Helena",Kokoomusopiskelijat 1
+96,Mattila,Matti,"Mattila, Matti",Kokoomusopiskelijat 1
+97,Meriläinen,Jaakko Pekka,"Meriläinen, Jaakko",Kokoomusopiskelijat 1
+98,Merisaari,Lotta Karoliina,"Merisaari, Lotta",Kokoomusopiskelijat 1
+99,Metelinen,Sami Petteri,"Metelinen, Sami 'Johtaja'",Kokoomusopiskelijat 1
+100,Mustonen,Niilo Hjalmar,"Mustonen, Niilo",Kokoomusopiskelijat 1
+101,Mäkijärvi,Essi Marjaana,"Mäkijärvi, Essi",Kokoomusopiskelijat 1
+102,Mäkisalo,Aino,"Mäkisalo, Aino",Kokoomusopiskelijat 2
+103,Nisu,Timo Antti Juhani,"Nisu, Timo",Kokoomusopiskelijat 2
+104,Nurmela,Tuomas Lauri Johannes,"Nurmela, Tuomas",Kokoomusopiskelijat 2
+105,Oldroyd,Daniel,"Oldroyd, Daniel",Kokoomusopiskelijat 2
+106,Olenius,Lasse Erik Mikael,"Olenius, Mikael",Kokoomusopiskelijat 2
+107,Pihlajamaa,Juhana Elia Gabriel,"Pihlajamaa, Juhana",Kokoomusopiskelijat 2
+108,Pirhonen,Laura Anna Monika,"Pirhonen, Laura",Kokoomusopiskelijat 2
+109,Pohjankoski,Pekka Sakari,"Pohjankoski, Pekka",Kokoomusopiskelijat 2
+110,Poikonen,Jaakko Ilmari,"Poikonen, Jaakko",Kokoomusopiskelijat 2
+111,Poutiainen,Marika,"Poutiainen, Marika",Kokoomusopiskelijat 2
+112,Pulsa,Päivi Elina,"Pulsa, Päivi",Kokoomusopiskelijat 2
+113,Puukko,Sampo Sakari,"Puukko, Sampo",Kokoomusopiskelijat 2
+114,Puuska,Markus Juhani,"Puuska, Markus",Kokoomusopiskelijat 2
+115,Rantakari,Pekka Osmo Kalevi,"Rantakari, Pekka",Kokoomusopiskelijat 2
+116,Rautala,Heikki Jalmari,"Rautala, Heikki",Kokoomusopiskelijat 2
+117,Rautiainen,Anni Aino Maria,"Rautiainen, Anni",Kokoomusopiskelijat 2
+118,Rintala,Pekka,"Rintala, Pekka",Kokoomusopiskelijat 2
+119,Rydman,Arno Risto Johannes,"Rydman, Arno",Kokoomusopiskelijat 2
+120,Ryösä,Markku Olavi,"Ryösä, Markku",Kokoomusopiskelijat 2
+121,Sahamies,Laura Karoliina,"Sahamies, Laura",Kokoomusopiskelijat 2
+122,Sahamies,Miika Petteri,"Sahamies, Miika",Kokoomusopiskelijat 2
+123,Sahamies,Noora Eveliina,"Sahamies, Noora",Kokoomusopiskelijat 2
+124,Seikkula,Jani Artturi,"Seikkula, Jani",Kokoomusopiskelijat 2
+125,Siekkinen,Elisa Irina,"Siekkinen, Elisa",Kokoomusopiskelijat 2
+126,Siltanen,Aleksi Tapio,"Siltanen, Aleksi",Kokoomusopiskelijat 2
+127,Silvonen,Anne Pauliina,"Silvonen, Pauliina ",Kokoomusopiskelijat 2
+128,Suomela,Iida-Liina Timontytär,"Suomela, Iida ",Kokoomusopiskelijat 2
+129,Suominen,Osmo Matti Ensio,"Suominen, Osmo",Kokoomusopiskelijat 2
+130,Tarkkanen,Minni Emilia,"Tarkkanen, Minni",Kokoomusopiskelijat 2
+131,Tiainen,Jari Mikael,"Tiainen, Jari M. ",Kokoomusopiskelijat 2
+132,Tiensuu,Tuomas Mikael,"Tiensuu, Tuomas",Kokoomusopiskelijat 2
+133,Tirronen,Anna Elisa,"Tirronen, Anna",Kokoomusopiskelijat 2
+134,Toepfer,Johannes Lauri Tuomaanpoika,"Toepfer, Johannes",Kokoomusopiskelijat 2
+135,Tulenheimo,Pauliina Aija Elisa,"Tulenheimo, Pauliina",Kokoomusopiskelijat 2
+136,Tuohiniemi,Jussi Tapaninpoika,"Tuohiniemi, Jussi",Kokoomusopiskelijat 2
+137,Tähtinen,Mikko Ilmari,"Tähtinen, Mikko",Kokoomusopiskelijat 2
+138,Utti-Lankinen,Katja Kristiina,"Utti-Lankinen, Katja",Kokoomusopiskelijat 2
+139,Uuspelto,Vesa Pekka Sakari,"Uuspelto, Vesa",Kokoomusopiskelijat 2
+140,Vainio,Oona-Karita,"Vainio, Oona ",Kokoomusopiskelijat 2
+141,Vasaramäki,Ville Sakari,"Vasaramäki, Ville",Kokoomusopiskelijat 2
+142,Vedenpää,Ruut Heljä Marita,"Vedenpää, Ruut",Kokoomusopiskelijat 2
+143,Viholainen,Antti Timo Tapani,"Viholainen, Antti",Kokoomusopiskelijat 2
+144,Viitamäki,Pertti Mikael,"Viitamäki, Pertti",Kokoomusopiskelijat 2
+145,Viljamaa,Maija Matilda,"Viljamaa, Maija",Kokoomusopiskelijat 2
+146,Virén,Hanna Pauliina,"Virén, Hanna",Kokoomusopiskelijat 2
+147,Vuori,Timo Tapani,"Vuori, Timo",Kokoomusopiskelijat 2
+148,Vähäkuopus,Niko Mikael,"Vähäkuopus, Niko",Kokoomusopiskelijat 2
+149,Välisalmi,Satu Maria,"Välisalmi, Satu",Kokoomusopiskelijat 2
+150,Wilskman,Juho-Erik,"Wilskman, Juho",Kokoomusopiskelijat 2
+151,Acar,Ömer,"Acar, Ömer",Keskeiset
+152,Autelo,Asko Juhani,"Autelo, Asko",Keskeiset
+153,Eskelinen,Aleksi Eerikki,"Eskelinen, Aleksi",Keskeiset
+154,Eskelinen,Juha Markus,"Eskelinen, Juha",Keskeiset
+155,Hämäläinen,Jouko Asser,"Hämäläinen, Jouko",Keskeiset
+156,Kallio,Jaakko Johan Anttoni,"Kallio, Jaakko",Keskeiset
+157,Kallio,Laura Maria,"Kallio, Laura",Keskeiset
+158,Karhunen,Heli Maria,"Karhunen, Heli",Keskeiset
+159,Kinnunen,Teemu Matias,"Kinnunen, Teemu",Keskeiset
+160,Lahtinen,Anu Tuulia,"Lahtinen, Anu",Keskeiset
+161,Paukkeri,Susanna Elina,"Paukkeri, Susanna",Keskeiset
+162,Peltokangas,Kalle Matias,"Peltokangas, Kalle",Keskeiset
+163,Pihlaja,Kaisa Heleena,"Pihlaja, Kaisa",Keskeiset
+164,Ranki,Anna Elina,"Ranki, Anna",Keskeiset
+165,Saaristo,Olli Juhani,"Saaristo, Olli",Keskeiset
+166,Sivula,Mika Johannes,"Sivula, Mika",Keskeiset
+167,Vuorinen,Simo Antero,"Vuorinen, Simo",Keskeiset
+168,Ylimaa,Markus Matti Juhani,"Ylimaa, Markus",Keskeiset
+169,Forsberg,Andreas David,"Forsberg, Andreas 'Andy' ",KD Helsingin Opiskelijat
+170,Furu,Niklas Joakim,"Furu, Niklas",KD Helsingin Opiskelijat
+171,Garaisi,Tomas Fozi Johannes,"Garaisi, Tomas",KD Helsingin Opiskelijat
+172,Kaksonen,Marika Julie,"Kaksonen, Marika",KD Helsingin Opiskelijat
+173,Kyyhkynen,Suvianna,"Kyyhkynen, Suvianna",KD Helsingin Opiskelijat
+174,Kärmeranta,Hanna Riikka,"Kärmeranta, Hanna",KD Helsingin Opiskelijat
+175,Mikkonen,Tero Hannu Taneli,"Mikkonen, Tero",KD Helsingin Opiskelijat
+176,Pynnönen,Eerika Katariina,"Pynnönen, Eerika",KD Helsingin Opiskelijat
+177,Riihimäki,Ilkka Hannu Tapani,"Riihimäki, Ilkka",KD Helsingin Opiskelijat
+178,Salo,Tuomas Tapio,"Salo, Tuomas",KD Helsingin Opiskelijat
+179,Simonen,Iiris Isabella,"Simonen, Iiris",KD Helsingin Opiskelijat
+180,Starck,Leo Veli Mikael,"Starck, Leo",KD Helsingin Opiskelijat
+181,Tompuri,Pamela Teresa,"Tompuri, Pamela",KD Helsingin Opiskelijat
+182,Ventin,Sonja Maria,"Ventin, Sonja",KD Helsingin Opiskelijat
+183,Holmström,Jenny-Li Alexandra,"Holmström, Jenny-Li",Codex-Thorax
+184,Huldén,Rainer Alexis,"Huldén, Alexis",Codex-Thorax
+185,Kuhlefelt,Max Jasper,"Kuhlefelt, Jasper",Codex-Thorax
+186,Rantanen,Johanna Valdine,"Rantanen, Johanna",Codex-Thorax
+187,Tanskanen,Tuulia Kaijaliina,"Tanskanen, Tuulia",Codex-Thorax
+188,Törnblom,Petra Vanessa Helena,"Törnblom, Vanessa",Codex-Thorax
+189,Hildén,Erik Oscar Johannes,"Hildén, Oscar",Codex-Thorax
+190,Pipping,Hugo Adrian,"Pipping, Hugo",Codex-Thorax
+191,Finne,Jenny Ina,"Finne, Ina",Nationerna
+192,Finne,Marie Fredrika,"Finne, Marie 'Mojo'",Nationerna
+193,Forsskåhl,Kaj Oskar Petter,"Forsskåhl, Oskar",Nationerna
+194,Husberg,Ida Regina Katarina,"Husberg, Ida",Nationerna
+195,Kilpelä,Eliel Johan Sakari,"Kilpelä, Eliel",Nationerna
+196,Murto,Armi Helena,"Murto, Armi",Nationerna
+197,Scheinin,Elias Theodor,"Scheinin, Elias",Nationerna
+198,Engblom,Carl Ronny,"Engbom, Ronny",Nationerna
+199,Finnäs,Jens Anders,"Finnäs, Jens",Nationerna
+200,Knip,Sara Sofia Linnea,"Knip, Sara",Nationerna
+201,Smeds,Charlotta Anna Erika,"Smeds, Charlotta",Nationerna
+202,Sjölund,Carl Stefan Mikael,"Sjölund, Stefan",Nationerna
+203,Sundström,Kasper Nils Oskar,"Sundström, Kasper",Nationerna
+204,French,Jenny Maria,"French, Jenny",Nationerna
+205,Nordling,Emilia Elisabeth,"Nordling, Emilia",Nationerna
+206,Palmén,Anna-Pia Margareta,"Palmén, Anna-Pia",Nationerna
+207,Pirinen,Jani Ruben Rickard,"Pirinen, Jani",Nationerna
+208,Tallberg,Annette Margaretha,"Tallberg, Annette",Nationerna
+209,Andersson,Elin Elisabeth,"Andersson, Elin",StudOrg
+210,Haglund,Mia Maria Katrina,"Haglund, Mia",StudOrg
+211,Kyllönen,Rasmus Wilhelm,"Kyllönen, Rasmus",StudOrg
+212,Lindström,Anna Liselott,"Lindström, Liselott",StudOrg
+213,Metsämäki,Johanna Linnéa,"Metsämäki, Johanna",StudOrg
+214,Ringbom,Karin Elisabeth,"Ringbom, Karin",StudOrg
+215,Riska,Johannes Alfred,"Riska, Johannes",StudOrg
+216,Sjöholm,Peter Christoffer,"Sjöholm, Peter 'Poppe'",StudOrg
+217,Sundberg,Maj Brita,"Sundberg, Maj",StudOrg
+218,Tallqvist,John Henrik,"Tallqvist, John",StudOrg
+219,Uusikylä,Ulf Erik Julius,"Uusikylä, Julius",StudOrg
+220,Wikström,Joanna Daniela Henrika,"Wikström, Joanna",StudOrg
+221,Sandqvist,Oskar,"Sandqvist, Oskar",Ämnesföreningarna
+222,Granbohm,Henrika Laura Annina,"Granbohm, Henrika",Ämnesföreningarna
+223,Liesipohja,Susanna Birgitta,"Liesipohja, Susanna",Ämnesföreningarna
+224,Venäläinen,Annika Elisa,"Venäläinen, Annika",Ämnesföreningarna
+225,Andersson,Timo Tapio,"Andersson, Timo",Liberaalinen vaaliliitto - Yksilönvapauden puolesta
+226,Sjöström,Kim,"Sjöström, Kim",Liberaalinen vaaliliitto - Yksilönvapauden puolesta
+227,Vainio,Janne Mikael,"Vainio, Janne",Liberaalinen vaaliliitto - Yksilönvapauden puolesta
+228,Apter,Ted Daniel,"Apter, Ted",Pykälä
+229,Autio,Ilari Alvar,"Autio, Ilari",Pykälä
+230,Blåfield,Eero Antero,"Blåfield, Eero",Pykälä
+231,Giss,Heidi Maria Kristiina,"Giss, Heidi",Pykälä
+232,Granlund,Aarne Jouni,"Granlund, Aarne",Pykälä
+233,Hallikainen,Irene Mirjam,"Hallikainen, Irene",Pykälä
+234,Hokkanen,Minna Marianne,"Hokkanen, Minna",Pykälä
+235,Hytönen,Satu Eeva-Johanna,"Hytönen, Satu",Pykälä
+236,Kaakkola,Antti Julius,"Kaakkola, Antti",Pykälä
+237,Karvinen,Kiti Marjukka,"Karvinen, Kiti",Pykälä
+238,Keino,Iiris Niina Katariina,"Keino, Iiris",Pykälä
+239,Kerppola,Antti Johan,"Kerppola, Antti",Pykälä
+240,Komulainen,Elina Johanna,"Komulainen, Elina",Pykälä
+241,Kortesmaa,Kaisa Laura Irene,"Kortesmaa, Kaisa",Pykälä
+242,Koskentausta,Lauri Juhani,"Koskentausta, Lauri",Pykälä
+243,Kouhi,Markus Tapio,"Kouhi, Markus",Pykälä
+244,Kylmäniemi,Hanna Linnea,"Kylmäniemi, Hanna",Pykälä
+245,Kärki,Eero Antero,"Kärki, Eero",Pykälä
+246,Lahtinen,Alpo Olavi,"Lahtinen, Alpo",Pykälä
+247,Lassila,Samu Petteri,"Lassila, Samu",Pykälä
+248,Lehti,Isabella Annina,"Lehti, Isabella",Pykälä
+249,Lindholm,Kristiina Annukka,"Lindholm, Kristiina",Pykälä
+250,Linnankoski,Manuel Tähti,"Linnankoski, Manuel",Pykälä
+251,Markkanen,Otto,"Markkanen, Otto",Pykälä
+252,Mattila,Olli-Pekka Sakari,"Mattila, Olli-Pekka",Pykälä
+253,Merenmies,Matilda Aurora,"Merenmies, Matilda",Pykälä
+254,Metsämäki,Joonas Akseli,"Metsämäki, Joonas",Pykälä
+255,Muinonen,Kaisa Tellervo,"Muinonen, Kaisa",Pykälä
+256,Männistö,Johanna Maria,"Männistö, Johanna",Pykälä
+257,Nieminen,Tero Seppo Ilari,"Nieminen, Tero",Pykälä
+258,Paajanen,Panu Juhana,"Paajanen, Panu",Pykälä
+259,Paajanen,Sini Helena,"Paajanen, Sini",Pykälä
+260,Rehula,Tero Kalevi,"Rehula, Tero",Pykälä
+261,Rudanko,Mikko Jorma Johannes,"Rudanko, Mikko",Pykälä
+262,Rytkönen,Tuomas Erik Johannes,"Rytkönen, Tuomas",Pykälä
+263,Ryynänen,Kalle Elias Markunpoika,"Ryynänen, Kalle",Pykälä
+264,Salli,Saku Pekka,"Salli, Saku",Pykälä
+265,Salo,Jussi Jaakko Sakari,"Salo, Jussi",Pykälä
+266,Supperi,Iina-Mari,"Supperi, Iina-Mari",Pykälä
+267,Säteri,Johanna Maria,"Säteri, Johanna",Pykälä
+268,Termonen,Jon Emil,"Termonen, Jon",Pykälä
+269,Tuohimaa,Kiira Sofia,"Tuohimaa, Kiira",Pykälä
+270,Viljanen,Jesse Juhana,"Viljanen, Jesse",Pykälä
+271,Vilkko,Nelli Pauliina,"Vilkko, Nelli",Pykälä
+272,Ahmed,Haji Omar Abdirisak,"Ahmed, Abdirisak",LKS/HLKS
+273,Aspelund,Markus Aleksanteri,"Aspelund, Aleksanteri",LKS/HLKS
+274,Gogulski,Juha Daniel,"Gogulski, Juha",LKS/HLKS
+275,Kaprio,Tuomas Juho Arthur,"Kaprio, Tuomas",LKS/HLKS
+276,Koivunen,Riku-Jaakko,"Koivunen, Riku",LKS/HLKS
+277,Lommi,Markus Juhani,"Lommi, Markus",LKS/HLKS
+278,Rautiola,Juhana Aarni Kaleva,"Rautiola, Juhana",LKS/HLKS
+279,Salminen,Ville Sameli,"Salminen, Ville",LKS/HLKS
+280,Sipilä,Pyry Nestori,"Sipilä, Pyry",LKS/HLKS
+281,Suomalainen,Olli Pekka,"Suomalainen, Olli",LKS/HLKS
+282,Tamminen,Henni Tuulia,"Tamminen, Henni",LKS/HLKS
+283,Torkki,Matias Ilmari,"Torkki, Matias",LKS/HLKS
+284,Valle,Jussi Tapani,"Valle, Jussi",LKS/HLKS
+285,Vangelova,Velina,"Vangelova, Velina",LKS/HLKS
+286,Yoder,Käthe Susanna,"Yoder, Käthe",LKS/HLKS
+287,Bruce,Anne Pauliina,"Bruce, Anne",EKY
+288,von Freymann,Sebastian,"von Freymann, Sebastian",EKY
+289,Hakanen,Anni Kaarina,"Hakanen, Anni",EKY
+290,Helin,Henriikka,"Helin, Henriikka",EKY
+291,Hämäläinen,Karoliina Emilia,"Hämäläinen, Karoliina",EKY
+292,Immonen,Isa Anna Maria,"Immonen, Isa",EKY
+293,Jokinen,Olli Oskari,"Jokinen, Olli",EKY
+294,Kallio-Kujala,Ira Janika,"Kallio-Kujala, Ira",EKY
+295,Kiimamaa,Raisa Johanna Tuulia,"Kiimamaa, Raisa",EKY
+296,Kilpeläinen,Miika Antti Johannes,"Kilpeläinen, Miika",EKY
+297,Mäkelä,Anna-Leena,"Mäkelä, Anna-Leena",EKY
+298,Niinimäki,Heini Maria,"Niinimäki, Heini",EKY
+299,Riihimäki,Aino Marja,"Riihimäki, Aino",EKY
+300,Sivonen,Kaija Sofia,"Sivonen, Kaija",EKY
+301,Sukura,Okko Arttu Kalle,"Sukura, Okko",EKY
+302,Tuominen,Elli Orvokki,"Tuominen, Elli",EKY
+303,Grönroos,Simo Juhani,"Grönroos, Simo",Perussuomalainen vaaliliitto
+304,Nieminen,Marko Johannes,"Nieminen, Johannes",Perussuomalainen vaaliliitto
+305,Lahtinen,Teemu Ilkka Antero,"Lahtinen, Teemu",Perussuomalainen vaaliliitto
+306,Ahola,Riku Jussi,"Ahola, Riku",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+307,Alhojärvi,Lauri Väinö Johannes,"Alhojärvi, Lauri",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+308,Alhojärvi,Tuomo Veli Juhana,"Alhojärvi, Tuomo",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+309,Alvarez Gomez,Sebastian Joel,"Alvarez, Sebastian",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+310,Bennour,Nayer,"Bennour, Nayer",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+311,Bruun,Otto Einar,"Bruun, Otto",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+312,Eranti,Veikko Oskari,"Eranti, Veikko",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+313,Friman,Tuula Irene,"Friman, Tuula",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+314,Guillén,Jan Edgardo,"Guillén, Jan",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+315,Heinonen,Pijatta Maaria,"Heinonen, Pijatta",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+316,Heinonen,Tatu Elias,"Heinonen, Tatu",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+317,Häkkinen,Lari Valtteri,"Häkkinen, Lari",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+318,Hämäläinen,Anssi-Petteri,"Hämäläinen, Anssi",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+319,Immonen,Meri Katri Maria,"Immonen, Katri",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+320,Iso-Markku,Antti Juho,"Iso-Markku, Antti",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+321,Iso-Markku,Outi Maarit,"Iso-Markku, Outi",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+322,Järviö,Nina Anna Kristiina,"Järviö, Nina",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+323,Kangas,Heidi Susanna,"Kangas, Heidi",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+324,Kiviluoto,Oona Marjut Onerva,"Kiviluoto, Oona",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+325,Koivulaakso,Dan Mikael,"Koivulaakso, Dan",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+326,Konttinen,Iiris Maria Alina,"Konttinen, Iiris",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+327,Korhonen,Juho Topias,"Korhonen, Juho",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+328,Korhonen,Mikko Petteri,"Korhonen, Mikko",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+329,Korhonen,Sara Helen,"Korhonen, Sara",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+330,Korkkula,Vesa Kalervo,"Korkkula, Vesa",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+331,Kuokkanen,Juho Sakari,"Kuokkanen, Juho",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+332,Lehtimäki,Tomi Henrik,"Lehtimäki, Tomi",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+333,Leppänen,Joonas,"Leppänen, Joonas",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+334,Lindgren,Eetu Kai Matias,"Lindgren, Eetu",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+335,Loikkanen,Silva Elina,"Loikkanen, Silva",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+336,Lundqvist,Agneta Maria Helena,"Lundqvist, Agneta",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+337,Lyyra,Anna-Gerissa,"Lyyra, Gerissa",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+338,Nevalainen,Laika Katriina,"Nevalainen, Laika",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+339,Niiranen,Esko Paavo,"Niiranen, Esko",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+340,Norema,Anne Elina,"Norema, Anne",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+341,Nuortimo,Jussi Elias,"Nuortimo, Jussi",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+342,Oikkonen,Jaana Marjut,"Oikkonen, Jaana",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+343,Pietinen,Otto Ville,"Pietinen, Otto",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+344,Pietinen,Saara Sylvia,"Pietinen, Saara",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+345,Punamäki,Heta Tyyne Aurora,"Punamäki, Lauri",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+346,Pörrö,Tanja Irina,"Pörrö, Tanja",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+347,Rauhala,Paula Maria,"Rauhala, Paula",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+348,Rosenström,Jan Erik,"Rosenström, Jan",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+349,Ruuth,Saila Marjaana,"Ruuth, Saila",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+350,Saari,Juhani Eero,"Saari, Juhani",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+351,Salonen,Kuisma Einari,"Salonen, Kuisma",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+352,Sivonen,Hanna Maria,"Sivonen, Hanna",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+353,Strömberg,Tomi Aapeli,"Strömberg, Tomi",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+354,Taavetti,Riikka Maria,"Taavetti, Riikka",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+355,Tenkanen,Niilo Ville Johannes,"Tenkanen, Niilo",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+356,Tolvanen,Pekka Matias,"Tolvanen, Pekka",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+357,Tuomainen,Katri Ilmi Elina,"Tuomainen, Katri",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+358,Tuomainen,Risto Olli Oskari,"Tuomainen, Risto",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+359,Tuominen,Inka Maaria,"Tuominen, Inka",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+360,Tuusa,Elina Karoliina,"Tuusa, Elina",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+361,Uusivuori,Ville Olavi,"Uusivuori, Ville",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+362,Viljanen,Vuokko Valpuri,"Viljanen, Vuokko",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+363,Virkkala,Niklas Elias,"Virkkala, Niklas",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+364,Vähäpassi,Emmi Tuuva Elina,"Vähäpassi, Emmi",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+365,Ylä-Anttila,Tuukka Salu Santeri,"Ylä-Anttila, Tuukka",Sitoutumaton vasemmisto - Obunden vänster - Independent left
+366,Alanko,Vilja Laura Ilona,"Alanko, Vilja",HYYn Vihreät - De Gröna vid HUS
+367,Ekqvist,Mikko Juhani,"Ekqvist, Mikko",HYYn Vihreät - De Gröna vid HUS
+368,Forselius,Anni Riitta Emilia,"Forselius, Anni",HYYn Vihreät - De Gröna vid HUS
+369,Hannula,Anssi Mikael,"Hannula, Anssi",HYYn Vihreät - De Gröna vid HUS
+370,Hausen,Maija Sylvia,"Hausen, Maija",HYYn Vihreät - De Gröna vid HUS
+371,Henttonen,Riikka Maaria Elena,"Henttonen, Riikka",HYYn Vihreät - De Gröna vid HUS
+372,Holst,Daniel Alexander,"Holst, Alexander",HYYn Vihreät - De Gröna vid HUS
+373,Hulkkonen,Ville Herman,"Hulkkonen, Ville",HYYn Vihreät - De Gröna vid HUS
+374,Häkkinen,Aaro Markus Sakari,"Häkkinen, Aaro",HYYn Vihreät - De Gröna vid HUS
+375,Härkönen,Jehki Joonatan,"Härkönen, Jehki",HYYn Vihreät - De Gröna vid HUS
+376,Jahkola,Lauri Akseli,"Jahkola, Lauri",HYYn Vihreät - De Gröna vid HUS
+377,Jauhiainen,Veikko Ilmari,"Jauhiainen, Ilmari",HYYn Vihreät - De Gröna vid HUS
+378,Kaijalainen,Olga,"Kaijalainen, Olga",HYYn Vihreät - De Gröna vid HUS
+379,Kantola,Annika,"Kantola, Annika",HYYn Vihreät - De Gröna vid HUS
+380,Kari,Emma Karoliina,"Kari, Emma",HYYn Vihreät - De Gröna vid HUS
+381,Karhu,Riikka Maria,"Karhu, Riikka",HYYn Vihreät - De Gröna vid HUS
+382,Keski-Hakuni,Laura Emelia,"Keski-Hakuni, Laura",HYYn Vihreät - De Gröna vid HUS
+383,Kiesiläinen,Jaana Liisa Kaisa,"Kiesiläinen, Jaana",HYYn Vihreät - De Gröna vid HUS
+384,Kirjasniemi,Janne Matti,"Kirjasniemi, Janne",HYYn Vihreät - De Gröna vid HUS
+385,Kiuru,Antti Tapio,"Kiuru, Antti",HYYn Vihreät - De Gröna vid HUS
+386,Koljonen,Markus Sakari,"Koljonen, Markus",HYYn Vihreät - De Gröna vid HUS
+387,Korhonen,Aino Kaarina,"Korhonen, Kaarina",HYYn Vihreät - De Gröna vid HUS
+388,Kortteinen,Lotta Kaisa,"Kortteinen, Lotta",HYYn Vihreät - De Gröna vid HUS
+389,Korvela,Tiina Maria,"Korvela, Tiina",HYYn Vihreät - De Gröna vid HUS
+390,Koskinen,Anna Maarit,"Koskinen, Anna",HYYn Vihreät - De Gröna vid HUS
+391,Kulhia,Jaakko Sakarias,"Kulhia, Jaakko",HYYn Vihreät - De Gröna vid HUS
+392,Laakso,Senja Susanna,"Laakso, Senja",HYYn Vihreät - De Gröna vid HUS
+393,Lehtonen,Jenni Elina,"Lehtonen, Jenni",HYYn Vihreät - De Gröna vid HUS
+394,Lewis,Oliver,"Lewis, Oliver",HYYn Vihreät - De Gröna vid HUS
+395,Lindfors,Jaakko Santeri,"Lindfors, Jaakko",HYYn Vihreät - De Gröna vid HUS
+396,Lindström,Jon Michael,"Lindström, Jon",HYYn Vihreät - De Gröna vid HUS
+397,Lindström,Mikko Jyrki Johannes,"Lindström, Mikko",HYYn Vihreät - De Gröna vid HUS
+398,Mankki,Sarianna Karoliina,"Mankki, Sarianna",HYYn Vihreät - De Gröna vid HUS
+399,Marttinen,Jukka Tapio,"Marttinen, Jukka",HYYn Vihreät - De Gröna vid HUS
+400,McKeough,Helena,"McKeough, Helena",HYYn Vihreät - De Gröna vid HUS
+401,Muuttomaa,Ville Viljami,"Muuttomaa, Viljami",HYYn Vihreät - De Gröna vid HUS
+402,Mynttinen,Laura Pauliina,"Mynttinen, Laura",HYYn Vihreät - De Gröna vid HUS
+403,Mörtengren,Daniela Deborah,"Mörtengren, Daniela",HYYn Vihreät - De Gröna vid HUS
+404,Ohisalo,Maria Karoliina,"Ohisalo, Maria",HYYn Vihreät - De Gröna vid HUS
+405,Perälä,Erkki Hermanni,"Perälä, Erkki",HYYn Vihreät - De Gröna vid HUS
+406,Piiparinen,Niklas Henrik Juhana,"Piiparinen, Niklas",HYYn Vihreät - De Gröna vid HUS
+407,Pusa,Satu Maria,"Pusa, Satu",HYYn Vihreät - De Gröna vid HUS
+408,Raittila,Simo Ahti Aleksi,"Raittila, Simo",HYYn Vihreät - De Gröna vid HUS
+409,Rentola,Joonas Ilmari,"Rentola, Joonas",HYYn Vihreät - De Gröna vid HUS
+410,R Farag,Jamila,"R Farag, Jamila",HYYn Vihreät - De Gröna vid HUS
+411,Rinkineva,Suvi Maria,"Rinkineva, Suvi",HYYn Vihreät - De Gröna vid HUS
+412,Räisänen,Hanna Marika,"Räisänen, Hanna",HYYn Vihreät - De Gröna vid HUS
+413,Salovaara,Antti Samuli,"Salovaara, Antti",HYYn Vihreät - De Gröna vid HUS
+414,Saxen,Niklas Otto,"Saxen, Niklas",HYYn Vihreät - De Gröna vid HUS
+415,Silkelä,Elina Talvikki,"Silkelä, Elina",HYYn Vihreät - De Gröna vid HUS
+416,Sjövall,Anna-Leena,"Sjövall, Anna",HYYn Vihreät - De Gröna vid HUS
+417,Sulander,Essi Inkeri,"Sulander, Essi",HYYn Vihreät - De Gröna vid HUS
+418,Tulenheimo,Martti Olavi,"Tulenheimo, Martti",HYYn Vihreät - De Gröna vid HUS
+419,Tuure,Tuomas Ville Mikael,"Tuure, Tuomas",HYYn Vihreät - De Gröna vid HUS
+420,Urhonen,Amu Anna-Maria,"Urhonen, Amu",HYYn Vihreät - De Gröna vid HUS
+421,Valkama,Elina Cecilia,"Valkama, Elina",HYYn Vihreät - De Gröna vid HUS
+422,Voutilainen,Erika Eveliina,"Voutilainen, Erika",HYYn Vihreät - De Gröna vid HUS
+423,Väyrynen,Taru Anna Elina,"Väyrynen, Taru",HYYn Vihreät - De Gröna vid HUS
+424,Waltari,Pyry Petteri,"Waltari, Pyry",HYYn Vihreät - De Gröna vid HUS
+425,Warius,Johanna Maria Larsdotter,"Warius, Johanna",HYYn Vihreät - De Gröna vid HUS
+426,Sinisalo,Aino Elisa,"Sinisalo, Aino",ESO
+427,Salminen,Aleksi Kustaa,"Salminen, Aleksi",ESO
+428,Laulajainen,Anette Katariina,"Laulajainen, Anette",ESO
+429,Heikkilä,Anja Kaarina,"Heikkilä, Anja",ESO
+430,Björklund,Antti Gustav Rikhard,"Björklund, Antti",ESO
+431,Kosonen,Antti Heikki Tapani,"Kosonen, Antti",ESO
+432,Pelanteri,Antti Hermanni,"Pelanteri, Antti",ESO
+433,Saarsalmi,Auli Merikki,"Saarsalmi, Auli",ESO
+434,Seitz,Deni Johan,"Seitz, Deni 'puf'",ESO
+435,Huttunen,Elina,"Huttunen, Elina",ESO
+436,Miettinen,Emma Karoliina,"Miettinen, Emma",ESO
+437,Vuorio,Emma Kaisa Johanna,"Vuorio, Emma",ESO
+438,Lehtonen,Esko Pekka,"Lehtonen, Esko",ESO
+439,Slotte,Eva-Stina Merith,"Slotte, Eva-Stina",ESO
+440,Lämsä,Hanna Eveliina,"Lämsä, Hanna",ESO
+441,Vanala,Hanna-Liina,"Vanala, Hanna",ESO
+442,Hotti,Hannu Sakari,"Hotti, Hannu",ESO
+443,Peiponen,Heidi Katriina,"Peiponen, Heidi",ESO
+444,Koivupalo,Heikki Tapani,"Koivupalo, Heikki",ESO
+445,Hyvärinen,Heini Helinä,"Hyvärinen, Heini",ESO
+446,Nurmikari,Maria Helena Elisabeth,"Nurmikari, Helena",ESO
+447,Ora,Inka Elina,"Ora, Inka",ESO
+448,Stolt,Jani Petteri,"Stolt, Jani",ESO
+449,Nyman,Jere Fred Olavi,"Nyman, Jere",ESO
+450,Kangas,Jertta Maarit,"Kangas, Jertta",ESO
+451,Riitakorpi,Johanna Maria Elisabeth,"Riitakorpi, Johanna",ESO
+452,Sihvonen,Juha Erik Michael,"Sihvonen, Juha",ESO
+453,Tiainen,Sanna Kaisa,"Tiainen, Kaisa",ESO
+454,Ignatius,Karoliina Ida Aleksandra,"Ignatius, Karoliina",ESO
+455,Rapala,Katariina Sini-Tuulia,"Rapala, Katariina",ESO
+456,Joensuu,Katri-Mari Sofia,"Joensuu, Katri",ESO
+457,Tolkki,Katri Johanna,"Tolkki, Katri",ESO
+458,Ruuska,Anna Kerttu,"Ruuska, Kerttu",ESO
+459,Iltala,Laura Elina,"Iltala, Laura",ESO
+460,Penttilä,Pia Laura Anneli,"Penttilä, Laura",ESO
+461,Hurme,Lauramaija Helena,"Hurme, Lauramaija 'Lauris'",ESO
+462,Saviranta,Lauri Aleksi,"Saviranta, Lauri",ESO
+463,Airosmaa,Maiju Annika,"Airosmaa, Maiju",ESO
+464,Laaksonen,Maiju Tuulia,"Laaksonen, Maiju",ESO
+465,Myllymäki,Meri Jenny Emilia,"Myllymäki, Meri",ESO
+466,Kosloff,Mikael Aleksanteri,"Kosloff, Mikael",ESO
+467,Laakso,Mikko Johannes,"Laakso, Mikko",ESO
+468,Komulainen,Mirja valpuri,"Komulainen, Mirja",ESO
+469,Ojala,Pauliina Elina,"Ojala, Pauliina",ESO
+470,Heikkonen,Petri-Tapio,"Heikkonen, Petri-Tapio",ESO
+471,Paalasmaa,Salla Aino,"Paalasmaa, Salla",ESO
+472,Latva-Äijö,Salla-Maaria,"Latva-Äijö, Salla",ESO
+473,Varjonen,Sampo Mikael,"Varjonen, Sampo",ESO
+474,Vainikka,Satu Elina,"Vainikka, Satu",ESO
+475,Nousiainen,Silja Johanna,"Nousiainen, Silja",ESO
+476,Mäkinen,Simo Valtteri,"Mäkinen, Simo",ESO
+477,Kuuluvainen,Soila Maria,"Kuuluvainen, Soila",ESO
+478,Paikkala,Terhi Rauna Maarit,"Paikkala, Terhi",ESO
+479,Mörsky,Tiia-Tuulia Marianne,"Mörsky, Tiia",ESO
+480,Söderholm,Tiina Henriikka Aleksandra,"Söderholm, Tiina",ESO
+481,Rask,Tobias Matias,"Rask, Tobias",ESO
+482,Hänninen,Ulrika Anna Maria,"Hänninen, Ulrika",ESO
+483,Ryynänen,Veera Vilhelmiina,"Ryynänen, Veera",ESO
+484,Jarmala,Veikko Johannes,"Jarmala, Veikko",ESO
+485,Kajanti,Vilja Inga Wilhelmiina,"Kajanti, Vilja",ESO
+486,Virtanen,Anna Martta Elina,"Virtanen, Anna",SavO
+487,Oittinen,Annamari Johanna,"Oittinen, Annamari",SavO
+488,Holopainen,Anne Dora,"Holopainen, Anne",SavO
+489,Hirsaho,Anni Tuulikki,"Hirsaho, Anni",SavO
+490,Kirkkala,Antti Juhani,"Kirkkala, Antti",SavO
+491,Vauhkonen,Antti Tapani,"Vauhkonen, Antti",SavO
+492,Huttunen,Ari Jussi,"Huttunen, Ari 'Addu'",SavO
+493,Sihvola,Emma Valpuri,"Sihvola, Emma",SavO
+494,Nevalainen,Emmi Noora,"Nevalainen, Emmi",SavO
+495,Juutinen,Esko Heikki Johannes,"Juutinen, Esko",SavO
+496,Remonen,Iina Tuulikki,"Remonen, Iina",SavO
+497,Holopainen,Jani Hans,"Holopainen, Jani",SavO
+498,Oinonen,Jukka Antero,"Oinonen, Jukka",SavO
+499,Pakarinen,Jukka Antero,"Pakarinen, Jukka 'Rasti'",SavO
+500,Gustafsson,Jussi Petteri,"Gustafsson, Jussi",SavO
+501,Kastarinen,Katja Pauliina,"Kastarinen, Katja",SavO
+502,Kalliomäki,Katriina Elina,"Kalliomäki, Katriina",SavO
+503,Kainulainen,Laura Alina,"Kainulainen, Laura",SavO
+504,Korhonen,Laura Maria,"Korhonen, Laura",SavO
+505,Auvinen,Lauri Mika Petteri,"Auvinen, Lauri",SavO
+506,Niva,Lotta Eveliina,"Niva, Lotta",SavO
+507,Haka,Maija Erika,"Haka, Maija",SavO
+508,Väre,Maija Tuuli,"Väre, Maija",SavO
+509,Häkkinen,Margareeta Anna Emilia,"Häkkinen, Margareeta",SavO
+510,Miettinen,Markus Juhani,"Miettinen, Markus",SavO
+511,Pitkänen,Mikko Riku Aleksi,"Pitkänen, Mikko",SavO
+512,Lindfors,Minna Helena,"Lindfors, Minna",SavO
+513,Virtanen,Otto Lauri Johannes,"Virtanen, Otto",SavO
+514,Temmes,Outi Kaarina,"Temmes, Outi",SavO
+515,Alapeteri,Pia Pauliina,"Alapeteri, Pia",SavO
+516,Kettunen,Pyry Juhani,"Kettunen, Pyry",SavO
+517,Ruuth,Riikka Maaret,"Ruuth, Riikka",SavO
+518,Arola,Saara Eliisa,"Arola, Saara",SavO
+519,Pennanen,Saila Pauliina,"Pennanen, Saila",SavO
+520,Juutinen,Sara Henriikka,"Juutinen, Sara",SavO
+521,Ulmanen,Sini Maarit,"Ulmanen, Sini",SavO
+522,Jentze,Linnea Suvi Tuulia,"Jentze, Suvi",SavO
+523,Laatikainen,Tanja Onerva,"Laatikainen, Tanja",SavO
+524,Valkonen,Tatu Petteri,"Valkonen, Tatu",SavO
+525,Tuovinen,Veera Eveliina,"Tuovinen, Veera",SavO
+526,Meriläinen,Ville Sakari,"Meriläinen, Ville 'Piispa'",SavO
+527,Pulkkinen,Ville Petteri,"Pulkkinen, Ville",SavO
+528,Peltonen,Aku Petteri,"Peltonen, Aku 'AQ'",HO-Natura
+529,Valjakka,Anna Kristiina,"Valjakka, Anna",HO-Natura
+530,Zitting,Anna Maija,"Zitting, Anna",HO-Natura
+531,Hämäläinen,Anu-Mari,"Hämäläinen, Anu-Mari",HO-Natura
+532,Koivu,Arto Petteri,"Koivu, Arto",HO-Natura
+533,Tuomela,Erkka Eevert,"Tuomela, Erkka",HO-Natura
+534,Kanerva,Heimo Sakari,"Kanerva, Heimo",HO-Natura
+535,Mattila,Henriikka Johanna Kaarina,"Mattila, Henriikka",HO-Natura
+536,Tynkkynen,Ilkka Santeri,"Tynkkynen, Ilkka",HO-Natura
+537,Ollikainen,Jani Marko Tapani,"Ollikainen, Jani 'bestis'",HO-Natura
+538,Hyytiäinen,Janne Sakari,"Hyytiäinen, Janne",HO-Natura
+539,Hyvönen,Jarna Elena,"Hyvönen, Jarna",HO-Natura
+540,Mokka,Jenna Emilia,"Mokka, Jenna",HO-Natura
+541,Luolaja,Jenni Pauliina,"Luolaja, Jenni",HO-Natura
+542,Koponen,Juha Henrik,"Koponen, Juha",HO-Natura
+543,Heliö,Jukka Tuomas,"Heliö, Jukka",HO-Natura
+544,Lehtinen,Juuso Jalmari,"Lehtinen, Juuso",HO-Natura
+545,Eriksson,Jyrki Olavi,"Eriksson, Jyrki",HO-Natura
+546,Holmström,Jenny Karoliina,"Holmström, Karoliina",HO-Natura
+547,Ervasti,Kim Mikael,"Ervasti, Kim",HO-Natura
+548,Lähteenmäki,Liisa Katriina,"Lähteenmäki, Liisa",HO-Natura
+549,Kostamo,Maarit Hannele,"Kostamo, Maarit",HO-Natura
+550,Korpinen,Markus Nikolaus,"Korpinen, Markus",HO-Natura
+551,Nieminen,Martti Johannes,"Nieminen, Martti",HO-Natura
+552,Sergejeff,Mikko Petteri,"Sergejeff, Mikko",HO-Natura
+553,Varje,Pekka Sakari,"Varje, Pekka",HO-Natura
+554,Lähteenkorva,Riku Petteri,"Lähteenkorva, Riku",HO-Natura
+555,Lähteenmäki,Lauri Sakari,"Lähteenmäki, Sakari",HO-Natura
+556,Vuorinen,Samu Henrik Aleksei,"Vuorinen, Samu",HO-Natura
+557,Vekkeli,Santtu Esa Tapio,"Vekkeli, Santtu",HO-Natura
+558,Hatakka,Risto Tapio,"Hatakka, Tapio",HO-Natura
+559,Laakso,Teemu Oskari,"Laakso, Teemu",HO-Natura
+560,Gebhard,Teo Henrik,"Gebhard, Teo",HO-Natura
+561,Saarela,Tuomas Jukka,"Saarela, Tuomas",HO-Natura
+562,Lehto,Veera Elina,"Lehto, Veera",HO-Natura
+563,Lähteenmäki,Veikko Juhani,"Lähteenmäki, Veikko",HO-Natura
+564,Lehtinen,Viljo Pietari,"Lehtinen, Viljo",HO-Natura
+565,Lappalainen,Ville Sakari,"Lappalainen, Ville",HO-Natura
+566,Punkari,Milla Maria,"Punkari, Milla",HO-Natura
+567,Mäkelä,Albert Lauri Kristian,"Mäkelä, Albert",KSO-VSO
+568,Huuskonen,Anna Katariina,"Huuskonen, Anna",KSO-VSO
+569,Kosonen,Anna Emilia,"Kosonen, Anna",KSO-VSO
+570,Piesala,Ukko Väinö Eemeli,"Piesala, Eemeli",KSO-VSO
+571,Pylsy,Elina Maria,"Pylsy, Elina",KSO-VSO
+572,Rintala,Essi Kristiina,"Rintala, Essi",KSO-VSO
+573,Mäkelä,Hanna-Maria Helena,"Mäkelä, Hanna-Maria",KSO-VSO
+574,Jurvanen,Juha-Pekka Olavi,"Jurvanen, Juha-Pekka",KSO-VSO
+575,Leppänen,Maija Helena,"Leppänen, Maija",KSO-VSO
+576,Eskelinen,Marja Eeva-Riitta,"Eskelinen, Marja",KSO-VSO
+577,Kosonen,Suvi Matleena,"Kosonen, Matleena",KSO-VSO
+578,Kaijaluoto,Otso Veikko,"Kaijaluoto, Otso",KSO-VSO
+579,Vogt,Sara Tuuli Marjatta,"Vogt, Sara",KSO-VSO
+580,Oinas,Varpu Eliisa,"Oinas, Varpu",KSO-VSO
+581,Kuusela,Heidi Marja,"Kuusela, Heidi",KSO-VSO
+582,Korhonen,Henri Mikael,"Korhonen, Henri",KSO-VSO
+583,Ahola,Ilari Tapani,"Ahola, Ilari",KSO-VSO
+584,Mäkinen,Jenna Henriikka,"Mäkinen, Jenna",KSO-VSO
+585,Niittynen,Lauri Olavi,"Niittynen, Lauri",KSO-VSO
+586,Lähteenaho,Liisa-Maija,"Lähteenaho, Liisa",KSO-VSO
+587,Varjo,Hennariikka Mariaana,"Varjo, Hennariikka 'Masa'",KSO-VSO
+588,Lehto,Matti Juha Henrik,"Lehto, Matti",KSO-VSO
+589,Hirvonen,Mikko Sakari,"Hirvonen, Mikko 'Apsu'",KSO-VSO
+590,Tuominen,Niko Petteri,"Tuominen, Niko",KSO-VSO
+591,Hamberg,Ninni Maria Katariina,"Hamberg, Ninni",KSO-VSO
+592,Nokso-Koivisto,Eero Oskari,"Nokso-Koivisto, Oskari",KSO-VSO
+593,Simelius,Satu Marianna,"Simelius, Satu",KSO-VSO
+594,Halme,Teemu Antero,"Halme, Teemu",KSO-VSO
+595,Mäkinen,Tero Tapani,"Mäkinen, Tero",KSO-VSO
+596,Torkki,Anna Katariina,"Torkki, Anna",SatO-ESO2
+597,Ritala,Anni Maria,"Ritala, Anni",SatO-ESO2
+598,Lehtikangas,Annukka Katariina Emilia,"Lehtikangas, Annukka",SatO-ESO2
+599,Saarenmaa,Antto Sakari,"Saarenmaa, Antto",SatO-ESO2
+600,Välimäki,Anu Jutta Hannele,"Välimäki, Anu",SatO-ESO2
+601,Lepistö,Emmi Loviisa,"Lepistö, Emmi",SatO-ESO2
+602,Norri,Essi Erene Annika,"Norri, Essi",SatO-ESO2
+603,Hannus,Hanna Sofia,"Hannus, Hanna",SatO-ESO2
+604,Lehti,Hanna-Kaisa Kristiina,"Lehti, Hanna-Kaisa",SatO-ESO2
+605,Hyyti,Heikki Sakari,"Hyyti, Heikki",SatO-ESO2
+606,Holopainen,Henri Iiro Eemeli,"Holopainen, Henri",SatO-ESO2
+607,Kärrylä,Ilkka Aleksi,"Kärrylä, Ilkka",SatO-ESO2
+608,Liinaharja,Eriika Inkeri,"Liinaharja, Inkeri",SatO-ESO2
+609,Liinaharja,Johanna Elina,"Liinaharja, Johanna",SatO-ESO2
+610,Tuomi,Juho Valtteri,"Tuomi, Juho",SatO-ESO2
+611,Ritala,Kaisa Marika,"Ritala, Kaisa",SatO-ESO2
+612,Aalto-Setälä,Laura Katriina,"Aalto-Setälä, Laura",SatO-ESO2
+613,Laurén,Marika,"Laurén, Marika",SatO-ESO2
+614,Alho,Markku Juhani,"Alho, Markku",SatO-ESO2
+615,Ilomäki,Miika Valtteri,"Ilomäki, Miika",SatO-ESO2
+616,Mäkipää,Mikko Tapani,"Mäkipää, Mikko",SatO-ESO2
+617,Heikintalo,Noora Marjaana,"Heikintalo, Noora",SatO-ESO2
+618,Sattilainen,Otso Ilmari,"Sattilainen, Otso",SatO-ESO2
+619,Alitalo,Tero Johannes,"Alitalo, Tero",SatO-ESO2
+620,Häivälä,Timo Juhani,"Häivälä, Timo",SatO-ESO2
+621,Tamminen,Tuulia Paulina,"Tamminen, Tuulia",SatO-ESO2
+622,Rintanen,Tytti Inkeri,"Rintanen, Tytti",SatO-ESO2
+623,Parisianos,Veera Nikoletta,"Parisianos, Veera",SatO-ESO2
+624,Ritala,Johanna Wilhelmiina,"Ritala, Wilhelmiina",SatO-ESO2
+625,Ilkka,Emma Josefiina,"Ilkka, Emma",SatO-ESO2
+626,Parkkari,Jussi-Pekka,"Parkkari, Jussi-Pekka",SatO-ESO2
+627,Karulinna,Karoliina Jounintytär,"Karulinna, Karoliina",SatO-ESO2
+628,Peltonen,Lauri Pekka,"Peltonen, Lauri 'Peltsi'",SatO-ESO2
+629,Lassila,Maria Sisko Helena,"Lassila, Maria",SatO-ESO2
+630,Kauppinen,Mikael Uolevi Rikari,"Kauppinen, Mikael",SatO-ESO2
+631,Tiusanen,Otto Veikko Verneri,"Tiusanen, Otto",SatO-ESO2
+632,Lindfors,Pia Kristina,"Lindfors, Pia",SatO-ESO2
+633,Hatakka,Antti Sampsa Johannes,"Hatakka, Sampsa",SatO-ESO2
+634,Sulkamo,Saramia Maria,"Sulkamo, Saramia",SatO-ESO2
+635,Adler,Taru Sinikka,"Adler, Taru",SatO-ESO2
+636,Hillukkala,Tuomas Juha Tapani,"Hillukkala, Tuomas 'Juomas'",SatO-ESO2
+637,Wäre,Tuomas Risto,"Wäre, Tuomas",SatO-ESO2
+638,Aitosalo,Veikko Olavi,"Aitosalo, Veikko",SatO-ESO2
+639,Saarelainen,Antti Juhani,"Saarelainen, Antti",Domus Gaudiumin Osakunnat
+640,Ahtonen,Hanna Riikka,"Ahtonen, Hanna",Domus Gaudiumin Osakunnat
+641,Eskelinen,Juho Pekka Aleksi,"Eskelinen, Juho",Domus Gaudiumin Osakunnat
+642,Tiainen,Nelli Eveliina,"Tiainen, Nelli",Domus Gaudiumin Osakunnat
+643,Tanskanen,Noora Anniina,"Tanskanen, Noora",Domus Gaudiumin Osakunnat
+644,Torvinen,Pekka Juho Henrik,"Torvinen, Pekka",Domus Gaudiumin Osakunnat
+645,Rantala,Samuli Waldemar,"Rantala, Samuli",Domus Gaudiumin Osakunnat
+646,Nousiainen,Taru Susanna,"Nousiainen, Taru",Domus Gaudiumin Osakunnat
+647,Meriläinen,Teemu Samuel,"Meriläinen, Teemu",Domus Gaudiumin Osakunnat
+648,Kiviranta,Tuure Tapio,"Kiviranta, Tuure",Domus Gaudiumin Osakunnat
+649,Mänttäri,Antti Erik,"Mänttäri, Antti",Domus Gaudiumin Osakunnat
+650,Kiiski,Essi Ida Anniina,"Kiiski, Essi",Domus Gaudiumin Osakunnat
+651,Kössi,Liisa Hanna-Maria,"Kössi, Hanna-Maria 'Hannis'",Domus Gaudiumin Osakunnat
+652,Luoto,Heikki Juhani,"Luoto, Heikki",Domus Gaudiumin Osakunnat
+653,Rainamaa,Jussi Petteri,"Rainamaa, Jussi",Domus Gaudiumin Osakunnat
+654,Salonen,Marleena Meri-Tuulia,"Salonen, Marleena",Domus Gaudiumin Osakunnat
+655,Laaksonen,Mikko Olavi,"Laaksonen, Mikko",Domus Gaudiumin Osakunnat
+656,Ahtosalo,Milja Sinituulia,"Ahtosalo, Milja",Domus Gaudiumin Osakunnat
+657,Nöjd,Riku Santtu Rainer,"Nöjd, Riku",Domus Gaudiumin Osakunnat
+658,Mäkelä,Teemu Olavi,"Mäkelä, Teemu",Domus Gaudiumin Osakunnat
+659,Laine,Timo Johannes,"Laine, Timo",Domus Gaudiumin Osakunnat
+660,Kähö,Anna Katriina,"Kähö, Anna",Domus Gaudiumin Osakunnat
+661,Hänninen,Annamaria Janita,"Hänninen, Annamaria",Domus Gaudiumin Osakunnat
+662,Mäkeläinen,Anni Katariina,"Mäkeläinen, Anni",Domus Gaudiumin Osakunnat
+663,Tuovinen,Anssi Tapani,"Tuovinen, Anssi",Domus Gaudiumin Osakunnat
+664,Puolakka,Aura Iida Maria,"Puolakka, Aura",Domus Gaudiumin Osakunnat
+665,Mattero,Elina Riina Anniina,"Mattero, Elina",Domus Gaudiumin Osakunnat
+666,Ronkainen,Emma Saima Loviisa,"Ronkainen, Emma",Domus Gaudiumin Osakunnat
+667,Pilhjerta,Emmi Helena,"Pilhjerta, Emmi",Domus Gaudiumin Osakunnat
+668,Suonio,Jenna Suvi Elina,"Suonio, Jenna",Domus Gaudiumin Osakunnat
+669,Hämäläinen,Johanna Marjukka,"Hämäläinen, Johanna",Domus Gaudiumin Osakunnat
+670,Louhiranta,Juha Aleksi,"Louhiranta, Juha",Domus Gaudiumin Osakunnat
+671,Lipponen,Katriina Hannele,"Lipponen, Katriina",Domus Gaudiumin Osakunnat
+672,Väisänen,Laura Maria,"Väisänen, Laura",Domus Gaudiumin Osakunnat
+673,Ahonen,Lauri Reino Antero,"Ahonen, Lauri",Domus Gaudiumin Osakunnat
+674,Laamanen,Maiju Henriikka,"Laamanen, Maiju",Domus Gaudiumin Osakunnat
+675,Nauha,Matti Tapani,"Nauha, Matti",Domus Gaudiumin Osakunnat
+676,Mustonen,Melissa Anu Maria,"Mustonen, Melissa",Domus Gaudiumin Osakunnat
+677,Tikkanen,Olli-Pekka,"Tikkanen, Olli-Pekka",Domus Gaudiumin Osakunnat
+678,Sutinen,Pekka Tapio,"Sutinen, Pekka",Domus Gaudiumin Osakunnat
+679,Kosonen,Sanna Katriina,"Kosonen, Sanna",Domus Gaudiumin Osakunnat
+680,Liiri,Tiina Anni Emilia,"Liiri, Tiina",Domus Gaudiumin Osakunnat
+681,Peuhkuri,Ulla Riina,"Peuhkuri, Ulla",Domus Gaudiumin Osakunnat
+682,Ranki,Vuokko Johanna,"Ranki, Vuokko",Domus Gaudiumin Osakunnat
+683,Appelberg,Allan,"Appelberg, Allan",EPO
+684,Perälä,Anna Vilhelmiina,"Perälä, Anna",EPO
+685,Nummi,Anna-Riikka Maria,"Nummi, Anna-Riikka",EPO
+686,Brandt,Annika Mariel,"Brandt, Annika",EPO
+687,Kukkola,Emilia Karoliina,"Kukkola, Emilia",EPO
+688,Savolainen,Hannu Pentti,"Savolainen, Hannu",EPO
+689,Ala-Mikkula,Heidi Emilia,"Ala-Mikkula, Heidi",EPO
+690,Hemminki,Heidi Hilja Kristiina,"Hemminki, Heidi",EPO
+691,Pirttinen,Heli Susanna,"Pirttinen, Heli",EPO
+692,Ruotsalainen,Henri Tuomas,"Ruotsalainen, Henri",EPO
+693,Virta,Henri Tuomas Leonard,"Virta, Henri",EPO
+694,Harmanen,Ilona Taru Talvikki,"Harmanen, Ilona",EPO
+695,Kangas,Jaakko Hermanni Antinpoika,"Kangas, Jaakko",EPO
+696,Latva-Nikkola,Jani Iisakki,"Latva-Nikkola, Jani",EPO
+697,Kohtamäki,Janne Pentti Matias,"Kohtamäki, Janne",EPO
+698,Mäntykoski,Jenni Elina,"Mäntykoski, Jenni",EPO
+699,Haapamäki,Johanna Maria Helena,"Haapamäki, Johanna",EPO
+700,Harju,Juhana Henrikki,"Harju, Juhana",EPO
+701,Haataja,Joni Onni Antero,"Haataja, Joni",EPO
+702,Dahlman,Katarina,"Dahlman, Katarina",EPO
+703,Meriläinen,Katja Kristiina,"Meriläinen, Katja",EPO
+704,Rantakokko,Kirsimarja,"Rantakokko, Kirsimarja",EPO
+705,Anttila,Laura Matilda,"Anttila, Laura",EPO
+706,Isoniemi,Laura Elisabeth,"Isoniemi, Laura",EPO
+707,Leppilahti,Laura Katariina,"Leppilahti, Laura",EPO
+708,Mursu,Laura Susanna,"Mursu, Laura",EPO
+709,Furu,Leena Veronica,"Furu, Leena",EPO
+710,Kurjenluoma,Leena Alisa,"Kurjenluoma, Leena",EPO
+711,Pihlajamäki,Leena Anneli,"Pihlajamäki, Leena",EPO
+712,Kurkela,Maria Sofia,"Kurkela, Maria",EPO
+713,Mäenpää,Marja Helena,"Mäenpää, Marja",EPO
+714,Hakola,Marjo Riikka,"Hakola, Marjo",EPO
+715,Hietala,Miina Kaisa Hannele,"Hietala, Miina",EPO
+716,Latva-Somppi,Minna Liisa Kaarina,"Latva-Somppi, Minna",EPO
+717,Pitkäranta,Nina Pauliina,"Pitkäranta, Nina",EPO
+718,Karppi,Noora Justiina,"Karppi, Noora",EPO
+719,Ala-Fossi,Olli Juhani,"Ala-Fossi, Olli",EPO
+720,Hemminki,Olli Tapani,"Hemminki, Olli",EPO
+721,Nokso-Koivisto,Olli Sakari,"Nokso-Koivisto, Olli",EPO
+722,Raivio,Markku Antti Oskari,"Raivio, Oskari",EPO
+723,Surma-aho,Outi Katariina,"Surma-aho, Outi",EPO
+724,Kahila,Paula Kaarina,"Kahila, Paula",EPO
+725,Rokkila,Marja Pauliina,"Rokkila, Pauliina",EPO
+726,Latvala,Reetta Loviisa,"Latvala, Reetta",EPO
+727,Kaarto,Riikka Karoliina,"Kaarto, Riikka",EPO
+728,Kaila,Riikka Eveliina,"Kaila, Riikka",EPO
+729,Mäntykoski,Saara Maria,"Mäntykoski, Saara",EPO
+730,Kääriäinen,Sami Aarne,"Kääriäinen, Sami",EPO
+731,Sjöblom,Sampo Jaakko Kalevi,"Sjöblom, Sampo",EPO
+732,Haavisto,Suvi Maarit,"Haavisto, Suvi",EPO
+733,Ojala,Suvi Annikki,"Ojala, Suvi",EPO
+734,Hietamäki,Tapio Henrik,"Hietamäki, Tapio",EPO
+735,Kallio,Tapio Jaakko,"Kallio, Tapio",EPO
+736,Koskiniemi,Teemu Jaakko,"Koskiniemi, Teemu",EPO
+737,Tuurihalme,Timo Jaakko Martti,"Tuurihalme, Timo",EPO
+738,Pennala,Tuomas Antti Ilmari,"Pennala, Tuomas",EPO
+739,Raivio,Ville Mikael,"Raivio, Ville",EPO
+740,Kotisaari,Anna Maria,"Kotisaari, Anna",PPO
+741,Ruotsala,Anni-Helena,"Ruotsala, Anni-Helena",PPO
+742,Ervasti,Anri Maarit,"Ervasti, Anri",PPO
+743,Ojala,Antti Heikki Johannes,"Ojala, Antti",PPO
+744,Viikinkoski,Arttu,"Viikinkoski, Arttu",PPO
+745,Pape,Christopher David,"Pape, Chris",PPO
+746,Lapinoja,Elina Kaarina,"Lapinoja, Elina",PPO
+747,Viren,Hanna Elisa,"Viren, Hanna",PPO
+748,Jokela,Ida-Reetta Johanna,"Jokela, Ida-Reetta",PPO
+749,Kampman,Iiro Joonas,"Kampman, Iiro",PPO
+750,Kauma,Iiro Mikko Ilmari,"Kauma, Iiro",PPO
+751,Kavén,Jenni Emilia,"Kavén, Jenni",PPO
+752,Sepponen,Jenni Emilia,"Sepponen, Jenni",PPO
+753,Hyry,Jonna Marika,"Hyry, Jonna",PPO
+754,Huotari,Joonas Kalle,"Huotari, Joonas",PPO
+755,Seppänen,Katja Hannele,"Seppänen, Katja",PPO
+756,Ansamaa,Laura Johanna,"Ansamaa, Laura",PPO
+757,Haikola,Lauri Antero,"Haikola, Lauri",PPO
+758,Heilala,Lauri Kullervo,"Heilala, Lauri 'Late'",PPO
+759,Sivula,Lauri Eero Mikael,"Sivula, Lauri",PPO
+760,Huotari,Sanna Mari,"Huotari, Mari",PPO
+761,Huhtaniemi,Lisa Marianna,"Huhtaniemi, Marianna",PPO
+762,Sutinen,Marjo Johanna,"Sutinen, Marjo",PPO
+763,Kähkönen,Mervi Helena,"Kähkönen, Mervi",PPO
+764,Kunnari,Mikko Olavi Johannes,"Kunnari, Mikko",PPO
+765,Tervonen,Minna Johanna,"Tervonen, Minna",PPO
+766,Rantakeisu,Mira Johanna,"Rantakeisu, Mira",PPO
+767,Latvakoski,Niko Matias,"Latvakoski, Niko",PPO
+768,Salin,Noora Heloisa,"Salin, Noora",PPO
+769,Kronqvist,Otto Jaakko,"Kronqvist, Otto",PPO
+770,Ståhlberg,Panu Kaarlo,"Ståhlberg, Panu",PPO
+771,Sipilä,Pekka Johannes,"Sipilä, Pekka",PPO
+772,Salomaa,Riikka-Liisa Tellervo,"Salomaa, Riikka-Liisa",PPO
+773,Huotari,Satu Elina,"Huotari, Satu",PPO
+774,Savonen,Sonia Mirka Paulina,"Savonen, Sonia",PPO
+775,Madetoja,Sonja Maaria,"Madetoja, Sonja",PPO
+776,Lohiniva,Suvi-Riikka Johanna,"Lohiniva, Suvi",PPO
+777,Mustonen,Terhi Tuulikki,"Mustonen, Terhi",PPO
+778,Tuulos,Tiina Tytti,"Tuulos, Tiina",PPO
+779,Haaja,Tommi Petteri,"Haaja, Tommi",PPO
+780,Tuppurainen,Ville Oskari,"Tuppurainen, Ville",PPO
+781,Viljamaa,Visa Veikko,"Viljamaa, Visa",PPO
+782,Ahokas,Lari Pekka Jaakkima,"Ahokas, Lari",Humanistit
+783,Björklund,Heta Kristiina,"Björklund, Heta",Humanistit
+784,Gylling,Elisa Annina,"Gylling, Elisa",Humanistit
+785,Hakamies,Inkeri Eeva Helena,"Hakamies, Inkeri",Humanistit
+786,Hario,Pasi Sakari,"Hario, Pasi",Humanistit
+787,Heikkinen,Irina Saana Susanna,"Heikkinen, Irina",Humanistit
+788,Heiskanen,Essi Johanna,"Heiskanen, Essi",Humanistit
+789,Heiskari,Lari Tapio,"Heiskari, Tapio",Humanistit
+790,Kallio,Lauri Johannes,"Kallio, Lauri",Humanistit
+791,Kankaanranta,Hennileena Sofia,"Kankaanranta, Hennileena",Humanistit
+792,Karhumäki,Matti Johannes,"Karhumäki, Matti",Humanistit
+793,Kinnunen,Jukka Juhani,"Kinnunen, Jukka",Humanistit
+794,Kiviharju,Anne Katariina,"Kiviharju, Anne",Humanistit
+795,Korolainen-Virkajärvi,Katri Inkeri,"Korolainen-Virkajärvi, Katri",Humanistit
+796,Koutonen,Tatu Iivari,"Koutonen, Iivari",Humanistit
+797,Kölhi,Jaakko Aleksanteri,"Kölhi, Jaakko",Humanistit
+798,Laakso,Suvi Tuuli,"Laakso, Suvi",Humanistit
+799,Lavikainen,Jouni Ilari,"Lavikainen, Jouni",Humanistit
+800,Leinonen,Petri Juhani,"Leinonen, Petri",Humanistit
+801,Leminen,Teemu Antti Valtteri,"Leminen, Teemu",Humanistit
+802,Lindholm,Anni Emilia,"Lindholm, Anni",Humanistit
+803,Lyytinen,Emilia Helena,"Lyytinen, Emilia",Humanistit
+804,Lätti,Niina Mirjami,"Lätti, Niina",Humanistit
+805,Maeda,Emi Teresa,"Maeda, Emi",Humanistit
+806,Miettunen,Sara Sisko Pilvikki,"Miettunen, Sara",Humanistit
+807,Mikkonen,Maria Emilia,"Mikkonen, Maria",Humanistit
+808,Peltonen,Elina Kristiina,"Peltonen, Elina",Humanistit
+809,Pynttäri,Antti Tapani,"Pynttäri, Antti",Humanistit
+810,Rajamäki,Anni Talvikki,"Rajamäki, Anni",Humanistit
+811,Rask,Magnus Edward,"Rask, Magnus",Humanistit
+812,Renvall,Matti Tuomas,"Renvall, Tuomas",Humanistit
+813,Soudunsaari,Jaakko Pekka Juhana,"Soudunsaari, Jaakko",Humanistit
+814,Thilman,Svante Fredrik Gustaf,"Thilman, Svante",Humanistit
+815,Tiihonen,Risto Juhani,"Tiihonen, Risto",Humanistit
+816,Tujula,Matti-Pekka Kalevi,"Tujula, Matti",Humanistit
+817,Töyrylä,Juha Ensio,"Töyrylä, Juha",Humanistit
+818,Virta,Sonja Aino Elina,"Virta, Sonja",Humanistit
+819,Väänänen,Aino-Reetta Aleksandra,"Väänänen, Aino",Humanistit
+820,Ylitalo,Anna Katariina,"Ylitalo, Anna",Humanistit
+821,Ylitalo,Turo Johannes,"Ylitalo, Turo",Humanistit
+822,Aalto,Laura Jannica,"Aalto, Jannica",Kumpula
+823,Alkio,Sini Maria,"Alkio, Sini",Kumpula
+824,Hynönen,Reko Heikki Pellervo,"Hynönen, Reko",Kumpula
+825,Järvinen,Terhi Tuuli,"Järvinen, Terhi",Kumpula
+826,Karinkanta,Risto Eemeli,"Karinkanta, Risto",Kumpula
+827,Käkelä,Matias Paavali,"Käkelä, Matias",Kumpula
+828,Lahtinen,Merli Karoliina,"Lahtinen, Merli",Kumpula
+829,Lahtinen,Tiera Olavi,"Lahtinen, Tilli",Kumpula
+830,Lehtimäki,Marko Johannes,"Lehtimäki, Marko",Kumpula
+831,McKee,Jason Robert,"McKee, Jason",Kumpula
+832,Muhonen,Eija Maarit Sofia,"Muhonen, Eija",Kumpula
+833,Penttilä,Markus Erkki Tapani,"Penttilä, Markus",Kumpula
+834,Rantala,Pekka Antti Ilmari,"Rantala, Pekka",Kumpula
+835,Rantanen,Sami Edvard,"Rantanen, Sami",Kumpula
+836,Särkikoski,Sanna Marjaana,"Särkikoski, Sanna",Kumpula
+837,Teikari,Ilmo Werner,"Teikari, Ilmo",Kumpula
+838,Tupala,Jere Olavi,"Tupala, Jere",Kumpula
+839,Fast,Tommi Johannes,"Fast, Tommi 'Tommy'",Käyttis
+840,Hietajärvi,Lauri Ville Oskari,"Hietajärvi, Lauri",Käyttis
+841,Koivisto,Eero-Matti Olavi,"Koivisto, Eero-Matti 'Ere'",Käyttis
+842,Lampinen,Marina,"Lampinen, Marina",Käyttis
+843,Laurila,Sonja Annika,"Laurila, Sonja",Käyttis
+844,Myllyntausta,Saara Johanna,"Myllyntausta, Saara",Käyttis
+845,Nurmi,Reetta-Maija Karoliina,"Nurmi, Reetta",Käyttis
+846,Pulkkinen,Suvi Saara Maria,"Pulkkinen, Suvi",Käyttis
+847,Pöyhönen,Perttu Olavi Jaakonpoika,"Pöyhönen, Perttu",Käyttis
+848,Rautio,Tiina Kaarina,"Rautio, Tiina",Käyttis
+849,Rinnetmäki,Veli-Matti,"Rinnetmäki, Veli-Matti 'Velkka'",Käyttis
+850,Ropponen,Markus Jouko Juhana,"Ropponen, Markus",Käyttis
+851,Aaltonen,Mikko Antero,"Aaltonen, Mikko",Teologit
+852,Beckmann,Ida Maria,"Beckmann, Ida",Teologit
+853,Elomaa,Laura Maria,"Elomaa, Laura",Teologit
+854,Engström,Vesa Juhani Kristian,"Engström, Vesa",Teologit
+855,Haapa-aho,Riitta Sannaliisa,"Haapa-aho, Riitta",Teologit
+856,Hautala,Minna Marita,"Hautala, Minna",Teologit
+857,Hillberg,Milla Mari,"Hillberg, Milla",Teologit
+858,Huhtasalo,Ilari Matti Olavi,"Huhtasalo, Ilari",Teologit
+859,Häkkinen,Marie Anneli,"Häkkinen, Marie",Teologit
+860,Jurva,Saara-Maria,"Jurva, Saara-Maria",Teologit
+861,Kotisaari,Tuuli Maria,"Kotisaari, Tuuli",Teologit
+862,Kouvola,Helena Karolina,"Kouvola, Karolina",Teologit
+863,Laitinen,Jussi Antero,"Laitinen, Jussi",Teologit
+864,Leinonen,Juha Erkki Tapio,"Leinonen, Juha",Teologit
+865,Leinonen,Tapio Henrikki,"Leinonen, Tapio",Teologit
+866,Leipakka,Laura Helena,"Leipakka, Laura",Teologit
+867,Lemmetyinen,Simo Rafael,"Lemmetyinen, Simo",Teologit
+868,Nykänen,Saara Ilona,"Nykänen, Saara",Teologit
+869,Oksanen,Minna Hannele,"Oksanen, Minna",Teologit
+870,Peltola,Jukka Tapio,"Peltola, Jukka",Teologit
+871,Puumala,Jenni Karoliina,"Puumala, Jenni",Teologit
+872,Rajatalo,Joonas Jalmari,"Rajatalo, Joonas 'Jallu'",Teologit
+873,Saarela,Veronica Anna Patricia,"Saarela, Veronica",Teologit
+874,Similä,Sakari Henrik,"Similä, Sakari 'Sakke'",Teologit
+875,Toivonen,Niilo Akseli Markunpoika,"Toivonen, Niilo",Teologit
+876,Trogen,Tiia Johanna,"Trogen, Tiia",Teologit
+877,Helminen,Tuomas Hermanni,"Helminen, Tuomas",Valtiotieteilijät
+878,Hovi,Jaakko Matias,"Hovi, Jaakko",Valtiotieteilijät
+879,Hämäläinen,Hanne Maaret Ilona,"Hämäläinen, Hanne",Valtiotieteilijät
+880,Jyllikoski,Daniel Alexandr,"Jyllikoski, Daniel",Valtiotieteilijät
+881,Karjalainen,Joni Pekka Hemminki,"Karjalainen, Joni",Valtiotieteilijät
+882,Koponen,Eija-Leena,"Koponen, Eija-Leena",Valtiotieteilijät
+883,Koskela,Katri Marianna,"Koskela, Katri",Valtiotieteilijät
+884,Kostiainen,Aura Iiris Sofia,"Kostiainen, Aura",Valtiotieteilijät
+885,Kulmala,Ifeoma Emmi Mirjami,"Kulmala, Ifeoma",Valtiotieteilijät
+886,Miettinen,Elina Anniina,"Miettinen, Elina",Valtiotieteilijät
+887,Sarhimaa,Jutta Marinella,"Sarhimaa, Jutta",Valtiotieteilijät
+888,Stenbäck,Paul John Bernhard,"Stenbäck, Paul",Valtiotieteilijät
+889,Suvitie,Aarni Lassi Valtteri,"Suvitie, Aarni",Valtiotieteilijät
+890,Syrman,Simo Valtteri,"Syrman, Simo",Valtiotieteilijät
+891,Toroskainen,Kaisa Johanna,"Toroskainen, Kaisa",Valtiotieteilijät
+892,Virta,Mikko Antero,"Virta, Mikko",Valtiotieteilijät
+893,Aarnio,Jouni Pekka,"Aarnio, Jouni",Viikki
+894,Esteban Lasikari,Joel Alberti,"Esteban Lasikari, Joel",Viikki
+895,Front,Eero Petteri,"Front, Petteri",Viikki
+896,Hakala,Markku Kasperi,"Hakala, Markku",Viikki
+897,Hyvärinen,Laura Kristiina,"Hyvärinen, Laura",Viikki
+898,Hämäläinen,Iiro Mikael,"Hämäläinen, Iiro",Viikki
+899,Kaloinen,Jaakko Johannes,"Kaloinen, Jaakko",Viikki
+900,Kauko,Hanna Maria,"Kauko, Hanna",Viikki
+901,Kinnunen,Jyrki Pekko,"Kinnunen, Jyrki",Viikki
+902,Korhonen,Anni Kristiina,"Korhonen, Anni",Viikki
+903,Kyllönen,Anjuska Marianne,"Kyllönen, Anjuska",Viikki
+904,Malmberg,Markus Erik,"Malmberg, Markus",Viikki
+905,Martikainen,Alpo Jalmari,"Martikainen, Alpo",Viikki
+906,Peltoniemi,Pasi Matias,"Peltoniemi, Pasi",Viikki
+907,Virkajärvi,Vertti Sakari,"Virkajärvi, Vertti",Viikki
+908,Vähämaa,Ilkka Kristian,"Vähämaa, Ilkka",Viikki
+909,Lohenoja,Jaakko Johannes,"Lohenoja, Jaakko",Itsenäinen ehdokas 1

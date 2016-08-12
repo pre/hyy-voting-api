@@ -1,4 +1,4 @@
-module HYY
+module Vaalit
   module JwtHelpers
 
     # Decode JWT from Authorization HTTP header and find current user.

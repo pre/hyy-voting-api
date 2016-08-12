@@ -1,19 +1,20 @@
-module HYY
+module Vaalit
 
-  class AE::Votes < Grape::API
+  class Edari < Grape::API
+
     before do
+      @current_user = get_current_user headers
+
+      error!({ message: 'Unauthorized' }, :unauthorized) unless @current_user
+
       begin
         authorize! :access, :elections
       rescue CanCan::AccessDenied => exception
         error!({ message: "Unauthorized: #{exception.message}" }, :unauthorized)
       end
+
     end
 
-    desc 'Return votes of current user.'
-    get :votes do
-      present @current_user.votes,
-              with: Vaalit::Entities::Vote
-    end
+    mount Vaalit::Elections
   end
-
 end

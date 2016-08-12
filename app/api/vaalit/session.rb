@@ -1,38 +1,13 @@
-module HYY
-
-  module Entities
-    class User < Grape::Entity
-      expose :voter_id
-      expose :email
-    end
-
-    class Faculty < Grape::Entity
-      expose :name
-      expose :code
-    end
-
-    class Department < Grape::Entity
-      expose :name
-      expose :code
-    end
-
-    class Voter < Grape::Entity
-      expose :name
-      expose :email
-      expose :phone
-      expose :faculty, using: Entities::Faculty
-      expose :department, using: Entities::Department
-    end
-  end
+module Vaalit
 
   module Entities
     class SessionToken < Grape::Entity
       expose :jwt
       expose :elections,
-        using: HYY::AE::Entities::Election,
+        using: Entities::Election,
         if: lambda { |token, opts| RuntimeConfig.voting_active? }
-      expose :voter, using: HYY::Entities::Voter
-      expose :user, using: HYY::Entities::User
+      expose :voter, using: Entities::Voter
+      expose :user,  using: Entities::User
     end
   end
 

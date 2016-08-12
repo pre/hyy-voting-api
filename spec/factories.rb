@@ -1,5 +1,27 @@
 FactoryGirl.define do
 
+  factory :coalition do
+    sequence(:name) {|n| "Coalition #{n}"}
+    sequence(:short_name) {|n| "C#{n}"}
+    sequence(:numbering_order) {|n| n }
+  end
+
+  factory :election do
+    sequence(:name) {|n| "Vaali #{n}"}
+
+    trait :faculty_election do
+      faculty
+    end
+
+    trait :department_election do
+      department
+    end
+
+    trait :edari_election do
+    end
+
+  end
+
   factory :imported_voter do
     name 'Armas Aappa'
     ssn '020486-1234'

@@ -1,47 +1,5 @@
-module HYY
-
-  module AE::Entities
-    class Candidate < Grape::Entity
-      expose :id
-      expose :alliance_id
-      expose :firstname
-      expose :lastname
-      expose :spare_firstname
-      expose :spare_lastname
-      expose :name
-      expose :candidate_number, :as => :number
-
-      private
-      def name
-        "#{object.firstname} #{object.lastname} (#{object.spare_firstname} #{object.spare_lastname})"
-      end
-    end
-  end
-
-  module AE::Entities
-    class Alliance < Grape::Entity
-      expose :id
-      expose :name
-      expose :faculty_id
-      expose :department_id
-      expose :candidates, using: AE::Entities::Candidate
-    end
-  end
-
-  module AE::Entities
-    class Election < Grape::Entity
-      expose :id
-      expose :type
-      expose :name
-      expose :faculty_id
-      expose :department_id
-
-      expose :alliances, using: AE::Entities::Alliance
-      expose :candidates, using: AE::Entities::Candidate
-    end
-  end
-
-  class AE::Elections < Grape::API
+module Vaalit
+  class Elections < Grape::API
 
     before do
       begin
@@ -69,7 +27,7 @@ module HYY
           desc 'Get previously cast vote in election'
           get do
             present @current_user.votes.by_election(params[:election_id]).first,
-                    with: HYY::AE::Entities::Vote
+                    with: Entities::Vote
           end
         end
 
@@ -77,7 +35,7 @@ module HYY
           desc 'Get alliances for an election'
           get do
             present Alliance.by_election(params[:election_id]),
-                    with: HYY::AE::Entities::Alliance
+                    with: Entities::Alliance
           end
         end
 
@@ -85,11 +43,11 @@ module HYY
           desc 'Get all candidates for an election'
           get do
             present Election.find(params[:election_id]).candidates,
-                    with: HYY::AE::Entities::Candidate
+                    with: Entities::Candidate
           end
 
           route_param :candidate_id do
-            desc 'Cast a vote for a candidate or update previous vote (idempotent action)'
+            desc 'Cast a vote for a candidate or update a previously cast vote (idempotent action)'
             post :vote do
               if cannot? :access, :votes
                 error!({ message: 'Voting has ended' }, :unauthorized)
@@ -100,8 +58,7 @@ module HYY
                                               candidate_id: params[:candidate_id]
 
               if vote.valid?
-                present vote,
-                        with: HYY::AE::Entities::Vote
+                present vote, with: Entities::Vote
               else
                 error!(
                   {

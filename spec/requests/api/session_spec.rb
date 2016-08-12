@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe HYY::Session do
+describe Vaalit::Session do
 
   context 'POST /api/sessions' do
 
@@ -37,6 +37,7 @@ describe HYY::Session do
 
       expect(response).to be_success
       expect(json["user"]["email"]).to eq email
+
     end
   end
 end

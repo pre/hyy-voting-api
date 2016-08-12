@@ -21,14 +21,13 @@ Configure `.env`
 Setup dev database:
 
 Quick:
-`rake db:runts`
+`rake db:runts && rake db:seed:edari`
 
 Manual:
 ~~~
 rake db:create
 rake db:schema:load
-rake db:seed:base
-rake db:seed
+rake -T db:seed
 ~~~
 
 ## Run
@@ -42,6 +41,12 @@ testi.pekkanen@example.com
 
 Rails routes: `rake routes`
 API Routes: `rake grape:routes`
+
+
+## Authorization
+
+Permissions to API endpoints is defined in `app/models/ability.rb`.
+
 
 ## Heroku
 

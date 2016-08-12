@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804084026) do
+ActiveRecord::Schema.define(version: 20160812111316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20160804084026) do
     t.integer  "faculty_id"
     t.integer  "department_id"
     t.integer  "numbering_order"
+    t.string   "short_name",      null: false
+    t.integer  "coalition_id",    null: false
+    t.index ["coalition_id"], name: "index_alliances_on_coalition_id", using: :btree
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -31,11 +34,19 @@ ActiveRecord::Schema.define(version: 20160804084026) do
     t.integer  "alliance_id",      null: false
     t.string   "firstname",        null: false
     t.string   "lastname",         null: false
-    t.string   "spare_firstname",  null: false
-    t.string   "spare_lastname",   null: false
     t.string   "ssn"
     t.integer  "candidate_number"
+    t.string   "candidate_name"
+  end
+
+  create_table "coalitions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "short_name"
     t.integer  "numbering_order"
+    t.integer  "election_id",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["election_id"], name: "index_coalitions_on_election_id", using: :btree
   end
 
   create_table "departments", force: :cascade do |t|

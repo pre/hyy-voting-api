@@ -1,3 +1,5 @@
+# Start-time configuration which does not change during the runtime.
+# For dynamic configuration, see `app/models/runtime_config.rb`
 module Vaalit
 
   module Public
@@ -9,6 +11,8 @@ module Vaalit
   end
 
   module Config
+    IS_EDARI_ELECTION            = !!(ENV.fetch('IS_EDARI_ELECTION') =~ /true/)
+    IS_HALLOPED_ELECTION         = !IS_EDARI_ELECTION
     VOTE_SIGNIN_STARTS_AT        = Time.parse ENV.fetch('VOTE_SIGNIN_STARTS_AT')
     VOTE_SIGNIN_ENDS_AT          = Time.parse ENV.fetch('VOTE_SIGNIN_ENDS_AT')
     ELIGIBILITY_SIGNIN_STARTS_AT = Time.parse ENV.fetch('ELIGIBILITY_SIGNIN_STARTS_AT')
