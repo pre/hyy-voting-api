@@ -4,6 +4,8 @@ class Candidate < ActiveRecord::Base
 
   belongs_to :alliance
 
+  has_one :coalition, through: :alliance
+
   has_one :faculty, through: :alliance
   has_one :department, through: :alliance
 
