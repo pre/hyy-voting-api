@@ -7,9 +7,6 @@ module Vaalit
       expose :name
       expose :faculty_id
       expose :department_id
-
-      expose :alliances, using: Entities::Alliance
-      expose :candidates, using: Entities::Candidate
     end
 
   end
