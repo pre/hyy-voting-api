@@ -30,34 +30,16 @@ class Vote < ActiveRecord::Base
 
   def self.by_candidate
     select("
-        candidates.candidate_number AS number,
+        candidates.candidate_number AS candidate_number,
         candidates.alliance_id AS alliance_id,
-        candidates.firstname AS firstname,
-        candidates.lastname AS lastname,
-        candidates.spare_firstname AS spare_firstname,
-        candidates.spare_lastname AS spare_lastname,
+        candidates.candidate_name AS candidate_name,
         COUNT(*) AS vote_count")
       .joins("INNER JOIN candidates ON votes.candidate_id = candidates.id")
       .group("
-        number,
+        candidate_number,
         alliance_id,
-        firstname,
-        lastname,
-        spare_firstname,
-        spare_lastname")
-      .order("number")
-  end
-
-  def self.to_csv
-    votes = Vote.by_candidate
-
-    csv = "ehdokasnumero,vaaliliitto,etunimi,sukunimi,varan etunimi,varan sukunimi,ääniä\n"
-
-    votes.each do |v|
-      csv << "#{v.number},#{v.alliance_id},#{v.firstname},#{v.lastname},#{v.spare_firstname},#{v.spare_lastname},#{v.vote_count}\n"
-    end
-
-    csv
+        candidate_name")
+      .order("candidate_number")
   end
 
   protected
