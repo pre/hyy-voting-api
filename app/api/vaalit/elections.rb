@@ -35,7 +35,7 @@ module Vaalit
           desc 'Get alliances for an election'
           get do
             present Alliance.by_election(params[:election_id]),
-                    with: Entities::Alliance
+                    with: Entities::AllianceWithCandidates
           end
         end
 
