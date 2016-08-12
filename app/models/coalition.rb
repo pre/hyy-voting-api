@@ -7,4 +7,8 @@ class Coalition < ApplicationRecord
   validates_presence_of :name,
                         :short_name
 
+  scope :by_election, -> (id) {
+    where(election_id: id)
+      .reorder(:numbering_order)
+  }
 end
