@@ -26,11 +26,11 @@ module Vaalit
           end
         end
 
-        namespace :vote do
-          desc 'Get previously cast vote in election'
+        namespace :voting_right do
+          desc 'Tells whether user can cast a vote in current election'
           get do
-            present @current_user.votes.by_election(params[:election_id]).first,
-                    with: Entities::Vote
+            present @current_user.voting_right,
+                      with: Entities::VotingRight
           end
         end
 

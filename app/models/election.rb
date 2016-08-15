@@ -1,5 +1,7 @@
 class Election < ActiveRecord::Base
-  has_many :votes
+
+  has_many :voting_rights
+  has_many :mutable_votes      if Vaalit::Config::IS_HALLOPED_ELECTION
 
   has_many :coalitions, -> { order(numbering_order: :asc) }
   has_many :alliances,  -> { order(numbering_order: :asc) }

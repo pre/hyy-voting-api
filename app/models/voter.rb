@@ -1,6 +1,11 @@
 class Voter < ActiveRecord::Base
-  has_many :votes
-  has_many :faculty_elections, through: :faculty, source: :elections
+
+  has_one  :voting_right       if Vaalit::Config::IS_EDARI_ELECTION
+  # TODO:Halloped
+  # has_many :voting_rights      if Vaalit::Config::IS_HALLOPED_ELECTION
+  # has_many :mutable_votes      if Vaalit::Config::IS_HALLOPED_ELECTION
+
+  has_many :faculty_elections,    through: :faculty,    source: :elections
   has_many :department_elections, through: :department, source: :elections
 
   belongs_to :faculty
@@ -16,8 +21,8 @@ class Voter < ActiveRecord::Base
 
   validates_uniqueness_of :email, allow_nil: true
 
-  validates_length_of :name, :minimum => 4
-  validates_length_of :ssn, :minimum => 6
+  validates_length_of :name,           :minimum => 4
+  validates_length_of :ssn,            :minimum => 6
   validates_length_of :student_number, :minimum => 4, allow_nil: true
 
   def self.create_from!(imported_voter)
@@ -55,8 +60,10 @@ class Voter < ActiveRecord::Base
     if Vaalit::Config::IS_EDARI_ELECTION
       [Election.first]
     else
+      # Halloped elections
       # This is a plain array. An SQL union would require a Gem since
       # ActiveRecord does not support combining scopes with OR by default.
+      # TODO: use Voter#voting_rights instead
       faculty_elections + department_elections
     end
   end
