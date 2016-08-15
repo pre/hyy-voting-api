@@ -11,6 +11,9 @@ module Vaalit
 
     namespace :elections do
 
+      params do
+        requires :election_id, type: Integer
+      end
       route_param :election_id do
 
         before do
@@ -29,6 +32,23 @@ module Vaalit
             present @current_user.votes.by_election(params[:election_id]).first,
                     with: Entities::Vote
           end
+        end
+
+        namespace :coalitions do
+            desc 'Get coalitions, include candidates using :with_candidates=true'
+            params do
+              optional :with_candidates, type: Boolean
+            end
+            get do
+              if params[:with_candidates]
+                entity = Entities::CoalitionWithAlliancesAndCandidates
+              else
+                entity = Entities::Coalition
+              end
+
+              present Coalition.by_election(params[:election_id]),
+                      with: entity
+            end
         end
 
         namespace :alliances do
