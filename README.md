@@ -86,3 +86,22 @@ psql -d hyy_api_development -f dump.sql
 
 * Error with Capybara tests: "unable to obtain stable firefox connection in 60 seconds (127.0.0.1:7055)"
   - Update Selenium, Firefox or Geckodriver so that the combination of their versions works.
+
+* If you get any OpenSSL error about the certificates, double check the line endings.
+  Use eg. `puts Vaalit::Haka::SAML_IDP_CERT` in `rails console` to see that
+  all lines have equal width.
+  - example error: `OpenSSL::X509::CertificateError: nested asn1 error`
+  - remember the newline in `-----END CERTIFICATE-----\n`
+  - Try in `rails console`:
+    ```ruby
+    cert = "-----BEGIN CERTIFICATE-----\n[....]-----END CERTIFICATE-----\n"
+    puts cert
+    # you should see that all line widths are equal
+    OpenSSL::X509::Certificate.new cert
+    # you should see details of `cert`
+    ```
+  - Same works with the private key using `OpenSSL::PKey::RSA.new rsa_key`
+
+* When setting Heroku environment variables with newlines (ie. certificates),
+  `heroku config:set XYZ="has\nnewlines"` will mess up `\n` to `\\n`.
+  - Use `heroku config:add SOME_CERT="$(cat cert.pem)"`
