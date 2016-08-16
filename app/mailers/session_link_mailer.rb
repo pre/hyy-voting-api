@@ -7,7 +7,6 @@ class SessionLinkMailer < ApplicationMailer
 
     mail(
       :to => email,
-      :bcc => Vaalit::Config::MAIL_BCC_ADDRESS,
       :subject => 'Sisäänkirjautumislinkki hallintovaaleihin'
     )
   end
