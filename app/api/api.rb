@@ -14,11 +14,11 @@ class API < Grape::API
   end
 
   if Vaalit::Config::IS_HALLOPED_ELECTION
-    mount HYY::AE # Authorized
+    mount Vaalit::Halloped::HallopedApi # Authorized
   end
 
   if Vaalit::Config::IS_EDARI_ELECTION
-    mount Vaalit::Edari # Authorized
+    mount Vaalit::Edari::EdariApi # Authorized
   end
 
   # Shared between Edari and Halloped

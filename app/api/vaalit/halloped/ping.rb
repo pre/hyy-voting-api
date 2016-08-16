@@ -1,6 +1,7 @@
-module HYY
+module Vaalit
+  module Halloped
 
-    class AE::Ping < Grape::API
+    class Ping < Grape::API
       desc 'Returns authorized pong.'
       get :ping do
         {
@@ -10,4 +11,5 @@ module HYY
       end
     end
 
+  end
 end
