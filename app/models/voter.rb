@@ -18,7 +18,7 @@ class Voter < ActiveRecord::Base
 
   validates_length_of :name, :minimum => 4
   validates_length_of :ssn, :minimum => 6
-  validates_length_of :student_number, :minimum => 6, allow_nil: true
+  validates_length_of :student_number, :minimum => 4, allow_nil: true
 
   def self.create_from!(imported_voter)
     create!(

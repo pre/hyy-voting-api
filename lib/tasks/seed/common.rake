@@ -36,6 +36,16 @@ namespace :db do
           :faculty => Faculty.last,
           :department => Department.last
         )
+
+        # Haka test user
+        Voter.create!(
+          :name => "Teppo 'Haka User' Testaaja",
+          :email => "teppo@nonexistent.tld",
+          :student_number => "873400",
+          :faculty => Faculty.last,
+          :department => Department.last,
+          :ssn => "121212-1234"
+        )
       end
 
       desc 'faculties'

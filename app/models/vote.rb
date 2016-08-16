@@ -45,10 +45,9 @@ class Vote < ActiveRecord::Base
   protected
 
   def candidate_belongs_to_election
-    begin
-      Election.find(election_id).candidates.find(candidate_id)
-    rescue ActiveRecord::RecordNotFound
-      errors.add(:candidate, "Candidate #{candidate_id} does not belong to election #{election_id}")
-    end
+    Election.find(election_id).candidates.find(candidate_id)
+  rescue ActiveRecord::RecordNotFound
+    errors.add(:candidate, "Candidate #{candidate_id} does not belong to election #{election_id}")
+    nil
   end
 end
