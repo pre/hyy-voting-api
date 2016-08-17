@@ -3,57 +3,51 @@
 ## Setup
 
 Retrieve the Angular.js frontend (needed for production use only):
-* `git submodule update --init`
-* This installs a static copy of
-  [compiled Angular.js frontend](https://github.com/pre/hyy-voting-frontend-dist)
-  to public/
+  * `git submodule update --init`
+  * This installs a static copy of
+    [compiled Angular.js frontend](https://github.com/pre/hyy-voting-frontend-dist)
+    to public/
 
 Set up local version of the [Angular.js frontend](https://github.com/pre/hyy-voting-frontend)
 which will be run in a _different port_ than the Rails server.
 
 Install Gem dependencies:
-* `gem install bundler` (needs only be done once)
-* `bundle install`
+  * `gem install bundler` (needs only be done once)
+  * `bundle install`
 
 Configure `.env`
-* `cp .env.example .env`
+  * `cp .env.example .env`
+  * copy test certificates from `doc/certificate_examples`, these can be used
+    with Haka-test for authentication.
 
-Setup dev database:
+Quick setup for dev database:
+  * `rake db:runts && rake db:seed:edari`
 
-Quick:
-`rake db:runts && rake db:seed:edari`
-
-Manual:
-~~~
+Manual setup for dev database:
+```bash
 rake db:create
 rake db:schema:load
 rake -T db:seed
-~~~
+```
 
-## Run
+## Run dev server
 
 `rails s`
 
 Example user:
-testi.pekkanen@example.com
+testi.pekkanen@example.com (sign-in link via email)
+teppo/testaaja (Haka-test)
+
 
 ## List API endpoints:
 
-Rails routes: `rake routes`
-API Routes: `rake grape:routes`
+* Rails routes: `rake routes`
+* API Routes: `rake grape:routes`
 
 
 ## Authorization
 
 Permissions to API endpoints is defined in `app/models/ability.rb`.
-
-
-## Heroku
-
-### Dump database
-
-pg_dump -d $(heroku config:get DATABASE_URL --app hyy-vaalit) -c -O -f dump.sql
-psql -d hyy_api_development -f dump.sql
 
 
 ## Testing
@@ -69,6 +63,23 @@ psql -d hyy_api_development -f dump.sql
 
 * You may run a specific test using `focus: true` in the test description.
   - You can also use aliases `fit`, `fcontext` and `fdescribe` respectively.
+
+
+## Heroku
+
+### Dump database
+
+```bash
+pg_dump -d $(heroku config:get DATABASE_URL --app hyy-vaalit) -c -O -f dump.sql
+psql -d hyy_api_development -f dump.sql
+```
+
+### Environment variables
+
+Set that all appropriate values from `.env.example` are listed in `heroku config`.
+
+Multiline values (certificates) should be set as follows:
+  `heroku config:set SOME_CERT="$(cat cert.pem)"`
 
 
 ## Tips
