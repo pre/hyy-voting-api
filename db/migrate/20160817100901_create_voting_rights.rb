@@ -3,7 +3,7 @@ class CreateVotingRights < ActiveRecord::Migration[5.0]
     create_table :voting_rights do |t|
       t.references :election, null: false
       t.references :voter, null: false
-      t.boolean :is_used, null: false, default: false
+      t.boolean :used, null: false, default: false
 
       t.timestamps
     end

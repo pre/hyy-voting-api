@@ -10,6 +10,7 @@ class Ability
     can :manage, :all
   end
 
+  # For simplicity, only :access is used as a keyword for each ACL target.
   def voter(user)
     if Vaalit::Config::IS_HALLOPED_ELECTION
       can :access, :ae_namespace
