@@ -102,17 +102,20 @@ Multiline values (certificates) should be set as follows:
   Use eg. `puts Vaalit::Haka::SAML_IDP_CERT` in `rails console` to see that
   all lines have equal width.
   - example error: `OpenSSL::X509::CertificateError: nested asn1 error`
-  - remember the newline in `-----END CERTIFICATE-----\n`
   - Try in `rails console`:
-    ```ruby
-    cert = "-----BEGIN CERTIFICATE-----\n[....]-----END CERTIFICATE-----\n"
-    puts cert
-    # you should see that all line widths are equal
-    OpenSSL::X509::Certificate.new cert
-    # you should see details of `cert`
-    ```
-  - Same works with the private key using `OpenSSL::PKey::RSA.new rsa_key`
+```ruby
+# This should print "-----BEGIN CERTIFICATE-----\n[....]-----END CERTIFICATE-----\n"
+# Ensure there is a newline in `-----END CERTIFICATE-----\n`
+cert = File.read("cert/haka-test.crt")
 
-* When setting Heroku environment variables with newlines (ie. certificates),
-  `heroku config:set XYZ="has\nnewlines"` will mess up `\n` to `\\n`.
-  - Use `heroku config:add SOME_CERT="$(cat cert.pem)"`
+# Check that every line width is equal
+puts cert
+
+# Check if OpenSSL can open the certificate
+# Use `OpenSSL::PKey::RSA.new rsa_key` for a private key
+OpenSSL::X509::Certificate.new cert
+```
+
+* Set Heroku environment variables with newlines (ie. certificates) using:
+  - `heroku config:add SOME_CERT="$(cat cert.pem)"`
+  - WONT WORK: `heroku config:set XYZ="has\nnewlines"`, it will mess up `\n` to `\\n`.
