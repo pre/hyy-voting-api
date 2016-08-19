@@ -1,6 +1,7 @@
 class Candidate < ActiveRecord::Base
 
-  has_many :votes
+  has_many :votes, class_name: "ImmutableVote"  if Vaalit::Config::IS_EDARI_ELECTION
+  has_many :votes, class_name: "MutableVote"    if Vaalit::Config::IS_HALLOPED_ELECTION
 
   belongs_to :alliance
 

@@ -28,9 +28,6 @@ namespace :db do
 
       desc 'coalitions and alliances'
       task :coalitions_and_alliances => :environment do
-        puts "Creating Edari elections"
-        Election.create! name: "Edustajistovaalit #{Time.now.year}"
-
         puts "Seeding coalitions ..."
 
         # Coalitions with multiple alliances

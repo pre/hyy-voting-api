@@ -1,9 +1,21 @@
 FactoryGirl.define do
+  factory :voting_right do
+    used false
+    voter
+  end
 
   factory :coalition do
     sequence(:name) {|n| "Coalition #{n}"}
     sequence(:short_name) {|n| "C#{n}"}
     sequence(:numbering_order) {|n| n }
+  end
+
+  factory :alliance do
+    sequence(:name) {|n| "Alliance #{n}"}
+    sequence(:short_name) {|n| "A#{n}"}
+    sequence(:numbering_order) {|n| n }
+
+    coalition
   end
 
   factory :election do
@@ -51,6 +63,15 @@ FactoryGirl.define do
 
     faculty
     department
+  end
+
+  factory :candidate do
+    sequence(:firstname) {|n| "Testi #{n}"}
+    sequence(:lastname) {|n| "Candidate #{n}"}
+    sequence(:candidate_name) {|n| "Testi Candidate #{n}"}
+    sequence(:candidate_number) {|n| n}
+
+    alliance
   end
 
 

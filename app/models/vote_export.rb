@@ -1,7 +1,7 @@
 class VoteExport
 
   def self.to_csv
-    votes = Vote.by_candidate
+    votes = ImmutableVote.by_candidate
 
     csv = "ehdokasnumero,ääniä,vaaliliitto,ehdokasnimi\n"
 

@@ -1,8 +1,7 @@
 module Vaalit
-  module Halloped
+  module Entities
 
-    # Used when a Vote can be changed (Halloped elections)
-    class Entities::Vote < Grape::Entity
+    class MutableVote < Grape::Entity
       expose :id
       expose :candidate_id
       expose :election_id

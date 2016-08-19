@@ -98,6 +98,9 @@ namespace :db do
           numbering_order: 7
         )
 
+        puts ""
+        puts "#TODO Halloped voting rights have not been seeded!"
+        raise "okay.png"
       end
     end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812111316) do
+ActiveRecord::Schema.define(version: 20160817142240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20160812111316) do
     t.integer  "alliance_id",      null: false
     t.string   "firstname",        null: false
     t.string   "lastname",         null: false
-    t.string   "ssn"
     t.integer  "candidate_number"
     t.string   "candidate_name"
   end
@@ -74,6 +73,24 @@ ActiveRecord::Schema.define(version: 20160812111316) do
     t.index ["code"], name: "index_faculties_on_code", unique: true, using: :btree
   end
 
+  create_table "immutable_votes", force: :cascade do |t|
+    t.integer  "candidate_id", null: false
+    t.integer  "election_id",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["candidate_id"], name: "index_immutable_votes_on_candidate_id", using: :btree
+    t.index ["election_id"], name: "index_immutable_votes_on_election_id", using: :btree
+  end
+
+  create_table "mutable_votes", force: :cascade do |t|
+    t.integer  "voter_id",     null: false
+    t.integer  "candidate_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "election_id",  null: false
+    t.index ["voter_id", "election_id"], name: "index_mutable_votes_on_voter_id_and_election_id", unique: true, using: :btree
+  end
+
   create_table "voters", force: :cascade do |t|
     t.string   "name",              null: false
     t.string   "email"
@@ -90,13 +107,15 @@ ActiveRecord::Schema.define(version: 20160812111316) do
     t.index ["ssn"], name: "index_voters_on_ssn", unique: true, using: :btree
   end
 
-  create_table "votes", force: :cascade do |t|
-    t.integer  "voter_id",     null: false
-    t.integer  "candidate_id", null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "election_id",  null: false
-    t.index ["voter_id", "election_id"], name: "index_votes_on_voter_id_and_election_id", unique: true, using: :btree
+  create_table "voting_rights", force: :cascade do |t|
+    t.integer  "election_id",                 null: false
+    t.integer  "voter_id",                    null: false
+    t.boolean  "used",        default: false, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["election_id"], name: "index_voting_rights_on_election_id", using: :btree
+    t.index ["voter_id", "election_id"], name: "index_voting_rights_on_voter_id_and_election_id", unique: true, using: :btree
+    t.index ["voter_id"], name: "index_voting_rights_on_voter_id", using: :btree
   end
 
   add_foreign_key "alliances", "departments"
@@ -106,9 +125,11 @@ ActiveRecord::Schema.define(version: 20160812111316) do
   add_foreign_key "departments", "faculties"
   add_foreign_key "elections", "departments"
   add_foreign_key "elections", "faculties"
+  add_foreign_key "mutable_votes", "candidates"
+  add_foreign_key "mutable_votes", "elections"
+  add_foreign_key "mutable_votes", "voters"
   add_foreign_key "voters", "departments"
   add_foreign_key "voters", "faculties"
-  add_foreign_key "votes", "candidates"
-  add_foreign_key "votes", "elections"
-  add_foreign_key "votes", "voters"
+  add_foreign_key "voting_rights", "elections"
+  add_foreign_key "voting_rights", "voters"
 end

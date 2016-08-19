@@ -26,12 +26,42 @@ module Vaalit
           end
         end
 
-        namespace :vote do
-          desc 'Get previously cast vote in election'
+        namespace :voting_right do
+          desc 'Tells whether user can cast a vote in current election'
           get do
-            present @current_user.votes.by_election(params[:election_id]).first,
-                    with: Entities::Vote
+            present @current_user.voting_right,
+                      with: Entities::VotingRight
           end
+        end
+
+        namespace :vote do
+
+            desc 'Cast a vote for a candidate' do
+              failure [[422, 'Unprocessable entity', Errors::Vote]]
+            end
+            params do
+              requires :candidate_id, type: Integer
+            end
+            post do
+              if cannot? :access, :votes
+                error!({ message: 'Voting has ended' }, :unauthorized)
+              end
+
+              result = CastVote.submit voter: @current_user,
+                                       election: @election,
+                                       candidate: Candidate.find(params[:candidate_id])
+
+              if result
+                present @current_user.voting_right, with: Entities::VotingRight
+              else
+                error!(
+                  {
+                    voting_right: @current_user.voting_right,
+                    message: 'Vote could not be submitted'
+                  }, 422)
+              end
+            end
+
         end
 
         namespace :coalitions do
@@ -64,30 +94,6 @@ module Vaalit
           get do
             present Election.find(params[:election_id]).candidates,
                     with: Entities::Candidate
-          end
-
-          route_param :candidate_id do
-            desc 'Cast a vote for a candidate or update a previously cast vote (idempotent action)'
-            post :vote do
-              if cannot? :access, :votes
-                error!({ message: 'Voting has ended' }, :unauthorized)
-              end
-
-              vote = Vote.update_or_create_by voter_id: @current_user.id,
-                                              election_id: params[:election_id],
-                                              candidate_id: params[:candidate_id]
-
-              if vote.valid?
-                present vote, with: Entities::Vote
-              else
-                error!(
-                  {
-                    message: 'Vote failed',
-                    errors: vote.errors.as_json
-                  }, 422)
-              end
-            end
-
           end
         end
       end

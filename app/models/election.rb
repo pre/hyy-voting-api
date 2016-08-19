@@ -1,5 +1,8 @@
 class Election < ActiveRecord::Base
-  has_many :votes
+
+  has_many :voting_rights
+  has_many :immutable_votes  if Vaalit::Config::IS_EDARI_ELECTION
+  has_many :mutable_votes    if Vaalit::Config::IS_HALLOPED_ELECTION
 
   has_many :coalitions, -> { order(numbering_order: :asc) }
   has_many :alliances,  -> { order(numbering_order: :asc) }
@@ -40,7 +43,7 @@ class Election < ActiveRecord::Base
 
   def unique_edari_election?
     return true if self.class.count == 0
-    return true if self.class.count == 1 && self.class.first == self
+    return true if self.class.count == 1 && self.class.first.id == self.id
 
     @errors.add :type, "There can be only one Edari election at the same time."
     return false
