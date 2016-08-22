@@ -29,8 +29,16 @@ module Vaalit
         namespace :voting_right do
           desc 'Tells whether user can cast a vote in current election'
           get do
-            present @current_user.voting_right,
+            voting_right = @current_user.voting_right
+
+            if voting_right.present?
+              present voting_right,
                       with: Entities::VotingRight
+            else
+              error!(
+                { message: "User #{@current_user.id} does not have voting right in election #{params[:election_id]}" },
+                :unauthorized)
+            end
           end
         end
 
