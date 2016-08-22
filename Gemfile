@@ -12,8 +12,6 @@ gem 'nokogiri'
 
 gem 'cancancan' #, '~> 1.10'
 
-gem 'ranked-model'
-
 # # Disable the security feature of strong_params at the model layer,
 # # use Grape's own params validation instead.
 # gem 'hashie-forbidden_attributes'

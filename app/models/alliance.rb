@@ -1,16 +1,10 @@
 class Alliance < ActiveRecord::Base
-  include RankedModel
-
   belongs_to :coalition
   belongs_to :election
 
   # Faculty and department are significant only in Halloped elections
   belongs_to :faculty
   belongs_to :department
-
-  ranks :numbering_order
-  # ranks :numbering_order, :with_same => :coalition_id
-  # scope :by_numbering_order, order("#{table_name}.numbering_order")
 
   has_many :candidates, -> { order(candidate_number: :asc) }
 
