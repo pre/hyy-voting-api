@@ -1,5 +1,5 @@
 class Coalition < ApplicationRecord
-  has_many :alliances
+  has_many :alliances, -> { order(numbering_order: :asc) }
   has_many :candidates, through: :alliances
 
   belongs_to :election
