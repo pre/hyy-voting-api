@@ -7,6 +7,8 @@ namespace :db do
       Rake::Task['db:seed:edari:voting_rights'].invoke()
       Rake::Task['db:seed:edari:coalitions_and_alliances'].invoke()
       Rake::Task['db:seed:edari:candidates'].invoke()
+
+      Rake::Task['db:seed:edari:blank_candidate'].invoke()
     end
 
   end
