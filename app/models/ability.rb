@@ -6,9 +6,10 @@ class Ability
     set_role(user)
   end
 
-  def admin(user)
-    can :manage, :all
-  end
+  # TODO:admin
+  # def admin(user)
+  #   can :manage, :all
+  # end
 
   # For simplicity, only :access is used as a keyword for each ACL target.
   def voter(user)
@@ -46,8 +47,9 @@ class Ability
     case user.class.to_s
     when "Voter"
       send :voter, user
-    when "AdminUser"
-      send :admin, user
+    # TODO:admin
+    # when "AdminUser"
+    #   send :admin, user
     else
       raise "Unknown user class: #{user.class.to_s}"
     end
