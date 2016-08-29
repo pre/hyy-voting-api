@@ -11,43 +11,6 @@ namespace :db do
                            faculty: Faculty.find_by_code!(faculty_code)
       end
 
-      desc 'voters'
-      task :voters => :environment do
-        puts "Seeding voters ..."
-
-        Voter.create!(
-          :name => "Testi Pekkanen",
-          :email => "testi.pekkanen@example.com",
-          :ssn => "123456789A",
-          :student_number => "987654321",
-          :start_year => "2001",
-          :extent_of_studies => "4",
-          :faculty => Faculty.first,
-          :department => Department.first
-        )
-
-        Voter.create!(
-          :name => "Kesti Rekkanen",
-          :email => "kesti.rekkanen@example.com",
-          :ssn => "112233123A",
-          :student_number => "998877665",
-          :start_year => "2005",
-          :extent_of_studies => "3",
-          :faculty => Faculty.last,
-          :department => Department.last
-        )
-
-        # Haka test user
-        Voter.create!(
-          :name => "Teppo 'Haka User' Testaaja",
-          :email => "teppo@nonexistent.tld",
-          :student_number => "873400",
-          :faculty => Faculty.last,
-          :department => Department.last,
-          :ssn => "121212-1234"
-        )
-      end
-
       desc 'faculties'
       task :faculties => :environment do
         puts 'Seeding faculties ...'
@@ -121,7 +84,6 @@ namespace :db do
     task :common => :environment do
       Rake::Task['db:seed:common:faculties'].invoke()
       Rake::Task['db:seed:common:departments'].invoke()
-      Rake::Task['db:seed:common:voters'].invoke()
     end
   end
 end

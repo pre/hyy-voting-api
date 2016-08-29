@@ -1,62 +1,47 @@
-require './lib/support/candidate_csv_seed'
+require './lib/support/imported_csv_candidate'
 
 namespace :db do
   namespace :seed do
     namespace :edari do
 
-      desc 'candidates (requires alliances)'
+      desc 'seed candidates from stdin in csv format'
       task :candidates => :environment do
-        puts "Seeding candidates ..."
-
-        SEPARATOR = ","
-        ENCODING = "UTF-8"
-        filename = "./lib/support/candidates_2009.csv"
-
-        puts "BEGIN: Database has now #{Candidate.count} candidates."
-        count = 0
-
-        alliances = {}
-        Alliance.all.each do |a|
-          alliances[a.name] = a.id
-        end
-
         ActiveRecord::Base.transaction do
           begin
-            CSV.foreach(filename,
-                        col_sep: SEPARATOR,
-                        encoding: ENCODING,
-                        headers: true) do |row|
 
-              count = count + 1
-
-              imported = CandidateCsvSeed.build_from row
-              puts "Number #{count} - #{imported.candidate_name}"
-
-              candidate = Candidate.new.tap do |c|
-                c.firstname = imported.firstnames
-                c.lastname = imported.lastname
-                c.candidate_number = imported.candidate_number
-                c.candidate_name = imported.candidate_name
-
-                c.alliance_id = alliances[imported.alliance_name]
-              end
-
-              candidate.save!
+            if Candidate.count != 0
+              raise "Expected Candidate table to be empty (has #{Candidate.count} candidates)."
             end
 
-            puts "Imported #{count} candidates."
+            separator = ","
+            encoding = "UTF-8"
+            count = 0
 
-          rescue Exception => e
-            puts "Error: #{e}"
-            raise ActiveRecord::Rollback
+            Rails.logger.info "SEEDING CANDIDATES"
+            puts ""
+            puts "==================== CANDIDATES ======================="
+            puts "Paste Candidates in CSV format, finally press ^D"
+            puts "Expected format is (without header):"
+            puts "name,numbering_order,short_name,candidate_count"
+            puts ""
+
+            lines = $stdin.readlines
+
+            lines.each do |csv_row|
+              count = count + 1
+
+              CSV.parse(csv_row, col_sep: separator, encoding: encoding) do |csv_candidate|
+                ImportedCsvCandidate.create_from! csv_candidate
+              end
+            end
+
+            Rails.logger.info "Imported #{count} candidates from STDIN."
+            Rails.logger.info "Database has now #{Candidate.count} candidates."
+
           end
-
-        end # transaction
-
-        puts "END: Database has now #{Candidate.count} candidates."
+        end
 
       end
-
     end
   end
 end

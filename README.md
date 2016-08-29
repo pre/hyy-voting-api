@@ -119,3 +119,15 @@ OpenSSL::X509::Certificate.new cert
 * Set Heroku environment variables with newlines (ie. certificates) using:
   - `heroku config:add SOME_CERT="$(cat cert.pem)"`
   - WONT WORK: `heroku config:set XYZ="has\nnewlines"`, it will mess up `\n` to `\\n`.
+
+* Reset Heroku database:
+  - `heroku pg:reset DATABASE`
+  - `heroku run rake db:schema:load`
+  - `heroku run rake db:seed:common`
+  - `heroku run rake db:seed:edari`
+  - Example seeds are available in the admin dashboard of Ehdokastietojärjestelmä
+
+* Production seed data is loaded to Heroku from interactive terminal.
+  There's [an issue in heroku-toolbelt](https://github.com/heroku/heroku/issues/1409)
+  which prevents using eg.
+  `heroku run rake db:seed:edari:candidates < candidates.csv`.

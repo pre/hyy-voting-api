@@ -5,8 +5,8 @@ namespace :db do
 
       desc 'seed election'
       task :election => :environment do
-        puts "Creating Edari elections"
-        Election.create! name: "Edustajistovaalit #{Time.now.year}"
+        e = Election.create! name: "Edustajistovaalit #{Time.now.year}"
+        Rails.logger.info "Created election: #{e.name}"
       end
 
     end

@@ -25,6 +25,10 @@ class Voter < ActiveRecord::Base
   validates_length_of :ssn,            :minimum => 6
   validates_length_of :student_number, :minimum => 4, allow_nil: true
 
+  validates_format_of :email,
+                      :allow_nil => true,
+                      :with => /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/
+
   def self.create_from!(imported_voter)
     create!(
         :ssn               => imported_voter.ssn,

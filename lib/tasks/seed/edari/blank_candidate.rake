@@ -4,7 +4,7 @@ namespace :db do
 
       desc 'allow blank vote with a special blank candidate (candidate_number 1)'
       task :blank_candidate => :environment do
-        puts "Creating a blank candidate to allow protest votes"
+        Rails.logger.info "Creating a blank candidate to allow protest votes"
         edari_election = Election.first
 
         blank_coalition = Coalition.create!(
