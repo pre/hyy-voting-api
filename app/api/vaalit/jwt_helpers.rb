@@ -1,9 +1,9 @@
 module Vaalit
   module JwtHelpers
 
-    # Decode JWT from Authorization HTTP header and find current user.
-    def get_current_user(headers)
-      decoded_token = decode_jwt(headers)
+    # Find current Voter by decoding JWT from Authorization HTTP header.
+    def current_voter_user(headers)
+      decoded_token = decode_jwt(headers, Rails.application.secrets.jwt_voter_secret)
 
       if decoded_token
         Voter.find decoded_token["voter_id"]
@@ -13,12 +13,24 @@ module Vaalit
       end
     end
 
+    # Find current ServiceUser by decoding JWT from Authorization HTTP header.
+    def current_service_user(headers)
+      if decode_jwt(headers, Rails.application.secrets.jwt_service_user_secret)
+        ServiceUser.new
+      else
+        Rails.logger.error "Couldn't accept token for ServiceUser (token might have expired)"
+        return false
+      end
+    end
+
     private
     begin
 
+      # Decode JWT from Authorization HTTP header.
+      #
       # HTTP Header is in format
       #   Authorization: "Bearer JWT_TOKEN"
-      def decode_jwt(headers)
+      def decode_jwt(headers, secret)
         return nil unless headers['Authorization'].present?
 
         header = headers['Authorization']
@@ -26,7 +38,7 @@ module Vaalit
 
         jwt = header.split(' ').last
 
-        token = JsonWebToken.decode jwt
+        token = JsonWebToken.decode jwt, secret
         return nil unless token.present?
 
         # Token is in array [payload, header]

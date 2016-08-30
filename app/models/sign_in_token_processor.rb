@@ -46,7 +46,8 @@ class SignInTokenProcessor
     # Format:
     # [{"email"=>"testi.pekkanen@example.com"}, {"typ"=>"JWT", "alg"=>"HS256"}]
     def get_email(jwt_from_email)
-      payload = JsonWebToken.decode jwt_from_email
+      payload = JsonWebToken.decode jwt_from_email,
+                                    Rails.application.secrets.jwt_voter_secret
 
       if payload.nil?
         errors.add(:source_token, "Invalid source JWT token in the email link")

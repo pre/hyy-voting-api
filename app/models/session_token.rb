@@ -22,7 +22,7 @@ class SessionToken
       email: @user.voter.email
     }
 
-    JsonWebToken.encode payload
+    JsonWebToken.encode payload, Rails.application.secrets.jwt_voter_secret
   end
 
   # List of elections displayed in frontpage.

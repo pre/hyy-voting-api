@@ -1,22 +1,23 @@
 module Vaalit
-  module Edari
+  module Export
 
-    class EdariApi < Grape::API
+    class ExportApi < Grape::API
 
       before do
-        @current_user = current_voter_user headers
+        @current_user = current_service_user headers
 
         error!({ message: 'Unauthorized' }, :unauthorized) unless @current_user
 
         begin
-          authorize! :access, :elections
+          authorize! :access, :export
         rescue CanCan::AccessDenied => exception
+          Rails.logger.info "AccessDenied to export_api; voting active: #{RuntimeConfig.voting_active?}"
           error!({ message: "Unauthorized: #{exception.message}" }, :unauthorized)
         end
 
       end
 
-      mount Vaalit::Elections
+      mount Export::Votes
     end
 
   end

@@ -5,6 +5,7 @@ class Candidate < ActiveRecord::Base
 
   belongs_to :alliance
 
+  has_one :election, through: :alliance
   has_one :coalition, through: :alliance
 
   has_one :faculty, through: :alliance
@@ -19,5 +20,11 @@ class Candidate < ActiveRecord::Base
   validates_uniqueness_of :candidate_number,
                           if: Proc.new { Vaalit::Config::IS_EDARI_ELECTION }
 
+  #TODO: support mutable_votes
+  scope :without_votes,
+        -> { Candidate.where("#{table_name}.id NOT IN (SELECT candidate_id FROM immutable_votes)") }
+
+  scope :without_blank_candidate,
+        -> { Candidate.where("candidate_number != #{Vaalit::Config::BLANK_CANDIDATE_NUMBER}") }
 
 end

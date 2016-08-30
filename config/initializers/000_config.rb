@@ -18,7 +18,16 @@ module Vaalit
     ELIGIBILITY_SIGNIN_STARTS_AT = Time.parse ENV.fetch('ELIGIBILITY_SIGNIN_STARTS_AT')
     ELIGIBILITY_SIGNIN_ENDS_AT   = Time.parse ENV.fetch('ELIGIBILITY_SIGNIN_ENDS_AT')
     VOTING_GRACE_PERIOD_MINUTES  = ENV.fetch('VOTING_GRACE_PERIOD_MINUTES').to_i.minutes
-    SESSION_JWT_EXPIRY_MINUTES   = ENV.fetch('SESSION_JWT_EXPIRY_MINUTES').to_i.minutes
+    VOTER_SESSION_JWT_EXPIRY_MINUTES = ENV.fetch('VOTER_SESSION_JWT_EXPIRY_MINUTES').to_i.minutes
+    BLANK_CANDIDATE_NUMBER       = 1
+  end
+
+  module SanityCheck
+    # These two JWT secrets must differ in order to differentiate access between
+    # Voter API and ServiceUser API.
+    if Rails.application.secrets.jwt_voter_secret == Rails.application.secrets.jwt_service_user_secret
+      raise "JWT_VOTER_SECRET must differ from JWT_SERVICE_USER_SECRET"
+    end
   end
 
   module Haka

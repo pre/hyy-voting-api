@@ -1,4 +1,8 @@
 FactoryGirl.define do
+
+  factory :service_user do
+  end
+
   factory :voting_right do
     used false
     voter
@@ -72,6 +76,25 @@ FactoryGirl.define do
     sequence(:candidate_number) {|n| n}
 
     alliance
+
+    trait :with_votes do
+      transient do
+        vote_count 15
+      end
+
+      after(:create) do |candidate, evaluator|
+        evaluator.vote_count.times do
+          create :immutable_vote,
+                  election:  candidate.alliance.election,
+                  candidate: candidate
+        end
+      end
+    end
+  end
+
+  factory :immutable_vote do
+    candidate
+    election
   end
 
 

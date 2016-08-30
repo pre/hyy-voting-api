@@ -49,6 +49,18 @@ teppo/testaaja (Haka-test)
 
 Permissions to API endpoints is defined in `app/models/ability.rb`.
 
+### Generate a sample JWT authorization token
+
+ServiceUser (for internal services, eg. Vaalitulostin)
+* `rake jwt:service_user:generate [expiry_hours=24] [payload=anything]`
+
+Voter (person who accesses the frontend)
+* `rake jwt:voter:generate [expiry_hours=24] [voter_id=1]`
+
+Verify token contents:
+* `rake jwt:service_user:verify jwt=JWT_TOKEN`
+* `rake jwt:voter:verify jwt=JWT_TOKEN`
+
 
 ## Testing
 
