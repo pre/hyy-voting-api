@@ -1,6 +1,7 @@
 class Election < ActiveRecord::Base
 
   has_many :voting_rights
+  has_many :voters, through: :voting_rights
   has_many :immutable_votes  if Vaalit::Config::IS_EDARI_ELECTION
   has_many :mutable_votes    if Vaalit::Config::IS_HALLOPED_ELECTION
 
