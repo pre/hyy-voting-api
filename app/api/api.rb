@@ -21,6 +21,8 @@ class API < Grape::API
     mount Vaalit::Edari::EdariApi # Authorized
   end
 
+  mount Vaalit::Export::ExportApi # Authorized
+
   # Shared between Edari and Halloped
   mount Vaalit::Pling   # Public
   mount Vaalit::Session # Public

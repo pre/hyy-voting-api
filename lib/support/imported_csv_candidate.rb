@@ -10,7 +10,6 @@ class ImportedCsvCandidate
   def self.create_from!(source)
     imported = build_from source
 
-    Rails.logger.info "Build from: #{imported.inspect}"
     Candidate.create!(
       candidate_number: imported.candidate_number,
       firstname:        imported.firstname,

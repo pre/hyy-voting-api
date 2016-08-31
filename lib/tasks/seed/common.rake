@@ -1,5 +1,3 @@
-# coding: utf-8
-
 namespace :db do
 
   namespace :seed do

@@ -25,7 +25,7 @@ namespace :db do
           firstname: "Tyhjä",
           lastname: "Tyhjä",
           candidate_name: "Tyhjä ääni / Blankröst / Blank vote",
-          candidate_number: 1)
+          candidate_number: Vaalit::Config::BLANK_CANDIDATE_NUMBER)
       end
     end
   end

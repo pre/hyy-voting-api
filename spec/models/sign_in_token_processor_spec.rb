@@ -6,7 +6,8 @@ RSpec.describe SignInTokenProcessor, type: :model do
     before do
       @example_email = "email@example.com"
       @voter_id = 4321
-      @jwt = JsonWebToken.encode({email: @example_email})
+      @jwt = JsonWebToken.encode({email: @example_email},
+                                 Rails.application.secrets.jwt_voter_secret)
 
       voter = FactoryGirl.build :voter, {
         email: @example_email,

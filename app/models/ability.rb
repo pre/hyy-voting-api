@@ -6,10 +6,10 @@ class Ability
     set_role(user)
   end
 
-  # TODO:admin
-  # def admin(user)
-  #   can :manage, :all
-  # end
+  # Internal services, eg Vaalitulostin
+  def service_user(_user)
+    can :access, :export unless RuntimeConfig.voting_active?
+  end
 
   # For simplicity, only :access is used as a keyword for each ACL target.
   def voter(user)
@@ -47,9 +47,8 @@ class Ability
     case user.class.to_s
     when "Voter"
       send :voter, user
-    # TODO:admin
-    # when "AdminUser"
-    #   send :admin, user
+    when "ServiceUser"
+      send :service_user, user
     else
       raise "Unknown user class: #{user.class.to_s}"
     end

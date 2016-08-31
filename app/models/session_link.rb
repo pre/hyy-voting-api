@@ -36,7 +36,7 @@ class SessionLink
   def jwt
     payload = { email: email }
 
-    JsonWebToken.encode payload
+    JsonWebToken.encode payload, Rails.application.secrets.jwt_voter_secret
   end
 
   def url

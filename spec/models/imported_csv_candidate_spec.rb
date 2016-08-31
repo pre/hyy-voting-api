@@ -33,7 +33,7 @@ RSpec.describe ImportedCsvCandidate, type: :model do
                           election: election,
                           name: "Akateemiset nallekarhut"
 
-      candidate = ImportedCsvCandidate.create_from!(@rows.first, election_id: election.id)
+      candidate = ImportedCsvCandidate.create_from!(@rows.first)
 
       expect(candidate.class).to eq Candidate
       expect(candidate.candidate_name).to eq("Kaakkuri, Lanttu")

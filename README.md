@@ -30,6 +30,16 @@ rake db:schema:load
 rake -T db:seed
 ```
 
+## Configure your Editor:
+
+* Install Rubocop linter plugin which will lint Ruby on the fly,
+  * Atom: `linter-rubocop`
+  * https://buildtoship.com/integrate-rubocop-in-your-workflow/
+  * Define exceptions in `.rubocop.yml`
+  * Generate a TODO list of pending lints:
+    `rubocop --auto-gen-config`
+
+
 ## Run dev server
 
 `rails s`
@@ -48,6 +58,18 @@ teppo/testaaja (Haka-test)
 ## Authorization
 
 Permissions to API endpoints is defined in `app/models/ability.rb`.
+
+### Generate a sample JWT authorization token
+
+ServiceUser (for internal services, eg. Vaalitulostin)
+* `rake jwt:service_user:generate [expiry_hours=24] [payload=anything]`
+
+Voter (person who accesses the frontend)
+* `rake jwt:voter:generate [expiry_hours=24] [voter_id=1]`
+
+Verify token contents:
+* `rake jwt:service_user:verify jwt=JWT_TOKEN`
+* `rake jwt:voter:verify jwt=JWT_TOKEN`
 
 
 ## Testing

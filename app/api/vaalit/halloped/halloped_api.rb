@@ -8,7 +8,7 @@ module Vaalit
     class HallopedApi < Grape::API
 
       before do
-        @current_user = get_current_user headers
+        @current_user = current_voter_user headers
 
         error!({ message: 'Unauthorized' }, :unauthorized) unless @current_user
 

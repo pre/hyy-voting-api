@@ -9,7 +9,7 @@ namespace :db do
         task :candidates => :environment do
           Rails.logger.info "Seeding candidates ..."
 
-          filename = "./lib/support/candidates_2009.csv"
+          filename = "./lib/support/data/2009_candidates.csv"
 
           Rails.logger.info "BEGIN: Database has now #{Candidate.count} candidates."
 
