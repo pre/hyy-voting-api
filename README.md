@@ -30,6 +30,16 @@ rake db:schema:load
 rake -T db:seed
 ```
 
+## Configure your Editor:
+
+* Install Rubocop linter plugin which will lint Ruby on the fly,
+  * Atom: `linter-rubocop`
+  * https://buildtoship.com/integrate-rubocop-in-your-workflow/
+  * Define exceptions in `.rubocop.yml`
+  * Generate a TODO list of pending lints:
+    `rubocop --auto-gen-config`
+
+
 ## Run dev server
 
 `rails s`
