@@ -33,7 +33,7 @@ namespace :db do
           Voter.create!(
             :name => "Teppo 'Haka User' Testaaja",
             :email => "teppo@nonexistent.tld",
-            :student_number => "873400",
+            :student_number => "8734",
             :faculty => Faculty.last,
             :department => Department.last,
             :ssn => "121212-1234"
