@@ -25,7 +25,7 @@ module Vaalit
                 votes_given       = @election.immutable_votes.count
                 voter_count       = @election.voters.count
                 votes_accepted    = votes_given - blank_votes
-                voting_percentage = 100.0 * votes_accepted / voter_count
+                voting_percentage = 100.0 * votes_given / voter_count
                 candidate_count   = @election.candidates.without_blank_candidate.count
 
                 {
