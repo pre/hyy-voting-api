@@ -7,9 +7,10 @@ namespace :db do
         Rails.logger.info "Creating a blank candidate to allow protest votes"
         edari_election = Election.first
 
+        # Make sure numbering_order has the lowest value of all
         blank_coalition = Coalition.create!(
           name: "Tyhjä ääni / Blankröst / Blank vote",
-          numbering_order: 1,
+          numbering_order: -1,
           election: edari_election,
           short_name: 'TYHJÄ')
 
@@ -17,7 +18,7 @@ namespace :db do
           name: "Äänestän tyhjää",
           election: edari_election,
           coalition: blank_coalition,
-          numbering_order: 1,
+          numbering_order: 0,
           short_name: 'TYHJÄ')
 
         Candidate.create!(
