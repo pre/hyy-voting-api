@@ -27,22 +27,21 @@ class Ability
 
     if RuntimeConfig.vote_signin_active? || RuntimeConfig.voting_active?
       can :access, :elections
+
+      # Restrict user access in multiple Halloped elections, but
+      # allow access to all (=only one at a time) Edari Elections.
+      if Vaalit::Config::IS_EDARI_ELECTION
+        can :access, Election
+      elsif Vaalit::Config::IS_HALLOPED_ELECTION
+        can :access, Election do |election|
+          user.elections.any? { |e| e.id == election.id }
+        end
+      end
     end
 
     if RuntimeConfig.voting_active?
       can :access, :votes
     end
-
-    # Restrict user access in multiple Halloped elections, but
-    # allow access to all (=only one at a time) Edari Elections.
-    if Vaalit::Config::IS_EDARI_ELECTION
-      can :access, Election
-    elsif Vaalit::Config::IS_HALLOPED_ELECTION
-      can :access, Election do |election|
-        user.elections.any? { |e| e.id == election.id }
-      end
-    end
-
   end
 
   private
