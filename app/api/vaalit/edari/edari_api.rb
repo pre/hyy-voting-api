@@ -11,6 +11,7 @@ module Vaalit
         begin
           authorize! :access, :elections
         rescue CanCan::AccessDenied => exception
+          Rails.logger.info "Unauthorized. Voting active: #{RuntimeConfig.voting_active?}; Sign in active: #{RuntimeConfig.vote_signin_active?};"
           error!({ message: "Unauthorized: #{exception.message}" }, :unauthorized)
         end
 
