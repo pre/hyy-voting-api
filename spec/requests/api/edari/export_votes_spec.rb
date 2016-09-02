@@ -14,20 +14,24 @@ describe Vaalit::Export::Votes do
                                    election: @election
     alliance = FactoryGirl.create :alliance,
                                    coalition: coalition,
-                                   election: @election
+                                   election: @election,
+                                   name: "Hieno Allianssi"
 
+    @candidate1 = FactoryGirl.create :candidate, :with_votes,
+                                      alliance: alliance,
+                                      vote_count: 10,
+                                      candidate_name: "Testi Eka"
+    @candidate2 = FactoryGirl.create :candidate, :with_votes,
+                                      alliance: alliance,
+                                      vote_count: 20,
+                                      candidate_name: "Testi Toka"
+    @candidate3 = FactoryGirl.create :candidate, :with_votes,
+                                      alliance: alliance,
+                                      vote_count: 30,
+                                      candidate_name: "Testi Kolmas"
     @blank_candidate = FactoryGirl.create :candidate, :blank, :with_votes,
                                       alliance: alliance,
                                       vote_count: 25
-    @candidate1 = FactoryGirl.create :candidate, :with_votes,
-                                      alliance: alliance,
-                                      vote_count: 10
-    @candidate2 = FactoryGirl.create :candidate, :with_votes,
-                                      alliance: alliance,
-                                      vote_count: 20
-    @candidate3 = FactoryGirl.create :candidate, :with_votes,
-                                      alliance: alliance,
-                                      vote_count: 30
   end
 
   context 'votes without blank candidate' do
@@ -36,11 +40,13 @@ describe Vaalit::Export::Votes do
 
       expect(response).to be_success
 
+      alliance_id = @candidate1.alliance_id
+
       csv_string = <<-EOCSV
 ehdokasnumero,ehdokasnimi,ääniä,vaaliliitto,vaaliliiton id
-2,Testi Candidate 2,10,Alliance 1,1
-3,Testi Candidate 3,20,Alliance 1,1
-4,Testi Candidate 4,30,Alliance 1,1
+#{@candidate1.candidate_number},Testi Eka,10,Hieno Allianssi,#{alliance_id}
+#{@candidate2.candidate_number},Testi Toka,20,Hieno Allianssi,#{alliance_id}
+#{@candidate3.candidate_number},Testi Kolmas,30,Hieno Allianssi,#{alliance_id}
 EOCSV
 
       expect(response.body).to eq csv_string
