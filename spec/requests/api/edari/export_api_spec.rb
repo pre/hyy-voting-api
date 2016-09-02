@@ -13,6 +13,12 @@ describe Vaalit::Export::ExportApi do
       it { should_not be_able_to(:access, :export) }
     end
 
+    context "when current user is a guest" do
+      let(:user) { FactoryGirl.build(:guest_user) }
+
+      it { should_not be_able_to(:access, :export) }
+    end
+
     context "when current user is nil" do
       let(:user) { nil }
 

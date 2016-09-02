@@ -22,6 +22,7 @@ class API < Grape::API
   end
 
   mount Vaalit::Export::ExportApi # Authorized
+  mount Vaalit::Voters::VotersApi # Authorized
 
   # Shared between Edari and Halloped
   mount Vaalit::Pling   # Public

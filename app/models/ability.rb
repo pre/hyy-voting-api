@@ -9,6 +9,7 @@ class Ability
   # Internal services, eg Vaalitulostin
   def service_user(_user)
     can :access, :export unless RuntimeConfig.voting_active?
+    can :access, :voters
   end
 
   # Someone who doesn't (yet) have a valid JWT API token.

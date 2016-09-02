@@ -3,6 +3,9 @@ FactoryGirl.define do
   factory :service_user do
   end
 
+  factory :guest_user do
+  end
+
   factory :voting_right do
     used false
     voter
