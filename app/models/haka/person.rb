@@ -41,14 +41,14 @@ module Haka
       #
       # Returns the number value of the last URN attribute:
       #   raw "urn:schac:personalUniqueCode:fi:yliopisto.fi:x873421"
-      #   will return: "873421"
+      #   will return: 873421
       def parse_student_number(raw)
         if raw.nil?
           errors.add :student_number, "invalid value for unparsed student number: '#{raw}'"
           return
         end
 
-        raw.split(":").last.delete('^0-9')
+        raw.split(":").last.delete('^0-9').to_i
       end
 
     end
