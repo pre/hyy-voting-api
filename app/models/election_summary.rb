@@ -7,7 +7,7 @@ class ElectionSummary
   def voting_percentage
     return 0.0 if votes_given.zero?
 
-    100.0 * votes_given / voter_count
+    (100.0 * votes_given / voter_count).round 2
   end
 
   def votes_given

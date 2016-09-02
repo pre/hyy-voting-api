@@ -26,5 +26,5 @@ class API < Grape::API
   # Shared between Edari and Halloped
   mount Vaalit::Pling   # Public
   mount Vaalit::Session # Public
-
+  mount Vaalit::Public::PublicApi
 end

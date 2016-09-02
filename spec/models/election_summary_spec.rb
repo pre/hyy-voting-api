@@ -41,9 +41,10 @@ RSpec.describe ElectionSummary, type: :model do
 
   context 'when election has votes' do
     before do
-      @blank_votes = 5
+      # keep these uneven to get decimals
+      @blank_votes = 6
       @actual_votes = 11
-      @voter_count = 20
+      @voter_count = 19
 
       election = FactoryGirl.create :election
       blank_coalition = FactoryGirl.create :coalition, election: election
@@ -92,10 +93,11 @@ RSpec.describe ElectionSummary, type: :model do
       expect(@summary.candidate_count).to eq 1
     end
 
-    it 'returns voting_percentage which includes blank votes' do
+    it 'returns rounded voting_percentage which includes blank votes' do
       vote_count = @actual_votes + @blank_votes
+      rounded_percentage = (100.0 * vote_count / @voter_count).round 2
 
-      expect(@summary.voting_percentage).to eq(100.0 * vote_count / @voter_count)
+      expect(@summary.voting_percentage).to eq rounded_percentage
     end
 
   end
