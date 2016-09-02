@@ -2,13 +2,20 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= Voter.new # guest user (not logged in)
+    user ||= GuestUser.new
     set_role(user)
   end
 
   # Internal services, eg Vaalitulostin
   def service_user(_user)
     can :access, :export unless RuntimeConfig.voting_active?
+  end
+
+  # Someone who doesn't (yet) have a valid JWT API token.
+  def guest_user(_user)
+    if RuntimeConfig.vote_signin_active? || RuntimeConfig.eligibility_signin_active?
+      can :access, :sessions
+    end
   end
 
   # For simplicity, only :access is used as a keyword for each ACL target.
@@ -19,10 +26,6 @@ class Ability
 
     if RuntimeConfig.vote_signin_active? || RuntimeConfig.voting_active?
       can :access, :elections
-    end
-
-    if RuntimeConfig.vote_signin_active? || RuntimeConfig.eligibility_signin_active?
-      can :access, :sessions
     end
 
     if RuntimeConfig.voting_active?
@@ -45,6 +48,8 @@ class Ability
 
   def set_role(user)
     case user.class.to_s
+    when "GuestUser"
+      send :guest_user, user
     when "Voter"
       send :voter, user
     when "ServiceUser"
