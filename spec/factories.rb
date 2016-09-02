@@ -69,13 +69,20 @@ FactoryGirl.define do
     department
   end
 
+  # NOTE:
+  # candidate_number==1 will be ignored from results since it's the
+  # number of the blank candidate
   factory :candidate do
     sequence(:firstname) {|n| "Testi #{n}"}
     sequence(:lastname) {|n| "Candidate #{n}"}
     sequence(:candidate_name) {|n| "Testi Candidate #{n}"}
-    sequence(:candidate_number) {|n| n}
+    sequence(:candidate_number) {|n| n + 1}
 
     alliance
+
+    trait :blank do
+      candidate_number Vaalit::Config::BLANK_CANDIDATE_NUMBER
+    end
 
     trait :with_votes do
       transient do

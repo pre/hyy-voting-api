@@ -16,6 +16,9 @@ describe Vaalit::Export::Votes do
                                    coalition: coalition,
                                    election: @election
 
+    @blank_candidate = FactoryGirl.create :candidate, :blank, :with_votes,
+                                      alliance: alliance,
+                                      vote_count: 25
     @candidate1 = FactoryGirl.create :candidate, :with_votes,
                                       alliance: alliance,
                                       vote_count: 10
@@ -27,7 +30,7 @@ describe Vaalit::Export::Votes do
                                       vote_count: 30
   end
 
-  context 'get /api/export/elections/:id/votes' do
+  context 'votes without blank candidate' do
     it 'returns votes in csv' do
       get "/api/export/elections/#{@election.id}/votes"
 
@@ -35,12 +38,13 @@ describe Vaalit::Export::Votes do
 
       csv_string = <<-EOCSV
 ehdokasnumero,ehdokasnimi,ääniä,vaaliliitto,vaaliliiton id
-1,Testi Candidate 1,10,Alliance 1,1
-2,Testi Candidate 2,20,Alliance 1,1
-3,Testi Candidate 3,30,Alliance 1,1
+2,Testi Candidate 2,10,Alliance 1,1
+3,Testi Candidate 3,20,Alliance 1,1
+4,Testi Candidate 4,30,Alliance 1,1
 EOCSV
 
       expect(response.body).to eq csv_string
+      expect(ImmutableVote.count).to eq 25 + 10 + 20 + 30
     end
   end
 end
