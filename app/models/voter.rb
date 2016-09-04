@@ -4,7 +4,9 @@ class Voter < ActiveRecord::Base
   # TODO:Halloped
   # has_many :voting_rights      if Vaalit::Config::IS_HALLOPED_ELECTION
   # has_many :mutable_votes      if Vaalit::Config::IS_HALLOPED_ELECTION
-
+  #
+  # TODO:Halloped:
+  # validates_presence_of :faculty, :department
   has_many :faculty_elections,    through: :faculty,    source: :elections
   has_many :department_elections, through: :department, source: :elections
 
@@ -12,9 +14,7 @@ class Voter < ActiveRecord::Base
   belongs_to :department
 
   validates_presence_of :name,
-                        :ssn,
-                        :faculty,
-                        :department
+                        :ssn
 
   validates_uniqueness_of :ssn
   validates_uniqueness_of :student_number, allow_nil: true
@@ -31,18 +31,29 @@ class Voter < ActiveRecord::Base
 
   scope :created_during_elections, lambda {
     where("created_at > ?", Vaalit::Config::VOTE_SIGNIN_STARTS_AT)
+      .order(created_at: :desc)
   }
 
   def self.create_from!(voter_attrs)
-    create!(
-        :ssn               => voter_attrs.ssn.strip,
-        :student_number    => voter_attrs.student_number.strip,
-        :name              => voter_attrs.name.strip,
-        :email             => voter_attrs.email.strip,
-        :phone             => voter_attrs.phone.strip,
-        :faculty           => Faculty.find_by_code!(voter_attrs.faculty_code),
-        :department        => Department.find_by_code!(voter_attrs.department_code)
+    voter = new(
+        ssn:               voter_attrs.ssn.strip,
+        student_number:    voter_attrs.student_number.strip,
+        name:              voter_attrs.name.strip,
+        email:             voter_attrs.email.strip,
+        phone:             voter_attrs.phone.strip
     )
+
+    if voter_attrs.faculty_code.present?
+      voter.faculty = Faculty.find_by_code! voter_attrs.faculty_code
+    end
+
+    if voter_attrs.department_code.present?
+      voter.department = Department.find_by_code! voter_attrs.department_code
+    end
+
+    voter.save!
+
+    voter
   end
 
   # In-case-sensitive search

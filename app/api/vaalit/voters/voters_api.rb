@@ -54,8 +54,8 @@ module Vaalit
                 requires :name, type: String
                 requires :email, type: String
                 optional :phone, type: String
-                requires :faculty_code, type: String
-                requires :department_code, type: String
+                optional :faculty_code, type: String
+                optional :department_code, type: String
               end
             end
             desc 'Create a new voter'
