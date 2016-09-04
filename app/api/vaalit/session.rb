@@ -12,7 +12,6 @@ module Vaalit
   end
 
   class Session < Grape::API
-
     before do
       begin
         authorize! :access, :sessions
@@ -27,7 +26,6 @@ module Vaalit
     end
 
     namespace :sessions do
-
       params do
         requires :token, type: String, desc: 'JWT token from session link'
       end
@@ -41,27 +39,6 @@ module Vaalit
           error!("Invalid sign-in token", :forbidden)
         end
       end
-
-      params do
-        requires :email, type: String, desc: 'Email where the sign-in link will be sent'
-      end
-      desc 'Send a sign-in link for the voter.'
-      post :link do
-        session_link = SessionLink.new email: params[:email]
-
-        if session_link.valid? && session_link.deliver
-          { response: "Link has been sent" }
-        else
-          error!(
-            {
-              message: "Could not generate sign-in link: #{session_link.errors[:email].first}",
-              key: session_link.errors[:email_error_key].first
-            },
-            :unprocessable_entity)
-        end
-      end
-
     end
-
   end
 end

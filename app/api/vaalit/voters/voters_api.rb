@@ -15,6 +15,27 @@ module Vaalit
 
       end
 
+      namespace :sessions do
+        params do
+          requires :email, type: String, desc: 'Email where the sign-in link will be sent'
+        end
+        desc 'Send a sign-in link for the voter.'
+        post :link do
+          session_link = SessionLink.new email: params[:email]
+
+          if session_link.valid? && session_link.deliver
+            { response: "Link has been sent" }
+          else
+            error!(
+              {
+                message: "Could not generate sign-in link: #{session_link.errors[:email].first}",
+                key: session_link.errors[:email_error_key].first
+              }, :unprocessable_entity
+            )
+          end
+        end
+      end
+
       namespace :elections do
         params do
           requires :election_id, type: Integer
