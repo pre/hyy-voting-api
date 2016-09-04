@@ -31,4 +31,49 @@ describe Vaalit::Voters::VotersApi do
       it { should be_able_to(:access, :voters) }
     end
   end
+
+  describe "creating a new voter" do
+    before do
+      allow_any_instance_of(Vaalit::JwtHelpers)
+        .to receive(:current_service_user) { ServiceUser.new }
+
+      @election = FactoryGirl.create :election, :edari_election
+      @faculty = FactoryGirl.create :faculty
+      @department = FactoryGirl.create :department
+      @voter_data = {
+        "name": "Etu Suku",
+        "email": "etu.suku@example.com",
+        "faculty_code": @faculty.code,
+        "department_code": @department.code,
+        "ssn": "123456-1234",
+        "phone": "040-1234 555",
+        "student_number": "1234567"
+      }
+      @headers = { "ACCEPT": "application/json" }
+    end
+
+    context "when voter does not exist yet" do
+      it 'should create a new voter' do
+        expect(Voter.count).to eq 0
+
+        post "/api/elections/#{@election.id}/voters",
+             { voter: @voter_data },
+             @headers
+
+        expect(response).to be_success
+        expect(json["name"]).to eq "Etu Suku"
+        expect(json["email"]).to eq "etu.suku@example.com"
+        expect(Voter.count).to eq 1
+
+        persisted_voter = Voter.first
+        expect(persisted_voter.name).to eq @voter_data[:name]
+        expect(persisted_voter.email).to eq @voter_data[:email]
+        expect(persisted_voter.ssn).to eq @voter_data[:ssn]
+        expect(persisted_voter.phone).to eq @voter_data[:phone]
+        expect(persisted_voter.student_number).to eq @voter_data[:student_number]
+        expect(persisted_voter.faculty_id).to eq @faculty.id
+        expect(persisted_voter.department_id).to eq @department.id
+      end
+    end
+  end
 end

@@ -10,7 +10,6 @@ module Vaalit
         begin
           authorize! :access, :voters
         rescue CanCan::AccessDenied => exception
-          Rails.logger.info "Unauthorized: voter_api; voting active: #{RuntimeConfig.voting_active?}"
           error!({ message: "Unauthorized: #{exception.message}" }, :unauthorized)
         end
 
@@ -27,9 +26,27 @@ module Vaalit
           end
 
           namespace :voters do
+            params do
+              requires :voter, type: Hash do
+                requires :ssn, type: String
+                requires :student_number, type: String
+                requires :name, type: String
+                requires :email, type: String
+                optional :phone, type: String
+                requires :faculty_code, type: String
+                requires :department_code, type: String
+              end
+            end
             desc 'Create a new voter'
             post do
-              { jep: "toimii" }
+              voter = Voter.create_from!(params['voter'])
+              present voter, using: Entities::Voter
+            end
+
+            desc 'List voters created after elections have started'
+            get do
+              present Voter.created_during_elections,
+                      using: Entities::Voter
             end
           end
         end

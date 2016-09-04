@@ -29,15 +29,19 @@ class Voter < ActiveRecord::Base
                       :allow_nil => true,
                       :with => /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/
 
-  def self.create_from!(imported_voter)
+  scope :created_during_elections, lambda {
+    where("created_at > ?", Vaalit::Config::VOTE_SIGNIN_STARTS_AT)
+  }
+
+  def self.create_from!(voter_attrs)
     create!(
-        :ssn               => imported_voter.ssn,
-        :student_number    => imported_voter.student_number,
-        :name              => imported_voter.name,
-        :email             => imported_voter.email,
-        :phone             => imported_voter.phone,
-        :faculty           => Faculty.find_by_code!(imported_voter.faculty_code),
-        :department        => Department.find_by_code!(imported_voter.department_code)
+        :ssn               => voter_attrs.ssn.strip,
+        :student_number    => voter_attrs.student_number.strip,
+        :name              => voter_attrs.name.strip,
+        :email             => voter_attrs.email.strip,
+        :phone             => voter_attrs.phone.strip,
+        :faculty           => Faculty.find_by_code!(voter_attrs.faculty_code),
+        :department        => Department.find_by_code!(voter_attrs.department_code)
     )
   end
 
