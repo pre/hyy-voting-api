@@ -8,7 +8,7 @@ class Ability
 
   # Internal services, eg Vaalitulostin
   def service_user(_user)
-    can :access, :export unless RuntimeConfig.voting_active?
+    can :access, :export unless RuntimeConfig.elections_active?
     can :access, :voters
   end
 

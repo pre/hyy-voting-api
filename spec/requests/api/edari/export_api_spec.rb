@@ -28,24 +28,31 @@ describe Vaalit::Export::ExportApi do
     context "when current user is a service user" do
       let(:user) { FactoryGirl.build(:service_user) }
 
-      context "when voting is still ongoing" do
+      context "when elections and voting are still ongoing" do
         before do
           allow(RuntimeConfig).to receive(:voting_active?).and_return(true)
+          allow(RuntimeConfig).to receive(:elections_active?).and_return(true)
         end
 
-        context "exporting votes" do
-          it { should_not be_able_to(:access, :export) }
-        end
+        it { should_not be_able_to(:access, :export) }
       end
 
-      context "when voting has ended" do
+      context "when elections are ongoing but daily voting time has ended" do
         before do
+          allow(RuntimeConfig).to receive(:elections_active?).and_return(true)
           allow(RuntimeConfig).to receive(:voting_active?).and_return(false)
         end
 
-        context "exporting votes" do
-          it { should be_able_to(:access, :export) }
+        it { should_not be_able_to(:access, :export) }
+      end
+
+      context "elections have ended" do
+        before do
+          allow(RuntimeConfig).to receive(:elections_active?).and_return(false)
+          allow(RuntimeConfig).to receive(:voting_active?).and_return(false)
         end
+
+        it { should be_able_to(:access, :export) }
       end
     end
   end

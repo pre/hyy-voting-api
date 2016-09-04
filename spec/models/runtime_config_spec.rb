@@ -15,6 +15,10 @@ RSpec.describe RuntimeConfig, type: :model do
     it "voting is not active" do
       expect(RuntimeConfig.voting_active?).to be false
     end
+
+    it "elections are not active" do
+      expect(RuntimeConfig.elections_active?).to be false
+    end
   end
 
   context "voting day is over but continues the next day" do
@@ -38,6 +42,10 @@ RSpec.describe RuntimeConfig, type: :model do
       it "voting is active" do
         expect(RuntimeConfig.voting_active?).to be true
       end
+
+      it "elections are active" do
+        expect(RuntimeConfig.elections_active?).to be true
+      end
     end
 
     context "grace period is over" do
@@ -50,8 +58,12 @@ RSpec.describe RuntimeConfig, type: :model do
         expect(RuntimeConfig.vote_signin_active?).to be false
       end
 
-      it "voting is active" do
+      it "voting is not active" do
         expect(RuntimeConfig.voting_active?).to be false
+      end
+
+      it "elections are active" do
+        expect(RuntimeConfig.elections_active?).to be true
       end
     end
 
@@ -75,6 +87,10 @@ RSpec.describe RuntimeConfig, type: :model do
       it "voting is active" do
         expect(RuntimeConfig.voting_active?).to be true
       end
+
+      it "elections are active" do
+        expect(RuntimeConfig.elections_active?).to be true
+      end
     end
 
     context "grace period is over" do
@@ -88,6 +104,10 @@ RSpec.describe RuntimeConfig, type: :model do
 
       it "voting is not active" do
         expect(RuntimeConfig.voting_active?).to be false
+      end
+
+      it "elections are not active" do
+        expect(RuntimeConfig.elections_active?).to be false
       end
     end
   end

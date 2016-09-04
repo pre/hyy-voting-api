@@ -24,9 +24,15 @@ class RuntimeConfig
   def self.voting_active?
     now = Time.now
 
-    signin_has_started?(now) &&
-      now <= voting_ends_at? &&
-      voting_time_with_grace_period?(now)
+    elections_active?(now) && voting_time_with_grace_period?(now)
+  end
+
+  # Elections are ongoing.
+  #
+  # The first day of voting has started, but the last day of voting
+  # has not ended yet (including the grace period).
+  def self.elections_active?(now = Time.now)
+    signin_has_started?(now) && now <= voting_ends_at?
   end
 
   private_class_method def self.signin_has_started?(now)
