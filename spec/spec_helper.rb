@@ -5,7 +5,7 @@ require './spec/support/request_helpers'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
-require 'CSV'
+require 'csv'
 
 Rails.backtrace_cleaner.remove_silencers!
 
