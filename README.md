@@ -71,6 +71,9 @@ Verify token contents:
 * `rake jwt:service_user:verify jwt=JWT_TOKEN`
 * `rake jwt:voter:verify jwt=JWT_TOKEN`
 
+Heroku:
+* `heroku run rake jwt:voter:generate voter_id=1`
+
 
 ## Testing
 

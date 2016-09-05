@@ -34,9 +34,7 @@ class SessionLink
   private
 
   def jwt
-    payload = { voter_id: voter.id }
-
-    JsonWebToken.encode payload, Rails.application.secrets.jwt_voter_secret
+    SessionToken.new(voter).ephemeral_jwt
   end
 
   def url

@@ -1,4 +1,6 @@
-# Processses the JWT token which is
+# Process a Sign In token and exchange it for a Session Token.
+#
+# Processses the sign in JWT token which is
 # a) emailed to the user in the sign in link, or
 # b) created when the user completes the Haka authentication.
 #

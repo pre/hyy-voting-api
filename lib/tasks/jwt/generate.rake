@@ -16,7 +16,7 @@ namespace :jwt do
     puts "Authorization: Bearer #{token}"
     puts ""
     puts "Link:"
-    puts "#{Vaalit::Public::SITE_ADDRESS}/#/sign-in?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2b3Rlcl9pZCI6MSwiZXhwIjoxNDc2NjgxNjg2fQ.3VhewMgTpk7fErZlMgoPasI1Dos_B5R15-0uIXv5SgE"
+    puts "#{Vaalit::Public::SITE_ADDRESS}/#/sign-in?token=#{token}"
   end
 
   def expires_in(expiry)

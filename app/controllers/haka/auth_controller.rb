@@ -39,7 +39,7 @@ module Haka
         # Tests: localhost:3999
         # Prod: whatever
         #
-        redirect_to "/#/sign-in?token=#{session_token.jwt}"
+        redirect_to "/#/sign-in?token=#{session_token.ephemeral_jwt}"
         # render text: "GREAT SUCCESS! VoterUser: #{h voter_user.inspect} - raw_student_number: #{h raw_student_number} <br> attrs: '#{h response.attributes.inspect}'"
         # render text: "GREAT SUCCESS! <br> attrs: '#{h response.attributes.inspect}'"
       else
