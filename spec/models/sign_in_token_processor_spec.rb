@@ -14,7 +14,7 @@ RSpec.describe SignInTokenProcessor, type: :model do
         id: @voter_id
       }
 
-      allow(Voter).to receive(:find_by_email!).and_return(voter)
+      allow(Voter).to receive(:find).and_return(voter)
     end
 
     it "creates a valid session token" do
@@ -32,7 +32,7 @@ RSpec.describe SignInTokenProcessor, type: :model do
       processor = SignInTokenProcessor.new "invalid_jwt"
 
       expect(processor).not_to be_valid
-      expect(processor.errors[:source_token].first).to eq "Invalid source JWT token in the email link"
+      expect(processor.errors[:source_token].first).to eq "Invalid source JWT token in the sign in link"
     end
 
   end

@@ -17,7 +17,8 @@ class SignInTokenProcessor
   # Params:
   # jwt => JWT Token from the emailed link or Haka authentication
   def initialize(jwt)
-    @email = get_email(jwt)
+    payload = read_token(jwt)
+    @voter_id = payload["voter_id"] if payload.present?
     @session_token = nil
   end
 
@@ -27,7 +28,7 @@ class SignInTokenProcessor
 
   # SessionToken provides the JWT token to be used for API access by the user.
   def session_token
-    @session_token ||= SessionToken.new Voter.find_by_email! @email
+    @session_token ||= SessionToken.new Voter.find @voter_id
   rescue ActiveRecord::RecordNotFound => e
     errors.add(:session_token, e.message)
     nil
@@ -41,20 +42,20 @@ class SignInTokenProcessor
     end
 
     # Retrieve email from the payload of the JWT token which was given in
-    # the emailed sign-in link.
+    # the sign-in link.
     #
     # Format:
-    # [{"email"=>"testi.pekkanen@example.com"}, {"typ"=>"JWT", "alg"=>"HS256"}]
-    def get_email(jwt_from_email)
-      payload = JsonWebToken.decode jwt_from_email,
-                                    Rails.application.secrets.jwt_voter_secret
+    # [{"voter_id"=>1}, {"typ"=>"JWT", "alg"=>"HS256"}]
+    def read_token(jwt)
+      data = JsonWebToken.decode jwt,
+                                 Rails.application.secrets.jwt_voter_secret
 
-      if payload.nil?
-        errors.add(:source_token, "Invalid source JWT token in the email link")
+      if data.nil?
+        errors.add(:source_token, "Invalid source JWT token in the sign in link")
         return
       end
 
-      payload.first["email"]
+      data.first
     end
 
   end
