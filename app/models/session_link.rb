@@ -34,7 +34,9 @@ class SessionLink
   private
 
   def jwt
-    SessionToken.new(voter).ephemeral_jwt
+    SessionToken
+      .new(voter)
+      .ephemeral_jwt(Vaalit::Config::EMAIL_LINK_JWT_EXPIRY_MINUTES)
   end
 
   def url

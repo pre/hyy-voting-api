@@ -11,6 +11,7 @@ module Vaalit
   end
 
   module Config
+    BLANK_CANDIDATE_NUMBER       = 1
     IS_EDARI_ELECTION            = !!(ENV.fetch('IS_EDARI_ELECTION') =~ /true/)
     IS_HALLOPED_ELECTION         = !IS_EDARI_ELECTION
     VOTE_SIGNIN_STARTS_AT        = Time.parse ENV.fetch('VOTE_SIGNIN_STARTS_AT')
@@ -19,9 +20,11 @@ module Vaalit
     ELIGIBILITY_SIGNIN_STARTS_AT = Time.parse ENV.fetch('ELIGIBILITY_SIGNIN_STARTS_AT')
     ELIGIBILITY_SIGNIN_ENDS_AT   = Time.parse ENV.fetch('ELIGIBILITY_SIGNIN_ENDS_AT')
     VOTING_GRACE_PERIOD_MINUTES  = ENV.fetch('VOTING_GRACE_PERIOD_MINUTES').to_i.minutes
+
     VOTER_SESSION_JWT_EXPIRY_MINUTES = ENV.fetch('VOTER_SESSION_JWT_EXPIRY_MINUTES').to_i.minutes
-    SIGN_IN_JWT_EXPIRY_MINUTES   = ENV.fetch('SIGN_IN_JWT_EXPIRY_MINUTES').to_i.minutes
-    BLANK_CANDIDATE_NUMBER       = 1
+    EMAIL_LINK_JWT_EXPIRY_MINUTES    = ENV.fetch('EMAIL_LINK_JWT_EXPIRY_MINUTES').to_i.minutes
+    SIGN_IN_JWT_EXPIRY_SECONDS       = ENV.fetch('SIGN_IN_JWT_EXPIRY_SECONDS').to_i.seconds
+
   end
 
   module SanityCheck

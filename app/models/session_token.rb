@@ -36,12 +36,13 @@ class SessionToken
   end
 
   # Short-lived JWT which is used in the sign in and exchanged for a session jwt.
-  def ephemeral_jwt
+  def ephemeral_jwt(lifetime = Vaalit::Config::SIGN_IN_JWT_EXPIRY_SECONDS)
     payload = { voter_id: @user.voter.id }
+    expiry = lifetime.from_now
 
     JsonWebToken.encode payload,
                         Rails.application.secrets.jwt_voter_secret,
-                        Vaalit::Config::SIGN_IN_JWT_EXPIRY_MINUTES.from_now
+                        expiry
   end
 
   # List of elections displayed in frontpage.
