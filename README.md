@@ -26,6 +26,13 @@ API endpoints per 09/2016 are the following (`rake grape:routes`):
 
 ## Setup
 
+Install [Ruby Version Manager (RVM)](https://rvm.io/).
+  * After RVM is installed, re-enter the project directory
+    in order to apply `.ruby-version` and `.ruby-gemset`.
+  * If all is good, config in above mentioned files matches with:
+    - `gem env`
+    - `which ruby`
+
 Retrieve the Angular.js frontend (needed for production use only):
   * `git submodule update --init`
   * This installs a static copy of
