@@ -1,5 +1,29 @@
 # HYY Voting API (Rails / Grape)
 
+API backend for the HYY Voting Service.
+
+Has [Voting-frontend](https://github.com/hyy-vaalit/voting-frontend) included as a git submodule
+in public/ folder.
+
+API endpoints per 09/2016 are the following (`rake grape:routes`):
+
+| VERB | URI                                                          | Description
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------
+| GET  | /api/elections/:election_id/voting_right(.json)              | Tells whether user can cast a vote in current election
+| POST | /api/elections/:election_id/vote(.json)                      | Cast a vote for a candidate
+| GET  | /api/elections/:election_id/coalitions(.json)                | Get coalitions, include candidates using :with_candidates=true
+| GET  | /api/elections/:election_id/alliances(.json)                 | Get alliances for an election
+| GET  | /api/elections/:election_id/candidates(.json)                | Get all candidates for an election
+| POST | /api/sessions(.json)                                         | Grant a new session JWT by verifying a sign-in link
+| GET  | /api/pling(.json)                                            | Returns public plong.
+| GET  | /api/export/elections/:election_id/summary(.json)            | GET metadata of current election
+| GET  | /api/export/elections/:election_id/votes(.:format)           | GET votes of current election
+| POST | /api/sessions/link(.json)                                    | Send a sign-in link for the voter.
+| POST | /api/elections/:election_id/voters(.json)                    | Create a new voter
+| GET  | /api/elections/:election_id/voters(.json)                    | List voters created after elections have started
+| GET  | /api/public/elections/:election_id/voting_percentage(.json)  | GET voting percentage rounded to one decimal.
+
+
 ## Setup
 
 Retrieve the Angular.js frontend (needed for production use only):
@@ -101,7 +125,10 @@ psql -d hyy_api_development -f dump.sql
 
 ### Environment variables
 
-Set that all appropriate values from `.env.example` are listed in `heroku config`.
+Configure environment values at once:
+- `cp .env.example .env.deploy`
+- edit .env.deploy
+- Run `bin/env_for_heroku_config.sh .env.deploy`
 
 Multiline values (certificates) should be set as follows:
   `heroku config:set SOME_CERT="$(cat cert.pem)"`
@@ -109,16 +136,11 @@ Multiline values (certificates) should be set as follows:
 
 ## Tips
 
-* Get a JWT token:
-  `curl -X POST -H "Content-Type: application/json" http://localhost:3000/api/sessions/link -d '{"email": "testi.pekkanen@example.com" }'`
-
-* There's a test helper Requests::JsonHelpers which will automatically `JSON.parse(response.body)`
-
-* Create a new Rails Engine:
-`rails plugin new engines/ENGINE_NAME --mountable --api --dummy-path=spec/dummy --skip-test-unit`
+* Reset your voting right to vote multiple times:
+  - `VotingRight.find(X).update! used: false`
 
 * SessionLink#deliver() will send email during HTTP request.
-  This could be made to happend in the background.
+  This could be made to happen in the background.
 
 * Error with Capybara tests: "unable to obtain stable firefox connection in 60 seconds (127.0.0.1:7055)"
   - Update Selenium, Firefox or Geckodriver so that the combination of their versions works.
@@ -141,6 +163,8 @@ puts cert
 OpenSSL::X509::Certificate.new cert
 ```
 
+## Testing in Heroku
+
 * Set Heroku environment variables with newlines (ie. certificates) using:
   - `heroku config:add SOME_CERT="$(cat cert.pem)"`
   - WONT WORK: `heroku config:set XYZ="has\nnewlines"`, it will mess up `\n` to `\\n`.
@@ -148,11 +172,25 @@ OpenSSL::X509::Certificate.new cert
 * Reset Heroku database:
   - `heroku pg:reset DATABASE`
   - `heroku run rake db:schema:load`
+
+* A) Seed using data from Ehdokastietojärjestelmä
   - `heroku run rake db:seed:common`
   - `heroku run rake db:seed:edari`
   - Example seeds are available in the admin dashboard of Ehdokastietojärjestelmä
 
-* Production seed data is loaded to Heroku from interactive terminal.
-  There's [an issue in heroku-toolbelt](https://github.com/heroku/heroku/issues/1409)
-  which prevents using eg.
-  `heroku run rake db:seed:edari:candidates < candidates.csv`.
+  * Production seed data is loaded to Heroku from interactive terminal.
+    There's [an issue in heroku-toolbelt](https://github.com/heroku/heroku/issues/1409)
+    which prevents using eg.
+    `heroku run rake db:seed:edari:candidates < candidates.csv`.
+
+* B) Seed demo data without votes:
+  - `heroku run rake db:seed:edari:demo`
+
+* Generate a login token:
+  - `heroku run rake jwt:voter:generate expiry_hours=1000 voter_id=1`
+
+* Access console:
+  `heroku console`
+
+* Access logs:
+  `heroku logs --tail`
