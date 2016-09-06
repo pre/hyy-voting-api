@@ -14,7 +14,7 @@ API endpoints per 09/2016 are the following (`rake grape:routes`):
 | GET  | /api/elections/:election_id/coalitions(.json)                | Get coalitions, include candidates using :with_candidates=true
 | GET  | /api/elections/:election_id/alliances(.json)                 | Get alliances for an election
 | GET  | /api/elections/:election_id/candidates(.json)                | Get all candidates for an election
-| POST | /api/sessions(.json)                                         | Grant a new session JWT by verifying a sign-in link
+| POST | /api/sessions(.json)                                         | Grant a new session JWT
 | GET  | /api/pling(.json)                                            | Returns public plong.
 | GET  | /api/export/elections/:election_id/summary(.json)            | GET metadata of current election
 | GET  | /api/export/elections/:election_id/votes(.:format)           | GET votes of current election

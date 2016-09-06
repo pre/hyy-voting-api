@@ -29,7 +29,7 @@ module Vaalit
       params do
         requires :token, type: String, desc: 'JWT token from session link'
       end
-      desc 'Grant a new session JWT by verifying a sign-in link'
+      desc 'Grant a new session JWT'
       post do
         processor = SignInTokenProcessor.new URI.decode(params[:token])
 
