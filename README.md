@@ -29,11 +29,13 @@ API endpoints per 09/2016 are the following (`rake grape:routes`):
 Retrieve the Angular.js frontend (needed for production use only):
   * `git submodule update --init`
   * This installs a static copy of
-    [compiled Angular.js frontend](https://github.com/pre/hyy-voting-frontend-dist)
+    [compiled Angular.js frontend](https://github.com/hyy-vaalit/voting-frontend-dist)
     to public/
 
-Set up local version of the [Angular.js frontend](https://github.com/pre/hyy-voting-frontend)
+Set up local version of the [Angular.js frontend](https://github.com/hyy-vaalit/voting-frontend)
 which will be run in a _different port_ than the Rails server.
+Note that there are also two different Frontend repositories:
+`hyy-voting-frontend` and `hyy-voting-frontend-dist`.
 
 Install Gem dependencies:
   * `gem install bundler` (needs only be done once)
