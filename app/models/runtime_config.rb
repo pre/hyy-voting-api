@@ -27,6 +27,11 @@ class RuntimeConfig
     elections_active?(now) && voting_time_with_grace_period?(now)
   end
 
+  # Elections have started when vote sign in has been active at least once.
+  def self.elections_started?
+    Vaalit::Config::VOTE_SIGNIN_STARTS_AT <= Time.now
+  end
+
   # Elections are ongoing.
   #
   # The first day of voting has started, but the last day of voting
