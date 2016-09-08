@@ -6,25 +6,17 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
 gem 'puma', '~> 3.0' # application server
 
-gem 'grape'
+gem 'grape' # API
 gem 'grape-entity'
 gem 'nokogiri'
-
-gem 'cancancan' #, '~> 1.10'
-
-# # Disable the security feature of strong_params at the model layer,
-# # use Grape's own params validation instead.
-# gem 'hashie-forbidden_attributes'
-#
+gem 'cancancan' # Authorization
 gem 'pg' # Postgres
 gem 'rack-cors'
-gem 'jwt'
-gem 'pry-rails'
-
-gem 'rollbar'
+gem 'jwt' # API tokens
+gem 'pry-rails' # Better Rails console
+gem 'rollbar' # Error reporting to Rollbar.com
 gem 'oj' # Rollbar suggestion for JSON serialization if not using JRuby
 gem 'rails_12factor'
-
 gem 'ruby-saml' # Haka authentication
 
 group :development, :test do
@@ -47,6 +39,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
+  # Atom: Install linter-rubocop
   gem 'rubocop', require: false
 
   gem "letter_opener", :group => :development # open a sent email browser
