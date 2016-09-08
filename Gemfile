@@ -16,7 +16,6 @@ gem 'jwt' # API tokens
 gem 'pry-rails' # Better Rails console
 gem 'rollbar' # Error reporting to Rollbar.com
 gem 'oj' # Rollbar suggestion for JSON serialization if not using JRuby
-gem 'rails_12factor'
 gem 'ruby-saml' # Haka authentication
 
 group :development, :test do
