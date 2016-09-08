@@ -36,8 +36,7 @@ module Vaalit
   end
 
   module Haka
-    SAML_NAME_IDENTIFIER_FORMAT         = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"
-
+    SAML_NAME_IDENTIFIER_FORMAT         = ENV.fetch('SAML_NAME_IDENTIFIER_FORMAT')
     SAML_IDP_SSO_TARGET_URL             = ENV.fetch("SAML_IDP_SSO_TARGET_URL")
     SAML_IDP_ENTITY_ID                  = ENV.fetch("SAML_IDP_ENTITY_ID")
     SAML_IDP_CERT_FINGERPRINT           = ENV.fetch("SAML_IDP_CERT_FINGERPRINT")
