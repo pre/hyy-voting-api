@@ -24,6 +24,33 @@ API endpoints per 09/2016 are the following (`rake grape:routes`):
 | GET  | /api/public/elections/:election_id/voting_percentage(.json)  | GET voting percentage rounded to one decimal.
 
 
+## Access Levels and Authorization
+
+Permissions to API endpoints are defined in `app/models/ability.rb`.
+
+User types explained:
+
+* Unauthenticated user
+  * `app/models/guest_user.rb`
+  * Any user who does not provide a valid JWT API Token.
+  * Can create a new JWT session token.
+
+* Authenticated voter
+  * `app/models/user.rb` represents info in the JWT API Token.
+  * `app/models/voter.rb` represents the actor behind `User`.
+  * A voter who has completed either a Haka authentication or provides a
+    Sign In Link which is sent by email.
+  * Can cast a vote.
+  * Can access information related to the elections.
+
+* Authenticated backend service
+  * `app/models/service_user.rb`
+  * A trusted backend service (eg. Vaalitulostin).
+  * Can create voters during the election.
+  * Can email a Sign In Token to a Voter created during the elections.
+  * Can export votes after the elections.
+
+
 ## Setup
 
 Install [Ruby Version Manager (RVM)](https://rvm.io/).
@@ -87,10 +114,6 @@ teppo/testaaja (Haka-test)
 * Rails routes: `rake routes`
 * API Routes: `rake grape:routes`
 
-
-## Authorization
-
-Permissions to API endpoints is defined in `app/models/ability.rb`.
 
 ### Generate a sample JWT authorization token
 
