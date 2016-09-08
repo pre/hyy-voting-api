@@ -40,14 +40,15 @@ module Haka
       #   https://confluence.csc.fi/display/HAKA/funetEduPersonSchema2dot2#funetEduPersonSchema2dot2-schacPersonalUniqueCode
       #
       # Returns the number value of the last URN attribute:
-      #   raw "urn:schac:personalUniqueCode:fi:yliopisto.fi:x873421"
-      #   will return: "873421"
+      #   raw "urn:schac:personalUniqueCode:fi:yliopisto.fi:x0873421"
+      #   will return: "0873421"
       def parse_student_number(raw)
         if raw.nil?
           errors.add :student_number, "invalid value for unparsed student number: '#{raw}'"
           return
         end
 
+        # Return a string to preserve a possible leading zero (eg "012345")
         raw.split(":").last.delete('^0-9')
       end
 

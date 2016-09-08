@@ -1,3 +1,6 @@
+# Voter is identified by the `student_number` after Haka authentication.
+# Student Number might start with a zero, so it's important to handle it as
+# a string (eg. "0123456").
 class Voter < ActiveRecord::Base
 
   has_one  :voting_right       if Vaalit::Config::IS_EDARI_ELECTION
