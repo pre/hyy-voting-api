@@ -1,5 +1,3 @@
-include ERB::Util # for html_escape; TODO: Remove me
-
 module Haka
 
   # Haka Authentication for a SAML Service Provider
@@ -11,14 +9,7 @@ module Haka
       redirect_to(request.create(saml_settings))
     end
 
-    # HAKA:
-    #
-    # attrs: '#<OneLogin::RubySaml::Attributes:0x007fde1a7f3118
-    # @attributes={
-    #   "urn:oid:1.3.6.1.4.1.25178.1.2.14"=>["urn:schac:personalUniqueCode:fi:yliopisto.fi:x8734"],
-    #   "urn:oid:0.9.2342.19200300.100.1.3"=>["teppo@nonexistent.tld"],
-    #   "urn:oid:2.16.840.1.113730.3.1.241"=>["Teppo"]
-    # }>'
+    # Receives the SAML assertion after Haka sign in
     def consume
       response = OneLogin::RubySaml::Response.new(params[:SAMLResponse],
                                                   settings: saml_settings,
@@ -30,23 +21,11 @@ module Haka
 
       person = Person.new response.attributes[Vaalit::Haka::HAKA_STUDENT_NUMBER_FIELD]
 
-      if person.valid?
-        session_token = SessionToken.new person.voter
-
-        # FIXME: Capybara tests:
-        # 1) This must redirect_to the current environment's frontend.
-        # 2) Angular needs to know which environment is wanted.
-        #
-        # Development: localhost:3000
-        # Tests: localhost:3999
-        # Prod: whatever
-        #
-        redirect_to "/#/sign-in?token=#{session_token.ephemeral_jwt}"
-        # render text: "GREAT SUCCESS! VoterUser: #{h voter_user.inspect} - raw_student_number: #{h raw_student_number} <br> attrs: '#{h response.attributes.inspect}'"
-        # render text: "GREAT SUCCESS! <br> attrs: '#{h response.attributes.inspect}'"
-      else
+      unless person.valid?
         raise "#todo voter '#{person.inspect}' does not have right to vote'"
       end
+
+      redirect_to "/#/sign-in?token=#{SessionToken.new(person.voter).ephemeral_jwt}"
     end
 
     private
