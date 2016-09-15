@@ -31,12 +31,16 @@ namespace :jwt do
     end
 
     payload = decoded.first
-    expiry_time = Time.at payload['exp']
+    expiry_time = Time.at(payload['exp']) if payload['exp'].present?
 
     puts "Full content:"
     puts decoded.to_s
     puts ""
-    puts "Expiry: #{expiry_time} (expires in #{expires_in(expiry_time)} hours)"
+    if expiry_time.present?
+      puts "Expiry: #{expiry_time} (expires in #{expires_in(expiry_time)} hours)"
+    else
+      puts "Expiry: VALID FOREVER"
+    end
     puts "Payload: #{payload}"
   end
 
@@ -67,7 +71,7 @@ namespace :jwt do
 
     desc 'verify a JWT token'
     task :verify, [:jwt] => :environment do
-      verify ENV['jwt'], Rails.application.secrets.jwt_voter_secret
+      verify ENV.fetch('jwt'), Rails.application.secrets.jwt_voter_secret
     end
   end
 end

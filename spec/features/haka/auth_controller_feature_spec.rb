@@ -5,10 +5,15 @@ module Haka
     context "sign in process" do
       before :each do
         haka_user_student_number = 8734
-        @voter = FactoryGirl.create :voter, student_number: haka_user_student_number
+        election = FactoryGirl.create :election, :edari_election
+        @voter = FactoryGirl.create :voter, :with_voting_right,
+                                    election: election,
+                                    student_number: haka_user_student_number
+
+        allow(RuntimeConfig).to receive(:vote_signin_active?).and_return true
       end
 
-      it "signs me in" do
+      it "signs teppo testaaja in" do
         visit '/haka/auth/new'
 
         within("form") do
@@ -18,7 +23,10 @@ module Haka
 
         click_button 'Login'
 
-        expect(page).to have_content 'Sinulla ei ole äänioikeutta yhteenkään vaaliin.' # TODO
+        #TODO: Conditionally click Accept when Haka asks a confirmation
+        # click_button 'Accept'
+
+        expect(page).to have_content 'Vaalin nimi'
       end
     end
   end

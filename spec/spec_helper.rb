@@ -6,17 +6,38 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
 require 'csv'
+require 'selenium-webdriver'
 
 Rails.backtrace_cleaner.remove_silencers!
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
+# Usage: `Capybara.current_driver = :trustful_firefox_driver`
+# #FIXME: For some reason the profile selection does not work
+#         and Haka browser tests fail due to SSL cert error.  Use chromedriver.
+Capybara.register_driver :trustful_firefox_driver do |app|
+  profile = Selenium::WebDriver::Firefox::Profile.new
+  profile.assume_untrusted_certificate_issuer = false
+  Capybara::Selenium::Driver.new(app, :browser => :firefox, :profile => profile)
+end
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+# Capybara.javascript_driver = :chrome
+
 Capybara.configure do |config|
-  config.current_driver = :selenium
+  config.current_driver = :chrome
   config.run_server = true
   config.server_port = ENV.fetch('TEST_CAPYBARA_PORT')
-  config.app_host   = "http://localhost:#{config.server_port}"
+
+  ## Haka test env will redirect to localhost.enemy.fi:3001 after sign in.
+  #
+  # FRONTEND_API_BASE_URL in .env.test must match this URL.
+  config.app_host   = "https://localhost.enemy.fi:3001" # with ssl
+  # config.app_host   = "http://localhost:#{config.server_port}" # without ssl
 end
 
 # Override development environment with .env.test

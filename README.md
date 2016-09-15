@@ -90,6 +90,12 @@ rake db:schema:load
 rake -T db:seed
 ```
 
+Open a SSL tunnel in order to sign in with a Haka test account:
+  * `npm install -g local-ssl-proxy`
+  * `local-ssl-proxy --source 3001 --target PORT`
+  * PORT is either 3000 in development (`.env`) or 3999 in test (`.env.test`)
+
+
 ## Configure your Editor:
 
 * Install Rubocop linter plugin which will lint Ruby on the fly,
@@ -133,8 +139,16 @@ Heroku:
 
 ## Testing
 
-* Install Firefox
-* Install [Geckodriver](https://github.com/mozilla/geckodriver/releases)
+* Test with Chrome:
+  * Install Chrome
+  * Install [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/downloads)
+  * Mac: `brew update && brew install chromedriver`
+
+* To test with Firefox:
+  * Install Firefox
+  * Install [Geckodriver](https://github.com/mozilla/geckodriver/releases)
+  * Browser tests to Haka auth fail with Firefox due to SSL certificate error.
+    See spec_helper for details.
 
 * Run tests and Watch changes:
 `guard`
@@ -144,6 +158,16 @@ Heroku:
 
 * You may run a specific test using `focus: true` in the test description.
   - You can also use aliases `fit`, `fcontext` and `fdescribe` respectively.
+
+* To run Haka browser tests:
+  - `npm install -g local-ssl-proxy`
+  - `local-ssl-proxy --source 3001 --target 3000`
+  * NOTE: If the Haka authentication browser fails because of Mozilla security
+    exception, you'll need to manually add https://localhost.enemy.fi:3001 to
+    the Firefox security whitelist. Certificate Error page > Advanced > Add
+    Exception > https://localhost.enemy.fi:3001.
+  * Haka local test endpoint is registered as `hyy.voting.test.local` in
+    rr.funet.fi.
 
 
 ## Heroku

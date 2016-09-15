@@ -9,6 +9,7 @@ FactoryGirl.define do
   factory :voting_right do
     used false
     voter
+    election
   end
 
   factory :coalition do
@@ -70,6 +71,18 @@ FactoryGirl.define do
 
     faculty
     department
+
+    trait :with_voting_right do
+      transient do
+        election build(:election)
+      end
+
+      after(:create) do |voter, evaluator|
+        create :voting_right,
+               voter: voter,
+               election: evaluator.election
+      end
+    end
   end
 
   # NOTE:
