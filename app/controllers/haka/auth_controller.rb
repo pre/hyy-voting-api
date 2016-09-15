@@ -20,7 +20,9 @@ module Haka
     #   "urn:oid:2.16.840.1.113730.3.1.241"=>["Teppo"]
     # }>'
     def consume
-      response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], :settings => saml_settings)
+      response = OneLogin::RubySaml::Response.new(params[:SAMLResponse],
+                                                  settings: saml_settings,
+                                                  allowed_clock_drift: 5.seconds)
 
       if !response.is_valid?
         raise "#todo authorization failed: #{response.errors}"
