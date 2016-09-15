@@ -21,7 +21,6 @@ RSpec.describe ImportedCsvVoter, type: :model do
     end
 
     it "builds from csv" do
-      puts "row: #{@rows.inspect}"
       imported_voter = ImportedCsvVoter.build_from(@rows.first)
 
       expect(imported_voter.email).to eq("teppo.testaava@helsinki.fi")

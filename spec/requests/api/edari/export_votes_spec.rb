@@ -7,7 +7,7 @@ describe Vaalit::Export::Votes do
     allow_any_instance_of(Vaalit::JwtHelpers)
       .to receive(:current_service_user) { ServiceUser.new }
 
-    allow(RuntimeConfig).to receive(:voting_active?).and_return(false)
+    allow(RuntimeConfig).to receive(:elections_active?).and_return(false)
 
     @election = FactoryGirl.create :election, :edari_election
     coalition = FactoryGirl.create :coalition,
