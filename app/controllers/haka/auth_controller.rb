@@ -15,21 +15,39 @@ module Haka
                                                   settings: saml_settings,
                                                   allowed_clock_drift: 5.seconds)
 
-      if !response.is_valid?
-        raise "#todo authorization failed: #{response.errors}"
+      unless response.is_valid?
+        Rails.logger.error "Invalid SAML response: #{response.errors}"
+        Rollbar.error "Invalid SAML response", errors: response.errors
+
+        redirect_to frontend_error_path("invalid_saml_response")
+        return
       end
 
       person = Person.new response.attributes[Vaalit::Haka::HAKA_STUDENT_NUMBER_FIELD]
 
       unless person.valid?
-        raise "#todo voter '#{person.inspect}' does not have right to vote'"
+        Rails.logger.info "No voting right for person '#{person.inspect}'"
+        Rollbar.info "No voting right present", person: person
+
+        redirect_to frontend_error_path("no_voting_right")
+        return
       end
 
-      redirect_to "/#/sign-in?token=#{SessionToken.new(person.voter).ephemeral_jwt}"
+      redirect_to frontend_signin_path(
+        SessionToken.new(person.voter).ephemeral_jwt
+      )
     end
 
     private
     begin
+
+      def frontend_error_path(failure_key)
+        "/#/sign-in-error?failure=#{failure_key}"
+      end
+
+      def frontend_signin_path(token)
+        "/#/sign-in?token=#{token}"
+      end
 
       def saml_settings
         settings = OneLogin::RubySaml::Settings.new
