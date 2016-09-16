@@ -49,11 +49,13 @@ class RuntimeConfig
   end
 
   private_class_method def self.voting_time?(now)
-    now <= Time.parse(Vaalit::Config::VOTE_SIGNIN_DAILY_CLOSING_TIME)
+    Time.parse(Vaalit::Config::VOTE_SIGNIN_DAILY_OPENING_TIME) <= now &&
+      now <= Time.parse(Vaalit::Config::VOTE_SIGNIN_DAILY_CLOSING_TIME)
   end
 
   private_class_method def self.voting_time_with_grace_period?(now)
-    now <= Time.parse(Vaalit::Config::VOTE_SIGNIN_DAILY_CLOSING_TIME) + Vaalit::Config::VOTING_GRACE_PERIOD_MINUTES
+    Time.parse(Vaalit::Config::VOTE_SIGNIN_DAILY_OPENING_TIME) <= now &&
+      now <= Time.parse(Vaalit::Config::VOTE_SIGNIN_DAILY_CLOSING_TIME) + Vaalit::Config::VOTING_GRACE_PERIOD_MINUTES
   end
 
   private_class_method def self.voting_ends_at?

@@ -25,6 +25,33 @@ RSpec.describe RuntimeConfig, type: :model do
     end
   end
 
+  context "voting started yesterday but it's not yet daily opening time" do
+    before do
+      stub_const("Vaalit::Config::VOTE_SIGNIN_STARTS_AT", 1.day.ago)
+      stub_const("Vaalit::Config::VOTE_SIGNIN_ENDS_AT", 1.day.from_now)
+      stub_const("Vaalit::Config::VOTE_SIGNIN_DAILY_OPENING_TIME",
+                 5.minutes.from_now.localtime.strftime('%H:%M'))
+      stub_const("Vaalit::Config::VOTE_SIGNIN_DAILY_CLOSING_TIME",
+                 1.hour.from_now.localtime.strftime('%H:%M'))
+    end
+
+    it "vote signin is not active" do
+      expect(RuntimeConfig.vote_signin_active?).to be false
+    end
+
+    it "voting is not active" do
+      expect(RuntimeConfig.voting_active?).to be false
+    end
+
+    it "elections are active" do
+      expect(RuntimeConfig.elections_active?).to be true
+    end
+
+    it "elections have started" do
+      expect(RuntimeConfig.elections_started?).to be true
+    end
+  end
+
   context "voting day is over but continues the next day" do
     before do
       stub_const("Vaalit::Config::VOTE_SIGNIN_STARTS_AT", 3.days.ago)
@@ -36,7 +63,7 @@ RSpec.describe RuntimeConfig, type: :model do
       before do
         # Use Timecop gem if test starts to fail for running too long.
         stub_const("Vaalit::Config::VOTE_SIGNIN_DAILY_CLOSING_TIME",
-                   Time.now.strftime('%H:%M'))
+                   Time.now.localtime.strftime('%H:%M'))
       end
 
       it "vote signin is not active" do
@@ -59,7 +86,7 @@ RSpec.describe RuntimeConfig, type: :model do
     context "grace period is over" do
       before do
         stub_const("Vaalit::Config::VOTE_SIGNIN_DAILY_CLOSING_TIME",
-                   301.seconds.ago.strftime('%H:%M'))
+                   301.seconds.ago.localtime.strftime('%H:%M'))
       end
 
       it "vote signin is not active" do
