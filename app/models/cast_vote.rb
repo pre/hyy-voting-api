@@ -39,6 +39,8 @@ class CastVote
         ImmutableVote.create! election: election,
                               candidate: candidate
 
+        AfterVoteMailer.thank(voter).deliver_later
+
         return true
 
       # Rollback any Exception in order to guarantee that no partial

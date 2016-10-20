@@ -34,8 +34,8 @@ RSpec.describe CastVote, type: :model do
         expect(ImmutableVote.count).to eq 0
 
         CastVote.submit election: @election,
-                                       voter: @voter,
-                                       candidate: @candidate
+                        voter: @voter,
+                        candidate: @candidate
 
         expect(@election.immutable_votes.count).to eq 1
         expect(ImmutableVote.count).to eq 1
@@ -43,6 +43,14 @@ RSpec.describe CastVote, type: :model do
         actual_vote = @election.immutable_votes.first
         expect(actual_vote.candidate_id).to eq @candidate.id
         expect(actual_vote.election_id).to eq @election.id
+      end
+
+      it "sends email about free coffee" do
+        expect(AfterVoteMailer).to receive(:thank).with(@voter)
+
+        CastVote.submit election: @election,
+                        voter: @voter,
+                        candidate: @candidate
       end
 
       it "returns true when it succeeds" do

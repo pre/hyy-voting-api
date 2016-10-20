@@ -17,10 +17,10 @@ gem 'pry-rails' # Better Rails console
 gem 'rollbar' # Error reporting to Rollbar.com
 gem 'oj' # Rollbar suggestion for JSON serialization if not using JRuby
 gem 'ruby-saml' # Haka authentication
+gem 'delayed_job_active_record' # background jobs, eg. email sending
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'byebug', platform: :mri # usage: write 'debugger' anywhere in code
   gem 'rspec'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
