@@ -234,10 +234,12 @@ OpenSSL::X509::Certificate.new cert
   - `heroku run rake db:seed:edari`
   - Example seeds are available in the admin dashboard of Ehdokastietojärjestelmä
 
-  * Production seed data is loaded to Heroku from interactive terminal.
-    There's [an issue in heroku-toolbelt](https://github.com/heroku/heroku/issues/1409)
-    which prevents using eg.
-    `heroku run rake db:seed:edari:candidates < candidates.csv`.
+  * Production seed data is loaded to Heroku
+    - a) from interactive terminal (copy-paste data and press ^D):
+      * `heroku run rake db:seed:edari:candidates`
+
+    - b) with `--no-tty` and `< filename`
+      * `heroku run --no-tty rake db:seed:edari:candidates < candidates.csv`.
 
 * B) Seed demo data without votes:
   - `heroku run rake db:seed:edari:demo`
@@ -250,3 +252,10 @@ OpenSSL::X509::Certificate.new cert
 
 * Access logs:
   `heroku logs --tail`
+
+
+## Importing Voters
+
+- Obtain a copy of voters from the University.
+- File is expected to be in defined text format (see `ImportedTextVoter`).
+- `heroku run --no-tty rake db:seed:edari:voters:text < voters.txt`

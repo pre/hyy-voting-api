@@ -61,7 +61,7 @@ RSpec.describe Voter, type: :model do
 
       @imported = ImportedVoter.new(
           :name              => "Purhonen Pekka J P",
-          :email             => "pekka.purhonen@example.com",
+          :email             => "pekka.purhonen@example.com               \r\n",
           :ssn               => "010283-1234",
           :student_number    => "0123456789",
           :phone             => "0500 123123",

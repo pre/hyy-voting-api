@@ -39,19 +39,23 @@ class Voter < ActiveRecord::Base
 
   def self.create_from!(voter_attrs)
     voter = new(
-        ssn:               voter_attrs.ssn.strip,
-        student_number:    voter_attrs.student_number.strip,
-        name:              voter_attrs.name.strip,
-        email:             voter_attrs.email.strip,
-        phone:             voter_attrs.phone.strip
+      ssn:               voter_attrs.ssn.strip,
+      student_number:    voter_attrs.student_number.strip,
+      name:              voter_attrs.name.strip
     )
 
     if voter_attrs.faculty_code.present?
-      voter.faculty = Faculty.find_by_code! voter_attrs.faculty_code
+      voter.faculty = Faculty.find_by_code! voter_attrs.faculty_code.strip
     end
 
     if voter_attrs.department_code.present?
-      voter.department = Department.find_by_code! voter_attrs.department_code
+      voter.department = Department.find_by_code! voter_attrs.department_code.strip
+    end
+
+    %w(email phone extent_of_studies start_year).each do |optional_attr|
+      value = voter_attrs.send(optional_attr)
+
+      voter.send("#{optional_attr}=", value.strip) if value.present?
     end
 
     voter.save!

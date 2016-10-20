@@ -7,7 +7,9 @@ class ImportedVoter
                 :student_number,
                 :faculty_code,
                 :department_code,
-                :phone
+                :phone,
+                :extent_of_studies,
+                :start_year
 
   def self.build_from(voter_source)
     imported = new
