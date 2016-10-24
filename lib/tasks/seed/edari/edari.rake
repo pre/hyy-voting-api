@@ -8,8 +8,6 @@ namespace :db do
         begin
 
           Rake::Task['db:seed:edari:election'].invoke()
-          Rake::Task['db:seed:edari:voters:text'].invoke()
-          Rake::Task['db:seed:edari:voting_rights'].invoke()
           Rake::Task['db:seed:edari:coalitions'].invoke()
           Rake::Task['db:seed:edari:alliances'].invoke()
           Rake::Task['db:seed:edari:candidates'].invoke()
@@ -25,11 +23,10 @@ namespace :db do
         Rails.logger.info "SEED COMPLETED SUCCESFULLY"
         Rails.logger.info "Database has now:"
         Rails.logger.info "- #{Election.first.name}"
-        Rails.logger.info "- #{Voter.count} voters"
-        Rails.logger.info "- #{VotingRight.count} voting rights"
         Rails.logger.info "- #{Coalition.count} coalitions INCLUDING blank coalition"
         Rails.logger.info "- #{Alliance.count} alliances INCLUDING blank alliance"
         Rails.logger.info "- #{Candidate.count} candidates INCLUDING blank candidate (candidate_number 1)"
+        Rails.logger.info "\n\nVoters and voting rights were NOT seeded, use db:seed:edari:voters_and_voting_rights"
       end
     end
 

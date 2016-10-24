@@ -2,6 +2,15 @@ namespace :db do
   namespace :seed do
     namespace :edari do
 
+      task :voters_and_voting_rights => :environment do
+        Rake::Task['db:seed:edari:voters:text'].invoke()
+        Rake::Task['db:seed:edari:voting_rights'].invoke()
+
+        Rails.logger.info "Database has now:"
+        Rails.logger.info "- #{Voter.count} voters"
+        Rails.logger.info "- #{VotingRight.count} voting rights"
+      end
+
       namespace :voters do
 
         desc 'seed voters from stdin in csv format'
