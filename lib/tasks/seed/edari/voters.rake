@@ -55,7 +55,7 @@ namespace :db do
           end
         end
 
-        desc 'seed text voters from stdin in text format and ISO-8859-1 encoding'
+        desc 'seed text voters from stdin in text format and UTF-8 encoding'
         task :text => :environment do
           ActiveRecord::Base.transaction do
             begin
@@ -82,8 +82,9 @@ namespace :db do
 
               lines = $stdin.readlines
 
-              lines.each do |isolatin_row|
-                utf8_row = isolatin_row.encode("UTF-8", "ISO-8859-1")
+              # Encoding cannot be converted over the 'heroku' command.
+              # Source data must already be in UTF8.
+              lines.each do |utf8_row|
                 puts utf8_row
 
                 count = count + 1

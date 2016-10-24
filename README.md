@@ -232,6 +232,10 @@ OpenSSL::X509::Certificate.new cert
 * A) Seed using data from Ehdokastietojärjestelmä
   - `heroku run rake db:seed:common`
   - `heroku run rake db:seed:edari`
+  - Seed voters:
+    - 1) Convert text voter into UTF-8. Isolatin data cannot be passed over
+         `heroku` command.
+    - 2) `heroku run --no-tty rake db:seed:voters_and_voting_rights < voters.txt`
   - Example seeds are available in the admin dashboard of Ehdokastietojärjestelmä
 
   * Production seed data is loaded to Heroku
@@ -257,5 +261,6 @@ OpenSSL::X509::Certificate.new cert
 ## Importing Voters
 
 - Obtain a copy of voters from the University.
+- Convert file to UTF8 (Open in Sublime > Save in Encoding > UTF8).
 - File is expected to be in defined text format (see `ImportedTextVoter`).
 - `heroku run --no-tty rake db:seed:edari:voters:text < voters.txt`
