@@ -10,6 +10,8 @@ namespace :db do
 
         raise "Expected no voting rights to be yet present!" unless VotingRight.count == 0
 
+        puts "Creating voting rights .."
+
         Voter.all.each do |v|
           Rails.logger.info "Creating voting right for #{v.name}"
           v.create_voting_right! election: election
