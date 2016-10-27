@@ -12,7 +12,7 @@ class SessionLink
   def deliver
     return false unless valid?
 
-    SessionLinkMailer.signup_link(voter.email, url).deliver_now
+    SessionLinkMailer.signup_link(voter.email, url).deliver_later
   end
 
   protected
