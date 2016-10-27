@@ -53,12 +53,12 @@ describe Vaalit::Voters::VotersApi do
     end
 
     context "when voter does not exist yet" do
-      it 'should create a new voter' do
+      it 'creates a new voter' do
         expect(Voter.count).to eq 0
 
         post "/api/elections/#{@election.id}/voters",
-             { voter: @voter_data },
-             @headers
+             params: { voter: @voter_data },
+             headers: @headers
 
         expect(response).to be_success
         expect(json["name"]).to eq "Etu Suku"
@@ -73,6 +73,21 @@ describe Vaalit::Voters::VotersApi do
         expect(persisted_voter.student_number).to eq @voter_data[:student_number]
         expect(persisted_voter.faculty_id).to eq @faculty.id
         expect(persisted_voter.department_id).to eq @department.id
+      end
+
+      it 'creates a voting right' do
+        expect(VotingRight.count).to eq 0
+        expect(Voter.count).to eq 0
+
+        post "/api/elections/#{@election.id}/voters",
+             params: { voter: @voter_data },
+             headers: @headers
+
+        expect(VotingRight.count).to eq 1
+        voting_right = VotingRight.first
+        voter = Voter.first
+
+        expect(voting_right.voter).to eq voter
       end
     end
   end

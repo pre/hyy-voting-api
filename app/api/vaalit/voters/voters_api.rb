@@ -58,10 +58,23 @@ module Vaalit
                 optional :department_code, type: String
               end
             end
-            desc 'Create a new voter'
+            desc 'Create a new voter with a voting right in current election' do
+              failure [[422, 'Unprocessable entity', Errors::Voter]]
+            end
             post do
-              voter = Voter.create_from!(params['voter'])
-              present voter, using: Entities::Voter
+              voter = Voter.build_from params['voter']
+
+              if voter.save && voter.create_voting_right(election: @election)
+                present voter, using: Entities::Voter
+              else
+                error!(
+                  {
+                    errors: voter.errors,
+                    message: 'Voter could not be created'
+                  },
+                  422
+                )
+              end
             end
 
             desc 'List voters created after elections have started'

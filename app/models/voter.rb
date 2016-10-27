@@ -37,7 +37,9 @@ class Voter < ActiveRecord::Base
       .order(created_at: :desc)
   }
 
-  def self.create_from!(voter_attrs)
+  # Build a new voter, but do not persist or validate it.
+  # Throw an exception if Faculty or Deparment cannot be found with given code.
+  def self.build_from(voter_attrs)
     voter = new(
       ssn:               voter_attrs.ssn.strip,
       student_number:    voter_attrs.student_number.strip,
@@ -57,6 +59,13 @@ class Voter < ActiveRecord::Base
 
       voter.send("#{optional_attr}=", value.strip) if value.present?
     end
+
+    voter
+  end
+
+  # Create and persist a new voter, throw an exception on failure.
+  def self.create_from!(voter_attrs)
+    voter = build_from voter_attrs
 
     voter.save!
 
