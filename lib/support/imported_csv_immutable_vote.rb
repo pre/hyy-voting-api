@@ -6,13 +6,14 @@ class ImportedCsvImmutableVote
                 :vote_count
 
 
-  def self.create_from!(source, election_id:)
+  def self.create_from!(source, election_id:, created_at:)
     imported = build_from source
 
     imported.vote_count.times do |n|
       ImmutableVote.create!(
         candidate:   Candidate.find_by_candidate_number!(imported.candidate_number),
-        election_id: election_id
+        election_id: election_id,
+        created_at:  created_at
       )
     end
   end

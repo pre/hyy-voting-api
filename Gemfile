@@ -18,6 +18,7 @@ gem 'rollbar' # Error reporting to Rollbar.com
 gem 'oj' # Rollbar suggestion for JSON serialization if not using JRuby
 gem 'ruby-saml' # Haka authentication
 gem 'delayed_job_active_record' # background jobs, eg. email sending
+gem 'jbuilder' # JSON builder
 
 group :development, :test do
   gem 'byebug', platform: :mri # usage: write 'debugger' anywhere in code
@@ -30,6 +31,7 @@ group :development, :test do
   gem 'selenium-webdriver', '3.0.0.beta2.1'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'pry-highlight' # pretty print json in console, usage: ">>"
 end
 
 group :development do
