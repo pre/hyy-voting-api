@@ -6,7 +6,7 @@ RSpec.describe ImportedCsvVoter, type: :model do
 
     before(:all) do
       sep = ";"
-      data  = '010280-123A;12345678;Teppo Testaava;H40;H450;teppo.testaava@helsinki.fi;0456789100'
+      data  = '010280-123A;12345678;Teppo Testaava;H40;H450;1993;2;teppo.testaava@helsinki.fi;0456789100'
       data2 = '010290-123A;22345678;Seppo Sestaava;H10;H150;;;'
       @rows = []
 
@@ -30,6 +30,8 @@ RSpec.describe ImportedCsvVoter, type: :model do
       expect(imported_voter.faculty_code).to eq("H40")
       expect(imported_voter.department_code).to eq("H450")
       expect(imported_voter.phone).to eq("0456789100")
+      expect(imported_voter.start_year).to eq "1993"
+      expect(imported_voter.extent_of_studies).to eq "2"
     end
 
 
@@ -38,6 +40,8 @@ RSpec.describe ImportedCsvVoter, type: :model do
 
       expect(imported_voter.email).to be_nil
       expect(imported_voter.phone).to be_nil
+      expect(imported_voter.start_year).to be_nil
+      expect(imported_voter.extent_of_studies).to be_nil
     end
 
   end
