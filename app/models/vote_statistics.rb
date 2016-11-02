@@ -26,14 +26,19 @@ class VoteStatistics
     )
   end
 
-  # All votes of every election grouped by hour
+  # All votes of every election grouped by hour.
+  # ActiveRecord stores `datetime` attributes in the database without timezone,
+  # although it stores all the values as UTC.
+  # => created_at   | timestamp without time zone
+  # As a workaround, the timezone is first cast as UTC and then to localtime.
+  # Otherwise the hour is wrong by the amount of offset (+0200 or +0300).
   def self.by_hour
     ImmutableVote
       .select("
-        date_part('hour', created_at) AS hour,
-        date_part('day', created_at) AS day,
-        date_part('month', created_at) AS month,
-        date_part('year', created_at) AS year,
+        date_part('hour', created_at AT TIME ZONE 'UTC' AT TIME ZONE 'Europe/Helsinki') AS hour,
+        date_part('day', created_at AT TIME ZONE 'UTC' AT TIME ZONE 'Europe/Helsinki') AS day,
+        date_part('month', created_at AT TIME ZONE 'UTC' AT TIME ZONE 'Europe/Helsinki') AS month,
+        date_part('year', created_at AT TIME ZONE 'UTC' AT TIME ZONE 'Europe/Helsinki') AS year,
         COUNT(*) as vote_count
       ").group(
         "hour, day, month, year"
