@@ -14,6 +14,7 @@ gem 'pg' # Postgres
 gem 'rack-cors'
 gem 'jwt' # API tokens
 gem 'pry-rails' # Better Rails console
+gem 'pry-highlight' # pretty print json in console, usage: ">>"
 gem 'rollbar' # Error reporting to Rollbar.com
 gem 'oj' # Rollbar suggestion for JSON serialization if not using JRuby
 gem 'ruby-saml' # Haka authentication
@@ -31,7 +32,6 @@ group :development, :test do
   gem 'selenium-webdriver', '3.0.0.beta2.1'
   gem 'faker'
   gem 'database_cleaner'
-  gem 'pry-highlight' # pretty print json in console, usage: ">>"
 end
 
 group :development do
