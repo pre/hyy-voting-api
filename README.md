@@ -81,12 +81,20 @@ Configure `.env`
     with Haka-test for authentication.
 
 Quick setup for dev database:
-  * `rake db:runts && rake db:seed:edari`
+  * `rake db:runts`
+
+a) Insert demo seed data from HYY 2009 Elections
+  * `rake db:seed:edari:demo`
+
+b) Insert seed data in which you have exported from Ehdokastietojärjestelmä
+  * `rake db:seed:edari`
 
 Manual setup for dev database:
 ```bash
 rake db:create
 rake db:schema:load
+
+# List available seed tasks
 rake -T db:seed
 ```
 
@@ -96,23 +104,30 @@ Open a SSL tunnel in order to sign in with a Haka test account:
   * PORT is either 3000 in development (`.env`) or 3999 in test (`.env.test`)
 
 
-## Configure your Editor:
+## Start services on the local machine
 
-* Install Rubocop linter plugin which will lint Ruby on the fly,
-  * Atom: `linter-rubocop`
-  * https://buildtoship.com/integrate-rubocop-in-your-workflow/
-  * Define exceptions in `.rubocop.yml`
-  * Generate a TODO list of pending lints:
-    `rubocop --auto-gen-config`
+Start web server:
+* `rails s`
+
+Example users:
+* testi.pekkanen@example.com
+  * Request a sign-in link via email, then either
+    a) check the link in web server logs
+    b) start worker `foreman run worker` and see the mock version of the email
+
+* Haka test user "teppo", password "testaaja"
+  * Browser will display an SSL certificate error for "localhost", just skip it.
+  * Haka certificate may have changed (expired) if signing in fails because of
+    a SAML error, for example with
+    `Invalid SAML response: ["Invalid Signature on SAML Response"]`
+  * Check further instructions under
+    [Haka knowledge base](https://github.com/hyy-vaalit/dokumentaatio/blob/master/haka/knowledge-base.md#csc-hakan-testipalvelu)
 
 
-## Run dev server
+You may now open http://localhost:3000 and sign in using one of the test users.
 
-`rails s`
-
-Example user:
-testi.pekkanen@example.com (sign-in link via email)
-teppo/testaaja (Haka-test)
+Start worker defined in `Procfile`:
+`foreman run worker`
 
 
 ## List API endpoints:
@@ -136,6 +151,15 @@ Verify token contents:
 Heroku:
 * `heroku run rake jwt:voter:generate voter_id=1`
 
+
+## Configure your Editor:
+
+* Install Rubocop linter plugin which will lint Ruby on the fly,
+  * Atom: `linter-rubocop`
+  * https://buildtoship.com/integrate-rubocop-in-your-workflow/
+  * Define exceptions in `.rubocop.yml`
+  * Generate a TODO list of pending lints:
+    `rubocop --auto-gen-config`
 
 ## Testing
 
@@ -191,6 +215,9 @@ Multiline values (certificates) should be set as follows:
 
 
 ## Tips
+
+* A great app for exploring the development Postgresql database is
+  [Postico](https://eggerapps.at/postico/).
 
 * Reset your voting right to vote multiple times:
   - `VotingRight.find(X).update! used: false`

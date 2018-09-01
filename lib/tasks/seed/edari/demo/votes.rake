@@ -7,7 +7,7 @@ namespace :db do
 
         desc 'demo votes from 2009 elections (requires candidates)'
         task :votes => :environment do
-          Rails.logger.info "Seeding votes ..."
+          puts "Seeding votes ..."
 
           if ImmutableVote.count > 0
             raise "Did not expect any votes be present, has #{ImmutableVote.count} votes"
@@ -30,8 +30,8 @@ namespace :db do
                                                   election_id: Election.first.id
           end
 
-          Rails.logger.info "Imported votes for #{count} candidates"
-          Rails.logger.info "END: Database has now #{ImmutableVote.count} votes."
+          puts "Imported votes for #{count} candidates"
+          puts "END: Database has now #{ImmutableVote.count} votes."
         end
 
       end
