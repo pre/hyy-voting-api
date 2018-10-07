@@ -59,7 +59,9 @@ EOCSV
 
         how_many = ImportedCsvImmutableVote.create_from!(
           @rows.first,
-          election_id: @election.id)
+          election_id: @election.id,
+          created_at: '2016-01-02'
+        )
 
         expect(how_many).to eq 28
         expect(ImmutableVote.count).to eq 28
@@ -75,7 +77,9 @@ EOCSV
 
         maikki_how_many = ImportedCsvImmutableVote.create_from!(
           @rows.first,
-          election_id: @election.id)
+          election_id: @election.id,
+          created_at: '2016-01-02'
+        )
 
         expect(maikki_how_many).to eq 28
         expect(ImmutableVote.count).to eq 28
@@ -87,7 +91,9 @@ EOCSV
 
         kuikka_how_many = ImportedCsvImmutableVote.create_from!(
           @rows.second,
-          election_id: @election.id)
+          election_id: @election.id,
+          created_at: '2016-01-02'
+        )
 
         expect(kuikka_how_many).to eq 15
         expect(ImmutableVote.count).to eq 28+15
@@ -99,7 +105,9 @@ EOCSV
 
         jokumuu_how_many = ImportedCsvImmutableVote.create_from!(
           @rows.third,
-          election_id: @election.id)
+          election_id: @election.id,
+          created_at: '2016-01-02'
+        )
 
         expect(jokumuu_how_many).to eq 0
         expect(ImmutableVote.count).to eq 28+15+0
