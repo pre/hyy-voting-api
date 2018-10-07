@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1' # This is for Heroku, it's defined also in .ruby-version for RVM
+ruby '2.5.1' # This is for Heroku, it's defined also in .ruby-version for RVM
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
