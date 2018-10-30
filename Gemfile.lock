@@ -306,7 +306,7 @@ DEPENDENCIES
   pg
   pry-highlight
   pry-rails
-  puma (~> 3.0)
+  puma
   rack-cors
   rails (~> 5.0.7)
   rollbar
