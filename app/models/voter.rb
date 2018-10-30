@@ -47,7 +47,11 @@ class Voter < ActiveRecord::Base
     )
 
     if voter_attrs.faculty_code.present?
-      voter.faculty = Faculty.find_by_code! voter_attrs.faculty_code.strip
+      faculty = Faculty.find_by_code voter_attrs.faculty_code.strip
+
+      raise "Faculty not found: #{voter_attrs.faculty_code}" if faculty.nil?
+
+      voter.faculty = faculty
     end
 
     if voter_attrs.department_code.present?
