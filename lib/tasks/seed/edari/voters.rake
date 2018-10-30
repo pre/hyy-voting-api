@@ -3,7 +3,6 @@ require 'csv'
 namespace :db do
   namespace :seed do
     namespace :edari do
-
       namespace :voters_and_voting_rights do
         desc 'seed voters from stdin in csv format'
         task :csv => :environment do

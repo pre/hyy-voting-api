@@ -26,7 +26,8 @@ namespace :db do
         Rails.logger.info "- #{Coalition.count} coalitions INCLUDING blank coalition"
         Rails.logger.info "- #{Alliance.count} alliances INCLUDING blank alliance"
         Rails.logger.info "- #{Candidate.count} candidates INCLUDING blank candidate (candidate_number 1)"
-        Rails.logger.info "\n\nVoters and voting rights were NOT seeded, use db:seed:edari:voters_and_voting_rights"
+        Rails.logger.info "\n\nVoters and voting rights were NOT seeded, use db:seed:edari:voters_and_voting_rights:csv"
+        Rails.logger.info "\n\nNOTE: On Heroku, use 'heroku run --no-tty rake db:seed:edari:voters_and_voting_rights:csv -r qa < voters.csv'"
       end
     end
 
