@@ -21,6 +21,8 @@ gem 'ruby-saml' # Haka authentication
 gem 'delayed_job_active_record' # background jobs, eg. email sending
 gem 'jbuilder' # JSON builder
 
+gem 'sendgrid-ruby'
+
 group :development, :test do
   gem 'byebug', platform: :mri # usage: write 'debugger' anywhere in code
   gem 'rspec'
