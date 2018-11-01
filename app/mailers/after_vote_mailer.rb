@@ -11,4 +11,5 @@ class AfterVoteMailer < ApplicationMailer
       :subject => 'HYY tarjoaa vaalikahvin'
     )
   end
+  alias :thank_retry :thank
 end
