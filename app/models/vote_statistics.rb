@@ -1,8 +1,7 @@
 require 'json'
 
+# Use ">>" to pretty print json in console
 class VoteStatistics
-
-  # Use ">>" to pretty print json in console
   def self.by_hour_as_json
     stats = []
     total = {}
@@ -23,6 +22,24 @@ class VoteStatistics
     view_context.render(
       template: "vote_statistics/votes_by_hour.json.jbuilder",
       locals: { stats: stats, total: total }
+    )
+  end
+
+  def self.by_faculty_as_json
+    stats = by_faculty.map(&:as_json)
+
+    total = {
+      vote_count: ImmutableVote.count,
+      voter_count: Voter.count,
+      percentage: (100.0 * ImmutableVote.count / Voter.count).round(2)
+    }
+
+    view_context.render(
+      template: "vote_statistics/votes_by_faculty.json.jbuilder",
+      locals: {
+        stats: stats,
+        total: total
+      }
     )
   end
 
@@ -47,8 +64,45 @@ class VoteStatistics
       )
   end
 
+  # All votes grouped by Faculty
+  def self.by_faculty
+    Faculty.find_by_sql <<-EOSQL.squish
+      WITH voters_by_faculty as (
+       SELECT
+          faculties.id AS faculty_id,
+          count(*) as voter_count
+        FROM voters
+        INNER JOIN faculties ON faculties.id = voters.faculty_id
+        GROUP BY 1
+      ), voted_by_faculty as (
+         SELECT
+            faculties.id AS faculty_id,
+            count(*) as voted_count
+          FROM voters
+          INNER JOIN faculties ON faculties.id = voters.faculty_id
+          INNER JOIN voting_rights
+            ON voting_rights.voter_id = voters.id
+            AND voting_rights.used = true
+
+          GROUP BY 1
+      )
+      SELECT
+        faculties.id,
+        faculties.name,
+        voter_count,
+        COALESCE(voted_count, 0) AS voted_count,
+        round(100.0 * COALESCE(voted_count, 0) / voter_count, 2) AS percentage
+      FROM
+        faculties
+      LEFT OUTER JOIN
+        voters_by_faculty ON voters_by_faculty.faculty_id = faculties.id
+      LEFT OUTER JOIN
+        voted_by_faculty ON voted_by_faculty.faculty_id = faculties.id
+      ORDER BY percentage DESC;
+    EOSQL
+  end
+
   private_class_method def self.view_context
     ActionView::Base.new(ActionController::Base.view_paths)
   end
-
 end
