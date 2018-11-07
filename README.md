@@ -225,6 +225,9 @@ Multiline values (certificates) should be set as follows:
 * SessionLink#deliver() will send email during HTTP request.
   This could be made to happen in the background.
 
+* Sending a sign in link manually from console:
+  - SessionLink.new(email: Voter.find_by(email: 'teppo@example.com')).deliver
+
 * Error with Capybara tests: "unable to obtain stable firefox connection in 60 seconds (127.0.0.1:7055)"
   - Update Selenium, Firefox or Geckodriver so that the combination of their versions works.
 
