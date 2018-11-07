@@ -7,7 +7,7 @@ class SessionLinkMailer < ApplicationMailer
 
     mail(
       :to => email,
-      :subject => 'Sisäänkirjautumislinkki hallintovaaleihin'
+      :subject => 'Sisäänkirjautumislinkki HYYn vaaleihin'
     )
   end
 end
