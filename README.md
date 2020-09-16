@@ -104,22 +104,28 @@ rake db:schema:load
 rake -T db:seed
 ```
 
-Open a SSL tunnel in order to sign in with a Haka test account:
-  * `npm install -g local-ssl-proxy`
-  * `local-ssl-proxy --source 3001 --target PORT`
-  * PORT is either 3000 in development (`.env`) or 3999 in test (`.env.test`)
-
-
 ## Start services on the local machine
 
 Start web server:
 * `rails s`
 
-Example users:
-* testi.pekkanen@example.com
-  * Request a sign-in link via email, then either
-    a) check the link in web server logs
-    b) start worker `foreman run worker` and see the mock version of the email
+## Sign in
+
+### Example user without Haka-test
+
+* Generate a sign-in link
+  * rake jwt:voter:generate
+  * voter_id:1 == testi.pekkanen@example.com
+  * See `rails c` and `Voter.all`
+
+## Example user from Haka-test
+
+Open a SSL tunnel in order to sign in with a Haka test account:
+  * `npm install -g local-ssl-proxy`
+  * `local-ssl-proxy --source 3001 --target 3000`
+  * PORT is either 3000 in development (`.env`) or 3999 in test (`.env.test`)
+
+* Open https://localhost.enemy.fi:3001
 
 * Haka test user "teppo", password "testaaja"
   * Browser will display an SSL certificate error for "localhost", just skip it.
@@ -134,6 +140,18 @@ You may now open http://localhost:3000 and sign in using one of the test users.
 
 Start worker defined in `Procfile`:
 `foreman run worker`
+
+
+## Logs
+
+Web server logs
+  * `tail -f log/development.log`
+
+
+## Email messages
+
+A mock version of any sent email is automatically displayed when the worker is running:
+  * `foreman run worker`
 
 
 ## List API endpoints:
