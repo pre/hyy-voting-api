@@ -158,4 +158,62 @@ RSpec.describe RuntimeConfig, type: :model do
       end
     end
   end
+
+  describe "http basic auth" do
+    after do
+      hide_const 'HTTP_BASIC_AUTH_USERNAME'
+      hide_const 'HTTP_BASIC_AUTH_PASSWORD'
+    end
+
+    context "when username is set" do
+      before do
+        stub_const("Vaalit::Config::HTTP_BASIC_AUTH_USERNAME", 'user')
+      end
+
+      it 'is enabled' do
+        expect(RuntimeConfig.http_basic_auth?).to be true
+      end
+    end
+
+    context "when username is blank" do
+      before do
+        stub_const("Vaalit::Config::HTTP_BASIC_AUTH_USERNAME", '')
+      end
+
+      it 'is enabled' do
+        expect(RuntimeConfig.http_basic_auth?).to be true
+      end
+    end
+
+    context "when username is set but password is not set" do
+      before do
+        stub_const("Vaalit::Config::HTTP_BASIC_AUTH_USERNAME", '')
+      end
+
+      it 'is enabled' do
+        expect(RuntimeConfig.http_basic_auth?).to be true
+      end
+    end
+
+    context "when username is not set" do
+      before do
+        stub_const("Vaalit::Config::HTTP_BASIC_AUTH_USERNAME", nil)
+      end
+
+      it 'is disabled' do
+        expect(RuntimeConfig.http_basic_auth?).to be false
+      end
+    end
+
+    context "when username is not set but password is set" do
+      before do
+        stub_const("Vaalit::Config::HTTP_BASIC_AUTH_USERNAME", nil)
+        stub_const("Vaalit::Config::HTTP_BASIC_AUTH_PASSWORD", 'sekrit')
+      end
+
+      it 'is disabled' do
+        expect(RuntimeConfig.http_basic_auth?).to be false
+      end
+    end
+  end
 end

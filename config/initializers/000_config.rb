@@ -1,7 +1,6 @@
 # Start-time configuration which does not change during the runtime.
 # For dynamic configuration, see `app/models/runtime_config.rb`
 module Vaalit
-
   module Public
     SITE_ADDRESS        = ENV.fetch('SITE_ADDRESS')
     EMAIL_FROM_ADDRESS  = ENV.fetch('EMAIL_FROM_ADDRESS')
@@ -27,6 +26,8 @@ module Vaalit
     EMAIL_LINK_JWT_EXPIRY_MINUTES    = ENV.fetch('EMAIL_LINK_JWT_EXPIRY_MINUTES').to_i.minutes
     SIGN_IN_JWT_EXPIRY_SECONDS       = ENV.fetch('SIGN_IN_JWT_EXPIRY_SECONDS').to_i.seconds
 
+    HTTP_BASIC_AUTH_USERNAME = ENV.fetch('HTTP_BASIC_AUTH_USERNAME', nil)
+    HTTP_BASIC_AUTH_PASSWORD = ENV.fetch('HTTP_BASIC_AUTH_PASSWORD', nil)
   end
 
   module SanityCheck
