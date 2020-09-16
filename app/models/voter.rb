@@ -55,7 +55,11 @@ class Voter < ActiveRecord::Base
     end
 
     if voter_attrs.department_code.present?
-      voter.department = Department.find_by_code! voter_attrs.department_code.strip
+      department = Department.find_by_code voter_attrs.department_code.strip
+
+      raise "Department not found: #{voter_attrs.department_code}" if department.nil?
+
+      voter.department = department
     end
 
     %w(email phone extent_of_studies start_year).each do |optional_attr|

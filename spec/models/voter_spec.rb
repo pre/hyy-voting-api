@@ -72,8 +72,8 @@ RSpec.describe Voter, type: :model do
       faculty = FactoryGirl.build(:faculty, :code => faculty_code)
       department = FactoryGirl.build(:department, :code => department_code)
 
-      allow(Faculty).to receive(:find_by_code!) { faculty }
-      allow(Department).to receive(:find_by_code!) { department }
+      allow(Faculty).to receive(:find_by_code) { faculty }
+      allow(Department).to receive(:find_by_code) { department }
     end
 
     it "creates a Voter" do
@@ -86,6 +86,35 @@ RSpec.describe Voter, type: :model do
       expect(voter.faculty.code).to eq("H523")
       expect(voter.department.code).to eq("H50")
       expect(voter.phone).to eq("0500 123123")
+    end
+  end
+
+  describe "import errors" do
+    let(:existing_faculty_code) { 'H123' }
+    let(:without_faculty) do
+      FactoryGirl.build(:imported_voter, faculty_code: 'no_faculty')
+    end
+
+    let(:without_department) do
+      FactoryGirl.build(
+        :imported_voter,
+        department_code: 'no_department',
+        faculty_code: existing_faculty_code
+      )
+    end
+
+    it "displays error if Faculty is not found" do
+      expect do
+        Voter.create_from!(without_faculty)
+      end.to raise_error "Faculty not found: no_faculty"
+    end
+
+    it "displays error if Department is not found" do
+      FactoryGirl.create :faculty, code: existing_faculty_code
+
+      expect do
+        Voter.create_from!(without_department)
+      end.to raise_error "Department not found: no_department"
     end
   end
 end
