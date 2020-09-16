@@ -77,8 +77,14 @@ Install Gem dependencies:
 
 Configure `.env`
   * `cp .env.example .env`
-  * copy test certificates from `doc/certificate_examples`, these can be used
-    with Haka-test for authentication.
+
+Copy example certificates for use with Haka-test:
+  * `cp -r doc/examples/haka-test cert`
+  * These can be used with the federated Haka-test environment for authentication.
+  * Haka-test examples are registered in the federated Haka-test environment for localhost usage.
+    Haka-test will redirect to https://localhost.eneny.fi:3001 after a successful login.
+  * Open `local-ssl-proxy --source 3001 --target 3999` to redirect SSL connection from Haka-test
+    to the development web server which is running without SSL.
 
 Quick setup for dev database:
   * `rake db:runts`
