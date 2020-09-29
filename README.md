@@ -65,6 +65,8 @@ Retrieve the Angular.js frontend (needed for production use only):
   * This installs a static copy of
     [compiled Angular.js frontend](https://github.com/hyy-vaalit/voting-frontend-dist)
     to public/
+  * To update the submodule after building a new distribution of the voting-frontend, run
+    * `cd public && git pull origin master`
 
 Set up local version of the [Angular.js frontend](https://github.com/hyy-vaalit/voting-frontend)
 which will be run in a _different port_ than the Rails server.
