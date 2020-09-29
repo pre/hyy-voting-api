@@ -41,6 +41,21 @@ GEM
     addressable (2.4.0)
     arel (7.1.4)
     ast (2.3.0)
+    aws-eventstream (1.1.0)
+    aws-partitions (1.376.0)
+    aws-sdk-core (3.108.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-rails (2.1.0)
+      aws-sdk-ses (~> 1)
+      railties (>= 3)
+    aws-sdk-ses (1.35.0)
+      aws-sdk-core (~> 3, >= 3.99.0)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -127,6 +142,7 @@ GEM
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
+    jmespath (1.4.0)
     json (2.0.2)
     jwt (1.5.4)
     launchy (2.4.3)
@@ -152,7 +168,6 @@ GEM
     minitest (5.11.3)
     multi_json (1.12.1)
     multi_xml (0.5.5)
-    mustermann (1.0.3)
     mustermann19 (0.4.4)
       enumerable-lazy
     nenv (0.3.0)
@@ -183,8 +198,6 @@ GEM
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-cors (0.4.0)
-    rack-protection (2.0.4)
-      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.7)
@@ -248,21 +261,12 @@ GEM
     ruby-saml (1.3.1)
       nokogiri (>= 1.5.10)
     ruby_dep (1.4.0)
-    ruby_http_client (3.3.0)
     rubyzip (1.2.0)
     selenium-webdriver (3.0.0.beta2.1)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    sendgrid-ruby (5.3.0)
-      ruby_http_client (~> 3.3.0)
-      sinatra (>= 1.4.7, < 3)
     shellany (0.0.1)
-    sinatra (2.0.4)
-      mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.4)
-      tilt (~> 2.0)
     slop (3.6.0)
     spring (1.7.2)
     spring-watcher-listen (2.0.0)
@@ -277,7 +281,6 @@ GEM
       sprockets (>= 3.0.0)
     thor (0.19.4)
     thread_safe (0.3.6)
-    tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.1.0)
@@ -297,6 +300,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-rails (~> 2.1.0)
   byebug
   cancancan
   capybara
@@ -328,7 +332,6 @@ DEPENDENCIES
   rubocop
   ruby-saml
   selenium-webdriver (= 3.0.0.beta2.1)
-  sendgrid-ruby
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data

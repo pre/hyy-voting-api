@@ -4,7 +4,6 @@ module Vaalit
   module Public
     SITE_ADDRESS        = ENV.fetch('SITE_ADDRESS')
     EMAIL_FROM_ADDRESS  = ENV.fetch('EMAIL_FROM_ADDRESS')
-    EMAIL_FROM_NAME     = ENV.fetch('EMAIL_FROM_NAME')
     EXTERNAL_INFO_SITE  = ENV.fetch('EXTERNAL_INFO_SITE')
     EXTERNAL_INFO_PHONE = ENV.fetch('EXTERNAL_INFO_PHONE')
   end
@@ -61,4 +60,11 @@ module Vaalit
     GOOGLE_ANALYTICS_ID  = ENV.fetch("FRONTEND_GOOGLE_ANALYTICS_ID")
   end
 
+  module Aws
+    module Ses
+      REGION = ENV.fetch('AWS_SES_REGION', "eu-central-1")
+      ACCESS_KEY_ID = ENV.fetch('AWS_SES_ACCESS_KEY_ID')
+      SECRET_ACCESS_KEY = ENV.fetch('AWS_SES_SECRET_ACCESS_KEY')
+    end
+  end
 end

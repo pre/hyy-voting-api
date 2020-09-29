@@ -240,6 +240,23 @@ Multiline values (certificates) should be set as follows:
   `heroku config:set SOME_CERT="$(cat cert.pem)"`
 
 
+### Sending Email via Amazon SES
+
+* Start creating an Amazon SES configuration by verifying your domain in AWS SES.
+The verification process will take up 24-72 hours. Follow the instructions in AWS Console.
+
+* Create an AWS IAM user with eg. full AWS SES privileges. Create an API key for this IAM user.
+
+* Configure the environment variables prefixed with "AWS_SES".
+
+* Notice that each AWS SES configuration is region based, so you'll need to verify your email
+domain in each region separately. Region is selected by AWS_SES_REGION environment variable.
+
+* ActionMailer is configured to use AWS SES in config/production.rb:
+  `config.action_mailer.delivery_method = :aws_sdk`
+
+* See also config/initializers/aws_ses.rb
+
 ## Tips
 
 * A great app for exploring the development Postgresql database is

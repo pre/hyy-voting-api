@@ -21,7 +21,9 @@ gem 'ruby-saml' # Haka authentication
 gem 'delayed_job_active_record' # background jobs, eg. email sending
 gem 'jbuilder' # JSON builder
 
-gem 'sendgrid-ruby'
+# Provides aws-sdk-ses
+# Newer version >=3.x requires Rails >=5.2
+gem "aws-sdk-rails", '~> 2.1.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri # usage: write 'debugger' anywhere in code
