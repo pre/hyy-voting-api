@@ -2,14 +2,12 @@ source 'https://rubygems.org'
 
 ruby '2.6.6' # This is for Heroku, it's defined also in .ruby-version for RVM
 
-gem 'rails', '~> 5.0.7'
+gem 'rails', '~> 5.2.0'
 
 gem 'puma' # application server
-
 gem 'grape' # API
 gem 'grape-entity'
 gem 'nokogiri'
-gem 'cancancan' # Authorization
 gem 'pg' # Postgres
 gem 'rack-cors'
 gem 'jwt' # API tokens
@@ -21,6 +19,11 @@ gem 'ruby-saml' # Haka authentication
 gem 'delayed_job_active_record' # background jobs, eg. email sending
 gem 'jbuilder' # JSON builder
 
+# Authorization
+# See comment in app/api/api.rb above "include CanCan::ControllerAdditions"
+# before updating cancancan.
+gem 'cancancan', '3.1.0'
+
 # Provides aws-sdk-ses
 # Newer version >=3.x requires Rails >=5.2
 gem "aws-sdk-rails", '~> 2.1.0'
@@ -31,11 +34,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'dotenv-rails'
-  gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'selenium-webdriver', '3.0.0.beta2.1'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'solargraph'
 end
 
 group :development do
@@ -45,13 +47,13 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  # Atom: Install linter-rubocop
+  # Enable linter warnings in your editor by installing the corresponding rubocop editor plugin (eg. ruby-rubocop in VSCode)
   gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
 
   gem "letter_opener", :group => :development # open a sent email browser
 
   gem 'grape_on_rails_routes' # display grape routes: `rake grape:routes`
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

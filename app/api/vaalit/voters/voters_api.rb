@@ -59,10 +59,10 @@ module Vaalit
               end
             end
             desc 'Create a new voter with a voting right in current election' do
-              failure [[422, 'Unprocessable entity', Errors::Voter]]
+              failure [[422, 'Unprocessable entity', Vaalit::Errors::Voter]]
             end
             post do
-              voter = Voter.build_from params['voter']
+              voter = Voter.build_from_hash params['voter']
 
               if voter.save && voter.create_voting_right(election: @election)
                 present voter, using: Entities::Voter

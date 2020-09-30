@@ -21,7 +21,7 @@ Lint/RescueException:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Lint/StringConversionInInterpolation:
+Lint/RedundantStringCoercion:
   Exclude:
     - 'app/models/ability.rb'
 
@@ -51,7 +51,7 @@ Metrics/CyclomaticComplexity:
 # Offense count: 197
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes.
 # URISchemes: http, https
-Metrics/LineLength:
+Layout/LineLength:
   Max: 206
 
 # Offense count: 9
@@ -64,35 +64,9 @@ Metrics/PerceivedComplexity:
   Max: 10
 
 # Offense count: 1
-Style/AccessorMethodName:
+Layout/AccessorMethodName:
   Exclude:
     - 'app/models/ability.rb'
-
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle, SupportedLastArgumentHashStyles.
-# SupportedLastArgumentHashStyles: always_inspect, always_ignore, ignore_implicit, ignore_explicit
-Style/AlignHash:
-  Exclude:
-    - 'spec/models/cast_vote_spec.rb'
-
-# Offense count: 17
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, IndentationWidth.
-# SupportedStyles: with_first_parameter, with_fixed_indentation
-Style/AlignParameters:
-  Exclude:
-    - 'app/api/vaalit/session.rb'
-    - 'app/models/mutable_vote.rb'
-    - 'app/models/voting_right.rb'
-    - 'lib/tasks/seed/edari/demo/candidates.rake'
-    - 'lib/tasks/seed/edari/demo/votes.rake'
-    - 'spec/factories.rb'
-    - 'spec/models/imported_csv_alliance_spec.rb'
-    - 'spec/models/imported_csv_candidate_spec.rb'
-    - 'spec/models/imported_csv_immutable_vote_spec.rb'
-    - 'spec/models/voter_spec.rb'
-    - 'spec/requests/api/edari/export_votes_spec.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -124,16 +98,6 @@ Style/BlockDelimiters:
   Exclude:
     - 'spec/models/election_spec.rb'
 
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: braces, no_braces, context_dependent
-Style/BracesAroundHashParameters:
-  Exclude:
-    - 'spec/models/session_token_spec.rb'
-    - 'spec/models/sign_in_token_processor_spec.rb'
-    - 'spec/requests/api/session_spec.rb'
-
 # Offense count: 1
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: nested, compact
@@ -143,7 +107,7 @@ Style/ClassAndModuleChildren:
 
 # Offense count: 8
 # Cop supports --auto-correct.
-Style/ClosingParenthesisIndentation:
+Layout/ClosingParenthesisIndentation:
   Exclude:
     - 'spec/models/imported_csv_immutable_vote_spec.rb'
 
@@ -177,7 +141,7 @@ Style/DoubleNegation:
 
 # Offense count: 14
 # Cop supports --auto-correct.
-Style/EmptyLines:
+Layout/EmptyLines:
   Exclude:
     - 'app/models/candidate.rb'
     - 'config/environments/development.rb'
@@ -194,7 +158,7 @@ Style/EmptyLines:
 
 # Offense count: 5
 # Cop supports --auto-correct.
-Style/EmptyLinesAroundAccessModifier:
+Layout/EmptyLinesAroundAccessModifier:
   Exclude:
     - 'app/api/vaalit/jwt_helpers.rb'
     - 'app/controllers/haka/auth_controller.rb'
@@ -206,19 +170,19 @@ Style/EmptyLinesAroundAccessModifier:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: empty_lines, no_empty_lines
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
 # Offense count: 43
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: empty_lines, no_empty_lines
-Style/EmptyLinesAroundClassBody:
+Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
 # Offense count: 4
 # Cop supports --auto-correct.
-Style/EmptyLinesAroundMethodBody:
+Layout/EmptyLinesAroundMethodBody:
   Exclude:
     - 'app/controllers/public_controller.rb'
     - 'app/models/ability.rb'
@@ -229,13 +193,13 @@ Style/EmptyLinesAroundMethodBody:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: empty_lines, no_empty_lines
-Style/EmptyLinesAroundModuleBody:
+Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 
 # Offense count: 7
 # Cop supports --auto-correct.
 # Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
-Style/ExtraSpacing:
+Layout/ExtraSpacing:
   Exclude:
     - 'app/controllers/haka/auth_controller.rb'
     - 'app/models/voter.rb'
@@ -247,7 +211,7 @@ Style/ExtraSpacing:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, IndentationWidth.
 # SupportedStyles: consistent, special_for_inner_method_call, special_for_inner_method_call_in_parentheses
-Style/FirstParameterIndentation:
+Layout/FirstParameterIndentation:
   Exclude:
     - 'app/models/voter.rb'
     - 'spec/models/imported_csv_immutable_vote_spec.rb'
@@ -277,7 +241,7 @@ Style/IfUnlessModifier:
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: Width.
-Style/IndentationWidth:
+Layout/IndentationWidth:
   Exclude:
     - 'app/api/vaalit/elections.rb'
     - 'app/api/vaalit/entities/coalition.rb'
@@ -294,7 +258,7 @@ Style/Lambda:
 
 # Offense count: 7
 # Cop supports --auto-correct.
-Style/LeadingCommentSpace:
+Layout/LeadingCommentSpace:
   Exclude:
     - 'Gemfile'
     - 'app/models/cast_vote.rb'
@@ -305,7 +269,7 @@ Style/LeadingCommentSpace:
 
 # Offense count: 24
 # Cop supports --auto-correct.
-Style/MethodCallParentheses:
+Style/MethodCallWithoutArgsParentheses:
   Exclude:
     - 'app/models/haka/person.rb'
     - 'app/models/sign_in_token_processor.rb'
@@ -318,7 +282,7 @@ Style/MethodCallParentheses:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: symmetrical, new_line, same_line
-Style/MultilineMethodCallBraceLayout:
+Layout/MultilineMethodCallBraceLayout:
   Exclude:
     - 'app/api/vaalit/elections.rb'
     - 'app/api/vaalit/session.rb'
@@ -432,7 +396,7 @@ Style/SelfAssignment:
 # Offense count: 8
 # Cop supports --auto-correct.
 # Configuration parameters: AllowForAlignment.
-Style/SpaceAroundOperators:
+Layout/SpaceAroundOperators:
   Exclude:
     - 'app/controllers/haka/auth_controller.rb'
     - 'lib/tasks/voter_import.rake'
@@ -443,7 +407,7 @@ Style/SpaceAroundOperators:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: space, no_space
-Style/SpaceBeforeBlockBraces:
+Layout/SpaceBeforeBlockBraces:
   Exclude:
     - 'spec/models/session_token_spec.rb'
 
@@ -451,30 +415,24 @@ Style/SpaceBeforeBlockBraces:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
 # SupportedStyles: space, no_space
-Style/SpaceInsideBlockBraces:
+Layout/SpaceInsideBlockBraces:
   Exclude:
     - 'Guardfile'
     - 'spec/factories.rb'
     - 'spec/models/session_token_spec.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/SpaceInsideBrackets:
-  Exclude:
-    - 'config/environments/production.rb'
-
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces, SupportedStyles.
 # SupportedStyles: space, no_space, compact
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   Exclude:
     - 'spec/models/sign_in_token_processor_spec.rb'
     - 'spec/requests/api/session_spec.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
-Style/SpaceInsideParens:
+Layout/SpaceInsideParens:
   Exclude:
     - 'app/concerns/vote_behaviour.rb'
     - 'app/models/election.rb'
@@ -485,20 +443,6 @@ Style/SpaceInsideParens:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Enabled: false
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline, SupportedStyles.
-# SupportedStyles: comma, consistent_comma, no_comma
-Style/TrailingCommaInLiteral:
-  Exclude:
-    - 'app/api/vaalit/pling.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/TrailingWhitespace:
-  Exclude:
-    - 'db/migrate/20151017171753_create_alliances.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.

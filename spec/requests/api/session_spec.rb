@@ -7,14 +7,14 @@ describe Vaalit::Session do
     it 'requires a parameter' do
       post '/api/sessions'
 
-      expect(response).not_to be_success
+      expect(response).not_to be_successful
       expect(json["error"]).to eq "token is missing"
     end
 
     it 'raises exception with invalid token' do
       post "/api/sessions?token=INVALID_TOKEN"
 
-      expect(response).not_to be_success
+      expect(response).not_to be_successful
       expect(json["error"]).to eq "Invalid sign-in token"
     end
 
@@ -24,14 +24,14 @@ describe Vaalit::Session do
 
       post "/api/sessions?token=#{token}"
 
-      expect(response).not_to be_success
+      expect(response).not_to be_successful
       expect(json["error"]).to eq "Invalid sign-in token"
     end
 
     it 'returns a session token according to the sign in token' do
       email = "user@example.com"
       voter_id = 123
-      voter = FactoryGirl.build :voter, id: voter_id, email: email
+      voter = FactoryBot.build :voter, id: voter_id, email: email
       allow(Voter).to receive(:find).once.and_return(voter)
 
       token = JsonWebToken.encode({voter_id: voter_id},
@@ -39,7 +39,7 @@ describe Vaalit::Session do
 
       post "/api/sessions?token=#{token}"
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(json["user"]["voter_id"]).to eq voter_id
       expect(json["user"]["email"]).to eq email
     end

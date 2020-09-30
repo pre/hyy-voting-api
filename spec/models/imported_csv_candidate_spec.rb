@@ -26,9 +26,9 @@ RSpec.describe ImportedCsvCandidate, type: :model do
     end
 
     it "creates from csv" do
-      election = FactoryGirl.create :election
-      coalition = FactoryGirl.create :coalition, election: election
-      FactoryGirl.create :alliance,
+      election = FactoryBot.create :election
+      coalition = FactoryBot.create :coalition, election: election
+      FactoryBot.create :alliance,
                           coalition: coalition,
                           election: election,
                           name: "Akateemiset nallekarhut"

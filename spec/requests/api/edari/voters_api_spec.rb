@@ -8,13 +8,13 @@ describe Vaalit::Voters::VotersApi do
     let(:user) { nil }
 
     context "when current user is a voter" do
-      let(:user) { FactoryGirl.build(:voter) }
+      let(:user) { FactoryBot.build(:voter) }
 
       it { should_not be_able_to(:access, :voters) }
     end
 
     context "when current user is a guest" do
-      let(:user) { FactoryGirl.build(:guest_user) }
+      let(:user) { FactoryBot.build(:guest_user) }
 
       it { should_not be_able_to(:access, :voters) }
     end
@@ -26,7 +26,7 @@ describe Vaalit::Voters::VotersApi do
     end
 
     context "when current user is a service user" do
-      let(:user) { FactoryGirl.build(:service_user) }
+      let(:user) { FactoryBot.build(:service_user) }
 
       it { should be_able_to(:access, :voters) }
     end
@@ -37,9 +37,9 @@ describe Vaalit::Voters::VotersApi do
       allow_any_instance_of(Vaalit::JwtHelpers)
         .to receive(:current_service_user) { ServiceUser.new }
 
-      @election = FactoryGirl.create :election, :edari_election
-      @faculty = FactoryGirl.create :faculty
-      @department = FactoryGirl.create :department
+      @election = FactoryBot.create :election, :edari_election
+      @faculty = FactoryBot.create :faculty
+      @department = FactoryBot.create :department
       @voter_data = {
         "name": "Etu Suku",
         "email": "etu.suku@example.com",
@@ -60,7 +60,7 @@ describe Vaalit::Voters::VotersApi do
              params: { voter: @voter_data },
              headers: @headers
 
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(json["name"]).to eq "Etu Suku"
         expect(json["email"]).to eq "etu.suku@example.com"
         expect(Voter.count).to eq 1

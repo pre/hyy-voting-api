@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Vaalit::Public do
 
   before do
-    @election = FactoryGirl.create(:election)
+    @election = FactoryBot.create(:election)
   end
 
   context 'when voting has not started' do
@@ -12,7 +12,7 @@ describe Vaalit::Public do
     end
 
     it 'was a successful request' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'returns status that there are no votes' do
@@ -29,16 +29,16 @@ describe Vaalit::Public do
       @voter_count = 21
 
       @voter_count.times do
-        FactoryGirl.create :voting_right, election: @election
+        FactoryBot.create :voting_right, election: @election
       end
 
-      coalition = FactoryGirl.create :coalition, election: @election
+      coalition = FactoryBot.create :coalition, election: @election
 
-      alliance = FactoryGirl.create :alliance,
+      alliance = FactoryBot.create :alliance,
                                     election: @election,
                                     coalition: coalition
 
-      FactoryGirl.create :candidate, :with_votes,
+      FactoryBot.create :candidate, :with_votes,
                          alliance: alliance,
                          vote_count: @actual_vote_count
 
@@ -46,7 +46,7 @@ describe Vaalit::Public do
     end
 
     it 'was a successful request' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'returns voter count' do

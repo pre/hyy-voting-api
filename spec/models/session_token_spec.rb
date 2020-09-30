@@ -7,7 +7,7 @@ RSpec.describe SessionToken, type: :model do
       @example_email = "email@example.com"
       @voter_id = 4321
 
-      voter = FactoryGirl.build :voter, {
+      voter = FactoryBot.build :voter, {
         email: @example_email,
         id: @voter_id
       }

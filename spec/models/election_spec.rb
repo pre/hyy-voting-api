@@ -4,7 +4,7 @@ RSpec.describe Election, type: :model do
   context "halloped" do
 
     it "can be a faculty election" do
-      election = FactoryGirl.build :election, :faculty_election
+      election = FactoryBot.create :election, :faculty_election
 
       expect(election.type).to eq "faculty"
       expect(election.halloped?).to be true
@@ -12,7 +12,7 @@ RSpec.describe Election, type: :model do
     end
 
     it "can be a department election" do
-      election = FactoryGirl.build :election, :department_election
+      election = FactoryBot.create :election, :department_election
 
       expect(election.type).to eq "department"
       expect(election.halloped?).to be true
@@ -20,9 +20,9 @@ RSpec.describe Election, type: :model do
     end
 
     it "cannot be both department and faculty election" do
-      election = FactoryGirl.build :election
-      election.department = FactoryGirl.create :department
-      election.faculty = FactoryGirl.create :faculty
+      election = FactoryBot.build :election
+      election.department = FactoryBot.create :department
+      election.faculty = FactoryBot.create :faculty
 
       expect(election).not_to be_valid
       expect(election.halloped?).to be true
@@ -33,7 +33,7 @@ RSpec.describe Election, type: :model do
 
   context "edari" do
     it "recognizes edari type" do
-      election = FactoryGirl.build :election, :edari_election
+      election = FactoryBot.build :election, :edari_election
       expect(election.type).to eq "edari"
       expect(election.halloped?).to be false
       expect(election.edari?).to be true
@@ -42,7 +42,7 @@ RSpec.describe Election, type: :model do
     context "when building" do
       it "allows the first election" do
         expect(Election.count).to eq 0
-        election = FactoryGirl.build :election, :edari_election
+        election = FactoryBot.build :election, :edari_election
 
         expect(election).to be_valid
         expect(Election.count).to eq 0
@@ -52,8 +52,8 @@ RSpec.describe Election, type: :model do
       end
 
       it "denies the second election" do
-        election = FactoryGirl.build :election, :edari_election
-        another_election = FactoryGirl.build :election, :edari_election
+        election = FactoryBot.build :election, :edari_election
+        another_election = FactoryBot.build :election, :edari_election
 
         expect(election.save).to be true
 
@@ -68,19 +68,19 @@ RSpec.describe Election, type: :model do
     context "when creating" do
       it "allows the first election" do
         expect(Election.count).to eq 0
-        election = FactoryGirl.create :election, :edari_election
+        election = FactoryBot.create :election, :edari_election
 
         expect(election).to be_valid
         expect(Election.count).to eq 1
       end
 
       it "denies the second election" do
-        election = FactoryGirl.create :election, :edari_election
+        election = FactoryBot.create :election, :edari_election
 
         expect(election).to be_valid
 
         expect {
-          FactoryGirl.create :election, :edari_election
+          FactoryBot.create :election, :edari_election
         }.to raise_error ActiveRecord::RecordInvalid
       end
 

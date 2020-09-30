@@ -9,27 +9,27 @@ describe Vaalit::Export::Votes do
 
     allow(RuntimeConfig).to receive(:elections_active?).and_return(false)
 
-    @election = FactoryGirl.create :election, :edari_election
-    coalition = FactoryGirl.create :coalition,
+    @election = FactoryBot.create :election, :edari_election
+    coalition = FactoryBot.create :coalition,
                                    election: @election
-    alliance = FactoryGirl.create :alliance,
+    alliance = FactoryBot.create :alliance,
                                    coalition: coalition,
                                    election: @election,
                                    name: "Hieno Allianssi"
 
-    @candidate1 = FactoryGirl.create :candidate, :with_votes,
+    @candidate1 = FactoryBot.create :candidate, :with_votes,
                                       alliance: alliance,
                                       vote_count: 10,
                                       candidate_name: "Testi Eka"
-    @candidate2 = FactoryGirl.create :candidate, :with_votes,
+    @candidate2 = FactoryBot.create :candidate, :with_votes,
                                       alliance: alliance,
                                       vote_count: 20,
                                       candidate_name: "Testi Toka"
-    @candidate3 = FactoryGirl.create :candidate, :with_votes,
+    @candidate3 = FactoryBot.create :candidate, :with_votes,
                                       alliance: alliance,
                                       vote_count: 30,
                                       candidate_name: "Testi Kolmas"
-    @blank_candidate = FactoryGirl.create :candidate, :blank, :with_votes,
+    @blank_candidate = FactoryBot.create :candidate, :blank, :with_votes,
                                       alliance: alliance,
                                       vote_count: 25
   end
@@ -38,7 +38,7 @@ describe Vaalit::Export::Votes do
     it 'returns votes in csv' do
       get "/api/export/elections/#{@election.id}/votes"
 
-      expect(response).to be_success
+      expect(response).to be_successful
 
       alliance_id = @candidate1.alliance_id
 

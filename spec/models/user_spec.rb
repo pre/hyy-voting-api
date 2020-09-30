@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   context "create" do
 
     it "initializes a valid object" do
-      voter = FactoryGirl.build :voter
+      voter = FactoryBot.build :voter
 
       user = User.new voter
 

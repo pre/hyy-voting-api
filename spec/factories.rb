@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :service_user do
   end
@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   factory :voting_right do
-    used false
+    used { false }
     voter
     election
   end
@@ -43,12 +43,12 @@ FactoryGirl.define do
   end
 
   factory :imported_voter do
-    name 'Armas Aappa'
-    ssn '020486-1234'
-    student_number '012617061'
-    extent_of_studies 1
-    faculty_code 'H55'
-    start_year 2014
+    name { 'Armas Aappa' }
+    ssn { '020486-1234' }
+    student_number { '012617061' }
+    extent_of_studies { 1 }
+    faculty_code { 'H55' }
+    start_year { 2014 }
   end
 
   factory :faculty do
@@ -74,7 +74,7 @@ FactoryGirl.define do
 
     trait :with_voting_right do
       transient do
-        election build(:election)
+        election { build(:election) }
       end
 
       after(:create) do |voter, evaluator|
@@ -97,12 +97,12 @@ FactoryGirl.define do
     alliance
 
     trait :blank do
-      candidate_number Vaalit::Config::BLANK_CANDIDATE_NUMBER
+      candidate_number { Vaalit::Config::BLANK_CANDIDATE_NUMBER }
     end
 
     trait :with_votes do
       transient do
-        vote_count 15
+        vote_count { 15 }
       end
 
       after(:create) do |candidate, evaluator|
