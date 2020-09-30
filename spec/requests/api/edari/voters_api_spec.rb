@@ -60,7 +60,7 @@ describe Vaalit::Voters::VotersApi do
              params: { voter: @voter_data },
              headers: @headers
 
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(json["name"]).to eq "Etu Suku"
         expect(json["email"]).to eq "etu.suku@example.com"
         expect(Voter.count).to eq 1

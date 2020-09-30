@@ -45,7 +45,7 @@ module Vaalit
         namespace :vote do
 
             desc 'Cast a vote for a candidate' do
-              failure [[422, 'Unprocessable entity', Errors::Vote]]
+              failure [[422, 'Unprocessable entity', Vaalit::Errors::Vote]]
             end
             params do
               requires :candidate_id, type: Integer

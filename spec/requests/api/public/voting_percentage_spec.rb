@@ -12,7 +12,7 @@ describe Vaalit::Public do
     end
 
     it 'was a successful request' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'returns status that there are no votes' do
@@ -46,7 +46,7 @@ describe Vaalit::Public do
     end
 
     it 'was a successful request' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'returns voter count' do

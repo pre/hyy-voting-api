@@ -38,7 +38,7 @@ describe Vaalit::Export::Votes do
     it 'returns votes in csv' do
       get "/api/export/elections/#{@election.id}/votes"
 
-      expect(response).to be_success
+      expect(response).to be_successful
 
       alliance_id = @candidate1.alliance_id
 
