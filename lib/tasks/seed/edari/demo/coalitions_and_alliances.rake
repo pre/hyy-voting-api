@@ -47,7 +47,6 @@ namespace :db do
 
           Rails.logger.info "Seeding DEMO alliances ..."
 
-          # TODO: numbering_order
           create_alliance! mp, name: 'HYYn Vihreät - De Gröna vid HUS',  short_name: 'HyVi'
           create_alliance! mp, name: 'Sitoutumaton vasemmisto - Obunden vänster - Independent left', short_name: 'SitVas'
           create_alliance! hyal, name: 'Humanistit',                     short_name: 'Humani'

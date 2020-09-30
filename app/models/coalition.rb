@@ -7,8 +7,9 @@ class Coalition < ApplicationRecord
   validates_presence_of :name,
                         :short_name
 
-  scope :by_election, -> (id) {
+  scope :by_election_with_alliances_and_candidates, ->(id) {
     where(election_id: id)
-      .reorder(:numbering_order)
+      .includes(alliances: [:candidates])
+      .reorder('candidates.candidate_number ASC')
   }
 end

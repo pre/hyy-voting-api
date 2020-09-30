@@ -84,7 +84,7 @@ module Vaalit
                 entity = Entities::Coalition
               end
 
-              present Coalition.by_election(params[:election_id]),
+              present Coalition.by_election_with_alliances_and_candidates(params[:election_id]),
                       with: entity
             end
         end
