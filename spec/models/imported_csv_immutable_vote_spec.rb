@@ -33,22 +33,22 @@ EOCSV
     context "create" do
 
       before do
-        @election = FactoryGirl.create :election
-        coalition = FactoryGirl.create :coalition, election: @election
-        alliance = FactoryGirl.create :alliance,
+        @election = FactoryBot.create :election
+        coalition = FactoryBot.create :coalition, election: @election
+        alliance = FactoryBot.create :alliance,
                             coalition: coalition,
                             election: @election,
                             name: "Akateemiset nallekarhut"
 
-        @c_maikki = FactoryGirl.create :candidate,
+        @c_maikki = FactoryBot.create :candidate,
                                         candidate_number: 321,
                                         alliance: alliance
 
-        @c_kuikka = FactoryGirl.create :candidate,
+        @c_kuikka = FactoryBot.create :candidate,
                                         candidate_number: 322,
                                         alliance: alliance
 
-        @c_jokumuu = FactoryGirl.create :candidate,
+        @c_jokumuu = FactoryBot.create :candidate,
                                         candidate_number: 323,
                                         alliance: alliance
 

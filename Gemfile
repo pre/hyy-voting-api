@@ -9,7 +9,7 @@ gem 'puma' # application server
 gem 'grape' # API
 gem 'grape-entity'
 gem 'nokogiri'
-gem 'cancancan' # Authorization
+gem 'cancancan', '~> 1.15' # Authorization
 gem 'pg' # Postgres
 gem 'rack-cors'
 gem 'jwt' # API tokens
@@ -31,11 +31,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'dotenv-rails'
-  gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'selenium-webdriver', '3.0.0.beta2.1'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'database_cleaner'
+  # gem 'solargraph'
 end
 
 group :development do
@@ -45,8 +44,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  # Atom: Install linter-rubocop
+  # Enable linter warnings in your editor by installing the corresponding rubocop editor plugin (eg. ruby-rubocop in VSCode)
   gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
 
   gem "letter_opener", :group => :development # open a sent email browser
 

@@ -39,6 +39,9 @@ class Voter < ActiveRecord::Base
 
   # Build a new voter, but do not persist or validate it.
   # Throw an exception if Faculty or Deparment cannot be found with given code.
+  #
+  # Params:
+  #   voter_attrs = instance of ImportedVoter
   def self.build_from(voter_attrs)
     voter = new(
       ssn:               voter_attrs.ssn.strip,
@@ -71,7 +74,18 @@ class Voter < ActiveRecord::Base
     voter
   end
 
+  # Converts Hash parameters to ImportedVoter anc calls build_from()
+  #
+  # Params:
+  #  voter_hash = attributes of ImportedVoter as a Hash
+  def self.build_from_hash(voter_hash)
+    build_from ImportedVoter.new(voter_hash)
+  end
+
   # Create and persist a new voter, throw an exception on failure.
+  #
+  # Params:
+  #   voter_attrs = instance of ImportedVoter
   def self.create_from!(voter_attrs)
     voter = build_from voter_attrs
 

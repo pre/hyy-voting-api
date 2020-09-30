@@ -8,7 +8,7 @@ describe Vaalit::Elections do
     let(:user) { nil }
 
     context "when current user is a voter" do
-      let(:user) { FactoryGirl.build(:voter) }
+      let(:user) { FactoryBot.build(:voter) }
 
       it { should be_able_to(:access, :elections) }
       it { should be_able_to(:access, Election) }
@@ -16,7 +16,7 @@ describe Vaalit::Elections do
     end
 
     context "when current user is a guest" do
-      let(:user) { FactoryGirl.build(:guest_user) }
+      let(:user) { FactoryBot.build(:guest_user) }
 
       it { should_not be_able_to(:access, :elections) }
       it { should_not be_able_to(:access, Election) }
@@ -24,7 +24,7 @@ describe Vaalit::Elections do
     end
 
     context "when current user is a service user" do
-      let(:user) { FactoryGirl.build(:service_user) }
+      let(:user) { FactoryBot.build(:service_user) }
 
       it { should_not be_able_to(:access, :elections) }
       it { should_not be_able_to(:access, Election) }
@@ -40,7 +40,7 @@ describe Vaalit::Elections do
     end
 
     context "when current user is a voter" do
-      let(:user) { FactoryGirl.build(:voter) }
+      let(:user) { FactoryBot.build(:voter) }
 
       context "when voting is ongoing" do
         before do

@@ -8,8 +8,8 @@ require 'rails_helper'
 #     context "sign in process" do
 #       before :each do
 #         haka_user_student_number = 8734
-#         election = FactoryGirl.create :election, :edari_election
-#         @voter = FactoryGirl.create :voter, :with_voting_right,
+#         election = FactoryBot.create :election, :edari_election
+#         @voter = FactoryBot.create :voter, :with_voting_right,
 #                                     election: election,
 #                                     student_number: haka_user_student_number
 

@@ -6,16 +6,16 @@ RSpec.describe VotingRight, type: :model do
     before do
       stub_const("Vaalit::Config::IS_EDARI_ELECTION", true)
 
-      @election = FactoryGirl.create :election, :edari_election
-      @voter = FactoryGirl.create :voter
-      @coalition = FactoryGirl.create :coalition, election: @election
-      @alliance = FactoryGirl.create :alliance, coalition: @coalition, election: @election
-      @candidate = FactoryGirl.create :candidate, alliance: @alliance
+      @election = FactoryBot.create :election, :edari_election
+      @voter = FactoryBot.create :voter
+      @coalition = FactoryBot.create :coalition, election: @election
+      @alliance = FactoryBot.create :alliance, coalition: @coalition, election: @election
+      @candidate = FactoryBot.create :candidate, alliance: @alliance
     end
 
     context "when VotingRight already has a matching row (voter_id,election_id)" do
       before do
-        @voting_right = FactoryGirl.create :voting_right,
+        @voting_right = FactoryBot.create :voting_right,
                                            election: @election,
                                            voter: @voter
       end

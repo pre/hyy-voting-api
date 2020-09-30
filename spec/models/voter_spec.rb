@@ -7,8 +7,8 @@ RSpec.describe Voter, type: :model do
   describe "edari elections" do
 
     it "returns a single Election" do
-      voter = FactoryGirl.build(:voter)
-      election = FactoryGirl.create :election, :edari_election
+      voter = FactoryBot.build(:voter)
+      election = FactoryBot.create :election, :edari_election
       allow(Election).to receive(:first).and_return(election)
       stub_const("Vaalit::Config::IS_EDARI_ELECTION", true)
 
@@ -20,21 +20,21 @@ RSpec.describe Voter, type: :model do
   describe "Halloped elections" do
 
     it "returns a list of elections" do
-      faculty_election = FactoryGirl.create :election, :faculty_election
-      another_faculty_election = FactoryGirl.create :election,
+      faculty_election = FactoryBot.create :election, :faculty_election
+      another_faculty_election = FactoryBot.create :election,
                                                     :faculty_election,
                                                     faculty: faculty_election.faculty
 
-      not_our_faculty_election = FactoryGirl.create :election, :faculty_election
+      not_our_faculty_election = FactoryBot.create :election, :faculty_election
 
-      department_election = FactoryGirl.create :election, :department_election
-      not_our_department_election = FactoryGirl.create :election, :department_election
-      another_department_election = FactoryGirl.create :election,
+      department_election = FactoryBot.create :election, :department_election
+      not_our_department_election = FactoryBot.create :election, :department_election
+      another_department_election = FactoryBot.create :election,
                                                       :department_election,
                                                       department: department_election.department
 
 
-      voter = FactoryGirl.build :voter,
+      voter = FactoryBot.build :voter,
                                 faculty: faculty_election.faculty,
                                 department: department_election.department
 
@@ -69,8 +69,8 @@ RSpec.describe Voter, type: :model do
           :department_code   => department_code
       )
 
-      faculty = FactoryGirl.build(:faculty, :code => faculty_code)
-      department = FactoryGirl.build(:department, :code => department_code)
+      faculty = FactoryBot.build(:faculty, :code => faculty_code)
+      department = FactoryBot.build(:department, :code => department_code)
 
       allow(Faculty).to receive(:find_by_code) { faculty }
       allow(Department).to receive(:find_by_code) { department }
@@ -92,11 +92,11 @@ RSpec.describe Voter, type: :model do
   describe "import errors" do
     let(:existing_faculty_code) { 'H123' }
     let(:without_faculty) do
-      FactoryGirl.build(:imported_voter, faculty_code: 'no_faculty')
+      FactoryBot.build(:imported_voter, faculty_code: 'no_faculty')
     end
 
     let(:without_department) do
-      FactoryGirl.build(
+      FactoryBot.build(
         :imported_voter,
         department_code: 'no_department',
         faculty_code: existing_faculty_code
@@ -110,7 +110,7 @@ RSpec.describe Voter, type: :model do
     end
 
     it "displays error if Department is not found" do
-      FactoryGirl.create :faculty, code: existing_faculty_code
+      FactoryBot.create :faculty, code: existing_faculty_code
 
       expect do
         Voter.create_from!(without_department)

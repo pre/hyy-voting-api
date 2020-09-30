@@ -31,7 +31,7 @@ describe Vaalit::Session do
     it 'returns a session token according to the sign in token' do
       email = "user@example.com"
       voter_id = 123
-      voter = FactoryGirl.build :voter, id: voter_id, email: email
+      voter = FactoryBot.build :voter, id: voter_id, email: email
       allow(Voter).to receive(:find).once.and_return(voter)
 
       token = JsonWebToken.encode({voter_id: voter_id},

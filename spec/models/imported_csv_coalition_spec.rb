@@ -25,7 +25,7 @@ RSpec.describe ImportedCsvCoalition, type: :model do
     end
 
     it "creates from csv" do
-      election = FactoryGirl.create :election
+      election = FactoryBot.create :election
 
       coalition = ImportedCsvCoalition.create_from!(@rows.first, election_id: election.id)
 

@@ -8,13 +8,13 @@ describe Vaalit::Export::ExportApi do
     let(:user) { nil }
 
     context "when current user is a voter" do
-      let(:user) { FactoryGirl.build(:voter) }
+      let(:user) { FactoryBot.build(:voter) }
 
       it { should_not be_able_to(:access, :export) }
     end
 
     context "when current user is a guest" do
-      let(:user) { FactoryGirl.build(:guest_user) }
+      let(:user) { FactoryBot.build(:guest_user) }
 
       it { should_not be_able_to(:access, :export) }
     end
@@ -26,7 +26,7 @@ describe Vaalit::Export::ExportApi do
     end
 
     context "when current user is a service user" do
-      let(:user) { FactoryGirl.build(:service_user) }
+      let(:user) { FactoryBot.build(:service_user) }
 
       context "when elections and voting are still ongoing" do
         before do

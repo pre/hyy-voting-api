@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe ElectionSummary, type: :model do
   context 'when voting has not started' do
     before do
-      election = FactoryGirl.create :election
-      blank_coalition = FactoryGirl.create :coalition, election: election
-      blank_alliance = FactoryGirl.create :alliance,
+      election = FactoryBot.create :election
+      blank_coalition = FactoryBot.create :coalition, election: election
+      blank_alliance = FactoryBot.create :alliance,
                                           election: election,
                                           coalition: blank_coalition
-      FactoryGirl.create :candidate, :blank,
+      FactoryBot.create :candidate, :blank,
                          alliance: blank_alliance
 
       @summary = ElectionSummary.new election
@@ -46,28 +46,28 @@ RSpec.describe ElectionSummary, type: :model do
       @actual_votes = 11
       @voter_count = 19
 
-      election = FactoryGirl.create :election
-      blank_coalition = FactoryGirl.create :coalition, election: election
-      blank_alliance = FactoryGirl.create :alliance,
+      election = FactoryBot.create :election
+      blank_coalition = FactoryBot.create :coalition, election: election
+      blank_alliance = FactoryBot.create :alliance,
                                           election: election,
                                           coalition: blank_coalition
 
-      FactoryGirl.create :candidate, :blank, :with_votes,
+      FactoryBot.create :candidate, :blank, :with_votes,
                          alliance: blank_alliance,
                          vote_count: @blank_votes
 
-      coalition = FactoryGirl.create :coalition, election: election
+      coalition = FactoryBot.create :coalition, election: election
 
-      alliance = FactoryGirl.create :alliance,
+      alliance = FactoryBot.create :alliance,
                                     election: election,
                                     coalition: coalition
 
-      FactoryGirl.create :candidate, :with_votes,
+      FactoryBot.create :candidate, :with_votes,
                          alliance: alliance,
                          vote_count: @actual_votes
 
       @voter_count.times do
-        FactoryGirl.create :voting_right, election: election
+        FactoryBot.create :voting_right, election: election
       end
 
       @summary = ElectionSummary.new election
