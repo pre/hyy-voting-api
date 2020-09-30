@@ -5,11 +5,9 @@ ruby '2.6.6' # This is for Heroku, it's defined also in .ruby-version for RVM
 gem 'rails', '~> 5.2.0'
 
 gem 'puma' # application server
-
 gem 'grape' # API
 gem 'grape-entity'
 gem 'nokogiri'
-gem 'cancancan', '~> 1.15' # Authorization
 gem 'pg' # Postgres
 gem 'rack-cors'
 gem 'jwt' # API tokens
@@ -20,6 +18,11 @@ gem 'oj' # Rollbar suggestion for JSON serialization if not using JRuby
 gem 'ruby-saml' # Haka authentication
 gem 'delayed_job_active_record' # background jobs, eg. email sending
 gem 'jbuilder' # JSON builder
+
+# Authorization
+# See comment in app/api/api.rb above "include CanCan::ControllerAdditions"
+# before updating cancancan.
+gem 'cancancan', '3.1.0'
 
 # Provides aws-sdk-ses
 # Newer version >=3.x requires Rails >=5.2
@@ -51,7 +54,6 @@ group :development do
   gem "letter_opener", :group => :development # open a sent email browser
 
   gem 'grape_on_rails_routes' # display grape routes: `rake grape:routes`
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
