@@ -74,7 +74,7 @@ class Voter < ActiveRecord::Base
     voter
   end
 
-  # Converts Hash parameters to ImportedVoter anc calls build_from()
+  # Convert Hash parameters to ImportedVoter and call build_from
   #
   # Params:
   #  voter_hash = attributes of ImportedVoter as a Hash

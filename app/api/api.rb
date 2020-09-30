@@ -14,7 +14,7 @@ class API < Grape::API
     #
     # Before updating the cancancan gem, compare the current implementation and verify that
     # class_attribute is not used for something else (or whether it's removed altogether).
-    # https://github.com/CanCanCommunity/cancancan/blob/3.1.0/lib/cancan/controller_additions.rb#L211
+    # https://github.com/CanCanCommunity/cancancan/blob/3.1.0/lib/cancan/controller_additions.rb#L298
     def self.class_attribute(attr_from_controller_additions); end
     include CanCan::ControllerAdditions
 
