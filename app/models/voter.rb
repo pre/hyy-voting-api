@@ -3,13 +3,7 @@
 # a string (eg. "0123456").
 class Voter < ActiveRecord::Base
 
-  has_one  :voting_right       if Vaalit::Config::IS_EDARI_ELECTION
-  # TODO:Halloped
-  # has_many :voting_rights      if Vaalit::Config::IS_HALLOPED_ELECTION
-  # has_many :mutable_votes      if Vaalit::Config::IS_HALLOPED_ELECTION
-  #
-  # TODO:Halloped:
-  # validates_presence_of :faculty, :department
+  has_one  :voting_right
   has_many :faculty_elections,    through: :faculty,    source: :elections
   has_many :department_elections, through: :department, source: :elections
 
@@ -113,10 +107,8 @@ class Voter < ActiveRecord::Base
   end
 
   # List of elections which current user can access
+  # The system used to support Halloped elections with multiple elections at the same time.
   def elections
-    # Halloped elections should use Voter#voting_rights instead
-    raise "Halloped elections are not fully implemented." unless Vaalit::Config::IS_EDARI_ELECTION
-
     [Election.first]
   end
 end

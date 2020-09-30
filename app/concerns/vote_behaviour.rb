@@ -1,4 +1,3 @@
-# Shared behaviour between MutableVote and ImmutableVote
 module VoteBehaviour
   extend ActiveSupport::Concern
 

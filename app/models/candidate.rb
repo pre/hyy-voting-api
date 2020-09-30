@@ -1,7 +1,6 @@
 class Candidate < ActiveRecord::Base
 
-  has_many :votes, class_name: "ImmutableVote"  if Vaalit::Config::IS_EDARI_ELECTION
-  has_many :votes, class_name: "MutableVote"    if Vaalit::Config::IS_HALLOPED_ELECTION
+  has_many :votes, class_name: 'ImmutableVote'
 
   belongs_to :alliance
 
@@ -17,10 +16,8 @@ class Candidate < ActiveRecord::Base
                         :candidate_name,
                         :candidate_number
 
-  validates_uniqueness_of :candidate_number,
-                          if: Proc.new { Vaalit::Config::IS_EDARI_ELECTION }
+  validates_uniqueness_of :candidate_number
 
-  #TODO: support mutable_votes
   scope :without_votes,
         -> { Candidate.where("#{table_name}.id NOT IN (SELECT candidate_id FROM immutable_votes)") }
 

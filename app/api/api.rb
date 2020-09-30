@@ -24,18 +24,10 @@ class API < Grape::API
     end
   end
 
-  if Vaalit::Config::IS_HALLOPED_ELECTION
-    mount Vaalit::Halloped::HallopedApi # Authorized
-  end
-
-  if Vaalit::Config::IS_EDARI_ELECTION
-    mount Vaalit::Edari::EdariApi # Authorized
-  end
-
+  mount Vaalit::Edari::EdariApi # Authorized
   mount Vaalit::Export::ExportApi # Authorized
   mount Vaalit::Voters::VotersApi # Authorized
 
-  # Shared between Edari and Halloped
   mount Vaalit::Pling   # Public
   mount Vaalit::Session # Public
   mount Vaalit::Public::PublicApi

@@ -1,15 +1,6 @@
 # Dynamic configuration which changes during the runtime.
 # For static configuration, see `config/initializers/000_config.rb`
 class RuntimeConfig
-
-  # User can sign in to check his eligibility in Halloped elections.
-  def self.eligibility_signin_active?
-    now = Time.now
-
-    Vaalit::Config::ELIGIBILITY_SIGNIN_STARTS_AT <= now &&
-      now <= Vaalit::Config::ELIGIBILITY_SIGNIN_ENDS_AT
-  end
-
   # User can sign in to vote.
   def self.vote_signin_active?
     now = Time.now

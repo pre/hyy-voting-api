@@ -1,6 +1,4 @@
-#TODO:mutable votes
 class CastVote
-
   # Use class method `submit`
   private :initialize
 

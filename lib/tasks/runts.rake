@@ -9,6 +9,6 @@ namespace :db do
     Rake::Task['db:seed'].invoke()
 
     puts "Database has been re-created with common seed data."
-    puts "Next: Seed Edari (rake db:seed:edari:demo) or Halloped (rake db:seed:halloped)."
+    puts "Next: Seed Edari with rake db:seed:edari:demo"
   end
 end

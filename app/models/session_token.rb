@@ -46,13 +46,11 @@ class SessionToken
   end
 
   # List of elections displayed in frontpage.
-  # User can vote in multiple elections in administration elections (Halloped).
   def elections
     @user.voter.elections
   end
 
   # Voter's own info.
-  # Displayed in "check your eligibility" page.
   def voter
     @user.voter
   end

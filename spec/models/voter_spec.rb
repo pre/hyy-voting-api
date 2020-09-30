@@ -10,7 +10,6 @@ RSpec.describe Voter, type: :model do
       voter = FactoryBot.build(:voter)
       election = FactoryBot.create :election, :edari_election
       allow(Election).to receive(:first).and_return(election)
-      stub_const("Vaalit::Config::IS_EDARI_ELECTION", true)
 
       expect(voter.elections.size).to eq 1
       expect(voter.elections.first).to eq election

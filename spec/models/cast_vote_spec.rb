@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe CastVote, type: :model do
   context "in edari" do
     before do
-      stub_const("Vaalit::Config::IS_EDARI_ELECTION", true)
-
       @election = FactoryBot.create :election, :edari_election
       @voter = FactoryBot.create :voter
       @coalition = FactoryBot.create :coalition, election: @election
