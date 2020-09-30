@@ -15,8 +15,13 @@ namespace :jwt do
     puts "HTTP Header:"
     puts "Authorization: Bearer #{token}"
     puts ""
-    puts "Link:"
+    puts "Link to Rails server (rails s):"
     puts "#{Vaalit::Public::SITE_ADDRESS}/#/sign-in?token=#{token}"
+    puts ""
+    puts "Link to Frontend 'grunt serve' (port has been guessed):"
+    puts "http://localhost:9000/#/sign-in?token=#{token}"
+    puts ""
+    puts "Hint: cmd-click in iTerm2 opens the link automatically in browser."
   end
 
   def expires_in(expiry)
