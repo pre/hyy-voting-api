@@ -17,42 +17,6 @@ RSpec.describe Voter, type: :model do
     end
   end
 
-  describe "Halloped elections" do
-
-    it "returns a list of elections" do
-      faculty_election = FactoryBot.create :election, :faculty_election
-      another_faculty_election = FactoryBot.create :election,
-                                                    :faculty_election,
-                                                    faculty: faculty_election.faculty
-
-      not_our_faculty_election = FactoryBot.create :election, :faculty_election
-
-      department_election = FactoryBot.create :election, :department_election
-      not_our_department_election = FactoryBot.create :election, :department_election
-      another_department_election = FactoryBot.create :election,
-                                                      :department_election,
-                                                      department: department_election.department
-
-
-      voter = FactoryBot.build :voter,
-                                faculty: faculty_election.faculty,
-                                department: department_election.department
-
-
-      stub_const("Vaalit::Config::IS_EDARI_ELECTION", false)
-
-      expect(voter.elections.size).to eq 4
-      expect(voter.elections.include? faculty_election).to be true
-      expect(voter.elections.include? another_faculty_election).to be true
-      expect(voter.elections.include? not_our_faculty_election).to be false
-
-      expect(voter.elections.include? department_election).to be true
-      expect(voter.elections.include? another_department_election).to be true
-      expect(voter.elections.include? not_our_department_election).to be false
-    end
-
-  end
-
   describe "from an Imported Voter (any type)" do
 
     before(:each) do

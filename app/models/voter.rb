@@ -114,15 +114,9 @@ class Voter < ActiveRecord::Base
 
   # List of elections which current user can access
   def elections
-    if Vaalit::Config::IS_EDARI_ELECTION
-      [Election.first]
-    else
-      # Halloped elections
-      # This is a plain array. An SQL union would require a Gem since
-      # ActiveRecord does not support combining scopes with OR by default.
-      # TODO: use Voter#voting_rights instead
-      faculty_elections + department_elections
-    end
-  end
+    # Halloped elections should use Voter#voting_rights instead
+    raise "Halloped elections are not fully implemented." unless Vaalit::Config::IS_EDARI_ELECTION
 
+    [Election.first]
+  end
 end
