@@ -12,6 +12,7 @@ module ExtendedPoroBehaviour
   extend ActiveModel::Naming
   extend ActiveModel::Translation
   include ActiveModel::Validations
+  include ActiveModel::Validations::Callbacks
 
   include ActiveRecord::Callbacks
 
