@@ -12,6 +12,7 @@ namespace :db do
       desc 'faculties'
       task :faculties => :environment do
         puts 'Seeding faculties ...'
+        Faculty.create! code: "1", name: 'Tuntematon'
         Faculty.create! code: "H10", name: 'Teologinen'
         Faculty.create! code: "H20", name: 'Oikeustieteellinen'
         Faculty.create! code: "H30", name: 'Lääketieteellinen'
@@ -31,6 +32,9 @@ namespace :db do
       desc 'departments'
       task :departments => :environment do
         puts "Seeding departments ..."
+
+        create_department "1", "1", "Tuntematon"
+        create_department "930", "1", "Tuntematon"
 
         create_department "H10", "H10", "Teologinen tiedekunta"
         create_department "H20", "H20", "Oikeustieteellinen tiedekunta"
