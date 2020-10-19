@@ -3,7 +3,7 @@ class AfterVoteMailer < ApplicationMailer
     return unless voter.email.present?
 
     attachments['hyy_logo.png'] = File.read(
-      Rails.root.join("app/assets/images/hyy_logo/hyy_seppele_300.png")
+      Rails.root.join("app/assets/images/hyy_logo/hyy_logo_bw_500.png")
     )
 
     mail(
