@@ -20,7 +20,7 @@ namespace :db do
         Faculty.create! code: "H50", name: 'Matemaattis-luonnontieteellinen'
         Faculty.create! code: "H55", name: 'Farmasia'
         Faculty.create! code: "H57", name: 'Bio- ja ympäristötieteellinen'
-        Faculty.create! code: "H60", name: 'Käyttäytymistieteellinen'
+        Faculty.create! code: "H60", name: 'Kasvatustieteellinen'
         Faculty.create! code: "H70", name: 'Valtiotieteellinen'
         Faculty.create! code: "H80", name: 'Maatalous-metsätieteellinen'
         Faculty.create! code: "H90", name: 'Eläinlääketieteellinen'
@@ -62,7 +62,7 @@ namespace :db do
         create_department "H573", "H57", "Biotieteiden laitos"
         create_department "H575", "H57", "Ympäristötieteiden laitos"
 
-        create_department "H60", "H60", "Käyttäytymistieteellinen tiedekunta"
+        create_department "H60", "H60", "Kasvatustieteellinen tiedekunta"
         create_department "H620", "H60", "Opettajankoulutuslaitos"
         create_department "H630", "H60", "Käyttäytymistieteiden laitos"
 
