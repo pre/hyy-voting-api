@@ -36,6 +36,9 @@ describe Vaalit::Export::Votes do
 
   context 'votes without blank candidate' do
     it 'returns votes in csv' do
+      expect_any_instance_of(Vaalit::JwtHelpers)
+        .to receive(:current_service_user)
+
       get "/api/export/elections/#{@election.id}/votes"
 
       expect(response).to be_successful

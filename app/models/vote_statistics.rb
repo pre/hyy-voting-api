@@ -1,6 +1,7 @@
 require 'json'
 
-# Use ">>" to pretty print json in console
+# Print json in console with:
+#   puts JSON.pretty_generate(VoteStatistics.by_faculty)
 class VoteStatistics
   def self.by_hour_as_json
     stats = []

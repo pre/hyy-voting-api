@@ -27,6 +27,7 @@ class API < Grape::API
   mount Vaalit::Edari::EdariApi # Authorized
   mount Vaalit::Export::ExportApi # Authorized
   mount Vaalit::Voters::VotersApi # Authorized
+  mount Vaalit::Stats::StatsApi # Authorized
 
   mount Vaalit::Pling   # Public
   mount Vaalit::Session # Public
