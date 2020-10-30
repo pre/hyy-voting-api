@@ -23,6 +23,10 @@ class RuntimeConfig
     Vaalit::Config::VOTE_SIGNIN_STARTS_AT <= Time.now
   end
 
+  def self.elections_terminated?
+    (Vaalit::Config::ELECTION_TERMINATES_AT + Vaalit::Config::VOTING_GRACE_PERIOD_MINUTES) <= Time.now
+  end
+
   # Elections are ongoing.
   #
   # The first day of voting has started, but the last day of voting
