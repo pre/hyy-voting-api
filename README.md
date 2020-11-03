@@ -343,5 +343,5 @@ OpenSSL::X509::Certificate.new cert
 
 - Obtain a copy of voters from the University.
 - Convert file to UTF8 (Open in Sublime > Save in Encoding > UTF8).
-- File is expected to be in defined text format (see `ImportedTextVoter`).
-- `heroku run --no-tty rake db:seed:edari:voters:text < voters.txt`
+- File is expected to be either in CSV (`ImportedCsvVoter`) or text format (`ImportedTextVoter`).
+- See also "Testing in Heroku", notice the requirement about `heroku run --no-tty`
