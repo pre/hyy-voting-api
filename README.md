@@ -5,7 +5,7 @@ API backend for the HYY Voting Service.
 Has [Voting-frontend](https://github.com/hyy-vaalit/voting-frontend) included as a git submodule
 in public/ folder.
 
-API endpoints per 09/2016 are the following (`rake grape:routes`):
+API endpoints per 11/2020 are the following (`rake grape:routes`):
 
 | VERB | URI                                                          | Description
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------
@@ -22,6 +22,11 @@ API endpoints per 09/2016 are the following (`rake grape:routes`):
 | POST | /api/elections/:election_id/voters(.json)                    | Create a new voter
 | GET  | /api/elections/:election_id/voters(.json)                    | List voters created after elections have started
 | GET  | /api/public/elections/:election_id/voting_percentage(.json)  | GET voting percentage rounded to one decimal.
+| GET  | /api/stats/votes_by_hour(.json)                              | GET voting percentage by hour [1]
+| GET  | /api/stats/votes_by_faculty(.json)                           | GET voting percentage by faculty [2]
+
+[1] = Data should be published with a delay during the elections.
+[2] = Returns vote count per faculty as 0 during the elections.
 
 
 ## Access Levels and Authorization
@@ -49,6 +54,7 @@ User types explained:
   * Can create voters during the election.
   * Can email a Sign In Token to a Voter created during the elections.
   * Can export votes after the elections.
+  * Can fetch statistics during the election.
 
 
 ## Setup
@@ -60,18 +66,18 @@ Install [Ruby Version Manager (RVM)](https://rvm.io/).
     - `gem env`
     - `which ruby`
 
-Retrieve the Angular.js frontend (needed for production use only):
+Retrieve the distribution of voting-frontend (needed for production use only):
   * `git submodule update --init`
   * This installs a static copy of
-    [compiled Angular.js frontend](https://github.com/hyy-vaalit/voting-frontend-dist)
+    [voting-frontend distribution](https://github.com/hyy-vaalit/voting-frontend-dist)
     to public/
   * To update the submodule after building a new distribution of the voting-frontend, run
     * `cd public && git pull origin master`
 
-Set up local version of the [Angular.js frontend](https://github.com/hyy-vaalit/voting-frontend)
+Set up local version of the [voting-frontend](https://github.com/hyy-vaalit/voting-frontend)
 which will be run in a _different port_ than the Rails server.
-Note that there are also two different Frontend repositories:
-`hyy-voting-frontend` and `hyy-voting-frontend-dist`.
+Note that there are two different Frontend repositories:
+`hyy-voting-frontend` (source code) and `hyy-voting-frontend-dist` (the compiled distribution).
 
 Install Gem dependencies:
   * `gem install bundler` (needs only be done once)

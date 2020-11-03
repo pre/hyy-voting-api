@@ -16,14 +16,14 @@ module Vaalit
 
       namespace :stats do
         namespace :votes_by_hour do
-          desc 'GET vote count by hour'
+          desc 'GET voting percentage by hour'
           get do
             JSON.parse VoteStatistics.by_hour_as_json
           end
         end
 
         namespace :votes_by_faculty do
-          desc 'GET vote count by faculty'
+          desc 'GET voting percentage by faculty'
           get do
             JSON.parse VoteStatistics.by_faculty_as_json
           end
