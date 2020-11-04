@@ -28,6 +28,13 @@ module Vaalit
             JSON.parse VoteStatistics.by_faculty_as_json
           end
         end
+
+        namespace :votes_by_voter_start_year do
+          desc 'GET voting percentage by voter start year'
+          get do
+            JSON.parse VoteStatistics.by_voter_start_year_as_json
+          end
+        end
       end
     end
   end
