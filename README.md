@@ -24,6 +24,7 @@ API endpoints per 11/2020 are the following (`rake grape:routes`):
 | GET  | /api/public/elections/:election_id/voting_percentage(.json)  | GET voting percentage rounded to one decimal.
 | GET  | /api/stats/votes_by_hour(.json)                              | GET voting percentage by hour [1]
 | GET  | /api/stats/votes_by_faculty(.json)                           | GET voting percentage by faculty [2]
+| GET  | /api/stats/votes_by_voter_start_year(.json)                  | GET voting percentage by voter start year
 
 [1] = Data should be published with a delay during the elections.
 [2] = Returns vote count per faculty as 0 during the elections.
