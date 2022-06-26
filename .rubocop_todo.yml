@@ -345,13 +345,6 @@ Style/Proc:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: SupportedStyles.
-# SupportedStyles: compact, exploded
-Style/RaiseArgs:
-  EnforcedStyle: compact
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/RedundantBegin:
   Exclude:
     - 'app/models/json_web_token.rb'

@@ -1,11 +1,7 @@
-class CreateCandidates < ActiveRecord::Migration
-  def change
-    create_table :candidates do |t|
-      t.string :name, null: false
-      t.string :name_spare, null: false
-      t.integer :number
+class CreateCandidates < ActiveRecord::Migration[4.2]
+  class LoadSchemaInsteadError < StandardError; end
 
-      t.timestamps null: false
-    end
+  def change
+    raise LoadSchemaInsteadError.new, "Use 'rake db:schema:load' to initialize the database schema."
   end
 end
