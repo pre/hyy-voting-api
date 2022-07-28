@@ -59,7 +59,7 @@ module Haka
         settings.idp_entity_id                  = Vaalit::Haka::SAML_IDP_ENTITY_ID
         settings.idp_sso_target_url             = Vaalit::Haka::SAML_IDP_SSO_TARGET_URL
         settings.assertion_consumer_service_url = Vaalit::Haka::SAML_ASSERTION_CONSUMER_SERVICE_URL
-        settings.issuer                         = Vaalit::Haka::SAML_MY_ENTITY_ID
+        settings.issuer                         = Vaalit::Haka::SAML_MY_ENTITY_ID # Use instead settings.sp_entity_id
         settings.idp_cert                       = Vaalit::Haka::SAML_IDP_CERT
         settings.name_identifier_format         = Vaalit::Haka::SAML_NAME_IDENTIFIER_FORMAT
 
