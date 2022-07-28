@@ -63,7 +63,7 @@ module Haka
         settings.assertion_consumer_service_url = Vaalit::Haka::SAML_ASSERTION_CONSUMER_SERVICE_URL
         settings.name_identifier_format         = Vaalit::Haka::SAML_NAME_IDENTIFIER_FORMAT
 
-        settings.issuer                         = Vaalit::Haka::SAML_MY_ENTITY_ID # Use instead settings.sp_entity_id
+        settings.sp_entity_id                   = Vaalit::Haka::SAML_MY_ENTITY_ID
         settings.certificate                    = Vaalit::Haka::SAML_MY_CERT
         settings.private_key                    = Vaalit::Haka::SAML_MY_PRIVATE_KEY
 
