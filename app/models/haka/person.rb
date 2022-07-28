@@ -20,7 +20,6 @@ module Haka
 
     protected
     begin
-
       def validate
         @errors.blank? && voter.present?
       end
@@ -35,13 +34,9 @@ module Haka
       # Parse actual student id from University of Helsinki's format:
       #   urn:mace:terena.org:schac:personalUniqueCode:int:studentID:helsinki.fi:165934
       #
-      # See also:
-      #   http://www.helsinki.fi/atk/luvat/ldap/doc/index.html#henkiloluokat_schacPersonalUniqueCode
-      #   https://confluence.csc.fi/display/HAKA/funetEduPersonSchema2dot2#funetEduPersonSchema2dot2-schacPersonalUniqueCode
-      #
       # Returns the number value of the last URN attribute:
-      #   raw "urn:schac:personalUniqueCode:fi:yliopisto.fi:x0873421"
-      #   will return: "0873421"
+      #   raw "urn:schac:personalUniqueCode:fi:yliopisto.fi:x8734"
+      #   will return: "x8734"
       def parse_student_number(raw)
         if raw.nil?
           errors.add :student_number, "invalid value for unparsed student number: '#{raw}'"
@@ -49,10 +44,8 @@ module Haka
         end
 
         # Return a string to preserve a possible leading zero (eg "012345")
-        raw.split(":").last.delete('^0-9')
+        raw.split(":").last
       end
-
     end
-
   end
 end

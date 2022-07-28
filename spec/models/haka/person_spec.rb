@@ -4,8 +4,8 @@ module Haka
   RSpec.describe Person, type: :model do
     context "sign in from Haka with valid user" do
       before do
-        @student_number = "8734"
-        @raw_student_number = "urn:schac:personalUniqueCode:fi:yliopisto.fi:x8734"
+        @student_number = "08734"
+        @raw_student_number = "urn:schac:personalUniqueCode:fi:yliopisto.fi:08734"
 
         @voter = FactoryBot.build(:voter)
         allow(Voter).to receive(:find_by_student_number!).with(@student_number).and_return(@voter)
@@ -22,8 +22,8 @@ module Haka
 
     context "sign in from Haka with invalid user" do
       it "doesn't pass validations when user does not have right to vote" do
-        number = "8734210"
-        not_found = "urn:schac:personalUniqueCode:fi:yliopisto.fi:xyz#{number}"
+        number = "08734210"
+        not_found = "urn:schac:personalUniqueCode:fi:yliopisto.fi:#{number}"
 
         person = Person.new not_found
 
@@ -40,10 +40,9 @@ module Haka
       end
 
       it "doesn't pass validations when user has an invalid student number attribute" do
-        person = Person.new "something:went:wrong"
+        person = Person.new "somethingwentwrong"
 
         expect(person).not_to be_valid
-        expect(person.errors[:voter].first).to eq "no voting right for student number ''"
       end
     end
 
