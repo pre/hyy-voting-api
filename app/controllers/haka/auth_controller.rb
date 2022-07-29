@@ -11,9 +11,17 @@ module Haka
 
     # Receives the SAML assertion after Haka sign in
     def consume
-      response = OneLogin::RubySaml::Response.new(params[:SAMLResponse],
-                                                  settings: saml_settings,
-                                                  allowed_clock_drift: 5.seconds)
+      # params[:SAMLResponse] can be blank if GET route is accessed directly without actual authn.
+      if params[:SAMLResponse].blank?
+        redirect_to frontend_error_path("invalid_saml_response")
+        return
+      end
+
+      response = OneLogin::RubySaml::Response.new(
+        params[:SAMLResponse],
+        settings: saml_settings,
+        allowed_clock_drift: 5.seconds
+      )
 
       unless response.is_valid?
         Rails.logger.error "Invalid SAML response: #{response.errors}"
