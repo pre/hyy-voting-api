@@ -47,6 +47,7 @@ module Vaalit
     SAML_MY_PRIVATE_KEY                 = ENV.fetch("SAML_MY_PRIVATE_KEY")
 
     HAKA_STUDENT_NUMBER_FIELD           = ENV.fetch("HAKA_STUDENT_NUMBER_FIELD")
+    HAKA_STUDENT_NUMBER_KEY             = ENV.fetch("HAKA_STUDENT_NUMBER_KEY")
   end
 
   module Frontend

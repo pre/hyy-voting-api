@@ -31,7 +31,8 @@ module Haka
         return
       end
 
-      person = Person.new response.attributes[Vaalit::Haka::HAKA_STUDENT_NUMBER_FIELD]
+      Rails.logger.debug "Reponse attributes: #{response.attributes.inspect}"
+      person = Person.new(response.attributes.multi(Vaalit::Haka::HAKA_STUDENT_NUMBER_FIELD))
 
       unless person.valid?
         Rails.logger.info "No voting right for person '#{person.inspect}'"
