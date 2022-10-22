@@ -123,16 +123,18 @@ Start web server:
 ### Example user without Haka-test
 
 * Generate a sign-in link
-  * rake jwt:voter:generate
+  * rake jwt:voter:generate voter_id=1 expiry_hours=1000
   * voter_id:1 == testi.pekkanen@example.com
   * See `rails c` and `Voter.all`
 
 ## Example user from Haka-test
 
-Open a SSL tunnel in order to sign in with a Haka test account:
+* Create a Voter for Teppo Testaaja with student number "x8734"
+
+* Open an SSL tunnel in order to sign in with a Haka test account:
   * `npm install -g local-ssl-proxy`
   * `local-ssl-proxy --source 3001 --target 3000`
-  * PORT is either 3000 in development (`.env`) or 3999 in test (`.env.test`)
+  * Target PORT is either 3000 in development (`.env`) or 3999 in test (`.env.test`)
 
 * Open https://localhost.enemy.fi:3001
 
@@ -145,7 +147,7 @@ Open a SSL tunnel in order to sign in with a Haka test account:
     [Haka knowledge base](https://github.com/hyy-vaalit/dokumentaatio/blob/master/haka/knowledge-base.md#csc-hakan-testipalvelu)
 
 
-You may now open http://localhost:3000 and sign in using one of the test users.
+You may now open http://localhost.enemy.fi:3001 and sign in as Haka test user teppo/testaaja.
 
 Start worker defined in `Procfile`:
 `foreman run worker`
