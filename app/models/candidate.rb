@@ -19,9 +19,9 @@ class Candidate < ActiveRecord::Base
   validates_uniqueness_of :candidate_number
 
   scope :without_votes,
-        -> { Candidate.where("#{table_name}.id NOT IN (SELECT candidate_id FROM immutable_votes)") }
+        -> { where("#{table_name}.id NOT IN (SELECT candidate_id FROM immutable_votes)") }
 
   scope :without_blank_candidate,
-        -> { Candidate.where("candidate_number != #{Vaalit::Config::BLANK_CANDIDATE_NUMBER}") }
+        -> { where("candidate_number != #{Vaalit::Config::BLANK_CANDIDATE_NUMBER}") }
 
 end

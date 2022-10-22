@@ -39,8 +39,9 @@ class CastVote
 
         AfterVoteMailer.thank(voter).deliver_later
 
-        return true
-
+        # Return implicitly a boolean instead of the last command return value.
+        # NOTE: Explicit return will rollback the transaction in Rails 7
+        true
       # Rollback any Exception in order to guarantee that no partial
       # update was persisted.
       rescue Exception => e
