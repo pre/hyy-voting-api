@@ -5,9 +5,9 @@
 # from the git history.
 #
 
-set -e
+set -euo pipefail
 
-HEROKU_ENV="$1"
+HEROKU_ENV="${1:-}"
 DEPLOY_SOURCE="master"
 GITHUB_REMOTE="origin"
 
