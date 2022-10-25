@@ -180,14 +180,14 @@ RSpec.describe RuntimeConfig, type: :model do
         stub_const("Vaalit::Config::HTTP_BASIC_AUTH_USERNAME", '')
       end
 
-      it 'is enabled' do
-        expect(RuntimeConfig.http_basic_auth?).to be true
+      it 'is not enabled' do
+        expect(RuntimeConfig.http_basic_auth?).to be false
       end
     end
 
     context "when username is set but password is not set" do
       before do
-        stub_const("Vaalit::Config::HTTP_BASIC_AUTH_USERNAME", '')
+        stub_const("Vaalit::Config::HTTP_BASIC_AUTH_USERNAME", 'user')
       end
 
       it 'is enabled' do
