@@ -61,7 +61,8 @@ class Voter < ActiveRecord::Base
     %w(email phone extent_of_studies start_year).each do |optional_attr|
       value = voter_attrs.send(optional_attr)
 
-      voter.send("#{optional_attr}=", value.strip) if value.present? && value.is_a?(String)
+      value.strip! if value.is_a?(String)
+      voter.send("#{optional_attr}=", value)
     end
 
     voter
