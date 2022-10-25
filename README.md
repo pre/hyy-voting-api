@@ -314,7 +314,19 @@ OpenSSL::X509::Certificate.new cert
 
 * A) Seed using data from Ehdokastietojärjestelmä
   - `heroku run rake db:seed:common`
-  - `heroku run rake db:seed:edari`
+  - FIXME Rails 7 changed how transactions work and `heroku run rake db:seed:edari` will rollback
+    changes. For now, run each seed task manally
+
+```bash
+  rake db:seed:common
+  rake db:seed:edari:election
+  rake db:seed:edari:coalitions
+  rake db:seed:edari:alliances
+  rake db:seed:edari:candidates
+  rake db:seed:edari:blank_candidate
+  rake db:seed:edari:voters_and_voting_rights:csv < voters.csv
+```
+
   - Seed voters:
     - 1) Convert importable voter data into UTF-8. Isolatin data cannot be passed over
          `heroku` command.
