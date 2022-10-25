@@ -33,7 +33,7 @@ module Haka
             "urn:schac:personalUniqueCode:fi:yliopisto.fi:01234567"
           ]
         end
-        let(:expected_student_number) { "01234567" }
+        let(:expected_student_number) { "1234567" } # haka number without 0 prefix
 
         it "initialises a valid object with raw student id" do
           expect(person.voter).to eq(voter)
@@ -83,7 +83,7 @@ module Haka
 
     context "with invalid Haka user" do
       it "doesn't pass validations when user does not have right to vote" do
-        number = "08734210"
+        number = "8734210"
         not_found = "urn:schac:personalUniqueCode:fi:yliopisto.fi:#{number}"
 
         person = Person.new not_found
