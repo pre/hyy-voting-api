@@ -13,7 +13,6 @@ class Voter < ActiveRecord::Base
   validates_presence_of :name,
                         :ssn
 
-  validates_uniqueness_of :ssn
   validates_uniqueness_of :student_number, allow_nil: true
 
   validates_uniqueness_of :email, allow_nil: true
@@ -62,7 +61,7 @@ class Voter < ActiveRecord::Base
     %w(email phone extent_of_studies start_year).each do |optional_attr|
       value = voter_attrs.send(optional_attr)
 
-      voter.send("#{optional_attr}=", value.strip) if value.present?
+      voter.send("#{optional_attr}=", value.strip) if value.present? && value.is_a?(String)
     end
 
     voter
