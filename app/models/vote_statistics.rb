@@ -20,9 +20,12 @@ class VoteStatistics
     total[:percentage] = (100.0 * ImmutableVote.count / Voter.count).round(2)
     total[:voter_count] = Voter.count
 
-    view_context.render(
-      template: "vote_statistics/votes_by_hour.json.jbuilder",
-      locals: { stats: stats, total: total }
+    ApplicationController.render(
+      template: "vote_statistics/votes_by_hour",
+      locals: { stats: stats, total: total },
+      assigns: nil,
+      handlers: [:jbuilder],
+      formats: [:json]
     )
   end
 
@@ -35,12 +38,15 @@ class VoteStatistics
       percentage: (100.0 * ImmutableVote.count / Voter.count).round(2)
     }
 
-    view_context.render(
-      template: "vote_statistics/votes_by_faculty.json.jbuilder",
+    ApplicationController.render(
+      template: "vote_statistics/votes_by_faculty",
       locals: {
         stats: stats,
         total: total
-      }
+      },
+      assigns: nil,
+      handlers: [:jbuilder],
+      formats: [:json]
     )
   end
 
@@ -53,12 +59,15 @@ class VoteStatistics
       percentage: (100.0 * ImmutableVote.count / Voter.count).round(2)
     }
 
-    view_context.render(
-      template: "vote_statistics/votes_by_voter_start_year.json.jbuilder",
+    ApplicationController.render(
+      template: "vote_statistics/votes_by_voter_start_year",
       locals: {
         stats: stats,
         total: total
-      }
+      },
+      assigns: nil,
+      handlers: [:jbuilder],
+      formats: [:json]
     )
   end
 
@@ -181,9 +190,5 @@ class VoteStatistics
         vote_count_by_start_year ON vote_count_by_start_year.start_year = start_years.start_year
       ORDER BY start_year ASC; -- Ascending: bar chart from left to right
     EOSQL
-  end
-
-  private_class_method def self.view_context
-    ActionView::Base.new(ActionController::Base.view_paths)
   end
 end

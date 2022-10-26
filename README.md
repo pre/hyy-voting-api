@@ -324,6 +324,7 @@ OpenSSL::X509::Certificate.new cert
   rake db:seed:edari:alliances
   rake db:seed:edari:candidates
   rake db:seed:edari:blank_candidate
+  # NOTE: "heroku run --no-tty"
   rake db:seed:edari:voters_and_voting_rights:csv < voters.csv
 ```
 
