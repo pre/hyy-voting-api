@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.1.6' # This is for Heroku, it's defined also in .ruby-version for RVM
 
-gem 'rails', '7.0.8.4'
+gem 'rails', '7.1.4'
 
 gem 'puma' # application server
 gem 'grape' # API
@@ -22,11 +22,10 @@ gem 'jbuilder' # JSON builder
 # Authorization
 # See comment in app/api/api.rb above "include CanCan::ControllerAdditions"
 # before updating cancancan.
-gem 'cancancan', '3.1.0'
+gem 'cancancan', '3.5.0'
 
 # Provides aws-sdk-ses
-# Newer version >=3.x requires Rails >=5.2
-gem "aws-sdk-rails", '~> 2.1.0'
+gem "aws-sdk-rails"
 
 group :development, :test do
   gem 'byebug', platform: :mri # usage: write 'debugger' anywhere in code
@@ -42,10 +41,7 @@ end
 
 group :development do
   gem 'foreman'
-  gem 'listen' #, '~> 3.0.5'  ## WAS LOCKED TO 3.1 BEFORE RAILS5
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'listen'
 
   # Enable linter warnings in your editor by installing the corresponding rubocop editor plugin (eg. ruby-rubocop in VSCode)
   gem 'rubocop', require: false
