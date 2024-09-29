@@ -42,9 +42,9 @@ RSpec.describe ImportedTextVoter, type: :model do
   describe "Empty voter" do
 
     it 'fails with empty data' do
-      expect(
-        -> { ImportedTextVoter.build_from("") }
-      ).to raise_error(ArgumentError, "Cannot build from empty data.")
+      expect{
+        ImportedTextVoter.build_from("")
+      }.to raise_error(ArgumentError, "Cannot build from empty data.")
     end
   end
 end
