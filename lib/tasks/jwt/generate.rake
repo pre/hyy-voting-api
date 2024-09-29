@@ -53,13 +53,13 @@ namespace :jwt do
     desc 'generate a JWT token for API access'
     task :generate, [:payload, :expiry_hours] => :environment do
       generate ENV['payload'],
-               Rails.application.secrets.jwt_service_user_secret,
+               Vaalit::Config::JWT_SERVICE_USER_SECRET,
                ENV['expiry_hours']
     end
 
     desc 'verify a JWT token'
     task :verify, [:jwt] => :environment do
-      verify ENV['jwt'], Rails.application.secrets.jwt_service_user_secret
+      verify ENV['jwt'], Vaalit::Config::JWT_SERVICE_USER_SECRET
     end
   end
 
@@ -70,13 +70,13 @@ namespace :jwt do
       payload = { voter_id: voter_id.to_i }
 
       generate payload,
-               Rails.application.secrets.jwt_voter_secret,
+               Vaalit::Config::JWT_VOTER_SECRET,
                ENV['expiry_hours']
     end
 
     desc 'verify a JWT token'
     task :verify, [:jwt] => :environment do
-      verify ENV.fetch('jwt'), Rails.application.secrets.jwt_voter_secret
+      verify ENV.fetch('jwt'), Vaalit::Config::JWT_VOTER_SECRET
     end
   end
 end

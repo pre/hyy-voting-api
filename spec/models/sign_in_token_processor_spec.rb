@@ -7,7 +7,7 @@ RSpec.describe SignInTokenProcessor, type: :model do
       @example_email = "email@example.com"
       @voter_id = 4321
       @jwt = JsonWebToken.encode({email: @example_email},
-                                 Rails.application.secrets.jwt_voter_secret)
+                                 Vaalit::Config::JWT_VOTER_SECRET)
 
       voter = FactoryBot.build :voter, {
         email: @example_email,

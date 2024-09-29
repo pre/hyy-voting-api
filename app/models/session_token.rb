@@ -31,7 +31,7 @@ class SessionToken
     }
 
     JsonWebToken.encode payload,
-                        Rails.application.secrets.jwt_voter_secret,
+                        Vaalit::Config::JWT_VOTER_SECRET,
                         Vaalit::Config::VOTER_SESSION_JWT_EXPIRY_MINUTES.from_now
   end
 
@@ -41,7 +41,7 @@ class SessionToken
     expiry = lifetime.from_now
 
     JsonWebToken.encode payload,
-                        Rails.application.secrets.jwt_voter_secret,
+                        Vaalit::Config::JWT_VOTER_SECRET,
                         expiry
   end
 

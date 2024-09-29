@@ -3,7 +3,7 @@ module Vaalit
 
     # Find current Voter by decoding JWT from Authorization HTTP header.
     def current_voter_user(headers)
-      decoded_token = decode_jwt(headers, Rails.application.secrets.jwt_voter_secret)
+      decoded_token = decode_jwt(headers, Vaalit::Config::JWT_VOTER_SECRET)
 
       if decoded_token
         Voter.find decoded_token["voter_id"]
@@ -15,7 +15,7 @@ module Vaalit
 
     # Find current ServiceUser by decoding JWT from Authorization HTTP header.
     def current_service_user(headers)
-      if decode_jwt(headers, Rails.application.secrets.jwt_service_user_secret)
+      if decode_jwt(headers, Vaalit::Config::JWT_SERVICE_USER_SECRET)
         ServiceUser.new
       else
         Rails.logger.error "Couldn't accept token for ServiceUser (token might have expired)"

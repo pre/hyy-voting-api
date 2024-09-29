@@ -50,7 +50,7 @@ class SignInTokenProcessor
     # [{"voter_id"=>1}, {"typ"=>"JWT", "alg"=>"HS256"}]
     def read_token(jwt)
       data = JsonWebToken.decode jwt,
-                                 Rails.application.secrets.jwt_voter_secret
+                                 Vaalit::Config::JWT_VOTER_SECRET
 
       if data.nil?
         errors.add(:source_token, "Invalid source JWT token in the sign in link")

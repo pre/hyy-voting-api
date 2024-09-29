@@ -23,12 +23,15 @@ module Vaalit
 
     HTTP_BASIC_AUTH_USERNAME = ENV.fetch('HTTP_BASIC_AUTH_USERNAME', nil)
     HTTP_BASIC_AUTH_PASSWORD = ENV.fetch('HTTP_BASIC_AUTH_PASSWORD', nil)
+
+    JWT_VOTER_SECRET = ENV.fetch("JWT_VOTER_SECRET")
+    JWT_SERVICE_USER_SECRET = ENV.fetch("JWT_SERVICE_USER_SECRET")
   end
 
   module SanityCheck
     # These two JWT secrets must differ in order to differentiate access between
     # Voter API and ServiceUser API.
-    if Rails.application.secrets.jwt_voter_secret == Rails.application.secrets.jwt_service_user_secret
+    if Vaalit::Config::JWT_VOTER_SECRET == Vaalit::Config::JWT_SERVICE_USER_SECRET
       raise "JWT_VOTER_SECRET must differ from JWT_SERVICE_USER_SECRET"
     end
   end

@@ -20,7 +20,7 @@ describe Vaalit::Session do
 
     it 'requires a valid user in the token' do
       token = JsonWebToken.encode({email: "inexistant.user@example.com"},
-                                  Rails.application.secrets.jwt_voter_secret)
+                                  Vaalit::Config::JWT_VOTER_SECRET)
 
       post "/api/sessions?token=#{token}"
 
@@ -35,7 +35,7 @@ describe Vaalit::Session do
       allow(Voter).to receive(:find).once.and_return(voter)
 
       token = JsonWebToken.encode({voter_id: voter_id},
-                                  Rails.application.secrets.jwt_voter_secret)
+                                  Vaalit::Config::JWT_VOTER_SECRET)
 
       post "/api/sessions?token=#{token}"
 
