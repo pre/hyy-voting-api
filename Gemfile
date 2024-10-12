@@ -19,6 +19,7 @@ gem 'ruby-saml' # Haka authentication
 gem 'delayed_job_active_record' # background jobs, eg. email sending
 gem 'jbuilder' # JSON builder
 gem 'csv'
+gem 'logger'
 
 # Authorization
 # See comment in app/api/api.rb above "include CanCan::ControllerAdditions"

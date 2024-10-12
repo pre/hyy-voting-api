@@ -449,6 +449,7 @@ DEPENDENCIES
   jwt
   letter_opener
   listen
+  logger
   nokogiri
   oj
   pg
