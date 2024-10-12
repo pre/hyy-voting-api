@@ -25,14 +25,13 @@ module Haka
       @errors.blank? && voter.present?
     end
 
+    # In 2022 Elections the list of Voters contains student numbers without a leading zero.
+    #   Haka student number: "0123456" (leading zero)
+    #   HY Voter list: "123456" (without leading zero)
+    #   - see git history for the  workaround.
+    #
+    # In 2024 the list of Voters came again with student numbers having the leading zero.
     def find_voter(student_number)
-      # In 2022 Elections the list of Voters contains student numbers without a leading zero.
-      # Haka student number: "0123456" (leading zero)
-      # HY Voter list: "123456" (without leading zero)
-      if student_number.present? && student_number.starts_with?("0")
-        student_number = student_number.delete_prefix("0")
-      end
-
       Voter.find_by_student_number! student_number
     rescue ActiveRecord::RecordNotFound
       errors.add :voter, "no voting right for student number '#{student_number}'"

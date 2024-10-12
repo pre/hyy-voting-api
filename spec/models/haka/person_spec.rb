@@ -33,7 +33,7 @@ module Haka
             "urn:schac:personalUniqueCode:fi:yliopisto.fi:01234567"
           ]
         end
-        let(:expected_student_number) { "1234567" } # haka number without 0 prefix
+        let(:expected_student_number) { "01234567" }
 
         it "initialises a valid object with raw student id" do
           expect(person.voter).to eq(voter)
