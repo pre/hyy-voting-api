@@ -3,7 +3,6 @@ namespace :db do
   namespace :seed do
     namespace :edari do
       namespace :demo do
-
         def create_alliance!(coalition, opts)
           alliance = coalition.alliances.build(opts)
           alliance.election = Election.first # no significance in Edari elections
@@ -27,7 +26,7 @@ namespace :db do
 
         desc 'demo coalitions and alliances'
         task :coalitions_and_alliances => :environment do
-          Rails.logger.info "Seeding DEMO coalitions ..."
+          puts "Seeding DEMO coalitions ..."
 
           # Coalitions with multiple alliances
           hyal   = create_coalition! name: 'Ainejärjestöjen vaalirengas',                 short_name: 'HYAL',   :numbering_order => "10"
@@ -45,7 +44,7 @@ namespace :db do
           libera   = create_coalition! name: 'Liberaalinen vaaliliitto - Yksilönvapauden puolesta', short_name: 'Libera', :numbering_order => "5"
           ite1     = create_coalition! name: 'Itsenäinen ehdokas 1',                                short_name: 'ITE1',   :numbering_order => "11"
 
-          Rails.logger.info "Seeding DEMO alliances ..."
+          puts "Seeding DEMO alliances ..."
 
           create_alliance! mp, name: 'HYYn Vihreät - De Gröna vid HUS',  short_name: 'HyVi'
           create_alliance! mp, name: 'Sitoutumaton vasemmisto - Obunden vänster - Independent left', short_name: 'SitVas'
@@ -81,7 +80,6 @@ namespace :db do
           create_alliance! ite1, name: 'Itsenäinen ehdokas 1',           short_name: 'ITE1'
           create_alliance! libera, name: 'Liberaalinen vaaliliitto - yksilönvapauden puolesta', short_name: 'Libera'
         end
-
       end
     end
   end

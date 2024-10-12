@@ -15,8 +15,10 @@ module Support
         numbering_order:  imported.numbering_order,
         short_name:       imported.short_name,
         election_id:      election_id
-        #TODO: expected_alliance_count
       )
+    rescue Exception => e
+      Rails.logger.error "Failed import with #{imported.inspect}"
+      raise e
     end
 
     def self.build_from(source)

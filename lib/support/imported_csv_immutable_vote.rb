@@ -16,6 +16,9 @@ module Support
           created_at:  created_at
         )
       end
+    rescue Exception => e
+      Rails.logger.error "Failed import with #{imported.inspect}"
+      raise e
     end
 
     def self.build_from(source)

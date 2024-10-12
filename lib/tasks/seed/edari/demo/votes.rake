@@ -4,7 +4,6 @@ namespace :db do
   namespace :seed do
     namespace :edari do
       namespace :demo do
-
         desc 'demo votes from 2009 elections (requires candidates)'
         task :votes => :environment do
           puts "Seeding votes ..."
@@ -33,7 +32,6 @@ namespace :db do
           puts "Imported votes for #{count} candidates"
           puts "END: Database has now #{ImmutableVote.count} votes."
         end
-
       end
     end
   end

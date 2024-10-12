@@ -19,6 +19,9 @@ module Support
         candidate_name:   imported.candidate_name,
         alliance:         Alliance.find_by_name!(imported.alliance_name)
       )
+    rescue Exception => e
+      Rails.logger.error "Failed import with #{imported.inspect}"
+      raise e
     end
 
     def self.build_from(source)

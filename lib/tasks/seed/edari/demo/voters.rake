@@ -2,10 +2,9 @@ namespace :db do
   namespace :seed do
     namespace :edari do
       namespace :demo do
-
         desc 'demo voters'
         task :voters => :environment do
-          Rails.logger.info "Seeding demo voters ..."
+          puts "Seeding demo voters ..."
 
           Voter.create!(
             :name => "Testi Pekkanen",
@@ -38,8 +37,9 @@ namespace :db do
             :department => Department.last,
             :ssn => "121212-1234"
           )
-        end
 
+          Rake::Task['db:seed:edari:voting_rights'].invoke()
+        end
       end
     end
   end

@@ -15,8 +15,10 @@ module Support
         short_name:      imported.short_name,
         coalition:       Coalition.find_by_name!(imported.coalition_name),
         election_id:     election_id
-        #TODO candidate_count
       )
+    rescue Exception => e
+      Rails.logger.error "Failed import with #{imported.inspect}"
+      raise e
     end
 
     def self.build_from(source)

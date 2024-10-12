@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+TARGET_ENV="${1:-}"
+
+_out() {
+  >&2 echo -e "$*"
+}
+
+case "${TARGET_ENV}" in
+  qa|prod)
+    CMD="_hk_run"
+  ;;
+  local)
+    CMD=""
+    ;;
+  *)
+    _out "Invalid target: '${TARGET_ENV}' (expected: local/qa/prod)"
+    exit 1
+  ;;
+esac
+
+_hk_run() {
+  heroku run -r "${TARGET_ENV}" "$@"
+}
+
+>&2 cat <<EOF
+Seed '${TARGET_ENV}' with election data.
+
+Open logs in a separate terminal window
+  tail -f log/development.log
+  heroku logs -r ${TARGET_ENV} --tail
+
+Press ENTER to continue
+EOF
+
+read
+
+set -x
+${CMD} rake db:seed:edari
+set +x
+
+>&2 cat <<EOF
+
+Next (if run was successful):
+Seed voters and voting rights (UTF-8):
+
+  Heroku:
+    heroku run --no-tty -r ${TARGET_ENV} rake db:seed:edari:voters_and_voting_rights:csv < voters.csv
+
+  Local (teppo/testaaja):
+    rake db:seed:edari:demo:voters
+
+  Personal testing with Haka
+    heroku console -r ${TARGET_ENV}
+    v = Voter.create! name: "Example User", ssn: "123456-1234", student_number: "012617229"
+    VotingRight.create! election_id: Election.first.id, voter_id: v.id
+
+EOF

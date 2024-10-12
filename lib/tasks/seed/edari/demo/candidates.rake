@@ -7,11 +7,11 @@ namespace :db do
 
         desc 'demo candidates from 2009 elections (requires alliances)'
         task :candidates => :environment do
-          Rails.logger.info "Seeding candidates ..."
+          puts "Seeding candidates ..."
 
           filename = "./lib/support/data/2009_candidates.csv"
 
-          Rails.logger.info "BEGIN: Database has now #{Candidate.count} candidates."
+          puts "BEGIN: Database has now #{Candidate.count} candidates."
 
           separator = ","
           encoding = "UTF-8"
@@ -26,8 +26,8 @@ namespace :db do
             Support::ImportedCsvCandidate.create_from! csv_candidate
           end
 
-          Rails.logger.info "Imported #{count} candidates"
-          Rails.logger.info "END: Database has now #{Candidate.count} candidates."
+          puts "Imported #{count} candidates"
+          puts "END: Database has now #{Candidate.count} candidates."
         end
 
       end

@@ -8,7 +8,6 @@ namespace :db do
         task :csv => :environment do
           ActiveRecord::Base.transaction do
             begin
-
               separator = ";"
               encoding = "UTF-8"
               count_before = Voter.count
@@ -41,11 +40,11 @@ namespace :db do
                 end
               end
 
-              Rails.logger.info "Database had #{count_before} voters before."
-              Rails.logger.info "Imported #{count} voters from STDIN."
-              Rails.logger.info "Database has now "
-              Rails.logger.info "- #{Voter.count} voters."
-              Rails.logger.info "- #{VotingRight.count} voting rights."
+              puts "Database had #{count_before} voters before."
+              puts "Imported #{count} voters from STDIN."
+              puts "Database has now "
+              puts "- #{Voter.count} voters."
+              puts "- #{VotingRight.count} voting rights."
             end
           end
         end
