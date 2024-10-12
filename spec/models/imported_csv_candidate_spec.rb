@@ -1,7 +1,7 @@
 require 'rails_helper'
 require './lib/support/imported_csv_candidate'
 
-RSpec.describe ImportedCsvCandidate, type: :model do
+RSpec.describe Support::ImportedCsvCandidate, type: :model do
   describe "Creation" do
 
     before(:all) do
@@ -16,7 +16,7 @@ RSpec.describe ImportedCsvCandidate, type: :model do
     end
 
     it "builds from csv" do
-      imported_candidate = ImportedCsvCandidate.build_from(@rows.first)
+      imported_candidate = Support::ImportedCsvCandidate.build_from(@rows.first)
 
       expect(imported_candidate.candidate_number).to eq("291")
       expect(imported_candidate.candidate_name).to eq("Kaakkuri, Lanttu")
@@ -33,7 +33,7 @@ RSpec.describe ImportedCsvCandidate, type: :model do
                           election: election,
                           name: "Akateemiset nallekarhut"
 
-      candidate = ImportedCsvCandidate.create_from!(@rows.first)
+      candidate = Support::ImportedCsvCandidate.create_from!(@rows.first)
 
       expect(candidate.class).to eq Candidate
       expect(candidate.candidate_name).to eq("Kaakkuri, Lanttu")

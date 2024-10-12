@@ -1,7 +1,7 @@
 require 'rails_helper'
 require './lib/support/imported_csv_coalition'
 
-RSpec.describe ImportedCsvCoalition, type: :model do
+RSpec.describe Support::ImportedCsvCoalition, type: :model do
   describe "Creation" do
 
     before(:all) do
@@ -16,7 +16,7 @@ RSpec.describe ImportedCsvCoalition, type: :model do
     end
 
     it "builds from csv" do
-      imported_coalition = ImportedCsvCoalition.build_from(@rows.first)
+      imported_coalition = Support::ImportedCsvCoalition.build_from(@rows.first)
 
       expect(imported_coalition.name).to eq("Iso Vaalirengas")
       expect(imported_coalition.numbering_order).to eq("1")
@@ -27,7 +27,7 @@ RSpec.describe ImportedCsvCoalition, type: :model do
     it "creates from csv" do
       election = FactoryBot.create :election
 
-      coalition = ImportedCsvCoalition.create_from!(@rows.first, election_id: election.id)
+      coalition = Support::ImportedCsvCoalition.create_from!(@rows.first, election_id: election.id)
 
       expect(coalition.class).to eq Coalition
       expect(coalition.name).to eq("Iso Vaalirengas")

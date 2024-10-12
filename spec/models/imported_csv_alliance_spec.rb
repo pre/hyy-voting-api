@@ -1,7 +1,7 @@
 require 'rails_helper'
 require './lib/support/imported_csv_alliance'
 
-RSpec.describe ImportedCsvAlliance, type: :model do
+RSpec.describe Support::ImportedCsvAlliance, type: :model do
   describe "Creation" do
 
     before(:all) do
@@ -16,7 +16,7 @@ RSpec.describe ImportedCsvAlliance, type: :model do
     end
 
     it "builds from csv" do
-      imported_alliance = ImportedCsvAlliance.build_from(@rows.first)
+      imported_alliance = Support::ImportedCsvAlliance.build_from(@rows.first)
 
       expect(imported_alliance.name).to eq("Iso Vaaliliitto")
       expect(imported_alliance.numbering_order).to eq("1")
@@ -31,7 +31,7 @@ RSpec.describe ImportedCsvAlliance, type: :model do
                           election: election,
                           name: "Akateemiset nallekarhut"
 
-      alliance = ImportedCsvAlliance.create_from!(@rows.first, election_id: election.id)
+      alliance = Support::ImportedCsvAlliance.create_from!(@rows.first, election_id: election.id)
 
       expect(alliance.class).to eq Alliance
       expect(alliance.name).to eq("Iso Vaaliliitto")

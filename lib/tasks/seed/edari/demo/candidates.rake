@@ -23,7 +23,7 @@ namespace :db do
                         headers: true) do |csv_candidate|
 
             count = count + 1
-            ImportedCsvCandidate.create_from! csv_candidate
+            Support::ImportedCsvCandidate.create_from! csv_candidate
           end
 
           Rails.logger.info "Imported #{count} candidates"

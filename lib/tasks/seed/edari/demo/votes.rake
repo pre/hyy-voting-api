@@ -25,7 +25,7 @@ namespace :db do
 
             count = count + 1
 
-            ImportedCsvImmutableVote.create_from! csv_vote,
+            Support::ImportedCsvImmutableVote.create_from! csv_vote,
                                                   created_at: rand(5 * 24 * 60).minutes.ago,
                                                   election_id: Election.first.id
           end

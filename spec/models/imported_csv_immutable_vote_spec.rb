@@ -1,7 +1,7 @@
 require 'rails_helper'
 require './lib/support/imported_csv_immutable_vote'
 
-RSpec.describe ImportedCsvImmutableVote, type: :model do
+RSpec.describe Support::ImportedCsvImmutableVote, type: :model do
   describe "Import" do
 
     before(:all) do
@@ -21,7 +21,7 @@ EOCSV
 
     context "build" do
       it "builds from csv" do
-        imported = ImportedCsvImmutableVote.build_from(@rows.first)
+        imported = Support::ImportedCsvImmutableVote.build_from(@rows.first)
 
         expect(imported.candidate_number).to eq(321)
         expect(imported.alliance_id).to eq(1)
@@ -57,7 +57,7 @@ EOCSV
       it "creates one from csv" do
         expect(ImmutableVote.count).to eq 0
 
-        how_many = ImportedCsvImmutableVote.create_from!(
+        how_many = Support::ImportedCsvImmutableVote.create_from!(
           @rows.first,
           election_id: @election.id,
           created_at: '2016-01-02'
@@ -75,7 +75,7 @@ EOCSV
       it "creates all from csv" do
         expect(ImmutableVote.count).to eq 0
 
-        maikki_how_many = ImportedCsvImmutableVote.create_from!(
+        maikki_how_many = Support::ImportedCsvImmutableVote.create_from!(
           @rows.first,
           election_id: @election.id,
           created_at: '2016-01-02'
@@ -89,7 +89,7 @@ EOCSV
           ).count
         ).to eq 28
 
-        kuikka_how_many = ImportedCsvImmutableVote.create_from!(
+        kuikka_how_many = Support::ImportedCsvImmutableVote.create_from!(
           @rows.second,
           election_id: @election.id,
           created_at: '2016-01-02'
@@ -103,7 +103,7 @@ EOCSV
           ).count
         ).to eq 15
 
-        jokumuu_how_many = ImportedCsvImmutableVote.create_from!(
+        jokumuu_how_many = Support::ImportedCsvImmutableVote.create_from!(
           @rows.third,
           election_id: @election.id,
           created_at: '2016-01-02'
