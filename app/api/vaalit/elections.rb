@@ -20,9 +20,9 @@ module Vaalit
           @election = Election.find params[:election_id]
 
           if cannot? :access, @election
-            error!(
-              { message: "User #{@current_user.id} does not have access to election #{params[:election_id]}" },
-              :unauthorized)
+            msg = "User #{@current_user.id} does not have access to election #{params[:election_id]}"
+            Rails.logger.info msg
+            error!({ message: msg }, :unauthorized)
           end
         end
 
@@ -35,9 +35,9 @@ module Vaalit
               present voting_right,
                       with: Entities::VotingRight
             else
-              error!(
-                { message: "User #{@current_user.id} does not have voting right in election #{params[:election_id]}" },
-                :unauthorized)
+              msg = "User #{@current_user.id} does not have voting right in election #{params[:election_id]}"
+              Rails.logger.info msg
+              error!({ message: msg }, :unauthorized)
             end
           end
         end
@@ -62,6 +62,7 @@ module Vaalit
               if result
                 present @current_user.voting_right, with: Entities::VotingRight
               else
+                Rails.logger.warn "Failed submitting vote for #{current_user.id}"
                 error!(
                   {
                     voting_right: @current_user.voting_right,
