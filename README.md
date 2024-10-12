@@ -67,6 +67,10 @@ Install [Ruby Version Manager (RVM)](https://rvm.io/).
     - `gem env`
     - `which ruby`
 
+Install correct version of ruby (cat .ruby-version)
+  * rvm install N.N.N --with-openssl-dir=$(brew --prefix openssl@3)
+  * The --with-openssl-dir is needed if both OpenSSL 1 and 3 versions are installed
+
 Retrieve the distribution of voting-frontend (needed for production use only):
   * `git submodule update --init`
   * This installs a static copy of
