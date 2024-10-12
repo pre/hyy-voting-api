@@ -22,7 +22,7 @@ namespace :db do
               puts "Database has already #{count_before} voters."
               puts ""
               puts "Paste Voters in CSV format, finally press ^D"
-              puts "Expected format is 2022 (without header):"
+              puts "Expected format is 2024 (without header):"
               puts "henkilotunnus;opiskelijanro;sukunimi;etunimet;sahkoposti;opiskelijan_kaikki_tdkt;opiskeluoikeuden_tdk_koodi;opiskeluoikeuden_tdk_nimi;opiskeluoikeuden_alkpvm;opintojen_alkpvm;koulutuksen_nimi;aktiivinen_koulutusohjelma;koulutusohjelma_max_laajuus"
               puts ""
 
@@ -33,7 +33,7 @@ namespace :db do
                 puts "csv: #{csv_row}"
 
                 CSV.parse(csv_row, col_sep: separator, encoding: encoding) do |csv_voter|
-                  imported_voter = ImportedCsvVoter2022.build_from csv_voter
+                  imported_voter = ImportedCsvVoter2024.build_from csv_voter
                   Rails.logger.info "Number #{count} - #{imported_voter.faculty_code} - #{imported_voter.department_code} - #{imported_voter.student_number} - #{imported_voter.name} - #{imported_voter.email}"
 
                   voter = Voter.create_from! imported_voter

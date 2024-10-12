@@ -108,6 +108,9 @@ a) Insert demo seed data from HYY 2009 Elections
 b) Insert seed data in which you have exported from Ehdokastietojärjestelmä
   * `rake db:seed:edari`
 
+c) Create a blank Election for testing
+  * `rake db:seed:edari:election`
+
 Manual setup for dev database:
 ```bash
 rake db:create
