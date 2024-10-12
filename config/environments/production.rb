@@ -3,6 +3,10 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Show object attributes in rails console
+  # :all will be default after Rails 7.2.1 https://github.com/rails/rails/pull/52801
+  config.active_record.attributes_for_inspect = :all
+
   # Send mail using AWS SES
   config.action_mailer.delivery_method = :aws_sdk
 
