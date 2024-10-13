@@ -8,11 +8,12 @@ namespace :db do
     Rake::Task['db:seed:common'].invoke()
     Rake::Task['db:seed'].invoke()
 
+    puts ""
     puts "Database has been re-created with common seed data."
     puts ""
     puts "Next: "
-    puts "- Create a blank Election with rake db:seed:edari:election"
-    puts "or"
-    puts "- Seed demo data with rake db:seed:edari:demo"
+    puts "a) Start from scratch (blank Election): rake db:seed:edari:election"
+    puts "b) Seed demo data: rake db:seed:edari:demo"
+    puts "c) Seed CSV Candidate data: bin/seed-edari local"
   end
 end
