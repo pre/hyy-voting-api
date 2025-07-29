@@ -248,7 +248,7 @@ GEM
     marcel (1.0.4)
     method_source (1.1.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.7)
+    mini_portile2 (2.8.9)
     minitest (5.25.1)
     multi_json (1.15.0)
     mustermann (3.0.3)
@@ -342,7 +342,7 @@ GEM
       io-console (~> 0.5)
     reverse_markdown (2.1.1)
       nokogiri
-    rexml (3.3.9)
+    rexml (3.4.1)
     rollbar (3.6.0)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
@@ -380,7 +380,7 @@ GEM
     rubocop-rspec (3.1.0)
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
-    ruby-saml (1.17.0)
+    ruby-saml (1.18.0)
       nokogiri (>= 1.13.10)
       rexml
     ruby2_keywords (0.0.5)
