@@ -24,8 +24,7 @@ gem 'logger'
 # before updating cancancan.
 gem 'cancancan', '3.5.0'
 
-# Provides aws-sdk-ses
-gem "aws-sdk-rails"
+gem "aws-sdk-rails", "~> 3.0"
 
 group :development, :test do
   gem 'byebug', platform: :mri # usage: write 'debugger' anywhere in code

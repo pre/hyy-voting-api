@@ -270,7 +270,7 @@ The verification process will take up 24-72 hours. Follow the instructions in AW
 domain in each region separately. Region is selected by AWS_REGION environment variable.
 
 * ActionMailer is configured to use AWS SES in config/production.rb:
-  `config.action_mailer.delivery_method = :aws_sdk`
+  `config.action_mailer.delivery_method = :aws_ses`
 
 * See also config/initializers/aws_ses.rb
 

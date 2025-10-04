@@ -8,7 +8,7 @@ Rails.application.configure do
   config.active_record.attributes_for_inspect = :all
 
   # Send mail using AWS SES
-  config.action_mailer.delivery_method = :aws_sdk
+  config.action_mailer.delivery_method = :aws_ses
 
   # Code is not reloaded between requests.
   config.enable_reloading = false
