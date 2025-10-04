@@ -62,9 +62,9 @@ module Vaalit
 
   module Aws
     module Ses
-      REGION = ENV.fetch('AWS_SES_REGION', "eu-central-1")
-      ACCESS_KEY_ID = ENV.fetch('AWS_SES_ACCESS_KEY_ID')
-      SECRET_ACCESS_KEY = ENV.fetch('AWS_SES_SECRET_ACCESS_KEY')
+      REGION = ENV.fetch('AWS_REGION', "eu-central-1")
+      ACCESS_KEY_ID = ENV.fetch('AWS_ACCESS_KEY_ID')
+      SECRET_ACCESS_KEY = ENV.fetch('AWS_SECRET_ACCESS_KEY')
     end
   end
 end

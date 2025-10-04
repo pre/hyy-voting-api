@@ -264,10 +264,10 @@ The verification process will take up 24-72 hours. Follow the instructions in AW
 
 * Create an AWS IAM user with eg. full AWS SES privileges. Create an API key for this IAM user.
 
-* Configure the environment variables prefixed with "AWS_SES".
+* Configure the environment variables prefixed with "AWS_".
 
 * Notice that each AWS SES configuration is region based, so you'll need to verify your email
-domain in each region separately. Region is selected by AWS_SES_REGION environment variable.
+domain in each region separately. Region is selected by AWS_REGION environment variable.
 
 * ActionMailer is configured to use AWS SES in config/production.rb:
   `config.action_mailer.delivery_method = :aws_sdk`
