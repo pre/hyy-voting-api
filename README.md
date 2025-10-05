@@ -310,7 +310,7 @@ puts cert
 OpenSSL::X509::Certificate.new cert
 ```
 
-## Testing in Heroku
+## Heroku setup
 
 * Set Heroku environment variables with newlines (ie. certificates) using:
   - `heroku config:add SOME_CERT="$(cat cert.pem)"`
@@ -323,7 +323,7 @@ OpenSSL::X509::Certificate.new cert
 * A) Seed using data from Ehdokastietojärjestelmä
   - `heroku run rake db:seed:common`
 
-  bin/seed-heroku (see also: bin/seed-local)
+  bin/seed-edari
 
   - Seed voters:
     - 1) Convert importable voter data into UTF-8. Isolatin data cannot be passed over
