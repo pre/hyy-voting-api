@@ -24,7 +24,8 @@ gem 'logger'
 # before updating cancancan.
 gem 'cancancan', '3.5.0'
 
-gem "aws-sdk-rails", "~> 3.0"
+gem 'aws-sdk-rails', '~> 5'
+gem 'aws-actionmailer-ses', '~> 1'
 
 group :development, :test do
   gem 'byebug', platform: :mri # usage: write 'debugger' anywhere in code
