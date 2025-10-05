@@ -20,21 +20,19 @@ namespace :db do
       task :faculties => :environment do
         puts 'Seeding faculties ...'
         # Faculty.create! code: "1", name: 'Tuntematon'
-
-        Faculty.create! code: "H10", name: 'Teologinen'
-        Faculty.create! code: "H20", name: 'Oikeustieteellinen'
-        Faculty.create! code: "H30", name: 'Lääketieteellinen'
-        Faculty.create! code: "H40", name: 'Humanistinen'
-        Faculty.create! code: "H50", name: 'Matemaattis-luonnontieteellinen'
-        Faculty.create! code: "H55", name: 'Farmasia'
-        Faculty.create! code: "H57", name: 'Bio- ja ympäristötieteellinen'
-        Faculty.create! code: "H60", name: 'Kasvatustieteellinen'
-        Faculty.create! code: "H70", name: 'Valtiotieteellinen'
-        Faculty.create! code: "H80", name: 'Maatalous-metsätieteellinen'
-        Faculty.create! code: "H90", name: 'Eläinlääketieteellinen'
-
-        Faculty.create! code: "H74", name: 'Svenska social- och kommunalhögskolan'
-        Faculty.create! code: "H906", name: 'Kielikeskus'
+        Faculty.create! code: "H10", abbreviation: "TTDK", name: 'Teologinen'
+        Faculty.create! code: "H20", abbreviation: "OIKTDK", name: 'Oikeustieteellinen'
+        Faculty.create! code: "H30", abbreviation: "LTDK", name: 'Lääketieteellinen'
+        Faculty.create! code: "H40", abbreviation: "HUMTDK", name: 'Humanistinen'
+        Faculty.create! code: "H50", abbreviation: "MLTDK", name: 'Matemaattis-luonnontieteellinen'
+        Faculty.create! code: "H55", abbreviation: "FTDK", name: 'Farmasia'
+        Faculty.create! code: "H57", abbreviation: "BYTDK", name: 'Bio- ja ympäristötieteellinen'
+        Faculty.create! code: "H60", abbreviation: "KTDK", name: 'Kasvatustieteellinen'
+        Faculty.create! code: "H70", abbreviation: "VALTTDK", name: 'Valtiotieteellinen'
+        Faculty.create! code: "H80", abbreviation: "MMTDK", name: 'Maatalous-metsätieteellinen'
+        Faculty.create! code: "H90", abbreviation: "ELTDK", name: 'Eläinlääketieteellinen'
+        Faculty.create! code: "H74", abbreviation: "SSKH", name: 'Svenska social- och kommunalhögskolan'
+        # Faculty.create! code: "H906", abbreviation: , name: 'Kielikeskus'
       end
 
       desc 'departments'
@@ -190,7 +188,8 @@ namespace :db do
     desc 'common data (faculties, departments)'
     task :common => :environment do
       Rake::Task['db:seed:common:faculties'].invoke()
-      Rake::Task['db:seed:common:departments'].invoke()
+      # Departments/koulutusohjelmat are not used anymore for statistics
+      # Rake::Task['db:seed:common:departments'].invoke()
     end
   end
 end

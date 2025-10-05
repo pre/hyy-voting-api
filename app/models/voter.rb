@@ -50,6 +50,14 @@ class Voter < ActiveRecord::Base
       voter.faculty = faculty
     end
 
+    if voter_attrs.faculty_abbreviation.present? && voter.faculty.nil?
+      faculty = Faculty.find_by_abbreviation voter_attrs.faculty_abbreviation.strip
+
+      raise "Faculty not found: #{voter_attrs.faculty_abbreviation}" if faculty.nil?
+
+      voter.faculty = faculty
+    end
+
     if voter_attrs.department_code.present?
       department = Department.find_by_code voter_attrs.department_code.strip
 
@@ -58,7 +66,7 @@ class Voter < ActiveRecord::Base
       voter.department = department
     end
 
-    %w(email phone extent_of_studies start_year).each do |optional_attr|
+    %w[email phone extent_of_studies start_year].each do |optional_attr|
       value = voter_attrs.send(optional_attr)
 
       value.strip! if value.is_a?(String)

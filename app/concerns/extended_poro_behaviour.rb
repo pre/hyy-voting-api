@@ -25,5 +25,4 @@ module ExtendedPoroBehaviour
       end
     end
   end
-
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2022_10_25_075954) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_05_153029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,8 @@ ActiveRecord::Schema[7.2].define(version: 2022_10_25_075954) do
     t.string "code"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "abbreviation", null: false
+    t.index ["abbreviation"], name: "index_faculties_on_abbreviation", unique: true
     t.index ["code"], name: "index_faculties_on_code", unique: true
   end
 

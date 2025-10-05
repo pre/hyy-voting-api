@@ -6,6 +6,7 @@ class ImportedVoter
                 :ssn,
                 :student_number,
                 :faculty_code,
+                :faculty_abbreviation,
                 :department_code,
                 :phone,
                 :extent_of_studies,
@@ -22,5 +23,4 @@ class ImportedVoter
   def convert(voter)
     raise "Subclass must implement convert"
   end
-
 end
