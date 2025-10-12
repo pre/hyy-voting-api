@@ -43,18 +43,18 @@ set +x
 
 >&2 cat <<EOF
 
-Next (if run was successful):
-Seed voters and voting rights (UTF-8):
+NEXT: Seed voters and voting rights (UTF-8)
+===========================================
 
-  Heroku:
-    heroku run --no-tty -r ${TARGET_ENV} rake db:seed:edari:voters_and_voting_rights:csv < voters.csv
+Heroku:
+  heroku run --no-tty -r ${TARGET_ENV} rake db:seed:edari:voters_and_voting_rights:csv < voters.csv
 
-  Local (teppo/testaaja):
-    rake db:seed:edari:demo:voters
+Local (teppo/testaaja):
+  rake db:seed:edari:demo:voters
 
-  Personal testing with Haka
-    heroku console -r ${TARGET_ENV}
-    v = Voter.create! name: "Example User", ssn: "123456-1234", student_number: "012617229"
-    VotingRight.create! election_id: Election.first.id, voter_id: v.id
+Personal testing with Haka
+  heroku console -r ${TARGET_ENV}
+  v = Voter.create! name: "Example User", ssn: "123456-1234", student_number: "012617229"
+  VotingRight.create! election_id: Election.first.id, voter_id: v.id
 
 EOF

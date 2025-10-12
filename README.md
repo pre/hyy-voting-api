@@ -316,40 +316,54 @@ OpenSSL::X509::Certificate.new cert
   - `heroku config:add SOME_CERT="$(cat cert.pem)"`
   - WONT WORK: `heroku config:set XYZ="has\nnewlines"`, it will mess up `\n` to `\\n`.
 
-* Reset Heroku database:
+* Provision a Postgresql Add On (Essential-1)
+  * When setting up a new production environment, remove the previous Postgresql Add On
+    and provision a new one. This ensures the database is recreated from scratch.
+
+* Reset Heroku database (non-productive setup):
   - `heroku pg:reset DATABASE`
-  - `heroku run rake db:schema:load`
 
-* A) Seed using data from Ehdokastietojärjestelmä
-  - `heroku run rake db:seed:common`
+* Load the database schema into the empty database:
+  - `heroku run -r prod rake db:schema:load`
 
-  bin/seed-edari
+* Seed Faculties:
+  - `heroku run -r prod rake db:seed:common`
 
-  - Seed voters:
-    - 1) Convert importable voter data into UTF-8. Isolatin data cannot be passed over
-         `heroku` command.
-    - 2a) text: `heroku run --no-tty rake db:seed:edari:voters_and_voting_rights < voters.txt`
-    - 2b) csv: `heroku run --no-tty rake db:seed:edari:voters_and_voting_rights:csv < voters.csv`
-  - Example seeds are available in the admin dashboard of Ehdokastietojärjestelmä
+* Seed CSV data from Ehdokastietojärjestelmä:
+  - `bin/seed-edari`
 
-  * Production seed data is loaded to Heroku
-    - a) from interactive terminal (copy-paste data and press ^D):
-      * `heroku run rake db:seed:edari:candidates`
+* Review environment variables:
+  * VOTE_SIGNIN_ENDS_AT
+  * VOTE_SIGNIN_STARTS_AT
+  * ELECTION_TERMINATES_AT
+  * VOTE_SIGNIN_DAILY_OPENING_TIME
+  * VOTE_SIGNIN_DAILY_CLOSING_TIME
+  * HTTP_BASIC_AUTH_USERNAME (remove)
+  * HTTP_BASIC_AUTH_PASSWORD (remove)
+  * SECRET_KEY_BASE (`rails secret`)
 
-    - b) with `--no-tty` and `< filename`
-      * `heroku run --no-tty rake db:seed:edari:candidates < candidates.csv`.
+* Provision Heroku process for both "web" and "worker"
 
-* B) Seed demo data without votes:
-  - `heroku run rake db:seed:edari:demo`
+## Heroku testing
+
+* Seed demo data without votes:
+  * `heroku run rake db:seed:edari:demo`
 
 * Generate a login token:
-  - `heroku run rake jwt:voter:generate expiry_hours=1000 voter_id=1`
+  * `heroku run rake jwt:voter:generate expiry_hours=1000 voter_id=1`
 
 * Access console:
   `heroku console`
 
 * Access logs:
   `heroku logs --tail`
+
+* Production seed data is loaded to Heroku
+  * a) from interactive terminal (copy-paste data and press ^D):
+    * `heroku run rake db:seed:edari:candidates`
+
+  * b) with `--no-tty` and `< filename`
+    * `heroku run --no-tty rake db:seed:edari:candidates < candidates.csv`.
 
 
 ## Importing Voters

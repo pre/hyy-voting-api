@@ -21,7 +21,7 @@ namespace :db do
               puts "Database has already #{count_before} voters."
               puts ""
               puts "Paste Voters in CSV format, finally press ^D"
-              puts "Expected format is 2025 (without header):"
+              puts "Expected format in 2025 (without header):"
               puts "student_number;ssn;lastname;firstnames;email;faculty;start_year"
               puts ""
 
