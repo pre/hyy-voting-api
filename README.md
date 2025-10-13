@@ -341,6 +341,8 @@ OpenSSL::X509::Certificate.new cert
   * HTTP_BASIC_AUTH_USERNAME (remove)
   * HTTP_BASIC_AUTH_PASSWORD (remove)
   * SECRET_KEY_BASE (`rails secret`)
+  * JWT_VOTER_SECRET (`rails secret`)
+  * JWT_SERVICE_USER_SECRET (`rails secret`)
 
 * Provision Heroku process for both "web" and "worker"
 
