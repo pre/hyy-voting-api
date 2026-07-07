@@ -46,13 +46,16 @@ class SignInTokenProcessor
     # Retrieve email from the payload of the JWT token which was given in
     # the sign-in link.
     #
+    # Only sign-in tokens (typ "signin") are accepted, so that a long-lived
+    # session JWT cannot be exchanged for a fresh session.
+    #
     # Format:
-    # [{"voter_id"=>1}, {"typ"=>"JWT", "alg"=>"HS256"}]
+    # [{"voter_id"=>1, "typ"=>"signin"}, {"typ"=>"JWT", "alg"=>"HS256"}]
     def read_token(jwt)
       data = JsonWebToken.decode jwt,
                                  Vaalit::Config::JWT_VOTER_SECRET
 
-      if data.nil?
+      if data.nil? || data.first["typ"] != "signin"
         errors.add(:source_token, "Invalid source JWT token in the sign in link")
         return
       end

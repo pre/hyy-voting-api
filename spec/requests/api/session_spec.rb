@@ -19,10 +19,20 @@ describe Vaalit::Session do
     end
 
     it 'requires a valid user in the token' do
-      token = JsonWebToken.encode({email: "inexistant.user@example.com"},
+      token = JsonWebToken.encode({email: "inexistant.user@example.com", typ: "signin"},
                                   Vaalit::Config::JWT_VOTER_SECRET)
 
       post "/api/sessions?token=#{token}"
+
+      expect(response).not_to be_successful
+      expect(json["error"]).to eq "Invalid sign-in token"
+    end
+
+    it 'rejects a session JWT used as a sign in token' do
+      voter = FactoryBot.build :voter, id: 123, email: "user@example.com"
+      token = SessionToken.new(voter).jwt
+
+      post "/api/sessions?token=#{URI.encode_www_form_component(token)}"
 
       expect(response).not_to be_successful
       expect(json["error"]).to eq "Invalid sign-in token"
@@ -34,7 +44,7 @@ describe Vaalit::Session do
       voter = FactoryBot.build :voter, id: voter_id, email: email
       allow(Voter).to receive(:find).once.and_return(voter)
 
-      token = JsonWebToken.encode({voter_id: voter_id},
+      token = JsonWebToken.encode({voter_id: voter_id, typ: "signin"},
                                   Vaalit::Config::JWT_VOTER_SECRET)
 
       post "/api/sessions?token=#{token}"

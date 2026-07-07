@@ -25,5 +25,19 @@ RSpec.describe SessionToken, type: :model do
       expect(@token.user.voter.id).to eq(@voter_id)
     end
 
+    it "marks the session JWT with typ session" do
+      payload = JsonWebToken.decode(@token.jwt, Vaalit::Config::JWT_VOTER_SECRET).first
+
+      expect(payload["typ"]).to eq("session")
+      expect(payload["voter_id"]).to eq(@voter_id)
+    end
+
+    it "marks the ephemeral JWT with typ signin" do
+      payload = JsonWebToken.decode(@token.ephemeral_jwt, Vaalit::Config::JWT_VOTER_SECRET).first
+
+      expect(payload["typ"]).to eq("signin")
+      expect(payload["voter_id"]).to eq(@voter_id)
+    end
+
   end
 end
