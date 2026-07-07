@@ -36,4 +36,12 @@ describe BasicAuthFence do
     expect(response.status).to eq 200
     expect(response.body).to eq 'downstream'
   end
+
+  it 'treats the Bearer scheme name as case-insensitive' do
+    response = request.get('/api/v1/elections',
+                           'HTTP_AUTHORIZATION' => 'bearer some.jwt.token')
+
+    expect(response.status).to eq 200
+    expect(response.body).to eq 'downstream'
+  end
 end

@@ -39,7 +39,8 @@ class BasicAuthFence
   end
 
   def call(env)
-    return @app.call(env) if env['HTTP_AUTHORIZATION'].to_s.start_with?('Bearer ')
+    # The auth scheme name is case-insensitive (RFC 7235).
+    return @app.call(env) if env['HTTP_AUTHORIZATION'].to_s.match?(/\ABearer /i)
 
     @basic_auth.call(env)
   end
@@ -47,14 +48,13 @@ end
 
 module HyyVotingApi
   class Application < Rails::Application
-    # Read ENV directly: this file is loaded before the initializers which
-    # define `Vaalit::Config::HTTP_BASIC_AUTH_USERNAME`.
+    # Read ENV directly: this file is loaded before the initializers.
+    # 000_config.rb fails the boot if only one of the two vars is set.
     unless ENV['HTTP_BASIC_AUTH_USERNAME'].to_s.empty?
       config.middleware.use BasicAuthFence,
                             ENV['HTTP_BASIC_AUTH_USERNAME'],
                             ENV['HTTP_BASIC_AUTH_PASSWORD']
     end
-
 
     config.active_support.cache_format_version = 7.1
 
