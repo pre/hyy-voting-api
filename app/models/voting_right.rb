@@ -7,7 +7,6 @@ class VotingRight < ApplicationRecord
   belongs_to :election
 
   validates_uniqueness_of :voter,
-                            null: false,
                             scope: :election_id
 
   validates_presence_of :election_id,
