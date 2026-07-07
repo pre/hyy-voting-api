@@ -52,6 +52,25 @@ RSpec.describe Voter, type: :model do
     end
   end
 
+  describe "uniqueness" do
+
+    it "rejects a duplicate student number" do
+      existing = FactoryBot.create :voter
+      duplicate = FactoryBot.build :voter, student_number: existing.student_number
+
+      expect(duplicate).not_to be_valid
+      expect(duplicate.errors[:student_number]).to be_present
+    end
+
+    it "rejects the same email in different case" do
+      FactoryBot.create :voter, email: "pekka.purhonen@example.com"
+      duplicate = FactoryBot.build :voter, email: "Pekka.Purhonen@EXAMPLE.com"
+
+      expect(duplicate).not_to be_valid
+      expect(duplicate.errors[:email]).to be_present
+    end
+  end
+
   describe "import errors" do
     let(:existing_faculty_code) { 'H123' }
     let(:without_faculty) do
