@@ -35,8 +35,10 @@ module Haka
       person = Person.new(response.attributes.multi(Vaalit::Haka::HAKA_STUDENT_NUMBER_FIELD))
 
       unless person.valid?
-        Rails.logger.info "No voting right for person '#{person.inspect}'"
-        Rollbar.info "No voting right present", person: person
+        # Person details (student number) are logged only at debug level.
+        Rails.logger.info "No voting right for person, failures: #{person.errors.attribute_names}"
+        Rails.logger.debug "No voting right for person '#{person.inspect}'"
+        Rollbar.info "No voting right present", failures: person.errors.attribute_names
 
         redirect_to frontend_error_path("no_voting_right")
         return
