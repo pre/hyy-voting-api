@@ -9,6 +9,9 @@ class CastVote
   # Returns true IFF both VotingRight and ImmutableVote have been updated.
   # Return false or nil otherwise.
   def self.submit(election:, voter:, candidate:)
+    # Refuse votes for candidates who do not belong to this election.
+    return false unless candidate.election == election
+
     committed = ActiveRecord::Base.transaction do
       begin
         # Acquire a table level lock to table `voting_rights`.
