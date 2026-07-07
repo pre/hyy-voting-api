@@ -54,6 +54,7 @@ FactoryBot.define do
   factory :faculty do
     sequence(:name) {|n| "Faculty #{n}"}
     sequence(:code) {|n| "#{Faker::Code.imei}#{n}"}
+    sequence(:abbreviation) {|n| "FAC#{n}"}
   end
 
   factory :department do
