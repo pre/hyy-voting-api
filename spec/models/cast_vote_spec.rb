@@ -45,10 +45,23 @@ RSpec.describe CastVote, type: :model do
 
       it "sends email about free coffee" do
         expect(AfterVoteMailer).to receive(:thank).with(@voter)
+          .and_return(double(deliver_later: true))
 
         CastVote.submit election: @election,
                         voter: @voter,
                         candidate: @candidate
+      end
+
+      it "does not lose the vote when mailer enqueue fails" do
+        allow(AfterVoteMailer).to receive(:thank).and_raise(StandardError)
+
+        return_value = CastVote.submit election: @election,
+                                       voter: @voter,
+                                       candidate: @candidate
+
+        expect(return_value).to be true
+        expect(ImmutableVote.count).to eq 1
+        expect(VotingRight.find(@voting_right.id)).to be_used
       end
 
       it "returns true when it succeeds" do
@@ -133,6 +146,15 @@ RSpec.describe CastVote, type: :model do
         @candidate.reload
         expect(@candidate.votes.count).to eq 0
         expect(ImmutableVote.count).to eq 0
+      end
+
+      it "does not send email" do
+        allow(ImmutableVote).to receive(:create!).and_raise(ActiveRecord::ActiveRecordError)
+        expect(AfterVoteMailer).not_to receive(:thank)
+
+        CastVote.submit election: @election,
+                        voter: @voter,
+                        candidate: @candidate
       end
 
       it "rollbacks on a generic RuntimeError" do
