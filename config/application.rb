@@ -18,8 +18,44 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require 'rack/auth/basic'
+
+# HTTP Basic auth fence for staging environments.
+#
+# This must be Rack middleware: the Grape API is mounted directly in
+# `config/routes.rb` and bypasses Rails controllers, so controller-level
+# `http_basic_authenticate_with` never covered `/api/*`.
+#
+# API clients authenticate with an "Authorization: Bearer <jwt>" header and
+# thus cannot also send Basic credentials, so requests with a Bearer header
+# pass through here and JWT auth is enforced downstream by the API.
+class BasicAuthFence
+  def initialize(app, username, password)
+    @app = app
+    @basic_auth = Rack::Auth::Basic.new(app) do |user, pass|
+      Rack::Utils.secure_compare(user, username) &
+        Rack::Utils.secure_compare(pass, password)
+    end
+  end
+
+  def call(env)
+    # The auth scheme name is case-insensitive (RFC 7235).
+    return @app.call(env) if env['HTTP_AUTHORIZATION'].to_s.match?(/\ABearer /i)
+
+    @basic_auth.call(env)
+  end
+end
+
 module HyyVotingApi
   class Application < Rails::Application
+    # Read ENV directly: this file is loaded before the initializers.
+    # 000_config.rb fails the boot if only one of the two vars is set.
+    unless ENV['HTTP_BASIC_AUTH_USERNAME'].to_s.empty?
+      config.middleware.use BasicAuthFence,
+                            ENV['HTTP_BASIC_AUTH_USERNAME'],
+                            ENV['HTTP_BASIC_AUTH_PASSWORD']
+    end
+
     config.active_support.cache_format_version = 7.1
 
     config.active_job.queue_adapter = :delayed_job

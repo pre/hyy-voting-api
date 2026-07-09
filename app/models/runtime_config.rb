@@ -35,10 +35,6 @@ class RuntimeConfig
     signin_has_started?(now) && now <= voting_ends_at?
   end
 
-  def self.http_basic_auth?
-    !Vaalit::Config::HTTP_BASIC_AUTH_USERNAME.blank?
-  end
-
   private_class_method def self.signin_has_started?(now)
     Vaalit::Config::VOTE_SIGNIN_STARTS_AT <= now
   end

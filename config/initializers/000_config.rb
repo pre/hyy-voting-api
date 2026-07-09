@@ -21,9 +21,6 @@ module Vaalit
     EMAIL_LINK_JWT_EXPIRY_MINUTES    = ENV.fetch('EMAIL_LINK_JWT_EXPIRY_MINUTES').to_i.minutes
     SIGN_IN_JWT_EXPIRY_SECONDS       = ENV.fetch('SIGN_IN_JWT_EXPIRY_SECONDS').to_i.seconds
 
-    HTTP_BASIC_AUTH_USERNAME = ENV.fetch('HTTP_BASIC_AUTH_USERNAME', nil)
-    HTTP_BASIC_AUTH_PASSWORD = ENV.fetch('HTTP_BASIC_AUTH_PASSWORD', nil)
-
     JWT_VOTER_SECRET = ENV.fetch("JWT_VOTER_SECRET")
     JWT_SERVICE_USER_SECRET = ENV.fetch("JWT_SERVICE_USER_SECRET")
   end
@@ -41,6 +38,13 @@ module Vaalit
     # Enforced only in production: CI and dev machines may run in UTC.
     if Rails.env.production? && ENV['TZ'] != 'Europe/Helsinki'
       raise "TZ env var must be 'Europe/Helsinki' in production, got #{ENV['TZ'].inspect}"
+    end
+
+    # The basic auth middleware (config/application.rb) reads these ENV vars
+    # directly. A half-configured fence would 500 on every request when
+    # secure_compare hits a nil password, so fail the boot instead.
+    if ENV['HTTP_BASIC_AUTH_USERNAME'].to_s.empty? != ENV['HTTP_BASIC_AUTH_PASSWORD'].to_s.empty?
+      raise "HTTP_BASIC_AUTH_USERNAME and HTTP_BASIC_AUTH_PASSWORD must both be set, or neither"
     end
   end
 
