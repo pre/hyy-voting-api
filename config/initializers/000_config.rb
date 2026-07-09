@@ -34,6 +34,14 @@ module Vaalit
     if Vaalit::Config::JWT_VOTER_SECRET == Vaalit::Config::JWT_SERVICE_USER_SECRET
       raise "JWT_VOTER_SECRET must differ from JWT_SERVICE_USER_SECRET"
     end
+
+    # Election opening hours are parsed with Time.parse and compared with
+    # Time.now, both of which depend on the server's TZ env var. A missing
+    # or wrong TZ silently shifts all voting times, so fail the boot instead.
+    # Enforced only in production: CI and dev machines may run in UTC.
+    if Rails.env.production? && ENV['TZ'] != 'Europe/Helsinki'
+      raise "TZ env var must be 'Europe/Helsinki' in production, got #{ENV['TZ'].inspect}"
+    end
   end
 
   module Haka
