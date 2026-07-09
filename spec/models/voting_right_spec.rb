@@ -30,5 +30,12 @@ RSpec.describe VotingRight, type: :model do
 
     end
 
+    it "is not valid without a voter" do
+      voting_right = VotingRight.new election: @election
+
+      expect(voting_right).not_to be_valid
+      expect(voting_right.errors[:voter_id]).to include "can't be blank"
+    end
+
   end
 end

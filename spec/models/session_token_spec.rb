@@ -39,5 +39,9 @@ RSpec.describe SessionToken, type: :model do
       expect(payload["voter_id"]).to eq(@voter_id)
     end
 
+    it "is not valid without a voter" do
+      expect(SessionToken.new(nil)).not_to be_valid
+    end
+
   end
 end

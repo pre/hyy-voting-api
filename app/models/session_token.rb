@@ -60,7 +60,7 @@ class SessionToken
   begin
 
     def validate
-      not user.blank?
+      user.present? && user.voter.present?
     end
 
   end
