@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_05_153029) do
+ActiveRecord::Schema[7.2].define(version: 2026_07_07_064657) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,7 +106,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_05_153029) do
     t.integer "extent_of_studies"
     t.string "phone"
     t.integer "department_id"
-    t.index ["email"], name: "index_voters_on_email"
+    t.index "lower((email)::text)", name: "index_voters_on_lower_email", unique: true
+    t.index ["student_number"], name: "index_voters_on_student_number", unique: true
   end
 
   create_table "voting_rights", id: :serial, force: :cascade do |t|
