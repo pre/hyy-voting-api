@@ -343,6 +343,7 @@ OpenSSL::X509::Certificate.new cert
   * SECRET_KEY_BASE (`rails secret`)
   * JWT_VOTER_SECRET (`rails secret`)
   * JWT_SERVICE_USER_SECRET (`rails secret`)
+  * CORS_ALLOWED_ORIGINS (production: `https://vaalit.hyy.fi`)
 
 * Provision Heroku process for both "web" and "worker"
 
