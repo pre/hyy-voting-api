@@ -73,6 +73,29 @@ RSpec.describe CastVote, type: :model do
       end
     end
 
+    context "when candidate belongs to another election" do
+
+      it "returns false and does not create a vote" do
+        # Election validates that only one election exists at a time,
+        # so bypass validation to set up a candidate in another election.
+        other_election = FactoryBot.build :election, :edari_election
+        other_election.save! validate: false
+        other_coalition = FactoryBot.create :coalition, election: other_election
+        other_alliance = FactoryBot.create :alliance,
+                                           coalition: other_coalition,
+                                           election: other_election
+        other_candidate = FactoryBot.create :candidate, alliance: other_alliance
+
+        result = CastVote.submit election: @election,
+                                 voter: @voter,
+                                 candidate: other_candidate
+
+        expect(result).to be false
+        expect(ImmutableVote.count).to eq 0
+        expect(@voter.voting_right.reload).not_to be_used
+      end
+    end
+
     context "when voting right has already been used" do
 
       it "returns false when voting right has already been used" do
