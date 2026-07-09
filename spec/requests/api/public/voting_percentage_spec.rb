@@ -6,6 +6,17 @@ describe Vaalit::Public do
     @election = FactoryBot.create(:election)
   end
 
+  context 'when election does not exist' do
+    before do
+      get "/api/public/elections/#{@election.id + 1}/voting_percentage"
+    end
+
+    it 'returns not found' do
+      expect(response).to have_http_status(:not_found)
+      expect(json["message"]).to eq "Not found"
+    end
+  end
+
   context 'when voting has not started' do
     before do
       get "/api/public/elections/#{@election.id}/voting_percentage"

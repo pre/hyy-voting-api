@@ -2,6 +2,11 @@ class Api < Grape::API
   prefix 'api'
   format :json
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    Rails.logger.info "Record not found: #{exception.message}"
+    error!({ message: 'Not found' }, :not_found)
+  end
+
   helpers Vaalit::JwtHelpers
 
   helpers do

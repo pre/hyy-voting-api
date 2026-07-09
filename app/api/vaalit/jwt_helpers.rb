@@ -6,7 +6,12 @@ module Vaalit
       decoded_token = decode_jwt(headers, Vaalit::Config::JWT_VOTER_SECRET)
 
       if decoded_token
-        Voter.find decoded_token["voter_id"]
+        begin
+          Voter.find decoded_token["voter_id"]
+        rescue ActiveRecord::RecordNotFound
+          Rails.logger.info "Voter #{decoded_token['voter_id']} from valid jwt token does not exist anymore"
+          false
+        end
       else
         Rails.logger.debug "Couldn't verify voter_id from jwt token (voter_id doesn't exist or token has expired)"
         return false
