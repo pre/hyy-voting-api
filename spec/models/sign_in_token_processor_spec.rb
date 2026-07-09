@@ -6,7 +6,7 @@ RSpec.describe SignInTokenProcessor, type: :model do
     before do
       @example_email = "email@example.com"
       @voter_id = 4321
-      @jwt = JsonWebToken.encode({email: @example_email},
+      @jwt = JsonWebToken.encode({email: @example_email, typ: "signin"},
                                  Vaalit::Config::JWT_VOTER_SECRET)
 
       voter = FactoryBot.build :voter, {
@@ -23,6 +23,19 @@ RSpec.describe SignInTokenProcessor, type: :model do
       expect(processor).to be_valid
       expect(processor.session_token.user.voter.email).to eq(@example_email)
       expect(processor.session_token.user.voter.id).to eq(@voter_id)
+    end
+
+  end
+
+  context "session JWT used as source token" do
+    it "will fail validations" do
+      voter = FactoryBot.build :voter, email: "email@example.com", id: 4321
+      session_jwt = SessionToken.new(voter).jwt
+
+      processor = SignInTokenProcessor.new session_jwt
+
+      expect(processor).not_to be_valid
+      expect(processor.errors[:source_token].first).to eq "Invalid source JWT token in the sign in link"
     end
 
   end

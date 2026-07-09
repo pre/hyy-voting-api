@@ -27,7 +27,8 @@ class SessionToken
   def jwt
     payload = {
       voter_id: @user.voter.id,
-      email: @user.voter.email
+      email: @user.voter.email,
+      typ: 'session'
     }
 
     JsonWebToken.encode payload,
@@ -37,7 +38,7 @@ class SessionToken
 
   # Short-lived JWT which is used in the sign in and exchanged for a session jwt.
   def ephemeral_jwt(lifetime = Vaalit::Config::SIGN_IN_JWT_EXPIRY_SECONDS)
-    payload = { voter_id: @user.voter.id }
+    payload = { voter_id: @user.voter.id, typ: 'signin' }
     expiry = lifetime.from_now
 
     JsonWebToken.encode payload,
