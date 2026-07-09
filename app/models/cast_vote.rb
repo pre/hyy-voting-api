@@ -9,7 +9,7 @@ class CastVote
   # Returns true IFF both VotingRight and ImmutableVote have been updated.
   # Return false or nil otherwise.
   def self.submit(election:, voter:, candidate:)
-    ActiveRecord::Base.transaction do
+    committed = ActiveRecord::Base.transaction do
       begin
         # Acquire a table level lock to table `voting_rights`.
         # Prevent a race condition where two simultaneous transactions
@@ -37,15 +37,25 @@ class CastVote
         ImmutableVote.create! election: election,
                               candidate: candidate
 
-        AfterVoteMailer.thank(voter).deliver_later if voter.email
-
-        return true
-      # Rollback any Exception in order to guarantee that no partial
+        true
+      # Rollback any StandardError in order to guarantee that no partial
       # update was persisted.
-      rescue Exception => e
+      rescue StandardError => e
         Rails.logger.error "[CastVote] Error: #{e}"
         raise ActiveRecord::Rollback
       end
     end
+
+    return false unless committed
+
+    # Enqueue outside the transaction: a failure here must not roll back
+    # a committed vote. A vote without a thank-you email is acceptable.
+    begin
+      AfterVoteMailer.thank(voter).deliver_later if voter.email
+    rescue StandardError => e
+      Rails.logger.error "[CastVote] Mailer enqueue failed: #{e}"
+    end
+
+    true
   end
 end
