@@ -20,7 +20,7 @@ class Election < ActiveRecord::Base
     return true if self.class.count == 0
     return true if self.class.count == 1 && self.class.first.id == self.id
 
-    @errors.add :type, "There can be only one Edari election at the same time."
+    errors.add :type, "There can be only one Edari election at the same time."
     return false
   end
 end

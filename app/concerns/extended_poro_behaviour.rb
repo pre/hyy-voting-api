@@ -14,8 +14,6 @@ module ExtendedPoroBehaviour
   include ActiveModel::Validations
   include ActiveModel::Validations::Callbacks
 
-  include ActiveRecord::Callbacks
-
   included do
     def initialize(attributes = {})
       @errors = ActiveModel::Errors.new(self)
