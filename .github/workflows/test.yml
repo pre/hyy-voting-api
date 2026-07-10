@@ -11,7 +11,10 @@ jobs:
 
     services:
       postgres:
-        image: postgres:18
+        # Docker Hub mirror on AWS public ECR; avoids Docker Hub outages
+        # and anonymous-pull rate limits (master run 29087579964 failed on
+        # a Docker Hub 500 during "docker pull postgres:18").
+        image: public.ecr.aws/docker/library/postgres:18
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: hyy-voting-api_test
