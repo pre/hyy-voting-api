@@ -1,0 +1,48 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: hyy-voting-api_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      RAILS_ENV: test
+      RACK_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/hyy-voting-api_test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Vaalit::Config fetches its settings from ENV at boot; .env.example
+      # provides working values for the test suite via dotenv. Job-level env
+      # above wins over the file (dotenv does not override existing vars).
+      - name: Provide env vars from .env.example
+        run: cp .env.example .env
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Load database schema
+        run: bundle exec rails db:schema:load
+
+      - name: Run specs
+        run: bundle exec rspec
