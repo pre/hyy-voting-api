@@ -5,6 +5,14 @@ module Vaalit
     def current_voter_user(headers)
       decoded_token = decode_jwt(headers, Vaalit::Config::JWT_VOTER_SECRET)
 
+      # Only long-lived session tokens (typ "session") grant API access.
+      # An ephemeral sign-in token must be exchanged for a session token
+      # at POST /api/sessions first.
+      if decoded_token && decoded_token["typ"] != "session"
+        Rails.logger.info "Rejected Bearer jwt with typ #{decoded_token['typ'].inspect}"
+        return false
+      end
+
       if decoded_token
         begin
           Voter.find decoded_token["voter_id"]
