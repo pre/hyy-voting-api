@@ -62,7 +62,7 @@ module Vaalit
               if result
                 present @current_user.voting_right, with: Entities::VotingRight
               else
-                Rails.logger.warn "Failed submitting vote for #{current_user.id}"
+                Rails.logger.warn "Failed submitting vote for #{@current_user.id}"
                 error!(
                   {
                     voting_right: @current_user.voting_right,
