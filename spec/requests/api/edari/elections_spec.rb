@@ -15,7 +15,7 @@ describe Vaalit::Elections do
       @candidate = FactoryBot.create :candidate, alliance: @alliance
       @voter = FactoryBot.create :voter, :with_voting_right, election: @election
 
-      token = JsonWebToken.encode({ voter_id: @voter.id },
+      token = JsonWebToken.encode({ voter_id: @voter.id, typ: 'session' },
                                   Vaalit::Config::JWT_VOTER_SECRET)
       @headers = { "Authorization": "Bearer #{token}" }
     end
