@@ -67,7 +67,8 @@ namespace :jwt do
     desc 'generate a JWT token for Frontend access'
     task :generate, [:voter_id, :expiry_hours] => :environment do
       voter_id = ENV['voter_id'] || 1
-      payload = { voter_id: voter_id.to_i }
+      # SignInTokenProcessor only accepts tokens with typ "signin".
+      payload = { voter_id: voter_id.to_i, typ: 'signin' }
 
       generate payload,
                Vaalit::Config::JWT_VOTER_SECRET,
